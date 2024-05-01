@@ -22,6 +22,7 @@ I also give no guarantees of accuracy for any of the linked sites. I left out mo
 
 ### Math
 Encoding is hard and technical. If you want to really understand what you're doing, you'll need a bit of math background. Some relevant topics are:
+
 - Some basic linear algebra
 - Knowing what a convolution is and how they work ([3b1b video](https://www.youtube.com/watch?v=KuXjwB4LzSA))
 - Understanding Fourier transforms and, more generally, the concept of thinking in frequency space ([Imagemagick docs on Fourier transforms](https://www.imagemagick.org/Usage/fourier/))
@@ -43,12 +44,14 @@ Whatever you're trying to learn (this is not even specific to encoding), it cann
 
 ### HDR
 The terminology related to HDR is a huge mess, but conceptually HDR consists of two aspects
+
 - New transfer functions (HLG and PQ) that allow for a much higher dynamic range in colors
 - Formats for metadata that helps players and screens convert their HDR inputs to colors that they can display
 
 While HDR primarily only concerns a different transfer function, it is often paired with a switch to BT.2020 primaries, even if their full gamut is not actually used (many HDR videos use the P3 gamut, for example).
 
 A few resources:
+
 - BT.2100, SMPTE ST 2084, SMPTE ST 2086, BT2446
 - [Sheet on Dolby Vision Stuff](https://docs.google.com/spreadsheets/d/1jBIGF8XTVi9VmDBZ8a5hEyongYMCDlUiLHU9n1f_S74/edit#gid=1222148710)
 - [dovi_tool](https://github.com/quietvoid/dovi_tool)
@@ -58,6 +61,7 @@ A few resources:
 Understanding how exactly the VapourSynth ecosystem works and which parts play what roles is crucial when working with it. Otherwise, you will not be able to find the documentation you need or pinpoint where exactly your errors are coming from.
 
 VapourSynth (at least the parts relevant for us) itself can be seen as consisting of three components:
+
 - The core of VapourSynth is a *frame server*. It's able to chain together various functions, where each function (well, most functions) can take a sequence of video frames (or multiple sequences) together with some parameters, modify those frames in some way, and output the resulting sequence of frames (or other values).
   Such sequences of frames are called *video nodes*, and they are computed lazily: Frames are only computed when requested, and they are only requested when they're required in other functions. This allows VapourSynth to process a video frame by frame without having to store the entire clip in memory.
   Video nodes also contain *frame props*, which are pieces of data (key-value pairs) associated with each frame that functions can use and change as they please.
@@ -75,6 +79,7 @@ VapourSynth (at least the parts relevant for us) itself can be seen as consistin
   This then results in the VapourSynth script workflow you probably know.
 
 Then, there are three further components in the wider VapourSynth ecosystem:
+
 - There are dozens of VapourSynth plugins written by users (or sometimes by the authors of VapourSynth themselves) which provide all kinds of functions to process video nodes.
   These are the filtering plugins that make up the real heart of VapourSynth
 - There are various programs using the VapourSynth or VSScript APIs in order to somehow apply a filterchain or script to some video clip.
@@ -108,6 +113,7 @@ This is a huge umbrella topic and the general advice still remains "Find out wha
 Keep in mind that there is no magical way to recover information, so any filter *will* be destructive to some degree. Don't use a filter if your source does not have the problem the filter is supposed to fix, or if the filter causes more issues than it fixes. Use your eyes to check for issues and do not blindly rely on automated metrics.
 
 Recognizing artifacts:
+
 - [guide.encode.moe's page on artifacts](https://guide.encode.moe/encoding/video-artifacts.html)
 - [bakashots.me reference list for artifacts](https://bakashots.me/guide/index.php)
 
@@ -131,6 +137,7 @@ Conventional resampling (no matter if upsampling or downsampling) is linear (exc
 
 ### Upsampling
 Conceptually, upsampling is divided into two steps
+
 - Reconstruction: Convolve with the resampling kernel to obtain a continuous[^continuous] function. This step only depends on the kernel used
 - Sampling: Sample the reconstructed function with a different sampling grid, determined by `width`/`height`, `src_width`/`src_height`, and `src_left`/`src_top`.
 
@@ -141,6 +148,7 @@ Different kernels will yield different results with different artifacts. Traditi
 Note that *aliasing* is often conflated with *blocking*, but technically those are two different notions: Aliasing is about low frequencies incorrectly being reconstructed to high-frequencies, while blocking (more formally referred to as anisotropy) is specifically an effect of tensor resampling (and can thus only occur in 2D or higher dimensions) and is caused by the (2D) resampling kernel not being radially symmetric. Blocking can be partially alleviated by using a polar (or EWA) kernel, while aliasing cannot.
 
 Here's some more resources on upsampling in particular
+
 - For more mathematical background, read the [paper by Mitchell-Netravali](https://www.cs.utexas.edu/~fussell/courses/cs384g-fall2013/lectures/mitchell/Mitchell.pdf) (and if you want to dive even deeper, read some of the papers that references, like [[KEY81]](http://ncorr.com/download/publications/keysbicubic.pdf) and [[PAR83]](https://www.sciencedirect.com/science/article/abs/pii/0734189X83900269))
 - [Desmos graph](https://www.desmos.com/calculator/ogo8cchpwi) visualizing the upsampling process
 - [Plots of some common resampling kernels](https://amusementclub.github.io/ResampleHQ/kernels.html) Note that the Blurring/Sharpness/Ringing graphs on the bottom aren't really reliable.
@@ -185,15 +193,17 @@ Do not descale subsampled chroma. This should be clear from the previous points 
 
 ## IVTC
 IVTC is *completely* different from deinterlacing. NEVER try to "IVTC" by calling QTGMC or anything like that. Also, never use AnimeIVTC.
+
 - Understanding 3:2 Pulldown: [Wikipedia Page](https://en.wikipedia.org/wiki/Three-two_pull_down), [Wobbly Guide's Page on Telecining](https://wobbly.encode.moe/gettingstarted/primer.html)
 - [fieldbased.media](http://fieldbased.media/)
 - The basic concept of IVTC:
 
-  Conceptually, IVTC is split into two steps, called fieldmatching and decimation. (Sometimes, it also needs additional post-processing steps like interpolating orphans, freezeframing, fixing fades, etc.)
-  Fieldmatching rearranges the video's fields to try and match every field with its original counterpart. This results in a clip that ideally no longer has any combing (in practice this may not be the case due to complications like orphans, fades, etc), but will still be 30fps since it still contains duplicate frames.
-  The decimation step then drops those duplicate frames to obtain a 24p clip.
-  
-  The Decomb docs ([here](https://www.rationalqm.us/decomb/DecombTutorial.html) and [here](https://www.rationalqm.us/decomb/DecombReferenceManual.html)) also illustrate this process pretty well.
+    Conceptually, IVTC is split into two steps, called fieldmatching and decimation. (Sometimes, it also needs additional post-processing steps like interpolating orphans, freezeframing, fixing fades, etc.)
+    Fieldmatching rearranges the video's fields to try and match every field with its original counterpart. This results in a clip that ideally no longer has any combing (in practice this may not be the case due to complications like orphans, fades, etc), but will still be 30fps since it still contains duplicate frames.
+    The decimation step then drops those duplicate frames to obtain a 24p clip.
+    
+    The Decomb docs ([here](https://www.rationalqm.us/decomb/DecombTutorial.html) and [here](https://www.rationalqm.us/decomb/DecombReferenceManual.html)) also illustrate this process pretty well.
+
 - Understanding fieldmatching: Read the [Background and Overview](http://avisynth.nl/index.php/TIVTC/TFM#Background_and_overview:) section of the TIVTC docs
 - There exist automated methods for IVTC (TIVTC, VIVTC, but note that TDecimate for VapourSynth is broken), but if you want good results you'll *need* to manually IVTC with a tool like [Wobbly](https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly).
 - [Wobbly Guide](http://wobbly.encode.moe/)
