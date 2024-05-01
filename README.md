@@ -1,6 +1,4 @@
-A template with a bunch of plugins and theming pre enabled.<br>
-Also includes a workflow that will automatically build and publish the site when anything gets pushed to the master/main branch.<br>
-You should obviously make sure that you have github pages on your repo set up.
+Repository of the JET Encoding Guide.
 
 ## How to run
 
