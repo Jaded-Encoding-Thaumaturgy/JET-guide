@@ -17,6 +17,7 @@ theme:
 
 nav:
   - Home: index.md
+  - Encoding Resources: resources.md
 
 plugins:
 - search
