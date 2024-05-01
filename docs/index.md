@@ -1,3 +1,11 @@
 # JET Encoding Guide
 
 Welcome to the JET Encoding Guide.
+
+## About this Guide
+Currently this "guide" is just a loose collection of pages with useful information related to multimedia, encoding, and VapourSynth.
+
+The idea was to just get started with collecting information online as quickly as possible for now,
+instead of spending months and months debating the perfect structure for a full guide and never getting anywhere.
+Properly structuring this guide and filling in gaps can then be done in the future.
+Of course, help is always welcome.
