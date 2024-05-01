@@ -1,8 +1,8 @@
-site_name: VS Mkdocs Template
-site_description: wowie
-site_author: wowie
-site_url: https://example.com
-repo_url: https://github.com/Vodes/Mkdocs-VS-Template
+site_name: JET Encoding Guide
+site_description: Various guides on encoding by JET
+site_author: Jaded Encoding Thaumaturgy
+site_url: https://jaded-encoding-thaumaturgy.github.io/JET-guide
+repo_url: https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide
 
 theme:
   name: material
