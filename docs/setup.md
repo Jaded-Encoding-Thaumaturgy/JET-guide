@@ -99,6 +99,7 @@ followed by
 `vsjet`
 
 To update your JET packages, you can run `vsjet` again.
+
 If you run into issues with any JET package,
 first update them to their latest git version by running `vsjet latest`.
 This will update to the absolute latest version,
@@ -151,7 +152,7 @@ Otherwise, you can also open a terminal in your script's directory and run `vspr
 
 You should see vs-preview open and display your video.
 
-## A few Further First Steps
+## A few further First Steps
 
 With this, you've learned how to install everything you need.
 The following will explain a few basic first steps if this is your first time using VapourSynth or vs-preview.
