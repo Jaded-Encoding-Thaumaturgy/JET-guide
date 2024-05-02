@@ -232,7 +232,7 @@ Let's go over the differences:
 1. The top lines are different.
    While standard VapourSynth scripts start with the incantations `import vapoursynth as vs` and `core = vs.core`,
    the JET way is `from vstools import core, set_output` (possibly followed by further imports).
-   This is not a big difference, it does cut down the boilerplate to one line.
+   This is not a big difference, but it does cut down the boilerplate to one line.
 2. We no longer need to give numbers to `set_output`.
    When using `clip.set_output`, you need to give `set_output` a number to specify what output node the given clip should be.
    When you want to add another node at the start, you'd need to update the numbers of all following output nodes, which can be annoying.
