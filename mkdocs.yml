@@ -17,6 +17,7 @@ theme:
 
 nav:
   - Home: index.md
+  - Setup and First Steps: setup.md
   - Encoding Resources: resources.md
 
 plugins:
@@ -32,6 +33,7 @@ plugins:
           show_symbol_type_toc: true
 
 markdown_extensions:
+  - admonition
   - footnotes
   - tables
   - pymdownx.tabbed:
