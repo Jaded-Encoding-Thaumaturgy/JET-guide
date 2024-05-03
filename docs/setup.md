@@ -104,7 +104,7 @@ If you run into issues with any JET package,
 first update them to their latest git version by running `vsjet latest`.
 This will update to the absolute latest version,
 but since these can be very bleeding-edge,
-they're not normally recommended for unexperienced users.
+they're not normally recommended for inexperienced users.
 
 !!! bug "Attention"
     At the time of writing, the latest vs-preview release does not work with Python 3.12 due to an obscure PyQt6 bug.
