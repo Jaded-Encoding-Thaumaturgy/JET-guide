@@ -1,4 +1,6 @@
-Repository of the JET Encoding Guide.
+# JET Encoding Guide
+
+This guide can be accessed [here](https://jaded-encoding-thaumaturgy.github.io/JET-guide/).
 
 ## How to run
 
