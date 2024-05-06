@@ -97,6 +97,7 @@ But then, if you're wondering what the `matrix` argument for `vsdenoise`'s `BM3D
 Now, after writing all of this, I should point out that this is not a perfect distinction, since for example it is also possible to implement filters directly in Python with certain more advanced techniques. Still, the point of explaining the VapourSynth ecosystem this way is not to give a perfect and complete description of it, but to help beginners understand how the various components interact and where various errors come from.
 
 With this in mind, here are a couple of general resources on VapourSynth:
+
 - [Full VapourSynth Docs](http://vapoursynth.com/doc/introduction.html)
 - [List of Reserved FrameProps](http://vapoursynth.com/doc/apireference.html#reserved-frame-properties)
 - [VapourSynth Standard Functions](http://vapoursynth.com/doc/functions.html)
