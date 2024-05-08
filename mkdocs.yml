@@ -18,6 +18,7 @@ theme:
 nav:
   - Home: index.md
   - Setup and First Steps: setup.md
+  - Descaling: descaling.md
   - Encoding Resources: resources.md
 
 plugins:
