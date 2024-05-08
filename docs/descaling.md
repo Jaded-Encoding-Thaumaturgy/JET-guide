@@ -42,6 +42,7 @@ the video should even be upscaled back to 1080p.
 Shouldn't it be better to just leave it at its original resolution,
 which is closer to the source?
 Well, there are two main reasons why this isn't done:
+
 1. Descaling can only be done to the luma.
    The video's chroma is subsampled to 960x540, so it can no longer be descaled.
    If the original resolution was, say, 720p, encoding a 720p video would mean storing
