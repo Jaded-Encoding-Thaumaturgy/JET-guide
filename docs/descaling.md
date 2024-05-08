@@ -115,7 +115,7 @@ There exist two methods for determining source resolutions:
 ### TODO
 
 ## Evaluating Descales
-The above sections explained how to find candidates descale parameters, but in the end these were all just heuristics.
+The above sections explained how to find candidates for descale parameters, but ultimately these were all just heuristics.
 In the end, every descale needs to be evaluated manually.
 This is so important that it warrants being repeated even louder:
 
