@@ -49,7 +49,7 @@ Well, there are two main reasons why this isn't done:
    its chroma at a resolution 640x360, which would lose even more information.
    If one was to instead encode with 444 chroma subsampling, the chroma would
    need to be upscaled to 1280x720 which creates its own problems
-   (since it'd then likely be upscaled a second time during playback).
+   (since then it'd likely still be upscaled a second time during playback).
 2. Shows can rarely be descaled completely.
    Often, some elements of shows were added in 1080p after upscaling.
    One common example is credits in openings or endings.
