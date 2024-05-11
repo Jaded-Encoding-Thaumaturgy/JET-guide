@@ -20,6 +20,7 @@ nav:
   - Setup and First Steps: setup.md
   - Descaling: descaling.md
   - Encoding Resources: resources.md
+  - x264 Parameters: x264params.md
 
 plugins:
 - search
