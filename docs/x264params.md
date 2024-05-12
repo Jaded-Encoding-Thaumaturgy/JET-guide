@@ -46,17 +46,6 @@ If you're low on memory, you can lower it to e.g. 60.
 
 These settings should be tested and/or adjusted for every encode.
 
-## Profile
-
-Just set this according to the format you're encoding:
-
-```
---profile high
-```
-
-* `high` for 8-bit 4:2:0
-* `high444` for 10-bit 4:4:4, 4:2:2, 4:2:0, lossless
-
 ## Ratecontrol
 
 Beyond all else, this is the single most important factor for determining the quality from any given input. Due to how poorly x264 handles lower bitrates (comparatively, particularly when encoding 8-bit) starving your encode will result in immediate artifacts observable even under the lightest scrutiny.
