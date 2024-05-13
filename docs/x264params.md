@@ -1,8 +1,9 @@
-# General settings
+# x264 Parameters
+## General settings
 
 These are the settings that you shouldn't touch between encodes.
 
-## Preset
+### Preset
 
 Presets apply a number of parameters, which can be referenced [here](https://dev.beandog.org/x264_preset_reference.html)
 Just use the placebo preset, we'll change the really slow stuff, anyway:
@@ -11,7 +12,7 @@ Just use the placebo preset, we'll change the really slow stuff, anyway:
 --preset placebo
 ```
 
-## Level
+### Level
 Where --preset applies a defined set of parameters, --level provides a set of limitations to ensure decoder compatibility. For further reading, see this [Wikipedia article](https://en.wikipedia.org/wiki/Advanced_Video_Coding#Levels)
 
 For general hardware support level 4.1 is recommended, otherwise you may omit this.
@@ -20,7 +21,7 @@ For general hardware support level 4.1 is recommended, otherwise you may omit th
 --level 41
 ```
 
-## Motion estimation
+### Motion estimation
 For further reading [see this excellent thread on Doom9](https://web.archive.org/web/20210516085632/https://forum.doom9.org/showthread.php?p=1789660)
 
 x264 has two motion estimation algorithms worth using, umh and tesa.
@@ -31,7 +32,7 @@ Otherwise, just default to umh:
 --me umh
 ```
 
-## Ratecontrol lookahead
+### Ratecontrol lookahead
 
 The ratecontrol lookahead (rc-lookahead) setting determines how far ahead the video buffer verifier (VBV) and macroblock tree (mbtree) can look.
 Raising this can slightly increase memory use, but it's generally best to leave this as high as possible:
@@ -42,11 +43,11 @@ Raising this can slightly increase memory use, but it's generally best to leave 
 
 If you're low on memory, you can lower it to e.g. 60.
 
-# Source-specific settings
+## Source-specific settings
 
 These settings should be tested and/or adjusted for every encode.
 
-## Ratecontrol
+### Ratecontrol
 
 Beyond all else, this is the single most important factor for determining the quality from any given input. Due to how poorly x264 handles lower bitrates (comparatively, particularly when encoding 8-bit) starving your encode will result in immediate artifacts observable even under the lightest scrutiny.
 
@@ -54,7 +55,7 @@ While manipulating other settings may make small, but usually noticeable differe
 
 For some further insight, reference [this article](https://github.com/jpsdr/x264/blob/master/doc/ratecontrol.txt)
 
-### Constant ratefactor
+#### Constant ratefactor
 
 For more information please see [this post by an x264 developer](https://forum.doom9.org/showthread.php?p=1261917#post1261917).
 
@@ -72,7 +73,7 @@ To specify CRF:
 --crf 16.9
 ```
 
-### Two pass
+#### Two pass
 
 An alternative to CRF which leverages an initial pass to collect information about the input before encoding. This comes with two distinct advantages:
 
@@ -92,7 +93,7 @@ vspipe -c y4m script.vpy - | x264 --demuxer y4m --preset placebo --pass 1 --bitr
 vspipe -c y4m script.vpy - | x264 --demuxer y4m --preset placebo --pass 2 --bitrate 8500 -o out.h264 -
 ```
 
-#### Chroma quantizer offset
+##### Chroma quantizer offset
 
 If you're struggling with chroma getting overly distorted, it can be worth tinkering with this option.
 You can find examples of what bitstarved chroma can look like [HERE](https://silentaperture.gitlab.io/mdbook-guide/encoding/images/godfather_road_sky.png) and [HERE](https://silentaperture.gitlab.io/mdbook-guide/encoding/images/godfather_plane_split.png).
@@ -106,7 +107,7 @@ To lower the chroma QP offset from -2 to -3, granting chroma more bits:
 --chroma-qp-offset -1
 ```
 
-## Deblock
+### Deblock
 
 For an explanation of what deblock does, read [this Doom9 post](https://forum.doom9.org/showthread.php?p=1692393#post1692393) and [this blog post](https://web.archive.org/web/20220323033558/https://huyunf.github.io/blogs/2017/11/20/h264_deblocking_algorithm/)
 
@@ -122,7 +123,7 @@ To specify e.g. an alpha of -2 and a beta of -1:
 --deblock -2:-1
 ```
 
-## Quantizer curve compression
+### Quantizer curve compression
 
 The quantizer curve compression (qcomp) is effectively the setting that determines how bits are distributed among the whole encode.
 It has a range of 0 to 1, where 0 is a constant bitrate and 1 is a constant quantizer, the opposite of a constant bitrate.
@@ -137,7 +138,7 @@ You want to find that sweet spot where complex scenes will look good enough with
 --qcomp 0.60
 ```
 
-## Macroblock tree
+### Macroblock tree
 
 From [this thread by an x264 developer](https://forum.doom9.org/showthread.php?t=148686): "It tracks the propagation of information from future blocks to past blocks across motion vectors. It could be described as localizing qcomp to act on individual blocks instead of whole scenes. Thus instead of lowering quality in high-complexity scenes (like x264 currently does), it'll only lower quality on the complex part of the scene, while for example a static background will remain high-quality. It also has many other more subtle effects, some potentially negative, most probably not."
 
@@ -148,7 +149,7 @@ If you're encoding something with very little movement and variation, especially
 
 When using mbtree, you should max out your lookahead (`--rc-lookahead 250`) and use a high qcomp ≥0.70.
 
-## Adaptive quantization
+### Adaptive quantization
 
 While qcomp determines bit allocation for frames across the video, adaptive quantization (AQ) can be seen as in charge of doing this on a block-basis, i.e. throughout a frame.
 It does so by distributing bits from higher contrast areas to lower contrast regions.
@@ -184,7 +185,7 @@ To use e.g. AQ mode 3 with strength 0.80:
 --aq-mode 3 --aq-strength 0.80
 ```
 
-### AQ dark bias strength
+#### AQ dark bias strength
 
 Some mods now include a parameter to control AQ mode 3's bias to dark scenes strength.
 With this, the dark bias strength is a multiple of the AQ strength, meaning higher bias strength raises the dark bias and lower bias strength trends towards AQ mode 2.
@@ -196,7 +197,7 @@ To apply an AQ dark bias strength of 1.00:
 --aq-mode 3 --aq-bias-strength 1.00
 ```
 
-## Motion estimation range
+### Motion estimation range
 
 The motion estimation range (merange) determines how many pixels are used for motion estimation.
 Larger numbers will be slower, but can be more accurate for higher resolutions.
@@ -207,7 +208,7 @@ You can usually get by with testing `32`, `48`, and `64`, then using the best lo
 --merange 32
 ```
 
-## Frame type quantizer ratio
+### Frame type quantizer ratio
 
 To understand this parameter, one needs to know what the different frame types are.
 The [Wikipedia article](https://en.wikipedia.org/wiki/Video_compression_picture_types) on this subject is very useful for this.
@@ -231,7 +232,7 @@ To set an ipratio of `1.30` and a pbratio of `1.20`:
 
 If using mbtree, pbratio doesn't do anything, so only test and set ipratio.
 
-## Psychovisually optimized rate-distortion optimization
+### Psychovisually optimized rate-distortion optimization
 
 One big issue with immature encoders is that they don't offer psychovisual optimizations like psy-rdo.
 What it does is distort the frame slightly, sharpening it in the process.
@@ -255,7 +256,7 @@ For example, to set a psy-rd of 1.00 and psy-trellis of 0:
 --psy-rd 1.00:0
 ```
 
-## DCT block decimation
+### DCT block decimation
 
 Disabling DCT block decimation (no-dct-decimate) is very common practice, as it drops blocks deemed unimportant.
 This importance decision is made by checking if there are enough nonzero large coefficients, i.e. whether higher frequencies are present.
@@ -269,7 +270,7 @@ To disable DCT block decimation:
 --no-dct-decimate
 ```
 
-## Video buffer verifier
+### Video buffer verifier
 
 To understand what this is, there's actually a [Wikipedia article you can read](https://en.wikipedia.org/wiki/Video_buffering_verifier). Alternatively, you may find [this video presentation](https://www.youtube.com/watch?v=-Q7BuSXdO_8) from demuxed informative.
 
@@ -287,7 +288,7 @@ VBV settings for general hardware compliance (High@L4.1)
 --vbv-bufsize 78125 --vbv-maxrate 62500
 ```
 
-## Reference frames
+### Reference frames
 
 The reference frames (ref) setting determines how many frames P frames can use as reference. Many existing guides may provide an incorrect formula to find the 'correct' value. **Do not use this**. Rather, allow x264 to calculate this for automatically (as dictated by `--level`). 
 
@@ -300,7 +301,7 @@ To set the maximum value of 16:
 --ref 16
 ```
 
-## Zones
+### Zones
 
 Sometimes, the encoder might have trouble distributing enough bits to certain frames, e.g. ones with wildly different visuals or sensitive to banding.
 To help with this, one can zone out these scenes and change the settings used to encode them.
@@ -317,7 +318,7 @@ To specify a CRF of 15 for frames 100 through 200 and 16 for frames 300 through 
 
 For a more complete picture of what --zones can and can not manipulate, see [this section](https://www.chaneru.com/Roku/HLS/X264_Settings.htm#zones).
 
-## Output depth and color space
+### Output depth and color space
 
 To encode 10-bit and/or 4:4:4 video, one must specify this via the following parameters:
 
