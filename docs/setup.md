@@ -36,10 +36,6 @@ on Windows.
     Then, download the latest [GitHub release](https://github.com/vapoursynth/vapoursynth/releases)
     of VapourSynth and install it.
 
-    !!! bug "Attention"
-        VapourSynth releases R67 and R68 currently do not work with vs-preview due to
-        a small unannounced API break. For the time being, use VapourSynth R66.
-
     Unless you want to risk running into issues, install the installer versions (not the portable ones)
     and select "Install for this user only" when asked.
 
