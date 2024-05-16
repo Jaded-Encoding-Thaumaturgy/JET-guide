@@ -18,6 +18,7 @@ theme:
 nav:
   - Home: index.md
   - Setup and First Steps: setup.md
+  - Comparison: comparison.md
   - Descaling: descaling.md
   - Encoding Resources: resources.md
   - x264 Parameters: x264params.md
