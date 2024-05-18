@@ -56,7 +56,7 @@ Create a file called `comp.py` and launch it in your favorite text editor.
 
 ### Basic Script
 
-Here's an example of a very basic `comp.py` script which just loads the video and previews them as is.
+Here's a simple `comp.py` script example that does nothing more than loading the videos and previewing them.
 
 ```py
 from vapoursynth import core
