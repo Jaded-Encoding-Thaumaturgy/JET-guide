@@ -200,9 +200,9 @@ Converts clips to 16-bit depth with 4:4:4 chroma subsampling. *Required for filt
 
 ```py
 ## Depth: Convert clips to 16-bit 4:4:4 [required for cropping with odd numbers or tonemapping]
-clip1 = core.resize.Bicubic(clip1, format=vs.YUV444P16)
-clip2 = core.resize.Bicubic(clip2, format=vs.YUV444P16)
-clip3 = core.resize.Bicubic(clip3, format=vs.YUV444P16)
+clip1 = core.resize.Lanczos(clip1, format=vs.YUV444P16)
+clip2 = core.resize.Lanczos(clip2, format=vs.YUV444P16)
+clip3 = core.resize.Lanczos(clip3, format=vs.YUV444P16)
 ```
 
 #### Tonemapping
@@ -247,9 +247,9 @@ Sets the color range of the clip as limited (`0`) or full (`1`). *This should be
 
 ```py
 ## Color range: Marks the clip's range as limited (0) or full (1); DV clips will need to be set to limited (0) after tonemapping
-clip1 = core.resize.Bicubic(clip1, format=vs.YUV444P16, range=0)
-clip2 = core.resize.Bicubic(clip2, format=vs.YUV444P16, range=0)
-clip3 = core.resize.Bicubic(clip3, format=vs.YUV444P16, range=1)
+clip1 = core.resize.Lanczos(clip1, format=vs.YUV444P16, range=0)
+clip2 = core.resize.Lanczos(clip2, format=vs.YUV444P16, range=0)
+clip3 = core.resize.Lanczos(clip3, format=vs.YUV444P16, range=1)
 ```
 
 #### Gamma
