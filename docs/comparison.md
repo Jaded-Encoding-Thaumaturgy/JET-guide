@@ -17,7 +17,7 @@ VSPreview is a previewer application for scripts created in VapourSynth. It feat
 
     In order to create comparisons with VSPreview, you will need to install some necessary dependencies.
 
-    - [`LibP2P`](https://github.com/DJATOM/LibP2P-Vapoursynth), [`LSMASHSource`](https://github.com/AkarinVS/L-SMASH-Works), [`Subtext`](https://github.com/vapoursynth/subtext) and [`vs-placebo`](https://github.com/Lypheo/vs-placebo) can be installed using `vsrepo` from [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases). In your terminal, run the following:
+    - [`LibP2P`](https://github.com/DJATOM/LibP2P-Vapoursynth), [`LSMASHSource`](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works), [`Subtext`](https://github.com/vapoursynth/subtext) and [`vs-placebo`](https://github.com/Lypheo/vs-placebo) can be installed using `vsrepo` from [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases). In your terminal, run the following:
 
     ```powershell
     vsrepo.py install libp2p lsmas sub placebo
@@ -42,11 +42,6 @@ VSPreview is a previewer application for scripts created in VapourSynth. It feat
     vsrepo.py install dovi_library
     ```
 
-    - You will need to install [`vA.5b`](https://github.com/AkarinVS/L-SMASH-Works/releases/tag/vA.5b) of `LSMASHSource`. By default, `vsrepo` installs `vA.3x` which does not support DV. `vA.5x` is an experimental version which is not available on `vsrepo` and requires manual installation:
-    - Download and extract the correct version for your operating system. *For most users, this will be `release-x86_64-cachedir-cwd.zip`*
-    - Copy `libvslsmashsource.dll` and paste it in `%appdata%\VapourSynth\plugins64\`
-        - If you have an existing `libvslsmashsource.dll` in the `plugins64`, replace it with the newer `libvslsmashsource.dll`
-
 
 ## Usage
 
@@ -59,11 +54,10 @@ Create a file called `comp.py` and launch it in your favorite text editor.
 Here's a simple `comp.py` script example that does nothing more than loading the videos and previewing them.
 
 ```py
-from vapoursynth import core
+from vstools import vs, core, set_output
 from awsmfunc import FrameInfo
-from vspreview import set_output
 
-## File paths: Hold shift and right-click your file, select copy as path, and paste it here
+## File paths: Hold shift and right-click your file in the Windows File Explorer, select copy as path, and paste it here
 clip1 = core.lsmas.LWLibavSource(r"C:\Paste\File\Path\Here.mkv")
 clip2 = core.lsmas.LWLibavSource(r"C:\Paste\File\Path\Here.mkv")
 clip3 = core.lsmas.LWLibavSource(r"C:\Paste\File\Path\Here.mkv")
@@ -239,9 +233,9 @@ clip1 = core.placebo.Tonemap(clip1, **clip1args.vsplacebo_dict())
 clip2 = core.placebo.Tonemap(clip2, **clip2args.vsplacebo_dict())
 clip3 = core.placebo.Tonemap(clip3, **clip3args.vsplacebo_dict())
 ## Retag video to 709 after tonemapping [required]
-clip1 = core.std.SetFrameProps(clip1, _Matrix=1, _Transfer=1, _Primaries=1)
-clip2 = core.std.SetFrameProps(clip2, _Matrix=1, _Transfer=1, _Primaries=1)
-clip3 = core.std.SetFrameProps(clip3, _Matrix=1, _Transfer=1, _Primaries=1)
+clip1 = core.std.SetFrameProps(clip1, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
+clip2 = core.std.SetFrameProps(clip2, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
+clip3 = core.std.SetFrameProps(clip3, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
 ```
 
 !!! note
