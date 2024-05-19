@@ -270,23 +270,24 @@ clip2 = core.std.Levels(clip2, gamma=0.88, planes=0)
 clip3 = core.std.Levels(clip3, gamma=0.88, planes=0)
 ```
 
-#### Matrix
+#### FrameProps
 
-Sets the color gamut to fix the colors of your sources. This is most commonly used on sources you're upscaling or 4K SDR content. *This should be used on sources with incorrect/missing metadata or colors that are off, particularly reds and greens.*
-
-Generally:
-
-Type                    | Gamut       | Parameter
-------------------------|-------------|-------------
-SDR: BD/WEB (720p - 4K) | BT.709      | `intval=1`
-SDR: DVD                | BT.601      | `intval=5`
-HDR/DV                  | BT.2020 NCL | `intval=9`
+Set the correct frame properties for your sources. This is most commonly used on sources you're upscaling or 4K SDR content. *This should be used on sources with incorrect/missing metadata or colors that are off, particularly reds and greens.*
 
 ```py
-## Matrix: Repairs sources with incorrect/missing metadata; typically used for 4K SDR and upscaled/downscaled content (colors will be off, particularly reds, greens, and blues)
-clip1 = core.std.SetFrameProp(clip1, prop="_Matrix", intval=1)
-clip2 = core.std.SetFrameProp(clip2, prop="_Matrix", intval=6)
-clip3 = core.std.SetFrameProp(clip3, prop="_Matrix", intval=5)
+## FrameProps: Repairs sources with incorrect/missing metadata; typically used for 4K SDR and upscaled/downscaled content (colors will be off, particularly reds, greens, and blues)
+
+# SDR: BD/WEB (720p - 4K)
+clip1 = core.std.SetFrameProps(clip1, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
+
+# SDR: PAL DVD
+clip2 = core.std.SetFrameProps(clip2, _Matrix=vs.MATRIX_BT470_BG, _Transfer=vs.TRANSFER_BT470_BG, _Primaries=vs.PRIMARIES_BT470_BG)
+
+# SDR: NTSC DVD
+clip3 = core.std.SetFrameProps(clip3, _Matrix=vs.MATRIX_ST170_M, _Transfer=vs.TRANSFER_BT601, _Primaries=vs.PRIMARIES_ST170_M,)
+
+# HDR/DV
+clip4 = core.std.SetFrameProps(clip4, _Matrix=vs.MATRIX_BT2020_NCL, _Transfer=vs.TRANSFER_BT2020_10, _Primaries=vs.PRIMARIES_BT2020)
 ```
 
 If you are unable to correct the source's colors with the initial matrix command, the source is likely flawed rather than an issue with the metadata. If this is the case, you should use the filters below:
