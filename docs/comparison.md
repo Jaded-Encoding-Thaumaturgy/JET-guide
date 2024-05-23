@@ -76,11 +76,6 @@ clip1 = FrameInfo(clip1, source1)
 clip2 = FrameInfo(clip2, source2)
 clip3 = FrameInfo(clip3, source3)
 
-## FrameProp: Slowpoke Pics/file-name labeling (no modification required; add/remove lines as needed)
-clip1 = clip1.std.SetFrameProp('Name', data=source1)
-clip2 = clip2.std.SetFrameProp('Name', data=source2)
-clip3 = clip3.std.SetFrameProp('Name', data=source3)
-
 ## Output: Comment/uncomment as needed depending on how many clips you're comparing
 set_output(clip1, name=source1)
 set_output(clip2, name=source2)
@@ -135,7 +130,7 @@ clip1 = core.vivtc.VDecimate(clip1)
 Crops the source video by *n* pixels from the selected side. For example, `left=20` will remove 20 horizontal pixels starting from the left side. *This should be used on sources that use letterboxing or other form of borders.*
 
 !!! warning
-    If you are cropping with odd numbers, you will need to change the depth to 16-bit.
+    If you are cropping with odd numbers, you will need to convert your clip to 16-bit depth with 4:4:4 chroma subsampling.
 
 
 ```py
@@ -207,31 +202,32 @@ clip3 = core.resize.Lanczos(clip3, format=vs.YUV444P16)
 
 #### Tonemapping
 
-Converts the dynamic range of the source (i.e. HDR/DV -> SDR).
+Converts the colorspace of the source (i.e. HDR/DV -> SDR).
 
-- For converting HDR (washed out colors) -> SDR, set `source_colorspace=csp.HDR10`
-- For converting DV (green/purple hue) -> SDR, set `source_colorspace=csp.DOVI`
+- For converting HDR (washed out colors) -> SDR, set `source_colorspace=ColorSpace.HDR10`
+- For converting DV (green/purple hue) -> SDR, set `source_colorspace=ColorSpace.DOVI`
 
-!!! warning
-    If you want to use tonemapping, you will need to change the color depth to 16-bit (see [above](#depth)).
+!!! note
+    If you want to tonemap, you will need to change the clip's bit depth to 16-bit (see [above](#depth)).
 
 ```py
 ## Additional imports [Paste these at the very top of your script]
-from awsmfunc.types.placebo import PlaceboColorSpace as csp
-from awsmfunc.types.placebo import PlaceboTonemapMode as TMmode
-from awsmfunc.types.placebo import PlaceboTonemapFunction as TMfunc
-from awsmfunc.types.placebo import PlaceboGamutMode as GMTmode
-from awsmfunc.types.placebo import PlaceboTonemapOpts as TMopts
+from awsmfunc.types.placebo import PlaceboColorSpace as ColorSpace
+from awsmfunc.types.placebo import PlaceboTonemapFunction as Tonemap
+from awsmfunc.types.placebo import PlaceboGamutMapping as Gamut
+from awsmfunc.types.placebo import PlaceboTonemapOpts
 
 ## Tonemapping: Converts the dynamic range of the source [16-bit required]
 ## Specify the arguments based on your sources; play with different values when comparing against an SDR source to best match it
-clip1args = TMopts(source_colorspace=csp.DOVI, target_colorspace=csp.SDR, tone_map_mode=TMmode.RGB, tone_map_function=TMfunc.ST2094_40, gamut_mode=GMTmode.Clip, peak_detect=True, use_dovi=True)
-clip2args = TMopts(source_colorspace=csp.HDR10, target_colorspace=csp.SDR, tone_map_mode=TMmode.RGB, tone_map_function=TMfunc.ST2094_40, gamut_mode=GMTmode.Clip, peak_detect=True, use_dovi=True)
-clip3args = TMopts(source_colorspace=csp.HDR10, target_colorspace=csp.SDR, tone_map_mode=TMmode.Hybrid, tone_map_function=TMfunc.Spline, gamut_mode=GMTmode.Darken, peak_detect=True, use_dovi=True, dst_max=120)
+clip1args = PlaceboTonemapOpts(source_colorspace=ColorSpace.DOVI, target_colorspace=ColorSpace.SDR, tone_map_function=Tonemap.ST2094_40, gamut_mapping=Gamut.Clip, peak_detect=True, use_dovi=True, contrast_recovery=0.3)
+clip2args = PlaceboTonemapOpts(source_colorspace=ColorSpace.HDR10, target_colorspace=ColorSpace.SDR, tone_map_function=Tonemap.ST2094_40, gamut_mapping=Gamut.Clip, peak_detect=True, use_dovi=False, contrast_recovery=0.3)
+clip3args = PlaceboTonemapOpts(source_colorspace=ColorSpace.HDR10, target_colorspace=ColorSpace.SDR, tone_map_function=Tonemap.Spline, gamut_mapping=Gamut.Darken, peak_detect=True, use_dovi=False, contrast_recovery=0.3, dst_max=120)
+
 ## Apply tonemapping
 clip1 = core.placebo.Tonemap(clip1, **clip1args.vsplacebo_dict())
 clip2 = core.placebo.Tonemap(clip2, **clip2args.vsplacebo_dict())
 clip3 = core.placebo.Tonemap(clip3, **clip3args.vsplacebo_dict())
+
 ## Retag video to 709 after tonemapping [required]
 clip1 = core.std.SetFrameProps(clip1, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
 clip2 = core.std.SetFrameProps(clip2, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
@@ -239,7 +235,7 @@ clip3 = core.std.SetFrameProps(clip3, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRAN
 ```
 
 !!! note
-    `dst_max` forces a set brightness, which can be used to make HDR/DV clips appear brighter for easier comparison to SDR.
+    Refer to the [libplacebo](https://libplacebo.org/options/) and [vs-placebo](https://github.com/sgt0/vs-placebo?tab=readme-ov-file#tonemap) docs to gain a better understanding of what each parameter does.
 
 #### Range
 
