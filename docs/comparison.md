@@ -290,33 +290,6 @@ clip3 = core.std.SetFrameProps(clip3, _Matrix=vs.MATRIX_ST170_M, _Transfer=vs.TR
 clip4 = core.std.SetFrameProps(clip4, _Matrix=vs.MATRIX_BT2020_NCL, _Transfer=vs.TRANSFER_BT2020_10, _Primaries=vs.PRIMARIES_BT2020)
 ```
 
-If you are unable to correct the source's colors with the initial matrix command, the source is likely flawed rather than an issue with the metadata. If this is the case, you should use the filters below:
-
-```py
-from vstools import depth
-
-## Resample: If the colors cannot be corrected with just retagging
-# SDR: BD/WEB (720p - 4K)
-clip1 = depth(clip1, 32)
-clip1 = core.placebo.Resample(clip1, height=clip1.height, width=clip1.width, filter="ewa_lanczos", blur=0.98125058372237073562493, radius=3.2383154841662362076499)
-clip1 = core.std.SetFrameProps(clip1, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
-
-# SDR: PAL DVD
-clip2 = depth(clip2, 32)
-clip2 = core.placebo.Resample(clip2, height=clip2.height, width=clip2.width, filter="ewa_lanczos", blur=0.98125058372237073562493, radius=3.2383154841662362076499)
-clip2 = core.std.SetFrameProps(clip2, _Matrix=vs.MATRIX_BT470_BG, _Transfer=vs.TRANSFER_BT470_BG, _Primaries=vs.PRIMARIES_BT470_BG)
-
-# SDR: NTSC DVD
-clip3 = depth(clip3, 32)
-clip3 = core.placebo.Resample(clip3, height=clip3.height, width=clip3.width, filter="ewa_lanczos", blur=0.98125058372237073562493, radius=3.2383154841662362076499)
-clip3 = core.std.SetFrameProps(clip3, _Matrix=vs.MATRIX_ST170_M, _Transfer=vs.TRANSFER_BT601, _Primaries=vs.PRIMARIES_ST170_M,)
-
-# HDR/DV
-clip4 = depth(clip4, 32)
-clip4 = core.placebo.Resample(clip4, height=clip4.height, width=clip4.width, filter="ewa_lanczos", blur=0.98125058372237073562493, radius=3.2383154841662362076499)
-clip4 = core.std.SetFrameProps(clip4, _Matrix=vs.MATRIX_BT2020_NCL, _Transfer=vs.TRANSFER_BT2020_10, _Primaries=vs.PRIMARIES_BT2020)
-```
-
 #### Double-Range Compression (DRC)
 
 Fixes washed out colors on selected sources.
