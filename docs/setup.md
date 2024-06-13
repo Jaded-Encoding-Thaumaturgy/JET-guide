@@ -66,7 +66,7 @@ this means that you need to install the mentioned plugin, in this case `bs` (whi
         VSRepo can be finnicky depending on your configuration and file associations.
         (TODO figure out some foolproof method to call it or fix it upstream)
         If you run into issues running vsrepo, try using a different terminal (cmd or PowerShell)
-        or calling it as `vsrepo` rather than `vsrepo.py`.
+        or calling it as `vsrepo` or `python -m vsrepo` rather than `vsrepo.py`.
         If all else fails, you can also try [VSRepoGUI](https://github.com/theChaosCoder/VSRepoGUI).
 
 === "Linux"
