@@ -167,6 +167,9 @@ With the above code, this can be done by just deleting the timecodes file.
     y = clip.std.ShufflePlanes(planes=0, colorfamily=vs.GRAY)   # Luma
     u = clip.std.ShufflePlanes(planes=1, colorfamily=vs.GRAY)   # First chroma plane
     v = clip.std.ShufflePlanes(planes=2, colorfamily=vs.GRAY)   # Second chroma plane
+
+    # Or, to get all three planes:
+    y, u, v = clip.std.SplitPlanes()
     ```
 
 If you only want to *see* the individual planes of a clip,
