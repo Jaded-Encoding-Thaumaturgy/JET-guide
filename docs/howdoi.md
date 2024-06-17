@@ -220,7 +220,7 @@ and not process them, you may want to use vs-preview's "Split Planes" plugin ins
 Note that the vanilla VS version does not dither by default, while `vstools.depth` does dither when necessary.
 With both versions the dither type can be set in a parameter.
 
-### How do I retag a clip's color marix/color range/etc?
+### How do I retag a clip's color matrix/color range/etc?
 Retagging only changes the metadata (here in the form of frame properties) without changing any of the pixel values.
 (But of course filters called on this clip may behave differently based on the metadata, which is the entire point.
 In particular your clip will display differently in vs-preview, even though the pixel values are the same.)
