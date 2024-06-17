@@ -293,7 +293,8 @@ filtered = clip.std.BoxBlur()
 partially_filtered = clip[:10] + filtered[10:20] + clip[20:]
 ```
 
-For more convenience, you can use the `replace_ranges` function to avoid having to manually slice all the clips:
+For more convenience, you can use the `replace_ranges` function to avoid having to manually slice all the clips.
+This can also be more performant when you have many ranges to replace.
 
 ```py3
 from vstools import replace_ranges
