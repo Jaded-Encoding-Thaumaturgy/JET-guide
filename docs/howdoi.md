@@ -392,12 +392,16 @@ data = np.asarray(clip.get_frame(100)[0])
 
 To modify a frame's contents:
 ```py3
-import numpy as np
-
 def modify(f, n):
+    # Do the necessary imports inside of the function.
+    # Doing them globally can cause issues in some scenarios,
+    # since they may be dropped before the function is executed
+    import numpy as np
+
     src = np.asarray(f[1][0])
 
-    res = np.zeros((your_target_height, your_target_width))
+    # The dimensions and dtype of `res` need to match the dimensions and format of `blank` below
+    res = np.zeros((your_target_height, your_target_width), dtype=np.float32)
 
     # Write some data into `res` here
 
@@ -407,8 +411,8 @@ def modify(f, n):
 
 # Set up a blank clip with your desired output width/height/format
 # (which can differ from your input clip's format)
-blank = clip.std.BlankClip(your_target_height, your_target_width)
-result = clip.std.ModifyFrame(blank, [blank, clip], modify)
+blank = clip.std.BlankClip(your_target_height, your_target_width, format=vs.GRAYS)
+result = core.std.ModifyFrame(blank, [blank, clip], modify)
 ```
 
 ### How do I remove artifacts from a video without being too destructive?
