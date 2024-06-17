@@ -30,7 +30,8 @@ except for one option being easier to write than the other.
     clip_cut = clip[10:]    # Cut off 10 frames at the start
     clip_cut = clip[:-10]   # Cut off 10 frames at the end
 
-    # Start at frame 10 of the clip, and go up until frame 999. Frame 1000 is not included.
+    # Start at frame 10 of the clip, and go up until frame 999.
+    # Frame 1000 is not included.
     clip_cut = clip[10:1000]
     ```
 
@@ -47,7 +48,8 @@ except for one option being easier to write than the other.
     clip_cut = clip.std.Trim(first=10)    # Cut off 10 frames at the start
     clip_cut = clip.std.Trim(length=clip.num_frames - 10)   # Cut off 10 frames at the end
 
-    # Start at frame 10 of the clip, and go up until frame 1000, which is included.
+    # Start at frame 10 of the clip, and go up until frame 1000,
+    # which is included.
     clip_cut = clip.std.Trim(first=10, last=1000)
     ```
 
