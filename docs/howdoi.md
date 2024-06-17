@@ -98,19 +98,12 @@ and use the number keys to switch between outputs.
     ```
 
 ### How do I name my outputs?
-=== "vs-tools"
-    ```py3
-    from vstools import set_output
+```py3
+from vstools import set_output
 
-    set_output(clip1, "My first clip")
-    set_output(clip2, "My second clip")
-    ```
-
-=== "Vanilla VS"
-    ```py3
-    clip1.std.SetFrameProps(Name="My first clip").set_output(0)
-    clip2.std.SetFrameProps(Name="My second clip").set_output(1)
-    ```
+set_output(clip1, "My first clip")
+set_output(clip2, "My second clip")
+```
 
 Note that the names will only show up in vs-preview and not in other previewers.
 
