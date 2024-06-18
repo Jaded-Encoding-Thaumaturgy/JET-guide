@@ -25,6 +25,7 @@ nav:
     - How do I ...?: filtering/howdoi.md
     - Order of Filtering Operations: filtering/order.md
     - Descaling: filtering/descaling.md
+    - Dehardsubbing: filtering/dehardsubbing.md
   - Encoding:
     - x264 Parameters: encoding/x264params.md
   - Misc:
