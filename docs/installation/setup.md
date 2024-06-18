@@ -67,7 +67,10 @@ this means that you need to install the mentioned plugin, in this case `bs` (whi
         (TODO figure out some foolproof method to call it or fix it upstream)
         If you run into issues running vsrepo, try using a different terminal (cmd or PowerShell)
         or calling it as `vsrepo` or `python -m vsrepo` rather than `vsrepo.py`.
-        If all else fails, you can also try [VSRepoGUI](https://github.com/theChaosCoder/VSRepoGUI).
+        If all else fails, you can manually navigate to the folder VSRepo is in
+        (usually `%localappdata%/Programs/VapourSynth/vsrepo`), open a terminal there,
+        and run `python vsrepo.py` with your arguments.
+        Alternatively, you can also try [VSRepoGUI](https://github.com/theChaosCoder/VSRepoGUI).
 
 === "Linux"
     Install plugins using your package manager, e.g. `vapoursynth-plugin-bestssource` on Arch Linux.
