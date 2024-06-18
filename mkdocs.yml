@@ -20,14 +20,14 @@ nav:
   - Home: index.md
   - Encoding Resources: resources.md
   - Installation:
-    - Setup and First Steps: setup.md
+    - Setup and First Steps: installation/setup.md
   - Filtering:
-    - How do I ...?: howdoi.md
-    - Descaling: descaling.md
+    - How do I ...?: filtering/howdoi.md
+    - Descaling: filtering/descaling.md
   - Encoding:
-    - x264 Parameters: x264params.md
+    - x264 Parameters: encoding/x264params.md
   - Misc:
-    - Comparison: comparison.md
+    - Comparison: misc/comparison.md
 
 plugins:
 - search
