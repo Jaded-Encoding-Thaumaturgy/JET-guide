@@ -19,8 +19,8 @@ nav:
   - Home: index.md
   - Installation:
     - Setup and First Steps: setup.md
-    - How do I ...?: howdoi.md
   - Filtering:
+    - How do I ...?: howdoi.md
     - Descaling: descaling.md
   - Encoding:
     - Encoding Resources: resources.md
