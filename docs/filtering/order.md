@@ -4,14 +4,15 @@ Deciding which filters to use is important,
 but what's arguably even more important
 is understanding which order to run filters in.
 
-## Reversing filters
+## Inverse filters
 
 
 If you're running any filter
-that reverse a process
+that does the inverse of a process
 applied by the studio or authoring company,
-such as undoing an upscale or lowpass filter,
-you should *always* perform those before any other filtering.
+such as a descale or lowpass filter,
+you should almost *always*
+perform those before any other filtering.
 These types of filters rely on
 the "state" of the video
 being the same
@@ -25,7 +26,7 @@ making it difficult to reverse accurately.
 This may seem obvious,
 but issues arise
 when you intend to run *multiple* filters
-that reverse different operations.
+that do the inverse of different operations.
 
 A common example would be
 an HD source that has been both upscaled and telecined.
