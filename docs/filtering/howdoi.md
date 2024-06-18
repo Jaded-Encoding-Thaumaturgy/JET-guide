@@ -80,7 +80,7 @@ Unless you want to check if the clips are synced, chances are you want to use [m
 
 ### How do I compare multiple clips?
 Set the clips you want to compare as outputs.
-Then, open the script in vs-preview (see the [Setup](setup.md) page)
+Then, open the script in vs-preview (see the [Setup] page)
 and use the number keys to switch between outputs.
 
 === "vs-tools"
@@ -173,7 +173,7 @@ With the above code, this can be done by just deleting the timecodes file.
     ```
 
 If you only want to *see* the individual planes of a clip,
-and not process them, you may want to use vs-preview's "Split Planes" plugin instead (see the [Setup](setup.md) page).
+and not process them, you may want to use vs-preview's "Split Planes" plugin instead (see the [Setup] page).
 
 ### How do I combine luma and chroma into a clip, or replace planes of a clip?
 === "vs-tools"
@@ -417,3 +417,5 @@ result = core.std.ModifyFrame(blank, [blank, clip], modify)
 
 ### How do I remove artifacts from a video without being too destructive?
 Very carefully.
+
+[setup]: ../installation/setup.md
