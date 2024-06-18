@@ -109,10 +109,6 @@ This will update to the absolute latest version,
 but since these can be very bleeding-edge,
 they're not normally recommended for inexperienced users.
 
-!!! bug "Attention"
-    At the time of writing, the latest vs-preview release does not work with Python 3.12 due to an obscure PyQt6 bug.
-    Until this is fixed, you'll need to use `vsjet latest`.
-
 Linux users may need to create a virtualenv to install the packages or try their luck with `pipx`.
 
 ## Installing your Code Editor
