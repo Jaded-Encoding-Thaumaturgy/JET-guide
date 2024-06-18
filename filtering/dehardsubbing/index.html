@@ -1,0 +1,1069 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Dehardsubbing guide.">
+      
+      
+        <meta name="author" content="Jaded Encoding Thaumaturgy">
+      
+      
+        <link rel="canonical" href="https://jaded-encoding-thaumaturgy.github.io/JET-guide/filtering/dehardsubbing/">
+      
+      
+        <link rel="prev" href="../descaling/">
+      
+      
+        <link rel="next" href="../../encoding/x264params/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
+    
+    
+      
+        <title>Dehardsubbing - JET Encoding Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dehardsubbing" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="JET Encoding Guide" class="md-header__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JET Encoding Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dehardsubbing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="JET Encoding Guide" class="md-nav__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    JET Encoding Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encoding Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup and First Steps
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Filtering
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../howdoi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I ...?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../order/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Order of Filtering Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Descaling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Dehardsubbing
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Dehardsubbing
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisite
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combining" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combining
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Encoding
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Encoding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encoding/x264params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x264 Parameters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Misc
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisite
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Started
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#combining" class="md-nav__link">
+    <span class="md-ellipsis">
+      Combining
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="dehardsubbing">Dehardsubbing</h1>
+<p>Hardsubs are subtitles that are a part of the video, i.e. they are "burned-in."
+This is in contrast to softsubs which are kept separate from the video and thus
+can be toggled or edited without requiring a new encode.</p>
+<p>This page will go over how to dehardsub (remove hardsubs) from a video.</p>
+<h2 id="prerequisite">Prerequisite</h2>
+<p>Dehardsubbing requires a secondary video source that is <strong>not</strong> hardsubbed in
+order to fill in the details that the hardsubs of the primary video source
+replaced. The secondary source is called the "reference" or "ref" clip in the
+<a href="https://github.com/Jaded-Encoding-Thaumaturgy/vs-masktools">vs-masktools</a> APIs that will be shown here.</p>
+<p><em>DEAD DEAD DEMONS DEDEDEDE DESTRUCTION</em> (2024) will be used as a contemporary
+example of this. The WEB release of this movie/ONA has two video sources: the
+<abbr title="Crunchyroll">CR</abbr> Japanese stream with no (English) hardsubs,
+and the <abbr title="Crunchyroll">CR</abbr> English stream with hardsubs.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>Here is an example of a hardsub that one might want to dehardsub, because it
+doesn't look particularly good and a typesetter could redo it via softsubs:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Hardsubbed</label><label for="__tabbed_1_2">Reference</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-simple-hardsub.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-simple-ref.png" /></p>
+</div>
+</div>
+</div>
+<p>Since a video without hardsubs (the reference clip here) is available, one
+solution is to simply replace this hardsubbed scene with its counterpart:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vstools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">replace_ranges</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span style="color: #E06C75">dehardsub</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">replace_ranges</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">hardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">ref</span><span style="color: #ABB2BF">,</span> <span style="color: #ABB2BF">(</span><span style="color: #D19A66">1138</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">1221</span><span style="color: #ABB2BF">))</span>
+</code></pre></div></td></tr></table></div>
+<p>This will replace frames 1138 through 1221 (inclusive) of the hardsubbed clip
+<code>hardsub</code> with the reference clip <code>ref</code>. This is a fine solution if both sources
+are of equal quality and nothing of value is being lost by throwing away this
+whole range of frames from <code>hardsub</code>.</p>
+<p>But let's say that <code>hardsub</code> is a better video source than <code>ref</code>, or that these
+sources are being Lehmer-merged, or that for any other reason it is undesirable
+to replace whole frames like this if it can be avoided. A better solution then
+would be to replace only the hardsubbed region of the scene. This can be
+accomplished with classes like <code>HardsubSign</code>:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vsmasktools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">HardsubSign</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span style="color: #E06C75">dehardsub</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">HardsubSign</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">ranges</span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">[(</span><span style="color: #D19A66">1138</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">1221</span><span style="color: #ABB2BF">)])</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">apply_dehardsub</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">hardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">ref</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span style="color: #7F848E"># Can optionally get the mask to preview or modify it.</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span style="color: #E06C75">dehardsub_mask</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">HardsubSign</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">ranges</span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">[(</span><span style="color: #D19A66">1138</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">1221</span><span style="color: #ABB2BF">)])</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">get_mask</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">hardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">ref</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This will find the differences between the <code>hardsub</code> and <code>ref</code> clips, for the
+same frame range as before, and apply a mask that replaces just the hardsubbed
+region of <code>hardsub</code> with the respective region from <code>ref</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Hardsubbed</label><label for="__tabbed_2_2">Hardsub mask</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-simple-hardsub.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-simple-mask.png" /></p>
+</div>
+</div>
+</div>
+<h2 id="bounding">Bounding</h2>
+<p>This next example demonstrates two kinds of hardsubs: the good and the bad.
+Here, the news broadcast's overlay is actually good (for an English release, at
+least) and leaving it hardsubbed would save a typesetter some time. However,
+this scene also has the bad Arial signs that could be redone better in softsubs
+if they're important. If one tries to use <code>HardsubSign</code> like before on this, it
+will mask everything.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Hardsubbed</label><label for="__tabbed_3_2">Reference</label><label for="__tabbed_3_3">Hardsub mask</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-bound-hardsub.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-bound-ref.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-bound-mask.png" /></p>
+</div>
+</div>
+</div>
+<p>Since the bad hardsubs are all contained to a single region for the whole scene,
+the mask can be bounded by a <code>BoundingBox</code>. Think of this as masking the mask.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-6">6</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vsmasktools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">BoundingBox</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">HardsubSign</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span style="color: #E06C75">dehardsub</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">HardsubSign</span><span style="color: #ABB2BF">(</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span style="color: #E06C75">ranges</span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">[(</span><span style="color: #D19A66">13784</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">13843</span><span style="color: #ABB2BF">)],</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span style="color: #E06C75">bound</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">BoundingBox</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">pos</span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">0</span><span style="color: #ABB2BF">),</span> <span style="color: #E06C75">size</span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">1230</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">880</span><span style="color: #ABB2BF">))</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span style="color: #ABB2BF">)</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">apply_dehardsub</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">hardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">ref</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The bound is drawn from coordinate (0, 0) (the top-left corner) to a size of
+1230x880, which is enough to cover only the Arial signs.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Hardsubbed</label><label for="__tabbed_4_2">Hardsub mask</label><label for="__tabbed_4_3">Bounded hardsub mask</label><label for="__tabbed_4_4">Dehardsubbed</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-bound-hardsub.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-bound-mask.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-bound-bounded-mask.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-bound-dehardsub.png" /></p>
+</div>
+</div>
+</div>
+<h2 id="fades">Fades</h2>
+<p>Hardsubs that fade in or out may require special handling to account for when
+the hardsub is at its peak transparency. Lowering the threshold parameter <code>thr</code>
+of <code>HardsubSign</code> may help but this can also begin to catch differences in noise
+between the clips. This example will use <code>HardsubSignFades</code>, a specialized
+version of <code>HardsubSign</code>, on the first frame of a fade-in since that is the most
+difficult part of the sequence to mask.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vsmasktools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">HardsubSignFades</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vstools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">get_y</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">replace_ranges</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span style="color: #E06C75">dehardsub_mask</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">HardsubSignFades</span><span style="color: #ABB2BF">()</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">get_mask</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">hardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">ref</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span style="color: #E06C75">dehardsub</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">hardsub</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">MaskedMerge</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">ref</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">get_y</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">dehardsub_mask</span><span style="color: #ABB2BF">))</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span style="color: #E06C75">dehardsub</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">replace_ranges</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">hardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">dehardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #ABB2BF">(</span><span style="color: #D19A66">1462</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">1524</span><span style="color: #ABB2BF">))</span>
+</code></pre></div></td></tr></table></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:4"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Hardsubbed</label><label for="__tabbed_5_2">Reference</label><label for="__tabbed_5_3">Hardsub mask</label><label for="__tabbed_5_4">Hardsub fade mask</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-fade.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-fade-ref.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-fade-hardsubmask.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="" src="../../static/dehardsubbing-fade-hardsubsignfades.png" /></p>
+</div>
+</div>
+</div>
+<p>Notice how just with default parameters, <code>HardsubSignFades</code> is able to catch
+more of the hardsubs than plain <code>HardsubSign</code> can. This snippet also
+demonstrates how it is not necessary to use the <code>apply_dehardsub()</code> function;
+instead one can call <code>get_mask()</code> to get the dehardsub mask for any further
+processing before applying it themselves. Don't forget to <code>replace_ranges()</code>
+just the hardsubbed range(s) afterwards, since that was previously being handled
+by <code>apply_dehardsub()</code>.</p>
+<h2 id="combining">Combining</h2>
+<p>When there are multiple hardsubs across the whole clip, there are a few
+convenient ways of applying all the masks without needing to duplicate the above
+snippets for each hardsub.</p>
+<p>The first method is to take advantage of the <code>ranges</code> parameter, so long as all
+of the respective hardsubs can be handled in the same way.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-1"> 1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-2"> 2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-3"> 3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-4"> 4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-5"> 5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-6"> 6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-7"> 7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-8"> 8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-9"> 9</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-10">10</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-11">11</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vsmasktools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">HardsubSign</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span style="color: #7F848E"># Frame ranges (inclusive) that contain hardsubs.</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span style="color: #E06C75">HARDSUBS</span> <span style="color: #56B6C2">=</span> <span style="color: #ABB2BF">[</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>    <span style="color: #ABB2BF">(</span><span style="color: #D19A66">1138</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">1221</span><span style="color: #ABB2BF">),</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>    <span style="color: #ABB2BF">(</span><span style="color: #D19A66">11045</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">11143</span><span style="color: #ABB2BF">),</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>    <span style="color: #ABB2BF">(</span><span style="color: #D19A66">14079</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">14173</span><span style="color: #ABB2BF">),</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>    <span style="color: #7F848E"># etc.</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a><span style="color: #ABB2BF">]</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span style="color: #E06C75">dehardsub</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">HardsubSign</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">ranges</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">HARDSUBS</span><span style="color: #ABB2BF">)</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">apply_dehardsub</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">hardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">ref</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The remaining two methods are more flexible in that they allow for combining
+different types of <code>HardsubSign</code>. In this example there are regular hardsubs and
+fading hardsubs:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-1"> 1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-2"> 2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-3"> 3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-4"> 4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-5"> 5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-6"> 6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-7"> 7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-8"> 8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-9"> 9</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-10">10</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-11">11</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-12">12</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-13">13</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-14">14</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-15">15</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-16">16</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-17">17</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-18">18</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-19">19</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vsmasktools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">HardsubSign</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">HardsubSignFades</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span style="color: #7F848E"># Frame ranges (inclusive) that contain regular hardsubs.</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span style="color: #E06C75">HARDSUBS</span> <span style="color: #56B6C2">=</span> <span style="color: #ABB2BF">[</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>    <span style="color: #ABB2BF">(</span><span style="color: #D19A66">1138</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">1221</span><span style="color: #ABB2BF">),</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>    <span style="color: #ABB2BF">(</span><span style="color: #D19A66">11045</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">11143</span><span style="color: #ABB2BF">),</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>    <span style="color: #ABB2BF">(</span><span style="color: #D19A66">14079</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">14173</span><span style="color: #ABB2BF">),</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span style="color: #7F848E"># etc.</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span style="color: #ABB2BF">]</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span style="color: #7F848E"># Frame ranges (inclusive) that contain fading hardsubs.</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span style="color: #E06C75">HARDSUB_FADES</span> <span style="color: #56B6C2">=</span> <span style="color: #ABB2BF">[</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a>    <span style="color: #ABB2BF">(</span><span style="color: #D19A66">1462</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">1524</span><span style="color: #ABB2BF">),</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>    <span style="color: #ABB2BF">(</span><span style="color: #D19A66">9459</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">9511</span><span style="color: #ABB2BF">),</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>    <span style="color: #7F848E"># etc.</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span style="color: #ABB2BF">]</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span style="color: #E06C75">regular_dehardsub</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">HardsubSign</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">ranges</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">HARDSUBS</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span style="color: #E06C75">fading_dehardsub</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">HardsubSignFades</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">ranges</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">HARDSUB_FADES</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>From here, one can either use <code>get_all_sign_masks()</code> to get a composite mask
+containing everything:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vsmasktools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">get_all_sign_masks</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span style="color: #E06C75">dehardsub_mask</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">get_all_sign_masks</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">hardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">ref</span><span style="color: #ABB2BF">,</span> <span style="color: #ABB2BF">[</span><span style="color: #E06C75">regular_dehardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">fading_dehardsub</span><span style="color: #ABB2BF">])</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span style="color: #E06C75">dehardsub</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">hardsub</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">MaskedMerge</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">ref</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">dehardsub_mask</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Or sequentially apply each mask with <code>bounded_dehardsub()</code>:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vsmasktools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">bounded_dehardsub</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span style="color: #E06C75">dehardsub</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">bounded_dehardsub</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">hardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">ref</span><span style="color: #ABB2BF">,</span> <span style="color: #ABB2BF">[</span><span style="color: #E06C75">regular_dehardsub</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">fading_dehardsub</span><span style="color: #ABB2BF">])</span>
+</code></pre></div></td></tr></table></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      
+    
+  </body>
+</html>
