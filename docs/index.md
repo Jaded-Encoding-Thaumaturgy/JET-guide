@@ -10,6 +10,10 @@ instead of spending months and months debating the perfect structure for a full 
 Properly structuring this guide and filling in gaps can then be done in the future.
 Of course, help is always welcome.
 
+The guide started out with the [Encoding Resources](resources.md) page.
+While this guide is still under construction, that page is where you find resources
+covering anything not yet covered here.
+
 ## Contributing
 In line with the philosophy outlined above, any and all contributions are welcome
 and should be merged fairly quickly as long as they are factually correct and remotely intelligible.
