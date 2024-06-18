@@ -17,13 +17,13 @@ theme:
 
 nav:
   - Home: index.md
+  - Encoding Resources: resources.md
   - Installation:
     - Setup and First Steps: setup.md
   - Filtering:
     - How do I ...?: howdoi.md
     - Descaling: descaling.md
   - Encoding:
-    - Encoding Resources: resources.md
     - x264 Parameters: x264params.md
   - Misc:
     - Comparison: comparison.md
