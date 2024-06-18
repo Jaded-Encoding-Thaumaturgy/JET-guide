@@ -355,7 +355,7 @@ VSPreview offers three methods for creating comparisons:
     1. Locate the frame(s) you want to compare
         - Use `Left arrow` to go the previous frame and `Right arrow` to go to the next frame.
         - Use `Shift + Left arrow` and `Shift + Right arrow` to navigate `N` number of frames on either side.
-    
+
     2. Once you land on a frame you like, mark it with `Ctrl` + `Space`.
 
     #### Capturing

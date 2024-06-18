@@ -14,15 +14,20 @@ theme:
   features:
     - content.code.copy
     - content.code.select
+    - navigation.expand
 
 nav:
   - Home: index.md
-  - Setup and First Steps: setup.md
-  - How do I ...?: howdoi.md
-  - Comparison: comparison.md
-  - Descaling: descaling.md
   - Encoding Resources: resources.md
-  - x264 Parameters: x264params.md
+  - Installation:
+    - Setup and First Steps: installation/setup.md
+  - Filtering:
+    - How do I ...?: filtering/howdoi.md
+    - Descaling: filtering/descaling.md
+  - Encoding:
+    - x264 Parameters: encoding/x264params.md
+  - Misc:
+    - Comparison: misc/comparison.md
 
 plugins:
 - search
