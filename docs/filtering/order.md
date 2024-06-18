@@ -6,41 +6,43 @@ is understanding which order to run filters in.
 
 ## Reversing filters
 
-If you're running any filters
+
+If you're running any filter
 that reverse a process
 applied by the studio or authoring company,
-such as undoing an upscale or lowpass,
-you should *always* perform those first.
+such as undoing an upscale or lowpass filter,
+you should *always* perform those before any other filtering.
 These types of filters rely on
 the "state" of the video
-being the same or as close as possible
+being the same
+or as close as possible
 to the state when the filter was applied.
 
 For example,
-anti-aliasing prior to descaling
-will modify the lineart too much,
-and change it too much to be accurately reversible.
-This much may seem obvious,
-but where the problem lies
-is when you intend to run *multiple* filters
-that reverse an operation.
+applying anti-aliasing before descaling
+will modify the line art too much,
+making it difficult to reverse accurately.
+This may seem obvious,
+but issues arise
+when you intend to run *multiple* filters
+that reverse different operations.
 
-A semi-common example of this
-would be an HD source
-that is both upscaled
-*and* telecined.
+A common example would be
+an HD source that has been both upscaled and telecined.
 The trick to dealing with these
-is to imagine what the original process was.
-For this example,
+is to imagine the original process.
+In this example,
 it's easy to imagine that telecining
 depends on the interlacing being 1px tall.
-Else it wouldn't be reversible by a player!
-This means that from a production standpoint,
-the telecining must be performed last.
+Otherwise,
+it wouldn't be reversible by a player.
+This implies that,
+from a production standpoint,
+telecining must be performed last.
 Therefore,
 if you want to undo an upscale
 on a telecined source,
-you must IVTC first,
+you must IVTC (inverse telecine) first,
 unless you have reason to believe
 this was not the original order of operations.
 
@@ -49,95 +51,86 @@ a source that is lowpassed and telecined.
 In this case,
 you must do a bit more detective work,
 as it could reasonably be done in either order.
-If there's very weird vertical ringing
+If there's significant vertical ringing
 that causes issues during inverse telecining,
-you may have to merge frequencies first.
+you may have to address the frequency merging first.
 However,
 if your source only has horizontal ringing,
-as is the case with a lot of R2J DVDs,
-the order of operations matters a bit less.
-This is because neither filter will interfere
-with how you would fix the artefact
+as is the case with many R2J DVDs,
+the order of operations matters less.
+This is because neither filter
+will interfere with
+how you would fix the artifact
 the other is trying to resolve.
 
 ## Generic filtering
 
-With most filterchains
-for regular modern titles,
-there is a common "accepted" order of filters.
+For most modern titles,
+there's a generally accepted order
+for applying filters in a filterchain:
 
 ![Prepare clip -> (Descaling ->) Denoising -> (Anti-alias ->) (Dehaloing ->) Deband -> Regrain -> Finalize clip](../static/standard-filterchain.png)
 
 ### Descaling
 
-If a source can be safely descaled,
-this step should almost always be performed first
-for the reasons described in the previous section.
+Descaling should be performed first
+if the source can be safely descaled,
+for reasons outlined previously.
 
 ### Denoising
 
-Every consumer source will contain some degree of compression noise,
-so it's always a good idea to denoise.
-This step may be performed prior to descaling
+Since every consumer source
+contains some degree of compression noise,
+denoising is recommended.
+You may perform this step prior to descaling
 if the studio or authoring company
-added very strong dithering at the end
-if it interferes with the descale.
-Doing it before descaling
-may also significantly speed up certain filterchains.
+added strong dithering in post
+that interferes with descaling.
+Early denoising can also speed up
+certain filterchains.
 
-### Aliasing
+### Anti-aliasing
 
-Noise around edges may interfere with anti-aliasing,
-so this step should be performed after denoising
-if necessary.
-In an ideal scenario,
-anti-aliasing should be scenefiltered
-as it's not only a very destructive filter,
-but will also slow down your filtering speed by a lot.
+Noise around edges may affect anti-aliasing,
+so perform this step after denoising.
+Anti-aliasing should ideally be scene-filtered
+because it's a highly destructive filter
+and can significantly slow down
+the filtering process.
 
 ### Deringing/Dehaloing
 
-Many of the best anti-aliasing filters
-can create some very weak ringing or haloing
-in certain scenarios.
-Therefore,
-it's always safer to perform deringing after
-as opposed to before anti-aliasing.
-Deringing and dehaloing are very destructive,
-so only perform them if absolutely necessary.
+Many top anti-aliasing filters
+might introduce mild ringing or haloing
+under certain conditions.
+It's safer to dering or dehalo
+after anti-aliasing.
+These are destructive processes,
+so only use them when absolutely necessary.
 
 ### Debanding
 
-Much like denoising,
-almost every source will feature
+Similar to denoising,
+nearly every source exhibits
 some degree of banding
 due to compression.
-Much like denoising,
-you should not perform any stronger debanding
-than is absolutely necessary
-to deal with any banding in the source.
-If you see very little banding,
-a weak protective deband rarely hurts,
-so long as you're careful
-not to cause unnecessary detail loss.
+Avoid excessive debanding
+to prevent unnecessary detail loss.
+A mild protective deband
+can be beneficial
+if minimal banding is present.
 
 ### Redithering
 
-Redithering helps the encoder
-better preserve gradients.
-Even with 10 bit video,
-there aren't enough colours
-to preserve all gradients.
-Dithering helps avoid this.
-Furthermore,
-denoising and debanding
-can cause existing dithering
-to look "broken up",
-or "splotchy".
-Dithering again with a grain function
-and applying a similar pattern as the source
-helps alleviate this.
-It's always recommended
-to apply dynamic dithering or grain,
-even in the rare cases
-where your source has static dither.
+Redithering aids in preserving gradients during encoding,
+especially since even 10-bit video
+doesn't have enough color depth
+to maintain all gradients flawlessly.
+Debanding and denoising
+may disrupt existing dither patterns,
+causing them to appear "broken" or "splotchy".
+Reapplying dither using a grain function
+that mimics the source's pattern
+can help smoothen out these issues.
+It's always recommended to apply dynamic dithering,
+even if the original source used static dithering.
