@@ -74,7 +74,11 @@ for applying filters in a filterchain:
 
 ### Descaling
 
-Descaling should be performed first
+!!! danger "Attention"
+    **NEVER** descale a video unless you're *absolutely certain* your descale is correct.
+
+Descaling and similar inverse operations
+should be performed first
 if the source can be safely descaled,
 for reasons outlined previously.
 
@@ -92,12 +96,17 @@ certain filterchains.
 
 ### Anti-aliasing
 
+!!! danger "Attention"
+    A proper rescale will often deal with aliasing, ringing, and haloing artifacting.
+    **NEVER** perform any of those three steps unless you're *absolutely* certain you must.
+
 Noise around edges may affect anti-aliasing,
 so perform this step after denoising.
 Anti-aliasing should ideally be scene-filtered
 because it's a highly destructive filter
 and can significantly slow down
 the filtering process.
+Only perform this step if your source actually has aliasing.
 
 ### Deringing/Dehaloing
 
