@@ -1,5 +1,14 @@
 # A Primer on Python
 
+!!! danger "Attention"
+    This is **NOT** a full guide to using Python,
+    and does **NOT** go into too much depth.
+    This is meant to be a high-level guide
+    to ease learning enough Python
+    to use Vapoursynth with impunity.
+    For more in-depth guides,
+    consult the [additional resources](#additional-learning-resources) section!
+
 Getting started with Vapoursynth
 can seem daunting at first,
 as it means
@@ -9,25 +18,6 @@ is one of the simplest programming languages to learn,
 and you only need to grasp the basics
 to start filtering videos
 with Vapoursynth and JET packages.
-
-!!! danger "Attention"
-    This is **NOT** a full guide to using Python,
-    and does **NOT** go in to too much depth.
-    This is meant to be a high-level guide
-    to ease learning enough Python
-    to use Vapoursynth with impunity.
-    For more in-depth guides,
-    consult the [additional resources](#additional-learning-resources) section!
-
-This guide is **NOT**
-a comprehensive Python tutorial
-and does **NOT**
-cover highly advanced topics.
-It is designed to provide a high-level overview,
-just enough to help you use Vapoursynth effectively.
-For more detailed learning,
-please check the additional resources section
-or ask for support in our [discord server][discord]!
 
 ## Basic syntax
 
