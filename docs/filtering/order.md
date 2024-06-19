@@ -70,7 +70,7 @@ For most modern titles,
 there's a generally accepted order
 for applying filters in a filterchain:
 
-![Prepare clip -> (Descaling ->) Denoising -> (Anti-alias ->) (Dehaloing ->) Deband -> Regrain -> Finalize clip](../static/standard-filterchain.png)
+![Prepare clip -> (Descaling ->) Denoising -> (Anti-alias ->) (Dehaloing ->) Deband -> Regrain -> Finalize clip](../static/img/basics/standard-filterchain.png)
 
 ### Descaling
 

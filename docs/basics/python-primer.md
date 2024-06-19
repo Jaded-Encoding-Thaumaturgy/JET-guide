@@ -222,7 +222,7 @@ can be used to display
 the expected parameters
 for `BM3D.denoise`:
 
-![Hovering over a method or function shows the expected parameters and default values](../static/python-primer/ide-example.png)
+![Hovering over a method or function shows the expected parameters and default values](../static/img/basics/ide-example.png)
 
 Here’s a quick guide
 to the types of values
