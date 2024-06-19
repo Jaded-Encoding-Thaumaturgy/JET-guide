@@ -97,6 +97,45 @@ In this script:
     to understand
     and assist you!
 
+While writing your script,
+you should be mindful
+of the variables you write.
+A common mistakes beginners make
+is to use an older variable
+when they've filtered a clip
+and assigned it to a different variable.
+Take for example:
+
+```py
+src = core.bs.VideoSource("a video file.mp4")
+
+ivtc = core.vfm.VIVTC(src)
+decimate = core.vfm.VDecimate(src)
+```
+
+The user is passing `src`
+to `vfm.VDecimate`,
+when what they likely intended to do
+was to pass `ivtc` to it instead.
+While it's generally considered a good idea
+to use different variables
+for different filtering operations
+(as it makes it easier
+to compare multiple filtered clips),
+you have to be careful
+that you assign
+the correct clip
+to the function you're calling.
+
+This is how it should be called instead:
+
+```py
+src = core.bs.VideoSource("a video file.mp4")
+
+ivtc = core.vfm.VIVTC(src)
+decimate = core.vfm.VDecimate(ivtc)
+```
+
 ### Values
 
 When using functions,
@@ -111,18 +150,29 @@ src = core.std.Crop(src, ...)
 The `std.Crop` function
 is used to crop a video clip.
 It takes parameters for each direction
-you want to crop:
+you want to crop.
+Looking at the [VapourSynth documentation](https://www.vapoursynth.com/doc/functions/video/crop_cropabs.html),
+it says the function
+can be called like this:
 
 ```py
 std.Crop(vnode clip[, int left=0, int right=0, int top=0, int bottom=0])
 ```
 
-By default,
-every crop value is set to "0",
-meaning no cropping occurs unless specified.
-These values are integers,
-which are whole numbers
-like 100, 200, etc.
+Let's pick this function apart:
+
+* The first parameter is called `clip`,
+  and needs to be a `vnode`.
+  This is also known as a `VideoNode`,
+  and just means a video clip.
+* Every parameter after this is optional,
+  which is denoted
+  by the square brackets.
+* There are four additional optional arguments,
+  called `left`, `right`, `top`, and `bottom`.
+  Each of them expects an integer value.
+  By default,
+  the value "0" is passed to them.
 
 For example,
 if we want to crop 100 pixels
@@ -238,6 +288,13 @@ to be used directly:
 src_y = get_y(src)
 ```
 
+You can import multiples functions at once
+with this syntax:
+
+```py
+from vstools import get_y, get_u, get_v
+```
+
 You can also import the entire package:
 
 ```py
@@ -280,6 +337,58 @@ import vstools as vst
 
 src_y = vst.get_y(src)
 ```
+
+### Miscellaneous information
+
+Some quirks
+or common VapourSynth script practices
+don't fit into any one category,
+so we'll discuss them here.
+
+#### Different ways to call a plugin
+
+`core` is used for loading plugins.
+In previous examples,
+you may have seen it used like so:
+
+```py
+core.std.Crop(src, ...)
+```
+
+It's not uncommon for script authors
+to call plugin functions
+directly from the clip.
+This is faster to write,
+but may make your script
+a bit harder to understand sometimes.
+
+```py
+src.std.Crop(...)
+```
+
+Note that if you call a plugin
+via this method,
+you no longer have to pass a `vnode`
+as the first argument.
+This may become a problem
+when the plugin expects
+a different type
+to be passed as its first parameter,
+such as `std.StackHorizontal`:
+
+```py
+std.StackHorizontal(vnode[] clips)
+```
+
+The square brackets shown here
+indicate that it expects
+a list of `VideoNode`s.
+Calling `src.std.StackHorizontal`
+will only pass the `src` clip
+as an argument,
+making it meaningless
+to call the function
+with this method.
 
 ## Additional learning resources
 
