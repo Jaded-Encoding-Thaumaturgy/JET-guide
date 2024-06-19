@@ -19,11 +19,11 @@ theme:
 nav:
   - Home: index.md
   - Encoding Resources: resources.md
-  - Installation:
-    - Setup and First Steps: installation/setup.md
+  - Basics:
+    - Setup and First Steps: basics/setup.md
+    - A Primer on Python: basics/python-primer.md
+    - How do I ...?: basics/howdoi.md
   - Filtering:
-    - A Primer on Python: filtering/python-primer.md
-    - How do I ...?: filtering/howdoi.md
     - Order of Filtering Operations: filtering/order.md
     - Descaling: filtering/descaling.md
     - Dehardsubbing: filtering/dehardsubbing.md
