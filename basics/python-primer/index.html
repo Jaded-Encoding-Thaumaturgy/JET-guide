@@ -897,10 +897,7 @@ and assign it to a variable
 so you can use it throughout your script.</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span style="color: #E06C75">src</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">bs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VideoSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;a video file.mp4&quot;</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
-<p>We load the video,
-called "a video file.mp4"
-and assign it to the variable <code>src</code>.</p>
-<p>In this script:</p>
+<p>In this example:</p>
 <ul>
 <li>We use the <code>VideoSource</code> function
   from the <code>bs</code> module
@@ -919,13 +916,13 @@ Following these conventions is highly recommended,
 especially when seeking support,
 as it makes it easier
 for experienced VapourSynth users
-to understand
+to understand the code
 and assist you!</p>
 </div>
 <p>While writing your script,
 you should be mindful
 of the variables you write.
-A common mistakes beginners make
+A common mistake beginners make
 is to use an older variable
 when they've filtered a clip
 and assigned it to a different variable.
@@ -942,7 +939,7 @@ Take for example:</p>
 to <code>vfm.VDecimate</code>,
 when what they likely intended to do
 was to pass <code>ivtc</code> to it instead.
-While it's generally considered a good idea
+While it's widely considered good practice
 to use different variables
 for different filtering operations
 (as it makes it easier
@@ -1012,10 +1009,7 @@ to specify them by name:</p>
 to pass values for it to return something,
 but in most cases,
 you'll want to fine-tune these parameters
-for your source.
-By using an integrated developer environment (IDE),
-you can easily check
-what each function or method expects.</p>
+for your source.</p>
 <p>Using an IDE like Visual Studio Code
 can help you understand what values to pass
 by showing expected parameters for functions.
@@ -1025,15 +1019,21 @@ and default values
 if the package is properly type-hinted.
 This is especially true for JET packages,
 which include type hints.</p>
-<p>For example,
-Visual Studio Code,
-a very popular IDE,
-can be used to display
-the expected parameters
+<p>Below is an example
+of how Visual Studio Code
+can display the expected parameters
 for <code>BM3D.denoise</code>:</p>
 <p><img alt="Hovering over a method or function shows the expected parameters and default values" src="../../static/img/basics/ide-example.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Type-Hinting</p>
+<p>Not all packages are type-hinted.
+Without type hints,
+an IDE may not display
+the types of parameters
+expected by a function.</p>
+</div>
 <p>Here’s a quick guide
-to the types of values
+to common types of values
 you might encounter:</p>
 <table>
 <thead>
@@ -1081,14 +1081,6 @@ resources are often available
 in documentation
 or community servers
 like the <a href="https://discord.gg/XTpc6Fa9eB">JET Discord Server</a>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Type-Hinting</p>
-<p>Not all packages are type-hinted.
-Without type hints,
-an IDE may not display
-the types of parameters
-expected by a function.</p>
-</div>
 <h3 id="installing-and-importing-packages">Installing and importing packages</h3>
 <p>To use JET tooling
 and other Python packages,
@@ -1126,18 +1118,6 @@ you need to reference the function
 through the package:</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span style="color: #E06C75">src_y</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vstools</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">get_y</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
-<div class="admonition warning">
-<p class="admonition-title">Custom namespaces</p>
-<p>Using custom namespaces
-may make your code cleaner
-and easier to read
-for you,
-but do keep in mind
-that it may make it more difficult
-for experienced VapourSynth users
-to properly support you
-if you run into any issues!</p>
-</div>
 <p>You can also assign
 a custom namespace
 to your imports
@@ -1155,6 +1135,18 @@ or clarity:</p>
 <a id="__codelineno-14-2" name="__codelineno-14-2"></a>
 <a id="__codelineno-14-3" name="__codelineno-14-3"></a><span style="color: #E06C75">src_y</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vst</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">get_y</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Custom namespaces</p>
+<p>Using custom namespaces
+may make your code cleaner
+and easier to read
+for you,
+but do keep in mind
+that it may make it more difficult
+for experienced VapourSynth users
+to properly support you
+if you run into any issues!</p>
+</div>
 <h3 id="miscellaneous-information">Miscellaneous information</h3>
 <p>Some quirks
 or common VapourSynth script practices
