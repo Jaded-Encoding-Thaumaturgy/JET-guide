@@ -62,11 +62,7 @@ so you can use it throughout your script.
 src = core.bs.VideoSource("a video file.mp4")
 ```
 
-We load the video,
-called "a video file.mp4"
-and assign it to the variable `src`.
-
-In this script:
+In this example:
 
 - We use the `VideoSource` function
   from the `bs` module
@@ -84,13 +80,13 @@ In this script:
     especially when seeking support,
     as it makes it easier
     for experienced VapourSynth users
-    to understand
+    to understand the code
     and assist you!
 
 While writing your script,
 you should be mindful
 of the variables you write.
-A common mistakes beginners make
+A common mistake beginners make
 is to use an older variable
 when they've filtered a clip
 and assigned it to a different variable.
@@ -107,7 +103,7 @@ The user is passing `src`
 to `vfm.VDecimate`,
 when what they likely intended to do
 was to pass `ivtc` to it instead.
-While it's generally considered a good idea
+While it's widely considered good practice
 to use different variables
 for different filtering operations
 (as it makes it easier
@@ -191,9 +187,6 @@ to pass values for it to return something,
 but in most cases,
 you'll want to fine-tune these parameters
 for your source.
-By using an integrated developer environment (IDE),
-you can easily check
-what each function or method expects.
 
 Using an IDE like Visual Studio Code
 can help you understand what values to pass
@@ -205,17 +198,22 @@ if the package is properly type-hinted.
 This is especially true for JET packages,
 which include type hints.
 
-For example,
-Visual Studio Code,
-a very popular IDE,
-can be used to display
-the expected parameters
+Below is an example
+of how Visual Studio Code
+can display the expected parameters
 for `BM3D.denoise`:
 
 ![Hovering over a method or function shows the expected parameters and default values](../static/img/basics/ide-example.png)
 
+!!! warning "Type-Hinting"
+    Not all packages are type-hinted.
+    Without type hints,
+    an IDE may not display
+    the types of parameters
+    expected by a function.
+
 Here’s a quick guide
-to the types of values
+to common types of values
 you might encounter:
 
 | Type       | Explanation                                                                                  | Notes                     |
@@ -236,13 +234,6 @@ resources are often available
 in documentation
 or community servers
 like the [JET Discord Server][discord].
-
-!!! warning "Type-Hinting"
-    Not all packages are type-hinted.
-    Without type hints,
-    an IDE may not display
-    the types of parameters
-    expected by a function.
 
 ### Installing and importing packages
 
@@ -299,17 +290,6 @@ through the package:
 src_y = vstools.get_y(src)
 ```
 
-!!! warning "Custom namespaces"
-    Using custom namespaces
-    may make your code cleaner
-    and easier to read
-    for you,
-    but do keep in mind
-    that it may make it more difficult
-    for experienced VapourSynth users
-    to properly support you
-    if you run into any issues!
-
 You can also assign
 a custom namespace
 to your imports
@@ -327,6 +307,17 @@ import vstools as vst
 
 src_y = vst.get_y(src)
 ```
+
+!!! warning "Custom namespaces"
+    Using custom namespaces
+    may make your code cleaner
+    and easier to read
+    for you,
+    but do keep in mind
+    that it may make it more difficult
+    for experienced VapourSynth users
+    to properly support you
+    if you run into any issues!
 
 ### Miscellaneous information
 
