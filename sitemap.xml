@@ -2,47 +2,52 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/resources/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/encoding/x264params/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/filtering/dehardsubbing/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/filtering/descaling/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/filtering/howdoi/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/filtering/order/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/filtering/python-primer/</loc>
+         <lastmod>2024-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/installation/setup/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/misc/comparison/</loc>
-         <lastmod>2024-06-18</lastmod>
+         <lastmod>2024-06-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
