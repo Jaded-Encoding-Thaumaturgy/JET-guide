@@ -22,6 +22,7 @@ nav:
   - Installation:
     - Setup and First Steps: installation/setup.md
   - Filtering:
+    - A Primer on Python: filtering/python-primer.md
     - How do I ...?: filtering/howdoi.md
     - Order of Filtering Operations: filtering/order.md
     - Descaling: filtering/descaling.md
