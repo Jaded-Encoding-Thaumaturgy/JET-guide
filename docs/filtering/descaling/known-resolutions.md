@@ -1,5 +1,11 @@
 # A List of Known Native Resolutions
 
+!!! warning "This page is incomplete!"
+    This list is a stub
+    and still very incomplete!
+    You can help us
+    by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+
 It can be difficult
 to determine the native resolution
 of an anime.
@@ -7,17 +13,6 @@ Many encoders
 have already done
 a lot of research themselves,
 and this page documents the found results.
-
-!!! danger "Attention"
-    Our knowledge on descaling
-    is ever-improving.
-    Some of these findings may be inaccurate
-    and outdated!
-    Take them with a grain of salt,
-    and do your due diligence.
-    Verify everything yourself
-    before applying a descale
-    to your encode!
 
 This table contains
 the following information:
@@ -45,6 +40,17 @@ the following information:
    and information.
 
 ## Known Native Resolutions
+
+!!! danger "Attention"
+    Our knowledge on descaling
+    is ever-improving.
+    Some of these findings may be inaccurate
+    and outdated!
+    Take them with a grain of salt,
+    and do your due diligence.
+    Verify everything yourself
+    before applying a descale
+    to your encode!
 
 | Anime name                                                                     | Native Resolution(s)/Kernel                            | Descaleable? | Notes                                                                                                       |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------ | ------------ | ----------------------------------------------------------------------------------------------------------- |
