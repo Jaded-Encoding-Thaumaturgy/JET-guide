@@ -26,7 +26,7 @@ nav:
   - Filtering:
     - Order of Filtering Operations: filtering/order.md
     - Descaling:
-      - The Basics of Descaling: filtering/descaling/descaling.md
+      - Descaling Theory: filtering/descaling/descaling.md
       - Known Native Resolutions: filtering/descaling/known-resolutions.md
     - Dehardsubbing: filtering/dehardsubbing.md
   - Encoding:
