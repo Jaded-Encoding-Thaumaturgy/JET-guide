@@ -29,6 +29,7 @@ nav:
       - Descaling Theory: filtering/descaling/descaling.md
       - Known Native Resolutions: filtering/descaling/known-resolutions.md
     - Dehardsubbing: filtering/dehardsubbing.md
+    - Wobbly 🡕: https://wobbly.encode.moe
   - Encoding:
     - x264 Parameters: encoding/x264params.md
   - Misc:
