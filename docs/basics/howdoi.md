@@ -323,7 +323,7 @@ For example, to blur all frames whose average luma is larger than 0.5 (assume th
 blurred = clip.std.BoxBlur()
 stats = clip.std.PlaneStats()
 
-def blur_some_frames(n: int, f, clip: vs.VideoNode, blurred: vs.VideoNode) -> vs.VideoNode:
+def blur_some_frames(n: int, f: vs.VideoFrame, clip: vs.VideoNode, blurred: vs.VideoNode) -> vs.VideoNode:
     if f.props["PlaneStatsAverage"] > 0.5:
         return blurred
     return clip
