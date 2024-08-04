@@ -323,12 +323,15 @@ For example, to blur all frames whose average luma is larger than 0.5 (assume th
 blurred = clip.std.BoxBlur()
 stats = clip.std.PlaneStats()
 
-def blur_some_frames(n, f):
-    if f[0].props["PlaneStatsAverage"] > 0.5:
-        return blurred[n]
-    return f
+def blur_some_frames(n: int, f: vs.VideoFrame, clip: vs.VideoNode, blurred: vs.VideoNode) -> vs.VideoNode:
+    if f.props["PlaneStatsAverage"] > 0.5:
+        return blurred
+    return clip
 
-partially_blurred = clip.std.FrameEval(blur_some_frames)
+partially_blurred = clip.std.FrameEval(
+    eval=partial(blur_some_frames, clip=clip, blurred=blurred),
+    prop_src=stats
+    )
 ```
 
 Try not to instantiate filters inside of the per-frame function, if possible.
