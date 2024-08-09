@@ -13,6 +13,10 @@ Some basics that might be useful when writing your first script.
 
 DGIndexNV is also technically something you can use but recent versions have been buggy and it's restricted to Nvidia GPUs.
 
+!!! danger "DVDs"
+    For DVDs you can skip the following Usage section and simply read the `IsoFile` usage section in the [vs-source readme](https://github.com/Jaded-Encoding-Thaumaturgy/vs-source?tab=readme-ov-file#usage).<br>
+    I've been told dvdsrc also should set the metadata correctly but ymmv.
+
 #### Usage
 
 === "Vanilla VS"
