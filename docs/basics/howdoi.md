@@ -229,7 +229,7 @@ In particular your clip will display differently in vs-preview, even though the 
     ```py3
     from vstools import Matrix, ColorRange
 
-    clip_retagged = Matrix.BT601.apply(ColorRange.FULL.apply(clip))
+    clip_retagged = Matrix.SMPTE170M.apply(ColorRange.FULL.apply(clip))
     ```
 
 === "Vanilla VS"
@@ -248,8 +248,8 @@ even though the pixel values are different.
 ```py3
 from vstools import Matrix, ColorRange  # You can also use Vanilla VS, see above
 
-# Convert a clip from the BT601 matrix to the BT709 matrix
-clip_converted = clip.resize.Point(Matrix.BT601.apply(clip), matrix=Matrix.BT709)
+# Convert a clip from the SMPTE170M matrix to the BT709 matrix
+clip_converted = clip.resize.Point(Matrix.SMPTE170M.apply(clip), matrix=Matrix.BT709)
 
 # Convert a clip from limited range to full range
 # Note that you cannot use the ColorRange enum for the `range` argument here!
