@@ -13,7 +13,7 @@ Some basics that might be useful when writing your first script.
 
 DGIndexNV is also technically something you can use but recent versions have been buggy and it's restricted to Nvidia GPUs.
 
-!!! danger "DVDs"
+!!! warning "DVDs"
     For DVDs you can skip the following Usage section and simply read the `IsoFile` usage section in the [vs-source readme](https://github.com/Jaded-Encoding-Thaumaturgy/vs-source?tab=readme-ov-file#usage).<br>
     I've been told dvdsrc also should set the metadata correctly but ymmv.
 
@@ -129,6 +129,44 @@ else:
     ...
 ```
 
+## Other notable stuff
+
+### Affinity and memory allocation
+
+!!! tip
+    It is highly recommended to at least set the cache size vapoursynth is allowed to use.<br>
+    This should ideally always be done as the **first (non-import) step** in your script.
+
+You can set the cache size like this:
+
+=== "vstools (recommended)"
+    ```py
+    from vstools import vs, core
+
+    core.set_affinity(max_cache=22000) # This value is in MB
+    ```
+
+=== "Vanilla VS"
+    ```py
+    from vstools import vs, core
+
+    core.max_cache_size = 22000 # This value is in MB
+    ```
+
+Threads and affinity allocation is less "figured out" and may require testing on *your individual system*.
+
+Some quick testing on a **Zen 4 (Ryzen 7000) chip without 3D-VCache** suggested that using every other thread for vs and letting the encoder choose by itself is the fastest.
+
+You can set the affinity *and* cache size like this:
+
+```py
+from vstools import vs, core
+
+core.set_affinity(threads=range(0, 32, 2), max_cache=22000)
+```
+
+Vanilla VS only allows you to set a number of threads via `core.num_threads`.<br>The vs-tools wrapper also sets the affinity.<br>
+This example uses every other thread in the range of 0 - 31. Read more about ranges [here](https://docs.python.org/3/library/stdtypes.html#range).
 
 [^1]: vsrepo install bs
 [^2]: vsrepo install lsmas
