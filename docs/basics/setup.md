@@ -110,6 +110,10 @@ but since these can be very bleeding-edge,
 they're not normally recommended for inexperienced users.
 
 Linux users may need to create a virtualenv to install the packages or try their luck with `pipx`.
+On Arch Linux, you can use the [`vapoursynth-plugin-vsjet-meta-git`](https://aur.archlinux.org/packages/vapoursynth-plugin-vsjet-meta-git) AUR package.
+Note that reinstalling the meta package is not enough to update all vsjet packages, you need to reinstall all of its dependencies.
+Either try your luck with an option like `--rebuild tree` in your AUR helper (I couldn't get `--rebuildtree` working for this in `yay`, but maybe I was just too dumb),
+or just copy-paste the dependency list and reinstall all of the listed packages.
 
 ## Installing your Code Editor
 
