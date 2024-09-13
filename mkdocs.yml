@@ -39,6 +39,7 @@ nav:
   - Encoding:
     - x264 Parameters: encoding/x264params.md
   - Misc:
+    - Codecs, Containers, and Source Filters: misc/codecs_containers.md
     - Comparison: misc/comparison.md
 
 plugins:
