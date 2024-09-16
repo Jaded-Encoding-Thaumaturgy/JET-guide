@@ -387,7 +387,6 @@ The way quantization error manifests is highly dependent on the source material 
     JET does not have a neural network-based package,
     but vs-denoise includes a wrapper for <a href="https://github.com/xinntao/DPIR">DPIR</a>.
 
-
 ### Ringing
 
 Ringing is an umbrella term for artifacts
@@ -596,7 +595,7 @@ is upscaled to a higher resolution.
 
 Sources that are noticeably too bright
 may have the incorrect gamma applied.
-This is caused by the [Quicktime gamma bug](https://vitrolite.wordpress.com/2010/12/31/quicktime_gamma_bug/),
+This is caused by the [Quicktime gamma bug][quicktime-gamma-bug],
 and manifests as a noticeable brightness offset.
 
 !!! example "Examples of incorrect gamma"
@@ -651,7 +650,10 @@ and is most noticeable on extremely bright frames.
 [vs-dehalo]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-dehalo
 [vs-scale]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-scale
 [vs-aa]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-aa
+[vs-adjust]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-adjust
+[vs-kernels]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-kernels
 
 [//]: # (other)
 [discord]: https://discord.gg/XTpc6Fa9eB
 [careful-models]: https://github.com/wwww-wwww/carefulmodels
+[quicktime-gamma-bug]: https://vitrolite.wordpress.com/2010/12/31/quicktime_gamma_bug/
