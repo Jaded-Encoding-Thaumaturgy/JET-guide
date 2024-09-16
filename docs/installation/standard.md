@@ -2,7 +2,7 @@
 
 !!! warning "Stub"
     This page is a [stub][wikipedia-stubs].
-    You can help by [expanding it][contributing]
+    You can help by [expanding it][contributing].
 
 !!! info "User experience"
     This guide is written with the assumption that the user
@@ -254,7 +254,7 @@ and use them to process audio and video.
                 ```
 
 After installation,
-you can verify that everything is working by running the following command in a terminal:
+you can verify that everything is working by running the following commands in a terminal:
 
 ```bash
 $ vspipe --version
@@ -309,7 +309,7 @@ It adds, among other things:
         === "Debian"
             !!! warning "Stub"
                 This page is a [stub][wikipedia-stubs].
-                You can help by [expanding it][contributing]
+                You can help by [expanding it][contributing].
 
         === "Arch"
             You can install the packages using the `vapoursynth-plugin-vsjet-meta-git` AUR package.
@@ -371,12 +371,12 @@ It adds, among other things:
             === "Debian"
                 !!! warning "Stub"
                     This page is a [stub][wikipedia-stubs].
-                    You can help by [expanding it][contributing]
+                    You can help by [expanding it][contributing].
 
             === "Arch"
                 !!! warning "Stub"
                     This page is a [stub][wikipedia-stubs].
-                    You can help by [expanding it][contributing]
+                    You can help by [expanding it][contributing].
 
     === ":octicons-moon-24: Nightly"
         !!! danger "Nightly version"
@@ -418,12 +418,12 @@ It adds, among other things:
             === "Debian"
                 !!! warning "Stub"
                     This page is a [stub]().
-                    You can help by [expanding it][contributing]
+                    You can help by [expanding it][contributing].
 
             === "Arch"
                 !!! warning "Stub"
                     This page is a [stub][wikipedia-stubs].
-                    You can help by [expanding it][contributing].
+                    You can help by [expanding it][contributing]..
 
 ## Code editor
 
@@ -654,13 +654,13 @@ and stands for `BestSource`.
         === ":fontawesome-brands-apple: MacOS"
             !!! warning "Stub"
                 This page is a [stub][wikipedia-stubs].
-                You can help by [expanding it][contributing]
+                You can help by [expanding it][contributing].
 
         === ":fontawesome-brands-linux: Linux"
             === "Debian"
                 !!! warning "Stub"
                     This page is a [stub][wikipedia-stubs].
-                    You can help by [expanding it][contributing]
+                    You can help by [expanding it][contributing].
 
             === "Arch"
                 === "pacman"
@@ -687,7 +687,7 @@ and stands for `BestSource`.
         === ":fontawesome-brands-apple: MacOS"
             !!! warning "Stub"
                 This page is a [stub][wikipedia-stubs].
-                You can help by [expanding it][contributing]
+                You can help by [expanding it][contributing].
 
         === ":fontawesome-brands-linux: Linux"
 
@@ -695,13 +695,13 @@ and stands for `BestSource`.
 
                 !!! warning "Stub"
                     This page is a [stub][wikipedia-stubs].
-                    You can help by [expanding it][contributing]
+                    You can help by [expanding it][contributing].
 
             === "Arch"
 
                 !!! warning "Stub"
                     This page is a [stub][wikipedia-stubs].
-                    You can help by [expanding it][contributing]
+                    You can help by [expanding it][contributing].
 
 [//]: # (stubs)
 [contributing]: https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing
