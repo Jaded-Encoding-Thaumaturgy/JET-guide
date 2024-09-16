@@ -199,59 +199,84 @@ It's a frame server that allows you to load plugins
 and use them to process audio and video.
 
 !!! example "Installing Vapoursynth"
-    === ":fontawesome-brands-windows: Windows"
-        !!! warning "Installer versions"
+    === ":material-desktop-tower: System"
+
+        The regular installer is the easiest way to get Vapoursynth,
+        and is recommended for most users.
+
+        === ":fontawesome-brands-windows: Windows"
+
+            1. Download the [GitHub release][vapoursynth-release]
+            of Vapoursynth that is tagged as "Latest".
+
+            2. Run the installer and select "Install for this user only" if asked.
+
+        === ":fontawesome-brands-apple: MacOS"
+            3. Install Vapoursynth using Homebrew.
+
+            ```bash
+            $ brew install vapoursynth
+            ```
+
+        === ":fontawesome-brands-linux: Linux"
+
+            === "Debian"
+
+                1. The Vapoursynth is available in the [deb-multimedia repository][deb-multimedia].
+                Follow the instructions on their site to add the repository to your system.
+                2. Update your package manager:
+                ```bash
+                sudo apt update
+                ```
+
+                3. Install Vapoursynth:
+                ```bash
+                sudo apt install vapoursynth
+                ```
+
+            === "Arch"
+                === "pacman"
+
+                    1. Ensure your package manager is up to date:
+                    ```bash
+                    sudo pacman -Syu
+                    ```
+
+                    2. Install Vapoursynth:
+                    ```bash
+                    sudo pacman -S vapoursynth
+                    ```
+
+                === "yay"
+                    3. Install Vapoursynth:
+
+                    ```bash
+                    yay -S vapoursynth
+                    ```
+
+    === ":material-package-variant-closed: Portable"
+        !!! warning "Portable versions"
             Unless you know what you're doing,
             you should avoid using the portable versions,
             as this can complicate things.
 
-        1. Download the [GitHub release][vapoursynth-release]
-        of Vapoursynth that is tagged as "Latest".
+        === ":fontawesome-brands-windows: Windows"
 
-        2. Run the installer and select "Install for this user only" if asked.
+            !!! warning "Stub"
+                This page is a [stub][wikipedia-stubs].
+                You can help by [expanding it][contributing].
 
-    === ":fontawesome-brands-apple: MacOS"
-        1. Install Vapoursynth using Homebrew.
+        === ":fontawesome-brands-apple: MacOS"
 
-        ```bash
-        $ brew install vapoursynth
-        ```
+            !!! warning "Stub"
+                This page is a [stub][wikipedia-stubs].
+                You can help by [expanding it][contributing].
 
-    === ":fontawesome-brands-linux: Linux"
+        === ":fontawesome-brands-linux: Linux"
 
-        === "Debian"
-
-            1. The Vapoursynth is available in the [deb-multimedia repository][deb-multimedia].
-            Follow the instructions on their site to add the repository to your system.
-            2. Update your package manager:
-            ```bash
-            sudo apt update
-            ```
-
-            3. Install Vapoursynth:
-            ```bash
-            sudo apt install vapoursynth
-            ```
-
-        === "Arch"
-            === "pacman"
-
-                1. Ensure your package manager is up to date:
-                ```bash
-                sudo pacman -Syu
-                ```
-
-                2. Install Vapoursynth:
-                ```bash
-                sudo pacman -S vapoursynth
-                ```
-
-            === "yay"
-                1. Install Vapoursynth:
-
-                ```bash
-                yay -S vapoursynth
-                ```
+            !!! warning "Stub"
+                This page is a [stub][wikipedia-stubs].
+                You can help by [expanding it][contributing].
 
 After installation,
 you can verify that everything is working by running the following commands in a terminal:
