@@ -4,6 +4,10 @@
     This page is a [stub][wikipedia-stubs].
     You can help by [expanding it][contributing].
 
+    ??? question "How can I help?"
+        MacOS and Linux users can help by adding and verifying information
+        on how to install everything on their respective operating systems.
+
 !!! info "User experience"
     This guide is written with the assumption that the user
     has absolutely zero Vapoursynth or Python experience
@@ -20,6 +24,10 @@ We will be going over the following steps:
 - Installing JET packages
 - Setting up a code editor/IDE
 - Installing Vapoursynth plugins
+
+!!! tip "Arch Linux users"
+    If you're using Arch Linux,
+    you can skip to the [Installing JET packages](#installing-jet-packages) section.
 
 ## Prerequisite knowledge
 
@@ -44,37 +52,37 @@ see [this guide][terminal-guide].
 
 ### Code blocks
 
-  In this guide, as well as on other pages,
-  you may find blocks like this:
+In this guide, as well as on other pages,
+you may find blocks like this:
 
-  ```python
-  src = source("PATH")
-  ```
+```python
+src = source("PATH")
+```
 
-  This is known as a "code block",
-  and will contain pieces of code.
-  You will find these a lot in our guides.
+This is known as a "code block",
+and will contain pieces of code.
+You will find these a lot in our guides.
 
-  If you see a code block like this with a `$` sign:
+If you see a code block like this with a `$` sign:
 
-  ```bash
-  $ vspipe --version
-  ```
+```bash
+$ vspipe --version
+```
 
-  This means you should run the command in your terminal (without the `$`).
+This means you should run the command in your terminal (without the `$`).
 
-  If you see a code block like these with a `>>>` sign:
+If you see a code block like these with a `>>>` sign:
 
-  ```python
-  >>> str(core)
-  ```
+```python
+>>> str(core)
+```
 
-  ```python
-  >>> def some_function():
-  ...     return ''
-  ```
+```python
+>>> def some_function():
+...     return ''
+```
 
-  This means you should run the code in your Python interpreter (without the `>>>` or `...`).
+This means you should run the code in your Python interpreter (without the `>>>` or `...`).
 
 ## Pre-installation
 
@@ -123,11 +131,6 @@ but does require a bit of setup.
 
 ### Installing Python
 
-!!! note
-    If you already have a working installation
-    of the latest supported Python version,
-    you can skip this step.
-
 !!! example "Installing Python"
     === ":fontawesome-brands-windows: Windows"
         !!! danger "Windows Store"
@@ -151,38 +154,6 @@ but does require a bit of setup.
         ```bash
         $ brew install python
         ```
-
-    === ":fontawesome-brands-linux: Linux"
-        === "Debian"
-            1. Ensure your package manager is up to date:
-            ```bash
-            $ sudo apt update && sudo apt upgrade
-            ```
-
-            2. Install Python:
-            ```bash
-            $ sudo apt install python3 python3-pip python3-virtualenv
-            ```
-
-        === "Arch"
-            === "pacman"
-
-                1. Ensure your package manager is up to date:
-                ```bash
-                sudo pacman -Syu
-                ```
-
-                2. Install Python:
-                ```bash
-                sudo pacman -S python python-pip python-virtualenv
-                ```
-
-            === "yay"
-                1. Install Python:
-
-                ```bash
-                yay -S python python-pip python-virtualenv
-                ```
 
 After installation,
 you can verify that everything is working by running the following commands in a terminal:
@@ -218,42 +189,6 @@ and use them to process audio and video.
             $ brew install vapoursynth
             ```
 
-        === ":fontawesome-brands-linux: Linux"
-
-            === "Debian"
-
-                1. The Vapoursynth is available in the [deb-multimedia repository][deb-multimedia].
-                Follow the instructions on their site to add the repository to your system.
-                2. Update your package manager:
-                ```bash
-                sudo apt update
-                ```
-
-                3. Install Vapoursynth:
-                ```bash
-                sudo apt install vapoursynth
-                ```
-
-            === "Arch"
-                === "pacman"
-
-                    1. Ensure your package manager is up to date:
-                    ```bash
-                    sudo pacman -Syu
-                    ```
-
-                    2. Install Vapoursynth:
-                    ```bash
-                    sudo pacman -S vapoursynth
-                    ```
-
-                === "yay"
-                    3. Install Vapoursynth:
-
-                    ```bash
-                    yay -S vapoursynth
-                    ```
-
     === ":material-package-variant-closed: Portable"
         !!! warning "Portable versions"
             Unless you know what you're doing,
@@ -266,17 +201,17 @@ and use them to process audio and video.
                 This page is a [stub][wikipedia-stubs].
                 You can help by [expanding it][contributing].
 
+                ??? question "How can I help?"
+                    You can help by adding information on how to best approach installing the portable version.
+
         === ":fontawesome-brands-apple: MacOS"
 
             !!! warning "Stub"
                 This page is a [stub][wikipedia-stubs].
                 You can help by [expanding it][contributing].
 
-        === ":fontawesome-brands-linux: Linux"
-
-            !!! warning "Stub"
-                This page is a [stub][wikipedia-stubs].
-                You can help by [expanding it][contributing].
+                ??? question "How can I help?"
+                    You can help by adding information on how to best approach installing the portable version.
 
 After installation,
 you can verify that everything is working by running the following commands in a terminal:
@@ -331,34 +266,15 @@ It adds, among other things:
         ```
 
     === ":fontawesome-brands-linux: Linux"
-        === "Debian"
-            !!! warning "Stub"
-                This page is a [stub][wikipedia-stubs].
-                You can help by [expanding it][contributing].
 
         === "Arch"
             You can install the packages using the `vapoursynth-plugin-vsjet-meta-git` AUR package.
 
-            === "pacman"
+             1. Install the JET meta package:
 
-                1. Ensure your package manager is up to date:
-
-                   ```bash
-                   sudo pacman -Syu
-                   ```
-
-                2. Install the JET meta package:
-
-                   ```bash
-                   sudo pacman -S vapoursynth-plugin-vsjet-meta-git
-                   ```
-
-            === "yay"
-                1. Install the JET meta package:
-
-                ```bash
-                yay -S vapoursynth-plugin-vsjet-meta-git
-                ```
+             ```bash
+             yay -S vapoursynth-plugin-vsjet-meta-git
+             ```
 
 ### Updating packages
 
@@ -393,15 +309,13 @@ It adds, among other things:
             ```
 
         === ":fontawesome-brands-linux: Linux"
-            === "Debian"
-                !!! warning "Stub"
-                    This page is a [stub][wikipedia-stubs].
-                    You can help by [expanding it][contributing].
-
             === "Arch"
                 !!! warning "Stub"
                     This page is a [stub][wikipedia-stubs].
                     You can help by [expanding it][contributing].
+
+                    ??? question "How can I help?"
+                        You can help by adding information on how to best update the packages.
 
     === ":octicons-moon-24: Nightly"
         !!! danger "Nightly version"
@@ -440,15 +354,13 @@ It adds, among other things:
             ```
 
         === ":fontawesome-brands-linux: Linux"
-            === "Debian"
-                !!! warning "Stub"
-                    This page is a [stub]().
-                    You can help by [expanding it][contributing].
-
             === "Arch"
                 !!! warning "Stub"
                     This page is a [stub][wikipedia-stubs].
                     You can help by [expanding it][contributing]..
+
+                    ??? question "How can I help?"
+                        You can help by adding information on how to best update the packages.
 
 ## Code editor
 
@@ -467,7 +379,7 @@ using `vspreview`.
 
     JET only officially supports and recommends `vspreview` as the primary previewer.
 
-    While alternative previewers like *vsedit* exist,
+    While alternative previewers like `vsedit` do exist,
     they often lack the comprehensive feature set,
     active maintenance,
     and up-to-date compatibility
@@ -510,30 +422,12 @@ We recommend using [VSCode][vscode].
         4. Run the installer and follow the instructions.
 
     === ":fontawesome-brands-linux: Linux"
-        === "Debian"
-            1. Download the installer from the [VSCode website][vscode]
-            2. Run the installer and follow the instructions.
-
         === "Arch"
-            === "pacman"
-                1. Ensure your package manager is up to date:
+             1. Install VSCode:
 
-                   ```bash
-                   sudo pacman -Syu
-                   ```
-
-                2. Install VSCode:
-
-                   ```bash
-                   sudo pacman -S code
-                   ```
-
-            === "yay"
-                1. Install VSCode:
-
-                ```bash
-                yay -S visual-studio-code-bin
-                ```
+             ```bash
+             yay -S code
+             ```
 
 ### Setting up VSCode
 
@@ -681,26 +575,18 @@ and stands for `BestSource`.
                 This page is a [stub][wikipedia-stubs].
                 You can help by [expanding it][contributing].
 
+                ??? question "How can I help?"
+                    You can help by adding information on how to best install new plugins.
+
         === ":fontawesome-brands-linux: Linux"
-            === "Debian"
-                !!! warning "Stub"
-                    This page is a [stub][wikipedia-stubs].
-                    You can help by [expanding it][contributing].
-
             === "Arch"
-                === "pacman"
-                    !!! danger "Package availability"
-                        Very few plugins are available in the official repositories.<br>
-                        You will have to install the plugins from the AUR,
-                        or build them from source.
+                 1. Find the plugin you want to install on the [AUR][aur-vs-plugins].
+                 2. Install the plugin using the following command:
 
-                === "yay"
-                    1. Find the plugin you want to install on the [AUR][aur-vs-plugins].
-                    2. Install the plugin using the following command:
+                 ```bash
+                 yay -S vapoursynth-plugin-plugin-name
+                 ```
 
-                    ```bash
-                    yay -S vapoursynth-plugin-plugin-name
-                    ```
     === ":octicons-tools-16: Manual installation"
         === ":fontawesome-brands-windows: Windows"
             Vapoursynth plugins are stored in the `plugins` and `plugins64` subdirectory
@@ -714,19 +600,18 @@ and stands for `BestSource`.
                 This page is a [stub][wikipedia-stubs].
                 You can help by [expanding it][contributing].
 
+                ??? question "How can I help?"
+                    You can help by adding information on how to best install new plugins.
+
         === ":fontawesome-brands-linux: Linux"
-
-            === "Debian"
-
-                !!! warning "Stub"
-                    This page is a [stub][wikipedia-stubs].
-                    You can help by [expanding it][contributing].
-
             === "Arch"
 
                 !!! warning "Stub"
                     This page is a [stub][wikipedia-stubs].
                     You can help by [expanding it][contributing].
+
+                    ??? question "How can I help?"
+                        You can help by adding information on how to best install new plugins.
 
 [//]: # (stubs)
 [contributing]: https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing

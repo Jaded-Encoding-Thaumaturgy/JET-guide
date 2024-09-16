@@ -1,8 +1,20 @@
 # Quickstart
 
+!!! warning "Stub"
+    This page is a [stub][wikipedia-stubs].
+    You can help by [expanding it][contributing].
+
+    ??? question "How can I help?"
+        MacOS and Linux users can help by adding and verifying information
+        on how to install the dependencies on their respective operating systems.
+
 These are quickstart instructions to get you started immediately.
-Only follow these if you're already familiar with Python
-or installing packages yourself.
+
+!!! warning
+    Only follow these if you're already familiar with Python
+    or installing packages yourself.
+    If you're new,
+    we suggest following the [standard installation guide](standard.md) instead.
 
 ## Pre-installation
 
@@ -37,14 +49,9 @@ It may be a good idea to get a clean slate before continuing.
 
         - `~/.config/VapourSynth`
 
-
 ## Installation
 
 Installing JET and its dependencies is pretty straightforward.
-
-!!! warning "Stub"
-    This page is a [stub][wikipedia-stubs].
-    You can help by [expanding it][contributing]
 
 !!! example "Installation steps"
     === ":fontawesome-brands-windows: Windows"
