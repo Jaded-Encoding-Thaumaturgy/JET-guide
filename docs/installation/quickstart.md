@@ -8,37 +8,35 @@ or installing packages yourself.
 
 It may be a good idea to get a clean slate before continuing.
 
-<details class="example">
-    <summary>Removing existing installations</summary>
-       <div class="tab-content">
-           <div class="admonition question">
-               <p class="admonition-title">Necessity</p>
-               <p>
-                  It's unknown how necessary this step is.
-                  If you're a programmer,
-                  you might want to keep your existing Python installation,
-                  but if you're not and you want to start fresh,
-                   this step is recommended.
-               </p>
-           </div>
+??? example "Removing existing installations"
+    !!! question "When to do this"
+         If you're a programmer,
+         you might want to keep your existing Python installation,
+         but if you're not and you want to start fresh,
+         this step is recommended.
 
-           <p>
-               Prior to (re-)installing Vapoursynth,
-               make sure to remove any existing installations.
-           </p>
+    Prior to (re-)installing Vapoursynth,
+    make sure to remove any existing installations.
 
-           <p>
-               This means deleting the following directories:
-           </p>
+    This means deleting the following directories:
 
-           <ul>
-               <li><code>%APPDATA%/VapourSynth</code></li>
-               <li><code>%APPDATA%/Python</code></li>
-               <li><code>%LOCALAPPDATA%/Programs/VapourSynth</code></li>
-               <li><code>%LOCALAPPDATA%/Programs/Python</code></li>
-           </ul>
-       </div>
-</details>
+    === ":fontawesome-brands-windows: Windows"
+
+        - `%APPDATA%/VapourSynth`
+        - `%APPDATA%/Python`
+        - `%LOCALAPPDATA%/Programs/VapourSynth`
+        - `%LOCALAPPDATA%/Programs/Python`
+
+    === ":fontawesome-brands-apple: macOS"
+
+        - `~/Library/Application Support/VapourSynth`
+        - `~/Library/Application Support/Python`
+        - `~/Library/Python`
+
+    === ":fontawesome-brands-linux: Linux"
+
+        - `~/.config/VapourSynth`
+
 
 ## Installation
 

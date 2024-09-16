@@ -87,35 +87,34 @@ If you encounter issues,
 it may be a good idea
 to get a clean slate before continuing.
 
-<details class="example">
-    <summary>Removing existing installations</summary>
-       <div class="tab-content">
-           <div class="admonition question">
-               <p class="admonition-title">Necessity</p>
-               <p>It's unknown how necessary this step is.
-               If you're a programmer,
-               you might want to keep your existing Python installation,
-               but if you're not and you want to start fresh,
-               this step is recommended.</p>
-           </div>
+??? example "Removing existing installations"
+    !!! question "When to do this"
+         If you're a programmer,
+         you might want to keep your existing Python installation,
+         but if you're not and you want to start fresh,
+         this step is recommended.
 
-           <p>
-             Prior to (re-)installing Vapoursynth,
-             make sure to remove any existing installations.
-           </p>
+    Prior to (re-)installing Vapoursynth,
+    make sure to remove any existing installations.
 
-           <p>
-            This means deleting the following directories:
-           </p>
+    This means deleting the following directories:
 
-           <ul>
-               <li><code>%APPDATA%/VapourSynth</code></li>
-               <li><code>%APPDATA%/Python</code></li>
-               <li><code>%LOCALAPPDATA%/Programs/VapourSynth</code></li>
-               <li><code>%LOCALAPPDATA%/Programs/Python</code></li>
-           </ul>
-       </div>
-</details>
+    === ":fontawesome-brands-windows: Windows"
+
+        - `%APPDATA%/VapourSynth`
+        - `%APPDATA%/Python`
+        - `%LOCALAPPDATA%/Programs/VapourSynth`
+        - `%LOCALAPPDATA%/Programs/Python`
+
+    === ":fontawesome-brands-apple: macOS"
+
+        - `~/Library/Application Support/VapourSynth`
+        - `~/Library/Application Support/Python`
+        - `~/Library/Python`
+
+    === ":fontawesome-brands-linux: Linux"
+
+        - `~/.config/VapourSynth`
 
 ## Installing dependencies
 
@@ -340,17 +339,14 @@ It adds, among other things:
 
 !!! example "Updating JET packages"
     === ":octicons-tag-24: Stable"
-        <details class="note">
-            <summary>Developer support</summary>
-            <div class="tab-content">
-                <br>
-                Due to how often JET packages are updated,
-                only the nightly version receives developer support.
-                If you run into any issues with the stable version,
-                try updating to the nightly version
-                to see if your issue has already been fixed.
-             </div>
-        </details>
+        ??? warning "Developer support"
+
+            Due to how often JET packages are updated,
+            only the nightly version receives developer support.
+            If you run into any issues with the stable version,
+            try updating to the nightly version
+            to see if your issue has already been fixed.
+
         Stable versions are built from tagged releases
         of every JET package's git repository.
 
@@ -442,58 +438,42 @@ and more.
 We will also go over how to set up a simple previewer for your scripts
 using `vspreview`.
 
-<details class="warning">
-    <summary>Other previewers</summary>
-    <p>
-        JET only officially supports and recommends `vspreview` as the primary previewer.
-    </p>
+??? warning "Using other previewers"
 
-    <p>
-        While alternative previewers like <i>vsedit</i> exist,
-        they often lack the comprehensive feature set,
-        active maintenance,
-        and up-to-date compatibility
-        that vspreview offers.
-    </p>
+    JET only officially supports and recommends `vspreview` as the primary previewer.
 
-    <p>
-        For the best experience and full compatibility
-        with JET's ecosystem,
-        we strongly advise using vspreview for your
-        Vapoursynth script previewing needs.
-    </p>
-</details>
+    While alternative previewers like *vsedit* exist,
+    they often lack the comprehensive feature set,
+    active maintenance,
+    and up-to-date compatibility
+    that vspreview offers.
+
+    For the best experience and full compatibility
+    with JET's ecosystem,
+    we strongly advise using vspreview for your
+    Vapoursynth script previewing needs.
 
 ### Installing an IDE
 
 There are a couple of IDEs you can choose from.
 We recommend using [VSCode][vscode].
 
-<details class="info">
-    <summary>Using other IDEs</summary>
-      <p>
-        While we recommend VSCode for its ease of use and extensive features,
-        you're free to use any IDE of your preference.
-        The key features to look for in an IDE for Vapoursynth scripting and development are:
-      </p>
+??? info "Using other IDEs"
 
-      <ol>
-        <li>An integrated terminal</li>
-        <li>The ability to set up custom hotkeys for external commands</li>
-      </ol>
+    While we recommend VSCode for its ease of use and extensive features,
+    you're free to use any IDE of your preference.
+    The key features to look for in an IDE for Vapoursynth scripting and development are:
 
-      <p>
-        External command support is particularly important for convenience,
-        as it enables you to quickly preview your scripts
-        without opening up a terminal window each time.
-      </p>
+    1. An integrated terminal
+    2. The ability to set up custom hotkeys for external commands
 
-      <p>
-        If your preferred IDE offers these capabilities,
-        feel free to use it and skip the VSCode setup instructions in the following sections.
-        Just ensure you configure your chosen IDE to work effectively with Vapoursynth scripts.
-      </p>
-</details>
+    External command support is particularly important for convenience,
+    as it enables you to quickly preview your scripts
+    without opening up a terminal window each time.
+
+    If your preferred IDE offers these capabilities,
+    feel free to use it and skip the VSCode setup instructions in the following sections.
+    Just ensure you configure your chosen IDE to work effectively with Vapoursynth scripts.
 
 !!! example "Installing VSCode"
     === ":fontawesome-brands-windows: Windows"
@@ -543,8 +523,10 @@ However, IDEs will not automatically associate this file extension with Python.
 To fix this,
 you can create a custom file association in VSCode.
 
-!!! info "`.ppy` files"
+??? question "What are `.ppy` files?"
     `.ppy` files are the file extension commonly used for vspreview plugin scripts.
+    If you are not planning on developing vspreview plugins,
+    you can ignore this file extension.
 
 !!! example "Associating `.vpy` files"
      1. Open the Command Palette (with the keyboard shortcut `F1`).

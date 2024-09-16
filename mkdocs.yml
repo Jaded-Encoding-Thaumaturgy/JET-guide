@@ -67,6 +67,7 @@ markdown_extensions:
       noclasses: true
       linenums: true
       anchor_linenums: true
+  - pymdownx.details
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
