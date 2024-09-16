@@ -18,10 +18,10 @@ If you're on Linux, you can probably skip this step.
 If you have VapourSynth or any version of Python installed, uninstall them.
 Also delete any leftover directories like
 
-- `%appdata%/VapourSynth`
-- `%appdata%/Python`
-- `%localappdata%/Programs/VapourSynth`
-- `%localappdata%/Programs/Python`
+- `%APPDATA%/VapourSynth`
+- `%APPDATA%/Python`
+- `%LOCALAPPDATA%/Programs/VapourSynth`
+- `%LOCALAPPDATA%/Programs/Python`
 
 on Windows.
 
@@ -32,6 +32,13 @@ on Windows.
     to find out the latest Python version currently supported by VapourSynth,
     and install it from the [Python website](https://www.python.org/downloads/).
     At the time of writing, that's Python 3.12.
+
+    !!! warning
+        Make sure to install Python to PATH!
+        This is not strictly necessary,
+        but will make your life a lot easier.
+        During installation, this will be
+        the "Add Python to environment variables" option.
 
     Then, download the latest [GitHub release](https://github.com/vapoursynth/vapoursynth/releases)
     of VapourSynth and install it.
