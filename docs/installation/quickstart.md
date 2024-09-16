@@ -42,7 +42,7 @@ It may be a good idea to get a clean slate before continuing.
 Installing JET and its dependencies is pretty straightforward.
 
 !!! example "Installation steps"
-    === "Windows"
+    === ":fontawesome-brands-windows: Windows"
         1. Install that version or a newer version from the [Python website](https://www.python.org/downloads/).<br>
             Make sure to select the option to "_Add Python to PATH_"!
 
@@ -54,7 +54,7 @@ Installing JET and its dependencies is pretty straightforward.
            $ pip install vsjet
            ```
 
-    === "macOS"
+    === ":fontawesome-brands-apple: macOS"
         4. Install Python using Homebrew.
 
            ```bash
@@ -73,7 +73,7 @@ Installing JET and its dependencies is pretty straightforward.
            $ pip install vsjet
            ```
 
-    === "Linux"
+    === ":fontawesome-brands-linux: Linux"
         === "Debian"
             1. Add the [deb-multimedia repository](https://www.deb-multimedia.org/) to your system
                by following the instructions on their site.

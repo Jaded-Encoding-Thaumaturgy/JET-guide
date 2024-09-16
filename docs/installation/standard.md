@@ -50,8 +50,9 @@ see [this guide](https://www.freecodecamp.org/news/command-line-for-beginners/).
   Some random text here
   ```
 
-  This is also known as a "code block",
+  This is known as a "code block",
   and will contain pieces of code.
+  You will find these a lot in our guides.
 
   If you see a code block like this:
 
@@ -116,7 +117,7 @@ but does require a bit of setup.
     you can skip this step.
 
 !!! example "Installing Python"
-    === "Windows"
+    === ":fontawesome-brands-windows: Windows"
         !!! danger "Windows Store"
             Avoid installing Python from the Windows Store.
             The store version can have compatibility issues
@@ -132,14 +133,14 @@ but does require a bit of setup.
         3. Once you've downloaded the installer,
         run it and click on "Install Now".<br>
 
-    === "macOS"
+    === ":fontawesome-brands-apple: MacOS"
         Install Python using Homebrew.
 
         ```bash
         $ brew install python
         ```
 
-    === "Linux"
+    === ":fontawesome-brands-linux: Linux"
         === "Debian"
             1. Ensure your package manager is up to date:
             ```bash
@@ -186,7 +187,7 @@ It's a frame server that allows you to load plugins
 and use them to process audio and video.
 
 !!! example "Installing Vapoursynth"
-    === "Windows"
+    === ":fontawesome-brands-windows: Windows"
         !!! warning "Installer versions"
             Unless you know what you're doing,
             you should avoid using the portable versions,
@@ -197,14 +198,14 @@ and use them to process audio and video.
 
         2. Run the installer and select "Install for this user only" if asked.
 
-    === "macOS"
-        Install Vapoursynth using Homebrew.
+    === ":fontawesome-brands-apple: MacOS"
+        1. Install Vapoursynth using Homebrew.
 
         ```bash
         $ brew install vapoursynth
         ```
 
-    === "Linux"
+    === ":fontawesome-brands-linux: Linux"
 
         === "Debian"
 
@@ -241,7 +242,7 @@ and use them to process audio and video.
                 ```
 
 After installation,
-you can verify that everything is working by running the following commands in a terminal:
+you can verify that everything is working by running the following command in a terminal:
 
 ```bash
 $ vspipe --version
@@ -271,21 +272,21 @@ It adds, among other things:
         For a list of all packages that will be installed,
         see the [vs-jet requirements](https://github.com/Jaded-Encoding-Thaumaturgy/vs-jet/blob/master/requirements.txt).
 
-    === "Windows"
+    === ":fontawesome-brands-windows: Windows"
         1. Install JET using pip:
 
         ```bash
         $ pip install vsjet
         ```
 
-    === "macOS"
+    === ":fontawesome-brands-apple: MacOS"
         2. Install JET using pip:
 
         ```bash
         $ pip install vsjet
         ```
 
-    === "Linux"
+    === ":fontawesome-brands-linux: Linux"
         === "Debian"
             !!! info "Stub"
                 This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
@@ -325,19 +326,21 @@ It adds, among other things:
         They aim to be free of major issues,
         and are recommended for most users.
 
-        === "Windows"
+        === ":fontawesome-brands-windows: Windows"
             1. You can update the JET packages using the following command:
 
             ```bash
             $ vsjet
             ```
-        === "macOS"
+
+        === ":fontawesome-brands-apple: MacOS"
             1. You can update the JET packages using the following command:
 
             ```bash
             $ vsjet
             ```
-        === "Linux"
+
+        === ":fontawesome-brands-linux: Linux"
             === "Debian"
                 !!! info "Stub"
                     This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
@@ -362,7 +365,7 @@ It adds, among other things:
         you must install them separately.<br>
         A list of all package repositories can be found [here](https://github.com/orgs/Jaded-Encoding-Thaumaturgy/repositories?q=language%3APython).
 
-        === "Windows"
+        === ":fontawesome-brands-windows: Windows"
             1. If you want to install the nightly version,
             you can use the following command:
 
@@ -372,7 +375,7 @@ It adds, among other things:
 
             This will install the latest bleeding-edge versions of every JET package.
 
-        === "macOS"
+        === ":fontawesome-brands-apple: MacOS"
             1. If you want to install the nightly version,
             you can use the following command:
 
@@ -380,9 +383,7 @@ It adds, among other things:
             $ vsjet latest
             ```
 
-            This will install the latest bleeding-edge versions of every JET package.
-
-        === "Linux"
+        === ":fontawesome-brands-linux: Linux"
             === "Debian"
                 !!! info "Stub"
                     This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
