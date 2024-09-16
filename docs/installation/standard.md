@@ -4,13 +4,13 @@
     This page is a [stub][wikipedia-stubs].
     You can help by [expanding it][contributing]
 
-!!! info "User skill level"
+!!! info "User experience"
     This guide is written assuming the user
     has absolutely zero Vapoursynth or Python experience
     and is starting fresh,
-    as many Vapoursynth users are not programmers.
-    If you are looking for the quickstart guide,
-    you can find it [here][quickstart].
+    as will be the case for most users.
+    If you're already semi-experienced,
+    you may want the [quickstart guide][quickstart] instead.
 
 This page explains how to install both VapourSynth and JET,
 as well as how to set up your code editor and previewer.
@@ -18,7 +18,9 @@ as well as how to set up your code editor and previewer.
 We will be going over the following steps:
 
 - Installing requirements
+- Installing JET packages
 - Setting up your code editor
+- Installing plugins
 
 ## Prerequisite knowledge
 
@@ -283,10 +285,10 @@ It adds, among other things:
 
 !!! example "Installing JET packages"
 
-    !!! info "Missing packages"
-        The JET installer will not install _every_ JET package.
-        These missing packages are still in the basic development phase
-        and not ready for use.
+    !!! info "Available packages"
+        Not every JET package is included in the installer.
+        These missing packages are often still in the basic development phase,
+        or otherwise not ready for use.
 
         For a list of all packages that will be installed,
         see the [vs-jet requirements][vsjet-requirements].
@@ -329,7 +331,7 @@ It adds, among other things:
                    ```
 
             === "yay"
-                3. Install the JET meta package:
+                1. Install the JET meta package:
 
                 ```bash
                 yay -S vapoursynth-plugin-vsjet-meta-git
@@ -338,7 +340,18 @@ It adds, among other things:
 ### Updating packages
 
 !!! example "Updating JET packages"
-    === "Stable"
+    === ":octicons-tag-24: Stable"
+        <details class="note">
+            <summary>Developer support</summary>
+            <div class="tab-content">
+                <br>
+                Due to how often JET packages are updated,
+                only the nightly version receives developer support.
+                If you run into any issues with the stable version,
+                try updating to the nightly version
+                to see if your issue has already been fixed.
+             </div>
+        </details>
         Stable versions are built from tagged releases
         of every JET package's git repository.
 
@@ -353,7 +366,7 @@ It adds, among other things:
             ```
 
         === ":fontawesome-brands-apple: MacOS"
-            1. You can update the JET packages using the following command:
+            2. You can update the JET packages using the following command:
 
             ```bash
             $ vsjet
@@ -370,25 +383,28 @@ It adds, among other things:
                     This page is a [stub][wikipedia-stubs].
                     You can help by [expanding it][contributing]
 
-    === "Nightly"
+    === ":octicons-moon-24: Nightly"
         !!! danger "Nightly version"
-            Nightly/latest versions are not always stable.
+            Nightly versions are not always stable.
             They may contain bugs or other issues that could cause problems.<br>
             If you run into issues,
             you can follow the "Stable" instructions again to roll back to a stable version.
 
-        Nightly (or "latest") versions are built from the latest commit
+        Nightly (or more often called "latest") versions are built from the latest commit
         on the main branch of every JET package's git repository.
         These will be bleeding-edge versions,
         and include the latest features
-        as well as potentially breaking changes.
+        as well as potentially breaking changes
+        or bugs that have not been fixed yet.
 
         To install the latest versions of individual packages,
-        you must do so separately.<br>
+        you must install each separately.<br>
+        Be extremely mindful of the web of dependencies if you're doing this.
+
         A list of all package repositories can be found [here][vsjet-python-repositories].
 
         === ":fontawesome-brands-windows: Windows"
-            1. If you want to install the nightly version,
+            3. If you want to install the nightly version,
             you can use the following command:
 
             ```bash
@@ -396,7 +412,7 @@ It adds, among other things:
             ```
 
         === ":fontawesome-brands-apple: MacOS"
-            1. If you want to install the nightly version,
+            4. If you want to install the nightly version,
             you can use the following command:
 
             ```bash
@@ -416,11 +432,63 @@ It adds, among other things:
 
 ## Code editor
 
-TODO
+In order to edit Vapoursynth scripts,
+you will need an integrated development environment (IDE).
+This will give you useful tools
+like a code editor,
+a built-in terminal,
+syntax highlighting,
+and more.
 
-### Installing VSCode
+!!! info "Other IDEs"
+    If you have a preference for another IDE,
+    you can still use that instead.
+    It's recommended to use an IDE
+    that allows you to hotkey external commands
+    so you can easily preview your Vapoursynth scripts
+    without having to manually open a new terminal window.
+    If your IDE allows that,
+    you can skip this section.
 
-TODO
+### Installing an IDE
+
+There are a couple of IDEs you can choose from.
+We recommend using [VSCode][vscode].
+
+!!! example "Installing VSCode"
+    === ":fontawesome-brands-windows: Windows"
+        1. Download the installer from the [VSCode website][vscode]
+        2. Run the installer and follow the instructions.
+
+    === ":fontawesome-brands-apple: MacOS"
+        3. Download the installer from the [VSCode website][vscode]
+        4. Run the installer and follow the instructions.
+
+    === ":fontawesome-brands-linux: Linux"
+        === "Debian"
+            1. Download the installer from the [VSCode website][vscode]
+            2. Run the installer and follow the instructions.
+
+        === "Arch"
+            === "pacman"
+                1. Ensure your package manager is up to date:
+
+                   ```bash
+                   sudo pacman -Syu
+                   ```
+
+                2. Install VSCode:
+
+                   ```bash
+                   sudo pacman -S code
+                   ```
+
+            === "yay"
+                3. Install VSCode:
+
+                ```bash
+                yay -S visual-studio-code-bin
+                ```
 
 ### Setting up VSCode
 
@@ -446,3 +514,5 @@ TODO
 [deb-multimedia]: https://www.deb-multimedia.org/
 [git-bash]: https://gitforwindows.org/
 [terminal-guide]: https://www.freecodecamp.org/news/command-line-for-beginners/
+[vscode]: https://code.visualstudio.com/download
+

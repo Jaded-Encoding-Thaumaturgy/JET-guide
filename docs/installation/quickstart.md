@@ -1,7 +1,8 @@
 # Quickstart
 
 These are quickstart instructions to get you started immediately.
-Only follow these if you're already familiar with Vapoursynth.
+Only follow these if you're already familiar with Python
+or installing packages yourself.
 
 ## Pre-installation
 
@@ -41,9 +42,13 @@ It may be a good idea to get a clean slate before continuing.
 
 Installing JET and its dependencies is pretty straightforward.
 
+!!! warning "Stub"
+    This page is a [stub][wikipedia-stubs].
+    You can help by [expanding it][contributing]
+
 !!! example "Installation steps"
     === ":fontawesome-brands-windows: Windows"
-        1. Install that version or a newer version from the [Python website][python-download].<br>
+        1. Install the latest version of Python from the [Python website][python-download].<br>
             Make sure to select the option to "_Add Python to PATH_"!
 
         2. Download the [latest GitHub release][vapoursynth-release] for Vapoursynth.
@@ -159,6 +164,10 @@ $ python
 >>> str(core)
 'VapourSynth Video Processing Library\nCopyright (c) 2012-2024 Fredrik Mellbin\n\tCore R70\n\tAPI R4.1\n\tAPI R3.6\n\tOptions: -\n\tNumber of Threads: 32\n\tMax Cache Size: 4096\n'
 ```
+
+[//]: # (stubs)
+[contributing]: https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing
+[wikipedia-stubs]: https://en.wikipedia.org/wiki/Wikipedia:Stubs
 
 [//]: # (programs and other urls)
 [python-download]: https://www.python.org/downloads/
