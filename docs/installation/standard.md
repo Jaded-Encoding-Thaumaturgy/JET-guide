@@ -247,7 +247,7 @@ you can verify that everything is working by running the following commands in a
 $ vspipe --version
 ```
 
-## Installing JET
+## Installing JET packages
 
 The JET python packages build on top of the existing plugin ecosystem
 to provide more convenient and complex functionality.
@@ -259,7 +259,18 @@ It adds, among other things:
 - `vs-preview`, a previewer for VapourSynth with plugin support and many useful features for encoders.
 - Many helper functions and classes for developing Vapoursynth packages.
 
-!!! example "Installing JET"
+### Installing the core package
+
+!!! example "Installing JET packages"
+
+    !!! info "Missing packages"
+        The JET installer will not install _every_ JET package.
+        These missing packages are still in the basic development phase
+        and not ready for use.
+
+        For a list of all packages that will be installed,
+        see the [vs-jet requirements](https://github.com/Jaded-Encoding-Thaumaturgy/vs-jet/blob/master/requirements.txt).
+
     === "Windows"
         1. Install JET using pip:
 
@@ -268,7 +279,7 @@ It adds, among other things:
         ```
 
     === "macOS"
-        1. Install JET using pip:
+        2. Install JET using pip:
 
         ```bash
         $ pip install vsjet
@@ -304,24 +315,54 @@ It adds, among other things:
                 yay -S vapoursynth-plugin-vsjet-meta-git
                 ```
 
-### Updating JET
+### Updating packages
 
 !!! example "Updating JET"
-    === "Windows"
-        === "Stable"
+    === "Stable"
+        Stable versions are built from tagged releases
+        of every JET package's git repository.
+
+        They aim to be free of major issues,
+        and are recommended for most users.
+
+        === "Windows"
             1. You can update the JET packages using the following command:
 
             ```bash
             $ vsjet
             ```
+        === "macOS"
+            1. You can update the JET packages using the following command:
 
-        === "Nightly"
-            !!! danger "Nightly version"
-                Nightly/latest versions are not always stable.
-                They may contain bugs or other issues that could cause problems.<br>
-                If you run into issues,
-                you can follow the "Stable" instructions again to roll back to a stable version.
+            ```bash
+            $ vsjet
+            ```
+        === "Linux"
+            === "Debian"
+                !!! info "Stub"
+                    This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
+                    You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
 
+            === "Arch"
+                !!! info "Stub"
+                    This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
+                    You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+
+    === "Nightly"
+        !!! danger "Nightly version"
+            Nightly/latest versions are not always stable.
+            They may contain bugs or other issues that could cause problems.<br>
+            If you run into issues,
+            you can follow the "Stable" instructions again to roll back to a stable version.
+
+        Nightly (or "latest") versions are built from the latest commit
+        on the main branch of every JET package's git repository.
+
+        To install the latest versions of individual packages,
+        you must install them separately.<br>
+        A list of all package repositories can be found [here](https://github.com/orgs/Jaded-Encoding-Thaumaturgy/repositories?q=language%3APython).
+
+        === "Windows"
             1. If you want to install the nightly version,
             you can use the following command:
 
@@ -331,21 +372,7 @@ It adds, among other things:
 
             This will install the latest bleeding-edge versions of every JET package.
 
-    === "macOS"
-        === "Stable"
-            1. You can update the JET packages using the following command:
-
-            ```bash
-            $ vsjet
-            ```
-
-        === "Nightly"
-            !!! danger "Nightly version"
-                Nightly/latest versions are not always stable.
-                They may contain bugs or other issues that could cause problems.<br>
-                If you run into issues,
-                you can follow the "Stable" instructions again to roll back to a stable version.
-
+        === "macOS"
             1. If you want to install the nightly version,
             you can use the following command:
 
@@ -355,16 +382,17 @@ It adds, among other things:
 
             This will install the latest bleeding-edge versions of every JET package.
 
-    === "Linux"
-        === "Debian"
-            !!! info "Stub"
-                This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-                You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+        === "Linux"
+            === "Debian"
+                !!! info "Stub"
+                    This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
+                    You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
 
-        === "Arch"
-            !!! info "Stub"
-                This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-                You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+            === "Arch"
+                !!! info "Stub"
+                    This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
+                    You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+
 
 ## Code editor
 
