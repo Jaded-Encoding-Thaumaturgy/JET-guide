@@ -424,10 +424,10 @@ We recommend using [VSCode][vscode].
 
     === ":fontawesome-brands-linux: Linux"
         === "Arch"
-             1. Install VSCode:
+             1. Install VSCodium
 
              ```bash
-             yay -S code
+             yay -S vscodium
              ```
 
 ### Setting up VSCode
