@@ -4,7 +4,7 @@
     This page is a [stub][wikipedia-stubs].
     You can help by [expanding it][contributing].
 
-    !!! abstract "Extra information"
+    ??? question "How can I help?"
         Missing a variety of example images.
         Please try to keep the examples diverse,
         and use as many different consumer sources as possible.
@@ -187,9 +187,7 @@ is not evenly distributed.
 This can result in visible bands of color
 or uneven brightness in the video.
 
-There are two common sources of color banding:
-
-!!! example "Color banding"
+!!! example "Common causes of color banding"
     === "Compression"
 
         Color banding often results from insufficient bitrate being given to the video during compression.
@@ -239,11 +237,8 @@ There are two common sources of color banding:
 
             ![An example of color banding caused by compression][placeholder-image]
 
-
 ??? question "Which package contains filters to fix this?"
-
     The [vs-deband] package contains filters specifically designed to address color banding issues.
-
 
 ### Quantization error
 
@@ -258,7 +253,7 @@ The most common perceptual defects are:
 - **Noise**
 - **Ringing**
 
-The way quantization error manifests is highly dependent on the source material and encoder or codec used.
+The way quantization error manifests is highly dependent on the source material and encoder used.
 
 !!! example "Examples of common quantization errors by different encoders"
     === "x264"
@@ -304,7 +299,7 @@ The way quantization error manifests is highly dependent on the source material 
             This page is a [stub][wikipedia-stubs].
             You can help by [expanding it][contributing].
 
-            !!! abstract "Extra information"
+            ??? question "How can I help?"
                 There are no encoders in JET who use MPEG2,
                 so external contributions are welcome.
                 This tab should also get a better title,
@@ -314,12 +309,15 @@ The way quantization error manifests is highly dependent on the source material 
         particularly on the chroma planes.
 
         === "Example A"
+
             ![An example of blocking artifacts from MPEG2][placeholder-image]
 
         === "Example B"
+
             ![An example of blocking artifacts from MPEG2][placeholder-image]
 
         === "Example C"
+
             ![An example of blocking artifacts from MPEG2][placeholder-image]
 
     === "AV1"
@@ -328,7 +326,7 @@ The way quantization error manifests is highly dependent on the source material 
             This page is a [stub][wikipedia-stubs].
             You can help by [expanding it][contributing].
 
-            !!! abstract "Extra information"
+            ??? question "How can I help?"
                 There are no encoders in JET who use AV1,
                 so external contributions are welcome.
                 This tab should also get a better title,
@@ -338,12 +336,15 @@ The way quantization error manifests is highly dependent on the source material 
         The most common form is heavy blurring of flatter areas.
 
         === "SVT-AV1"
+
             ![An example of quantization error artifacts from SVT-AV1][placeholder-image]
 
         === "RAV1E"
+
             ![An example of quantization error artifacts from RAV1E][placeholder-image]
 
         === "Some other AV1 encoder"
+
             ![An example of quantization error artifacts from some other AV1 encoder][placeholder-image]
 
     === "VP9"
@@ -352,7 +353,7 @@ The way quantization error manifests is highly dependent on the source material 
             This page is a [stub][wikipedia-stubs].
             You can help by [expanding it][contributing].
 
-            !!! abstract "Extra information"
+            ??? question "How can I help?"
                 There are no encoders in JET who use VP9,
                 so external contributions are welcome.
                 This tab should also get a better title,
@@ -362,30 +363,280 @@ The way quantization error manifests is highly dependent on the source material 
         around high contrast edges.
 
         === "Example A"
+
             ![An example of ringing artifacts from VP9][placeholder-image]
 
         === "Example B"
+
             ![An example of ringing artifacts from VP9][placeholder-image]
 
         === "Example C"
+
             ![An example of ringing artifacts from VP9][placeholder-image]
 
 ??? question "Which package contains filters to fix this?"
-    The [vs-denoise] package contains filters specifically designed to noise, including many forms of compression noise caused by quantization error.
-    </p>
-    <p>
+    The [vs-denoise] package contains filters specifically designed to denoise,
+    including many forms of compression noise caused by quantization error.
+
     In more extreme cases,
     you may need to use a neural network-based model
-    tailored to the specific encoder and compression level used.
-    At the time of writing,
+    tailored to the specific encoder and compression level used,
+    such as the ones found [here][careful-models].
+
+    As of the time of writing,
     JET does not have a neural network-based package,
     but vs-denoise includes a wrapper for <a href="https://github.com/xinntao/DPIR">DPIR</a>.
 
 
 ### Ringing
 
+Ringing is an umbrella term for artifacts
+caused by spurious signals near sharp transitions in a signal.
+This often results as bands or "ghosts" near edges.
+
+!!! example "Examples of common ringing artifacts"
+    === "Mosquito noise"
+
+        Mosquito noise is a type of noise that manifests as small,
+        rapidly pulsing dots or lines around edges.
+        They are called mosquito noise
+        because they resemble mosquitoes swarming around the object.
+
+        Mosquito noise is often caused by quantization error,
+        and is most noticeable in flat areas with high contrast edges.
+
+        === "Example A"
+
+            ![An example of mosquito noise][placeholder-image]
+
+        === "Example B"
+
+            ![An example of mosquito noise][placeholder-image]
+
+        === "Example C"
+
+            ![An example of mosquito noise][placeholder-image]
+
+    === "Haloing"
+
+        !!! warning "Stub"
+            This page is a [stub][wikipedia-stubs].
+            You can help by [expanding it][contributing].
+
+            ??? question "How can I help?"
+                This needs a better title and more listed examples of what can cause it.
+
+        Haloing is a type of ringing artifact
+        that manifests as a halo around bright objects.
+        They can be both bright and dark,
+        and are often most noticeable around high contrast edges.
+
+        Haloing is often caused by edge enhancement filters,
+        such as sharpening filters.
+        They can also be caused by up- or downscaling kernels.
+
+        === "Example A"
+
+            ![An example of haloing][placeholder-image]
+
+        === "Example B"
+
+            ![An example of haloing][placeholder-image]
+
+        === "Example C"
+
+            ![An example of haloing][placeholder-image]
+
+    === "Ghosting"
+
+        !!! warning "Stub"
+            This page is a [stub][wikipedia-stubs].
+            You can help by [expanding it][contributing].
+
+            ??? question "How can I help?"
+                This needs a better title and more listed examples of what can cause it.
+
+        Ghosting is a type of ringing artifact
+        that manifests as a repeating pattern of bright and dark lines.
+
+        Ghosting is often caused by sharp cut-offs in the frequency domain,
+        such as those created by lowpassing filters.
+
+        === "Example A"
+
+            ![An example of ghosting][placeholder-image]
+
+        === "Example B"
+
+            ![An example of ghosting][placeholder-image]
+
+        === "Example C"
+
+            ![An example of ghosting][placeholder-image]
+
+??? question "Which package contains filters to fix this?"
+    The [vs-dehalo] package contains filters specifically designed to address ringing artifacts.
+
+    For ringing caused by a lowpass filter,
+    you may need to use the frequency merging filters
+    in [vs-denoise] instead.
+
 ### Aliasing
 
+Aliasing is an artifact that manifests as
+jaggy or pixelated edges in the video.
+They are most noticeable on any kind of edge,
+and can be caused by a variety of things.
+
+!!! example "Common causes of aliasing"
+    === "Scaling"
+
+        Aliasing is most noticeable when scaling.
+        This is because the scaling process interpolates values between pixels,
+        which can create new high-frequency components that were not present in the original image.
+
+        === "Example A"
+
+            ![An example of aliasing][placeholder-image]
+
+        === "Example B"
+
+            ![An example of aliasing][placeholder-image]
+
+        === "Example C"
+
+            ![An example of aliasing][placeholder-image]
+
+    === "Precision"
+
+        Aliasing can also occur during rendering,
+        often due to insufficient precision in the rendering process.
+
+        This artifact is typically most noticeable on CGI content.
+
+        === "Example A"
+
+            ![An example of aliasing][placeholder-image]
+
+        === "Example B"
+
+            ![An example of aliasing][placeholder-image]
+
+        === "Example C"
+
+            ![An example of aliasing][placeholder-image]
+
+    === "Rendering"
+
+        Aliasing can occur on naturally sharp content,
+        such as native FHD anime.
+
+        === "Example A"
+
+            ![An example of aliasing][placeholder-image]
+
+        === "Example B"
+
+            ![An example of aliasing][placeholder-image]
+
+        === "Example C"
+
+            ![An example of aliasing][placeholder-image]
+
+    === "Scan"
+
+        In some cases,
+        the studio may have forgotten to apply a line smoothening filter
+        after coloring the image,
+        creating very heavy aliasing.
+
+        === "Example A"
+
+            ![An example of aliasing][placeholder-image]
+
+        === "Example B"
+
+            ![An example of aliasing][placeholder-image]
+
+        === "Example C"
+
+            ![An example of aliasing][placeholder-image]
+
+??? question "Which package contains filters to fix this?"
+    The [vs-aa] package contains filters specifically designed to address aliasing issues.
+
+    Aliasing caused by upscaling may also be fixable with the descaling filters in [vs-scale].
+
+### Cross conversion
+
+Cross conversion is an artifact that manifests
+as vertical aliasing or ringing
+that alternates every pixel row.
+
+This is caused when an interlaced video source
+is upscaled to a higher resolution.
+
+!!! example "Examples of cross conversion"
+    === "Example A"
+
+        ![An example of cross conversion][placeholder-image]
+
+    === "Example B"
+
+        ![An example of cross conversion][placeholder-image]
+
+    === "Example C"
+
+        ![An example of cross conversion][placeholder-image]
+
+??? question "Which package contains filters to fix this?"
+    The [vs-kernels] package contains
+
+### Incorrect gamma levels
+
+Sources that are noticeably too bright
+may have the incorrect gamma applied.
+This is caused by the [Quicktime gamma bug](https://vitrolite.wordpress.com/2010/12/31/quicktime_gamma_bug/),
+and manifests as a noticeable brightness offset.
+
+!!! example "Examples of incorrect gamma"
+    === "Example A"
+
+        ![An example of incorrect gamma][placeholder-image]
+
+    === "Example B"
+
+        ![An example of incorrect gamma][placeholder-image]
+
+    === "Example C"
+
+        ![An example of incorrect gamma][placeholder-image]
+
+??? question "Which package contains filters to fix this?"
+    The [vs-adjust] package contains filters specifically designed to address level issues.
+
+### Slight tinting
+
+A slight tint is often indicative of a truncation error
+when converting 10-bit video to 8-bit without dithering.
+This manifests as a slight green or red tinting,
+and is most noticeable on extremely bright frames.
+
+!!! example "Examples of incorrect gamma"
+    === "Example A"
+
+        ![An example of incorrect gamma][placeholder-image]
+
+    === "Example B"
+
+        ![An example of incorrect gamma][placeholder-image]
+
+    === "Example C"
+
+        ![An example of incorrect gamma][placeholder-image]
+
+??? question "Which package contains filters to fix this?"
+    The [vs-adjust] package contains filters specifically designed to address pixel values issues.
 
 [//]: # (stubs)
 [contributing]: https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing
@@ -397,6 +648,10 @@ The way quantization error manifests is highly dependent on the source material 
 [##]: # (packages)
 [vs-deband]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-deband
 [vs-denoise]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-denoise
+[vs-dehalo]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-dehalo
+[vs-scale]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-scale
+[vs-aa]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-aa
 
 [//]: # (other)
 [discord]: https://discord.gg/XTpc6Fa9eB
+[careful-models]: https://github.com/wwww-wwww/carefulmodels
