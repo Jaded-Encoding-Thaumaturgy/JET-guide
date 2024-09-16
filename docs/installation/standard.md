@@ -1,4 +1,4 @@
-# Installing Vapoursynth and JET
+# Standard setup
 
 !!! info "Stub"
     This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).

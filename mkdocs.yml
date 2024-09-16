@@ -25,7 +25,7 @@ nav:
   - Home: index.md
   - Encoding Resources: resources.md
   - Installation:
-    - Standard: installation/standard.md
+    - Standard setup: installation/standard.md
     - Quickstart: installation/quickstart.md
   - Basics:
     - A Primer on Python: basics/python-primer.md
