@@ -268,13 +268,14 @@ It adds, among other things:
     === ":fontawesome-brands-linux: Linux"
 
         === "Arch"
-            You can install the packages using the `vapoursynth-plugin-vsjet-meta-git` AUR package.
+            You can install all JET packages and their dependencies
+            using the `vapoursynth-plugin-vsjet-meta-git` AUR package.
 
-             1. Install the JET meta package:
+            1. Install the JET meta package:
 
-             ```bash
-             yay -S vapoursynth-plugin-vsjet-meta-git
-             ```
+            ```bash
+            yay -S vapoursynth-plugin-vsjet-meta-git
+            ```
 
 ### Updating packages
 
