@@ -5,27 +5,26 @@
     You can help by [expanding it][contributing]
 
 !!! info "User experience"
-    This guide is written assuming the user
+    This guide is written with the assumption that the user
     has absolutely zero Vapoursynth or Python experience
-    and is starting fresh,
-    as will be the case for most users.
+    and is starting fresh.
     If you're already semi-experienced,
     you may want the [quickstart guide][quickstart] instead.
 
-This page explains how to install both VapourSynth and JET,
+This page explains how to install both Vapoursynth and JET,
 as well as how to set up your code editor and previewer.
 
 We will be going over the following steps:
 
 - Installing requirements
 - Installing JET packages
-- Setting up your code editor
-- Installing plugins
+- Setting up a code editor/IDE
+- Installing Vapoursynth plugins
 
 ## Prerequisite knowledge
 
 To follow this guide,
-you should have a basic understanding of a couple of things.
+you should have a basic understanding of a couple of things:
 
 ### Terminal
 
@@ -48,31 +47,31 @@ see [this guide][terminal-guide].
   In this guide, as well as on other pages,
   you may find blocks like this:
 
-  ```
-  Some random text here
+  ```python
+  src = source("PATH")
   ```
 
   This is known as a "code block",
   and will contain pieces of code.
   You will find these a lot in our guides.
 
-  If you see a code block like this:
+  If you see a code block like this with a `$` sign:
 
   ```bash
-  $ some_command
+  $ vspipe --version
   ```
 
   This means you should run the command in your terminal (without the `$`).
 
-  If you see a code block like these:
+  If you see a code block like these with a `>>>` sign:
 
   ```python
-  >>> some_code
+  >>> str(core)
   ```
 
   ```python
   >>> def some_function():
-  ...     some_code
+  ...     return ''
   ```
 
   This means you should run the code in your Python interpreter (without the `>>>` or `...`).
@@ -180,7 +179,7 @@ but does require a bit of setup.
                 ```
 
             === "yay"
-                3. Install Python:
+                1. Install Python:
 
                 ```bash
                 yay -S python python-pip python-virtualenv
@@ -208,7 +207,7 @@ and use them to process audio and video.
             as this can complicate things.
 
         1. Download the [GitHub release][vapoursynth-release]
-        of VapourSynth that is tagged as "Latest".
+        of Vapoursynth that is tagged as "Latest".
 
         2. Run the installer and select "Install for this user only" if asked.
 
@@ -249,7 +248,7 @@ and use them to process audio and video.
                 ```
 
             === "yay"
-                3. Install Vapoursynth:
+                1. Install Vapoursynth:
 
                 ```bash
                 yay -S vapoursynth
@@ -278,7 +277,7 @@ It adds, among other things:
 - More convenient and Pythonic wrapper functions around various plugins.
 - More complex filtering functions which combine functions of various plugins
   to achieve various filtering goals.
-- `vs-preview`, a previewer for VapourSynth with plugin support and many useful features for encoders.
+- `vs-preview`, a previewer for Vapoursynth with plugin support and many useful features for encoders.
 - Many helper functions and classes for developing Vapoursynth packages.
 
 ### Installing the core package
@@ -301,7 +300,7 @@ It adds, among other things:
         ```
 
     === ":fontawesome-brands-apple: MacOS"
-        2. Install JET using pip:
+        1. Install JET using pip:
 
         ```bash
         $ pip install vsjet
@@ -366,7 +365,7 @@ It adds, among other things:
             ```
 
         === ":fontawesome-brands-apple: MacOS"
-            2. You can update the JET packages using the following command:
+            1. You can update the JET packages using the following command:
 
             ```bash
             $ vsjet
@@ -404,7 +403,7 @@ It adds, among other things:
         A list of all package repositories can be found [here][vsjet-python-repositories].
 
         === ":fontawesome-brands-windows: Windows"
-            3. If you want to install the nightly version,
+            1. If you want to install the nightly version,
             you can use the following command:
 
             ```bash
@@ -412,7 +411,7 @@ It adds, among other things:
             ```
 
         === ":fontawesome-brands-apple: MacOS"
-            4. If you want to install the nightly version,
+            1. If you want to install the nightly version,
             you can use the following command:
 
             ```bash
@@ -440,20 +439,61 @@ a built-in terminal,
 syntax highlighting,
 and more.
 
-!!! info "Other IDEs"
-    If you have a preference for another IDE,
-    you can still use that instead.
-    It's recommended to use an IDE
-    that allows you to hotkey external commands
-    so you can easily preview your Vapoursynth scripts
-    without having to manually open a new terminal window.
-    If your IDE allows that,
-    you can skip this section.
+We will also go over how to set up a simple previewer for your scripts
+using `vspreview`.
+
+<details class="warning">
+    <summary>Other previewers</summary>
+    <p>
+        JET only officially supports and recommends `vspreview` as the primary previewer.
+    </p>
+
+    <p>
+        While alternative previewers like <i>vsedit</i> exist,
+        they often lack the comprehensive feature set,
+        active maintenance,
+        and up-to-date compatibility
+        that vspreview offers.
+    </p>
+
+    <p>
+        For the best experience and full compatibility
+        with JET's ecosystem,
+        we strongly advise using vspreview for your
+        Vapoursynth script previewing needs.
+    </p>
+</details>
 
 ### Installing an IDE
 
 There are a couple of IDEs you can choose from.
 We recommend using [VSCode][vscode].
+
+<details class="info">
+    <summary>Using other IDEs</summary>
+      <p>
+        While we recommend VSCode for its ease of use and extensive features,
+        you're free to use any IDE of your preference.
+        The key features to look for in an IDE for Vapoursynth scripting and development are:
+      </p>
+
+      <ol>
+        <li>An integrated terminal</li>
+        <li>The ability to set up custom hotkeys for external commands</li>
+      </ol>
+
+      <p>
+        External command support is particularly important for convenience,
+        as it enables you to quickly preview your scripts
+        without opening up a terminal window each time.
+      </p>
+
+      <p>
+        If your preferred IDE offers these capabilities,
+        feel free to use it and skip the VSCode setup instructions in the following sections.
+        Just ensure you configure your chosen IDE to work effectively with Vapoursynth scripts.
+      </p>
+</details>
 
 !!! example "Installing VSCode"
     === ":fontawesome-brands-windows: Windows"
@@ -484,7 +524,7 @@ We recommend using [VSCode][vscode].
                    ```
 
             === "yay"
-                3. Install VSCode:
+                1. Install VSCode:
 
                 ```bash
                 yay -S visual-studio-code-bin
@@ -492,11 +532,194 @@ We recommend using [VSCode][vscode].
 
 ### Setting up VSCode
 
-TODO
+#### Associating `.vpy` files
+
+If you have not done so already,
+make sure you install the [Python extension][vscode-python] for VSCode.
+
+`.vpy` is the file extension commonly used for Vapoursynth scripts.
+However, IDEs will not automatically associate this file extension with Python.
+
+To fix this,
+you can create a custom file association in VSCode.
+
+!!! info "`.ppy` files"
+    `.ppy` files are the file extension commonly used for vspreview plugin scripts.
+
+!!! example "Associating `.vpy` files"
+     1. Open the Command Palette (with the keyboard shortcut `F1`).
+     2. Search for "Preferences: Open Settings (JSON)" and select it.
+     3. Add the following line to the JSON settings and save the file:
+
+     ```json
+     "files.associations": {
+         "*.vpy": "python",
+         "*.ppy": "python"
+     }
+     ```
+
+#### Configuring the launch file
+
+To easily preview your Vapoursynth scripts,
+we will configure a launch file.
+
+!!! example "Configuring the launch file"
+    === ":material-microsoft-visual-studio-code: Global launch file"
+        1. Open the Command Palette (with the keyboard shortcut `F1`).
+        2. Search for "Preferences: Open Keyboard Shortcuts (JSON)" and select it.
+        3. Add the following line to the JSON settings and save the file.<br>
+           You can change the "key" to whichever keybind you prefer.
+
+        ```json
+        // Binding for previewing a Vapoursynth filterchain using vs-preview
+        {
+            "key": "F5",
+            "command": "workbench.action.terminal.sendSequence",
+            "args": {
+                "text": "python -m vspreview \"${file}\"\u000D"
+            },
+            "when": "resourceExtname == '.py' || resourceExtname == '.vpy'",
+            "description": "Preview a Vapoursynth script with vspreview"
+        }
+        ```
+
+    === ":octicons-terminal-16: Local launch file"
+        !!! warning
+            This method requires you to run the setup command for every new project.
+            For ease of use, we strongly advise setting a global launch file instead.
+
+        4. Open a terminal in your project directory.
+        5. Run the following command:
+
+        ```bash
+        $ vspreview --vscode-setup
+        ```
 
 ## Installing plugins
 
-TODO
+!!! info "Packages vs. Plugins"
+     Plugins are not the same as packages!
+
+     If a file has the `.py` extension,
+     it's a Python package.
+     Python packages must be imported
+     in order to be used.<br>
+     Plugins are external DLLs
+     that are automatically loaded by Vapoursynth.
+
+Vapoursynth by itself is only a frame server,
+and only a handful of basic plugins are included by default.
+The meat of the Vapoursynth ecosystem lies in third- (and sometimes first)-party plugins,
+which must be installed separately.
+
+JET packages depend on a number of plugins,
+and will attempt to call them if possible.
+If a plugin is not found,
+it may throw an error like:
+
+```bash
+Python exception: No attribute with the name bs exists. Did you mistype a plugin namespace or forget to install a plugin?
+```
+
+In this error, `bs` is the plugin that is missing,
+and stands for `BestSource`.
+
+!!! info "Plugin namespaces"
+    Plugin namespaces help distinguish between plugins with the same name.
+    This is useful for differentiating between implementations,
+    but the namespace by itself may not be enough to go on.
+
+    If you can't find a specific plugin,
+    feel free to ask for help in the [JET Discord server][discord].
+
+!!! example "Installing plugins"
+    === ":octicons-terminal-16: Terminal"
+        === ":fontawesome-brands-windows: Windows"
+            !!! warning "Running into issues with VSRepo"
+                VSRepo can be finicky depending on your configuration and file associations.
+                If you run into issues,
+                you can try using a different terminal,
+                or calling it as `python -m vsrepo` or `vsrepo.py`.
+
+                If all else fails,
+                you can either go to the VSRepo directory (`%LOCALAPPDATA%/Programs/VapourSynth/vsrepo`),
+                open a terminal there,
+                and run `python vsrepo.py` from there,
+                or try installing the plugin [manually](#__tabbed_19_2).
+
+            On Windows,
+            plugins are installed using VSRepo.
+
+            1. Open a terminal.
+            2. Update the plugin list:
+
+            ```bash
+            $ vsrepo update
+            ```
+
+            3. Install the plugin you need using the following command:
+
+            ```bash
+            $ vsrepo install plugin_name
+            ```
+
+            You can also install multiple plugins at once:
+
+            ```bash
+            $ vsrepo install plugin_name1 plugin_name2 plugin_name3
+            ```
+
+        === ":fontawesome-brands-apple: MacOS"
+            !!! warning "Stub"
+                This page is a [stub][wikipedia-stubs].
+                You can help by [expanding it][contributing]
+
+        === ":fontawesome-brands-linux: Linux"
+            === "Debian"
+                !!! warning "Stub"
+                    This page is a [stub][wikipedia-stubs].
+                    You can help by [expanding it][contributing]
+
+            === "Arch"
+                === "pacman"
+                    !!! danger "Package availability"
+                        Very few plugins are available in the official repositories.<br>
+                        You will have to install the plugins from the AUR,
+                        or build them from source.
+
+                === "yay"
+                    1. Find the plugin you want to install on the [AUR][aur-vs-plugins].
+                    2. Install the plugin using the following command:
+
+                    ```bash
+                    yay -S vapoursynth-plugin-plugin-name
+                    ```
+    === ":octicons-tools-16: Manual installation"
+        === ":fontawesome-brands-windows: Windows"
+            Vapoursynth plugins are stored in the `plugins` and `plugins64` subdirectory
+            of the Vapoursynth installation directory.
+
+            To manually install a plugin,
+            grab the plugin DLL and place it in the `plugins` or `plugins64` directory.
+
+        === ":fontawesome-brands-apple: MacOS"
+            !!! warning "Stub"
+                This page is a [stub][wikipedia-stubs].
+                You can help by [expanding it][contributing]
+
+        === ":fontawesome-brands-linux: Linux"
+
+            === "Debian"
+
+                !!! warning "Stub"
+                    This page is a [stub][wikipedia-stubs].
+                    You can help by [expanding it][contributing]
+
+            === "Arch"
+
+                !!! warning "Stub"
+                    This page is a [stub][wikipedia-stubs].
+                    You can help by [expanding it][contributing]
 
 [//]: # (stubs)
 [contributing]: https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing
@@ -515,4 +738,8 @@ TODO
 [git-bash]: https://gitforwindows.org/
 [terminal-guide]: https://www.freecodecamp.org/news/command-line-for-beginners/
 [vscode]: https://code.visualstudio.com/download
+[vscode-python]: https://marketplace.visualstudio.com/items?itemName=ms-python.python
+[aur-vs-plugins]: https://aur.archlinux.org/packages?O=0&SeB=nd&K=vapoursynth-plugin&outdated=&SB=p&SO=d&PP=50&submit=Go
 
+[//]: # (other)
+[discord]: https://discord.gg/XTpc6Fa9eB

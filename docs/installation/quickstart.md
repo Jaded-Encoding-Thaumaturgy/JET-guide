@@ -13,20 +13,22 @@ It may be a good idea to get a clean slate before continuing.
        <div class="tab-content">
            <div class="admonition question">
                <p class="admonition-title">Necessity</p>
-               <p>It's unknown how necessary this step is.
-               If you're a programmer,
-               you might want to keep your existing Python installation,
-               but if you're not and you want to start fresh,
-               this step is recommended.</p>
+               <p>
+                  It's unknown how necessary this step is.
+                  If you're a programmer,
+                  you might want to keep your existing Python installation,
+                  but if you're not and you want to start fresh,
+                   this step is recommended.
+               </p>
            </div>
 
            <p>
-             Prior to (re-)installing Vapoursynth,
-             make sure to remove any existing installations.
+               Prior to (re-)installing Vapoursynth,
+               make sure to remove any existing installations.
            </p>
 
            <p>
-            This means deleting the following directories:
+               This means deleting the following directories:
            </p>
 
            <ul>
@@ -49,7 +51,7 @@ Installing JET and its dependencies is pretty straightforward.
 !!! example "Installation steps"
     === ":fontawesome-brands-windows: Windows"
         1. Install the latest version of Python from the [Python website][python-download].<br>
-            Make sure to select the option to "_Add Python to PATH_"!
+           Make sure to select the option to "_Add Python to PATH_"!
 
         2. Download the [latest GitHub release][vapoursynth-release] for Vapoursynth.
 
