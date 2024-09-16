@@ -240,12 +240,9 @@ There are two common sources of color banding:
             ![An example of color banding caused by compression][placeholder-image]
 
 
-<details class="question">
-    <summary>Which package contains filters to fix this?</summary>
-    <p>
-        The <a href="https://github.com/Jaded-Encoding-Thaumaturgy/vs-deband">vs-deband</a> package contains filters specifically designed to address color banding issues.
-    </p>
-</details>
+??? question "Which package contains filters to fix this?"
+
+    The [vs-deband] package contains filters specifically designed to address color banding issues.
 
 
 ### Quantization error
@@ -373,22 +370,17 @@ The way quantization error manifests is highly dependent on the source material 
         === "Example C"
             ![An example of ringing artifacts from VP9][placeholder-image]
 
-<details class="question">
-    <summary>Which package contains filters to fix this?</summary>
-    <p>
-        The <a href="https://github.com/Jaded-Encoding-Thaumaturgy/vs-denoise">vs-denoise</a> package contains filters specifically designed to noise, including many forms of compression noise caused by quantization error.
+??? question "Which package contains filters to fix this?"
+    The [vs-denoise] package contains filters specifically designed to noise, including many forms of compression noise caused by quantization error.
     </p>
     <p>
-        In more extreme cases,
-        you may need to use a neural network-based model
-        tailored to the specific encoder and compression level used.
-    </p>
-    <p>
-        At the time of writing,
-        JET does not have a neural network-based package,
-        but vs-denoise includes a wrapper for <a href="https://github.com/xinntao/DPIR">DPIR</a>.
-    </p>
-</details>
+    In more extreme cases,
+    you may need to use a neural network-based model
+    tailored to the specific encoder and compression level used.
+    At the time of writing,
+    JET does not have a neural network-based package,
+    but vs-denoise includes a wrapper for <a href="https://github.com/xinntao/DPIR">DPIR</a>.
+
 
 ### Ringing
 
@@ -401,6 +393,10 @@ The way quantization error manifests is highly dependent on the source material 
 
 [##]: # (placeholder image)
 [placeholder-image]: https://archive.org/download/placeholder-image/placeholder-image.jpg
+
+[##]: # (packages)
+[vs-deband]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-deband
+[vs-denoise]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-denoise
 
 [//]: # (other)
 [discord]: https://discord.gg/XTpc6Fa9eB
