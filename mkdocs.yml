@@ -23,8 +23,10 @@ extra:
 nav:
   - Home: index.md
   - Encoding Resources: resources.md
+  - Installation:
+    - Standard: installation/standard.md
+    - Quickstart: installation/quickstart.md
   - Basics:
-    - Setup and First Steps: basics/setup.md
     - A Primer on Python: basics/python-primer.md
     - How do I ...?: basics/howdoi.md
     - Baby's first script: basics/babys-first-script.md
