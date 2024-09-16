@@ -68,6 +68,33 @@ DGIndexNV is also technically something you can use, but recent versions have be
     clip = JPBD.src_cut
     ```
 
+### Getting Comfortable with vs-preview
+
+If you've followed the [installation instructions][installation],
+you should have `vs-preview` installed and should be able to preview your video file.
+Here are a few things you can try out:
+
+-  Press Space to play or pause
+-  Click around in the timeline bar below the video display to step around the video
+-  Ctrl+Scroll to zoom and Click+Drag to pan around the displayed image
+-  Click the "Pipette" button at the bottom and look at the values at the bottom changing while you move your mouse around the image.
+-  Click the "Benchmark" button at the bottom and click "Run" to find out how fast your VapourSynth script runs.
+   At the moment, your script just loads a video, so it should be fairly fast,
+   but in the future your scripts might contain more complex filtering, and knowing how fast or slow your filtering is will be more important.
+-  Click the "Comp" button at the bottom and click "Start Upload".
+   Once the upload is done, find the box containing a `slow.pics` link and press the button next to it to copy that link to your clipboard.
+   Open that link in your browser: You'll get a `slow.pics` comparison of random frames in your video.
+   If your script has multiple outputs, the comparison will show all output nodes.
+-  Move your mouse to the very right of vs-preview's window and drag the bar there to the left.
+   This opens the plugins panel, which contains one tab for each vs-preview plugin.
+   First, open the "Frame Props" tab and have a look at the values there.
+
+   Then, open the "Split Planes" tab.
+   This shows the individual planes of your video.
+   For your average video clip, this will consist of one luma plane and two chroma planes with half the width and height.
+   You can press Ctrl+A to unlock the split planes view,
+   which will allow you to freely zoom and pan around in the view like you would on the normal video.
+
 ## Ensure video metadata
 
 Most functions that resample/resize a video require metadata to be present.<br>
@@ -175,3 +202,5 @@ This example uses every other thread in the range of 0 - 31. Read more about ran
 [^1]: vsrepo install bs
 [^2]: vsrepo install lsmas
 [^3]: vsrepo install ffms2
+
+[installation]: ../installation/standard.md
