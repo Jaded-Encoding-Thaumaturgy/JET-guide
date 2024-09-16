@@ -1046,10 +1046,10 @@ The rest of this page will assume that Linux users use Arch Linux.</p>
 <p>If you have VapourSynth or any version of Python installed, uninstall them.
 Also delete any leftover directories like</p>
 <ul>
-<li><code>%appdata%/VapourSynth</code></li>
-<li><code>%appdata%/Python</code></li>
-<li><code>%localappdata%/Programs/VapourSynth</code></li>
-<li><code>%localappdata%/Programs/Python</code></li>
+<li><code>%APPDATA%/VapourSynth</code></li>
+<li><code>%APPDATA%/Python</code></li>
+<li><code>%LOCALAPPDATA%/Programs/VapourSynth</code></li>
+<li><code>%LOCALAPPDATA%/Programs/Python</code></li>
 </ul>
 <p>on Windows.</p>
 <h2 id="installing-python-and-vapoursynth">Installing Python and VapourSynth</h2>
@@ -1060,6 +1060,14 @@ Also delete any leftover directories like</p>
 to find out the latest Python version currently supported by VapourSynth,
 and install it from the <a href="https://www.python.org/downloads/">Python website</a>.
 At the time of writing, that's Python 3.12.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure to install Python to PATH!
+This is not strictly necessary,
+but will make your life a lot easier.
+During installation, this will be
+the "Add Python to environment variables" option.</p>
+</div>
 <p>Then, download the latest <a href="https://github.com/vapoursynth/vapoursynth/releases">GitHub release</a>
 of VapourSynth and install it.</p>
 <p>Unless you want to risk running into issues, install the installer versions (not the portable ones)
