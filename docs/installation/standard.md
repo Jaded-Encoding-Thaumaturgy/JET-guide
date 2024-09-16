@@ -1,8 +1,16 @@
 # Installing Vapoursynth and JET
 
-!!! info
+!!! info "Stub"
     This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
     You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+
+!!! warning "User skill level"
+    This guide is written assuming the user
+    has absolutely zero Vapoursynth or Python experience
+    and is starting fresh,
+    as many Vapoursynth users are not programmers.
+    If you are looking for the quickstart guide,
+    you can find it [here](./quickstart.md).
 
 This page explains how to install both VapourSynth and JET,
 as well as how to set up your code editor and previewer.
@@ -14,14 +22,8 @@ We will be going over the following steps:
 
 ## Prerequisite knowledge
 
-!!! warning "User skill level"
-    This guide is written assuming the user has absolutely zero prior Vapoursynth or Python experience
-    and is starting fresh,
-    as many Vapoursynth users are not programmers.
-    If you are a programmer,
-    you may skip some of the steps (including this one)
-    or find out more about the prerequisites
-    by reading the [Vapoursynth documentation](http://www.vapoursynth.com/doc/installation.html).
+To follow this guide,
+you should have a basic understanding of a couple of things.
 
 ### Terminal
 
@@ -71,32 +73,37 @@ If you encounter issues,
 it may be a good idea
 to get a clean slate before continuing.
 
-!!! example "Removing existing installations"
+<details class="example">
+    <summary>Removing existing installations</summary>
+       <div class="tab-content">
+           <div class="admonition question">
+               <p class="admonition-title">Question</p>
+               <p>It's unknown how necessary this step is.
+               If you're a programmer,
+               you might want to keep your existing Python installation,
+               but if you're not and you want to start fresh,
+               this step is recommended.</p>
+           </div>
 
-    === "Windows"
-        !!! question
-            It's unknown how necessary this step is.
-            If you're a programmer,
-            you might want to keep your existing Python installation,
-            but if you're not and you want to start fresh,
-            this step is recommended.
+           <p>
+             Prior to (re-)installing Vapoursynth,
+             make sure to remove any existing installations.
+           </p>
 
-        Prior to (re-)installing Vapoursynth,
-        make sure to remove any existing installations.
+           <p>
+            This means deleting the following directories:
+           </p>
 
-        This means deleting the following directories:
+           <ul>
+               <li><code>%APPDATA%/VapourSynth</code></li>
+               <li><code>%APPDATA%/Python</code></li>
+               <li><code>%LOCALAPPDATA%/Programs/VapourSynth</code></li>
+               <li><code>%LOCALAPPDATA%/Programs/Python</code></li>
+           </ul>
+       </div>
+</details>
 
-        - `%APPDATA%/VapourSynth`
-        - `%APPDATA%/Python`
-        - `%LOCALAPPDATA%/Programs/VapourSynth`
-        - `%LOCALAPPDATA%/Programs/Python`
-
-    === "Linux"
-        !!! info "Stub"
-            This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-            You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
-
-## Installation
+## Installing dependencies
 
 Installing Vapoursynth is pretty straightforward,
 but does require a bit of setup.
@@ -128,44 +135,46 @@ but does require a bit of setup.
     === "macOS"
         Install Python using Homebrew.
 
-        ```sh
-        brew install python
+        ```bash
+        $ brew install python
         ```
 
     === "Linux"
         === "Debian"
             1. Ensure your package manager is up to date:
-            ```sh
-            sudo apt update && sudo apt upgrade
+            ```bash
+            $ sudo apt update && sudo apt upgrade
             ```
 
             2. Install Python:
-            ```sh
-            sudo apt install python3 python3-pip python3-virtualenv
+            ```bash
+            $ sudo apt install python3 python3-pip python3-virtualenv
             ```
 
         === "Arch"
             === "pacman"
 
                 1. Ensure your package manager is up to date:
-                ```sh
+                ```bash
                 sudo pacman -Syu
                 ```
 
                 2. Install Python:
-                ```sh
+                ```bash
                 sudo pacman -S python python-pip python-virtualenv
                 ```
 
             === "yay"
-                ```sh
+                1. Install Python:
+
+                ```bash
                 yay -S python python-pip python-virtualenv
                 ```
 
 After installation,
 you can verify that everything is working by running the following commands in a terminal:
 
-```sh
+```bash
 $ python --version
 $ pip --version
 ```
@@ -191,8 +200,8 @@ and use them to process audio and video.
     === "macOS"
         Install Vapoursynth using Homebrew.
 
-        ```sh
-        brew install vapoursynth
+        ```bash
+        $ brew install vapoursynth
         ```
 
     === "Linux"
@@ -202,12 +211,12 @@ and use them to process audio and video.
             1. The Vapoursynth is available in the [deb-multimedia repository](https://www.deb-multimedia.org/).
             Follow the instructions on their site to add the repository to your system.
             3. Update your package manager:
-            ```sh
+            ```bash
             sudo apt update
             ```
 
             4. Install Vapoursynth:
-            ```sh
+            ```bash
             sudo apt install vapoursynth
             ```
 
@@ -215,26 +224,26 @@ and use them to process audio and video.
             === "pacman"
 
                 1. Ensure your package manager is up to date:
-                ```sh
+                ```bash
                 sudo pacman -Syu
                 ```
 
                 2. Install Vapoursynth:
-                ```sh
+                ```bash
                 sudo pacman -S vapoursynth
                 ```
 
             === "yay"
                 1. Install Vapoursynth:
 
-                ```sh
+                ```bash
                 yay -S vapoursynth
                 ```
 
 After installation,
 you can verify that everything is working by running the following commands in a terminal:
 
-```sh
+```bash
 $ vspipe --version
 ```
 
@@ -250,111 +259,125 @@ It adds, among other things:
 - `vs-preview`, a previewer for VapourSynth with plugin support and many useful features for encoders.
 - Many helper functions and classes for developing Vapoursynth packages.
 
-=== "Windows"
-    To install it, open a terminal and run:
+!!! example "Installing JET"
+    === "Windows"
+        1. Install JET using pip:
 
-    ```bash
-    $ pip install vsjet
-    ```
+        ```bash
+        $ pip install vsjet
+        ```
 
-=== "macOS"
-    To install it, open a terminal and run:
+    === "macOS"
+        1. Install JET using pip:
 
-    ```bash
-    $ pip install vsjet
-    ```
+        ```bash
+        $ pip install vsjet
+        ```
 
-=== "Linux"
-    === "Debian"
+    === "Linux"
+        === "Debian"
+            !!! info "Stub"
+                This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
+                You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
 
-        !!! info "Stub"
-            This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-            You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+        === "Arch"
+            You can install the packages using the `vapoursynth-plugin-vsjet-meta-git` AUR package.
 
-    === "Arch"
-        You can install the packages using the `vapoursynth-plugin-vsjet-meta-git` AUR package.
+            === "pacman"
 
-        === "pacman"
+                1. Ensure your package manager is up to date:
 
-            1. Ensure your package manager is up to date:
-            ```sh
-            sudo pacman -Syu
+                   ```bash
+                   sudo pacman -Syu
+                   ```
+
+                2. Install the JET meta package:
+
+                   ```bash
+                   sudo pacman -S vapoursynth-plugin-vsjet-meta-git
+                   ```
+
+            === "yay"
+                3. Install the JET meta package:
+
+                ```bash
+                yay -S vapoursynth-plugin-vsjet-meta-git
                 ```
-
-            2. Install the JET meta package:
-            ```sh
-            sudo pacman -S vapoursynth-plugin-vsjet-meta-git
-            ```
-
-        === "yay"
-            1. Install the JET meta package:
-
-            ```sh
-            yay -S vapoursynth-plugin-vsjet-meta-git
-            ```
 
 ### Updating JET
 
-=== "Windows"
-    === "Stable"
-        You can update the JET packages using the following command:
+!!! example "Updating JET"
+    === "Windows"
+        === "Stable"
+            1. You can update the JET packages using the following command:
 
-        ```bash
-        $ vsjet
-        ```
+            ```bash
+            $ vsjet
+            ```
 
-    === "Nightly"
-        !!! danger "Nightly version"
-            Nightly/latest versions are not always stable.
-            They may contain bugs or other issues that could cause problems.<br>
-            If you run into issues,
-            you can follow the "Stable" instructions again to roll back to a stable version.
+        === "Nightly"
+            !!! danger "Nightly version"
+                Nightly/latest versions are not always stable.
+                They may contain bugs or other issues that could cause problems.<br>
+                If you run into issues,
+                you can follow the "Stable" instructions again to roll back to a stable version.
 
-        If you want to install the nightly version,
-        you can use the following command:
+            1. If you want to install the nightly version,
+            you can use the following command:
 
-        ```bash
-        $ vsjet latest
-        ```
+            ```bash
+            $ vsjet latest
+            ```
 
-        This will install the latest bleeding-edge versions of every JET package.
+            This will install the latest bleeding-edge versions of every JET package.
 
-=== "macOS"
-    === "Stable"
-        You can update the JET packages using the following command:
+    === "macOS"
+        === "Stable"
+            1. You can update the JET packages using the following command:
 
-        ```bash
-        $ vsjet
-        ```
+            ```bash
+            $ vsjet
+            ```
 
-    === "Nightly"
-        !!! danger "Nightly version"
-            Nightly/latest versions are not always stable.
-            They may contain bugs or other issues that could cause problems.<br>
-            If you run into issues,
-            you can follow the "Stable" instructions again to roll back to a stable version.
+        === "Nightly"
+            !!! danger "Nightly version"
+                Nightly/latest versions are not always stable.
+                They may contain bugs or other issues that could cause problems.<br>
+                If you run into issues,
+                you can follow the "Stable" instructions again to roll back to a stable version.
 
-        If you want to install the nightly version,
-        you can use the following command:
+            1. If you want to install the nightly version,
+            you can use the following command:
 
-        ```bash
-        $ vsjet latest
-        ```
+            ```bash
+            $ vsjet latest
+            ```
 
-        This will install the latest bleeding-edge versions of every JET package.
+            This will install the latest bleeding-edge versions of every JET package.
 
-=== "Linux"
-    === "Debian"
+    === "Linux"
+        === "Debian"
+            !!! info "Stub"
+                This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
+                You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
 
-        !!! info "Stub"
-            This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-            You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+        === "Arch"
+            !!! info "Stub"
+                This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
+                You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
 
-    === "Arch"
-        !!! info "Stub"
-            This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-            You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+## Code editor
 
-## Installing your IDE
+TODO
+
+### Installing VSCode
+
+TODO
+
+### Setting up VSCode
+
+TODO
+
+## Installing plugins
 
 TODO
