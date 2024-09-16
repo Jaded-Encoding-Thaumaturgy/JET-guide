@@ -13,7 +13,7 @@
     has absolutely zero Vapoursynth or Python experience
     and is starting fresh.
     If you're already semi-experienced,
-    you may want the [quickstart guide][quickstart] instead.
+    you may want to look at the [quickstart guide][quickstart] instead.
 
 This page explains how to install both Vapoursynth and JET,
 as well as how to set up your code editor and previewer.

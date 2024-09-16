@@ -11,7 +11,7 @@
 These are quickstart instructions to get you started immediately.
 
 !!! warning
-    Only follow these if you're already familiar with Python
+    Only follow these instructions if you're already familiar with Python
     or installing packages yourself.
     If you're new,
     we suggest following the [standard installation guide](standard.md) instead.
