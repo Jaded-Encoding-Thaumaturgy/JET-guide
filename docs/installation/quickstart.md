@@ -11,7 +11,7 @@ It may be a good idea to get a clean slate before continuing.
     <summary>Removing existing installations</summary>
        <div class="tab-content">
            <div class="admonition question">
-               <p class="admonition-title">Question</p>
+               <p class="admonition-title">Necessity</p>
                <p>It's unknown how necessary this step is.
                If you're a programmer,
                you might want to keep your existing Python installation,
@@ -43,10 +43,10 @@ Installing JET and its dependencies is pretty straightforward.
 
 !!! example "Installation steps"
     === ":fontawesome-brands-windows: Windows"
-        1. Install that version or a newer version from the [Python website](https://www.python.org/downloads/).<br>
+        1. Install that version or a newer version from the [Python website][python-download].<br>
             Make sure to select the option to "_Add Python to PATH_"!
 
-        2. Download the [latest GitHub release](https://github.com/vapoursynth/vapoursynth/releases) for Vapoursynth.
+        2. Download the [latest GitHub release][vapoursynth-release] for Vapoursynth.
 
         3. Install JET using pip:
 
@@ -75,7 +75,7 @@ Installing JET and its dependencies is pretty straightforward.
 
     === ":fontawesome-brands-linux: Linux"
         === "Debian"
-            1. Add the [deb-multimedia repository](https://www.deb-multimedia.org/) to your system
+            1. Add the [deb-multimedia repository][deb-multimedia] to your system
                by following the instructions on their site.
 
             2. Ensure your package manager is up to date:
@@ -146,3 +146,21 @@ Installing JET and its dependencies is pretty straightforward.
                    ```bash
                    $ yay -S vapoursynth-plugin-vsjet-meta-git
                    ```
+
+Verify the installation by running the following commands in a terminal:
+
+```bash
+$ vspipe --version
+```
+
+```bash
+$ python
+>>> from vapoursynth import core
+>>> str(core)
+'VapourSynth Video Processing Library\nCopyright (c) 2012-2024 Fredrik Mellbin\n\tCore R70\n\tAPI R4.1\n\tAPI R3.6\n\tOptions: -\n\tNumber of Threads: 32\n\tMax Cache Size: 4096\n'
+```
+
+[//]: # (programs and other urls)
+[python-download]: https://www.python.org/downloads/
+[vapoursynth-release]: https://github.com/vapoursynth/vapoursynth/releases
+[deb-multimedia]: https://www.deb-multimedia.org/

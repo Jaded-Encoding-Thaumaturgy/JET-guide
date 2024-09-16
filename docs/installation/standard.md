@@ -1,16 +1,16 @@
 # Standard setup
 
-!!! info "Stub"
-    This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-    You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+!!! warning "Stub"
+    This page is a [stub][wikipedia-stubs].
+    You can help by [expanding it][contributing]
 
-!!! warning "User skill level"
+!!! info "User skill level"
     This guide is written assuming the user
     has absolutely zero Vapoursynth or Python experience
     and is starting fresh,
     as many Vapoursynth users are not programmers.
     If you are looking for the quickstart guide,
-    you can find it [here](./quickstart.md).
+    you can find it [here][quickstart].
 
 This page explains how to install both VapourSynth and JET,
 as well as how to set up your code editor and previewer.
@@ -29,7 +29,7 @@ you should have a basic understanding of a couple of things.
 
 If you're using Windows,
 it's recommended to use Windows Terminal
-with cmd or [git bash](https://git-scm.com/downloads) shell
+with cmd or [git bash][git-bash] shell
 as the default profile.
 
 If you're a PowerShell user,
@@ -39,7 +39,7 @@ to make them work with PowerShell.
 The terminal will be used a lot,
 so it's recommended you get comfortable with it as soon as possible.
 For a basic introduction,
-see [this guide](https://www.freecodecamp.org/news/command-line-for-beginners/).
+see [this guide][terminal-guide].
 
 ### Code blocks
 
@@ -62,6 +62,18 @@ see [this guide](https://www.freecodecamp.org/news/command-line-for-beginners/).
 
   This means you should run the command in your terminal (without the `$`).
 
+  If you see a code block like these:
+
+  ```python
+  >>> some_code
+  ```
+
+  ```python
+  >>> def some_function():
+  ...     some_code
+  ```
+
+  This means you should run the code in your Python interpreter (without the `>>>` or `...`).
 
 ## Pre-installation
 
@@ -78,7 +90,7 @@ to get a clean slate before continuing.
     <summary>Removing existing installations</summary>
        <div class="tab-content">
            <div class="admonition question">
-               <p class="admonition-title">Question</p>
+               <p class="admonition-title">Necessity</p>
                <p>It's unknown how necessary this step is.
                If you're a programmer,
                you might want to keep your existing Python installation,
@@ -123,11 +135,11 @@ but does require a bit of setup.
             The store version can have compatibility issues
             with certain packages and tools.
 
-        1. Check the [Vapoursynth documentation](http://www.vapoursynth.com/doc/installation.html)
+        1. Check the [Vapoursynth documentation][vapoursynth-doc]
             to find out the latest Python version currently supported by Vapoursynth.
             At the time of writing, that's _Python 3.12_.
 
-        2. Install that version or a newer version from the [Python website](https://www.python.org/downloads/).<br>
+        2. Install that version or a newer version from the [Python website][python-download].<br>
             Make sure to select the option to "_Add Python to PATH_"!
 
         3. Once you've downloaded the installer,
@@ -166,7 +178,7 @@ but does require a bit of setup.
                 ```
 
             === "yay"
-                1. Install Python:
+                3. Install Python:
 
                 ```bash
                 yay -S python python-pip python-virtualenv
@@ -193,7 +205,7 @@ and use them to process audio and video.
             you should avoid using the portable versions,
             as this can complicate things.
 
-        1. Download the [GitHub release](https://github.com/vapoursynth/vapoursynth/releases)
+        1. Download the [GitHub release][vapoursynth-release]
         of VapourSynth that is tagged as "Latest".
 
         2. Run the installer and select "Install for this user only" if asked.
@@ -209,14 +221,14 @@ and use them to process audio and video.
 
         === "Debian"
 
-            1. The Vapoursynth is available in the [deb-multimedia repository](https://www.deb-multimedia.org/).
+            1. The Vapoursynth is available in the [deb-multimedia repository][deb-multimedia].
             Follow the instructions on their site to add the repository to your system.
-            3. Update your package manager:
+            2. Update your package manager:
             ```bash
             sudo apt update
             ```
 
-            4. Install Vapoursynth:
+            3. Install Vapoursynth:
             ```bash
             sudo apt install vapoursynth
             ```
@@ -235,7 +247,7 @@ and use them to process audio and video.
                 ```
 
             === "yay"
-                1. Install Vapoursynth:
+                3. Install Vapoursynth:
 
                 ```bash
                 yay -S vapoursynth
@@ -246,6 +258,13 @@ you can verify that everything is working by running the following command in a 
 
 ```bash
 $ vspipe --version
+```
+
+```bash
+$ python
+>>> from vapoursynth import core
+>>> str(core)
+'VapourSynth Video Processing Library\nCopyright (c) 2012-2024 Fredrik Mellbin\n\tCore R70\n\tAPI R4.1\n\tAPI R3.6\n\tOptions: -\n\tNumber of Threads: 32\n\tMax Cache Size: 4096\n'
 ```
 
 ## Installing JET packages
@@ -270,7 +289,7 @@ It adds, among other things:
         and not ready for use.
 
         For a list of all packages that will be installed,
-        see the [vs-jet requirements](https://github.com/Jaded-Encoding-Thaumaturgy/vs-jet/blob/master/requirements.txt).
+        see the [vs-jet requirements][vsjet-requirements].
 
     === ":fontawesome-brands-windows: Windows"
         1. Install JET using pip:
@@ -288,9 +307,9 @@ It adds, among other things:
 
     === ":fontawesome-brands-linux: Linux"
         === "Debian"
-            !!! info "Stub"
-                This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-                You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+            !!! warning "Stub"
+                This page is a [stub][wikipedia-stubs].
+                You can help by [expanding it][contributing]
 
         === "Arch"
             You can install the packages using the `vapoursynth-plugin-vsjet-meta-git` AUR package.
@@ -318,7 +337,7 @@ It adds, among other things:
 
 ### Updating packages
 
-!!! example "Updating JET"
+!!! example "Updating JET packages"
     === "Stable"
         Stable versions are built from tagged releases
         of every JET package's git repository.
@@ -342,14 +361,14 @@ It adds, among other things:
 
         === ":fontawesome-brands-linux: Linux"
             === "Debian"
-                !!! info "Stub"
-                    This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-                    You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+                !!! warning "Stub"
+                    This page is a [stub][wikipedia-stubs].
+                    You can help by [expanding it][contributing]
 
             === "Arch"
-                !!! info "Stub"
-                    This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-                    You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+                !!! warning "Stub"
+                    This page is a [stub][wikipedia-stubs].
+                    You can help by [expanding it][contributing]
 
     === "Nightly"
         !!! danger "Nightly version"
@@ -360,10 +379,13 @@ It adds, among other things:
 
         Nightly (or "latest") versions are built from the latest commit
         on the main branch of every JET package's git repository.
+        These will be bleeding-edge versions,
+        and include the latest features
+        as well as potentially breaking changes.
 
         To install the latest versions of individual packages,
-        you must install them separately.<br>
-        A list of all package repositories can be found [here](https://github.com/orgs/Jaded-Encoding-Thaumaturgy/repositories?q=language%3APython).
+        you must do so separately.<br>
+        A list of all package repositories can be found [here][vsjet-python-repositories].
 
         === ":fontawesome-brands-windows: Windows"
             1. If you want to install the nightly version,
@@ -372,8 +394,6 @@ It adds, among other things:
             ```bash
             $ vsjet latest
             ```
-
-            This will install the latest bleeding-edge versions of every JET package.
 
         === ":fontawesome-brands-apple: MacOS"
             1. If you want to install the nightly version,
@@ -385,15 +405,14 @@ It adds, among other things:
 
         === ":fontawesome-brands-linux: Linux"
             === "Debian"
-                !!! info "Stub"
-                    This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-                    You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
+                !!! warning "Stub"
+                    This page is a [stub]().
+                    You can help by [expanding it][contributing]
 
             === "Arch"
-                !!! info "Stub"
-                    This page is a [stub](https://en.wikipedia.org/wiki/Wikipedia:Stubs).
-                    You can help by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing).
-
+                !!! warning "Stub"
+                    This page is a [stub][wikipedia-stubs].
+                    You can help by [expanding it][contributing].
 
 ## Code editor
 
@@ -410,3 +429,20 @@ TODO
 ## Installing plugins
 
 TODO
+
+[//]: # (stubs)
+[contributing]: https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide?tab=readme-ov-file#contributing
+[wikipedia-stubs]: https://en.wikipedia.org/wiki/Wikipedia:Stubs
+
+[//]: # (programs and other urls)
+[quickstart]: ./quickstart.md
+[vsjet-python-repositories]: https://github.com/orgs/Jaded-Encoding-Thaumaturgy/repositories?q=language%3APython
+[vsjet-requirements]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-jet/blob/master/requirements.txt
+
+[//]: # (programs and other urls)
+[python-download]: https://www.python.org/downloads/
+[vapoursynth-doc]: http://www.vapoursynth.com/doc/installation.html
+[vapoursynth-release]: https://github.com/vapoursynth/vapoursynth/releases
+[deb-multimedia]: https://www.deb-multimedia.org/
+[git-bash]: https://gitforwindows.org/
+[terminal-guide]: https://www.freecodecamp.org/news/command-line-for-beginners/

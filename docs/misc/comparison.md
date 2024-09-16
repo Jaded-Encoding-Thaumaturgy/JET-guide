@@ -9,7 +9,7 @@ This guide goes through the process of setting up and effectively utilizing [VSP
 
 ### VSPreview
 
-VSPreview is a previewer application for scripts created in VapourSynth. It features a simple graphical interface to allow you to use VapourSynth's features (and create comparisons) with ease. This should already be installed in your environment if you followed the [setup](../basics/setup.md).
+VSPreview is a previewer application for scripts created in VapourSynth. It features a simple graphical interface to allow you to use VapourSynth's features (and create comparisons) with ease. This should already be installed in your environment if you followed the [setup](../installation/standard.md).
 
 #### Dependencies
 
