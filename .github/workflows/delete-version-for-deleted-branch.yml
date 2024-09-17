@@ -1,0 +1,26 @@
+name: Delete site version for deleted branch
+on: delete
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    if: github.event.ref_type == 'branch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Configure github actions user
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+      - name: Prep Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install pip deps
+        run: python -m pip install --user mkdocs-material mkdocstrings[python] pymdown-extensions mike
+      - name: Delete version for branch
+        run: mike delete -p ${{ github.event.ref }}
