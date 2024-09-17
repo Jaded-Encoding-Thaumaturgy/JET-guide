@@ -1,0 +1,1405 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Various guides on encoding by JET">
+      
+      
+        <meta name="author" content="Jaded Encoding Thaumaturgy">
+      
+      
+        <link rel="canonical" href="https://jaded-encoding-thaumaturgy.github.io/JET-guide/wip_codecs_containers/basics/setup/">
+      
+      
+        <link rel="prev" href="../../resources/">
+      
+      
+        <link rel="next" href="../python-primer/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+    
+    
+      
+        <title>Setup and First Steps - JET Encoding Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#setup-and-first-steps" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="JET Encoding Guide" class="md-header__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JET Encoding Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setup and First Steps
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="JET Encoding Guide" class="md-nav__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    JET Encoding Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encoding Resources
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Setup and First Steps
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Setup and First Steps
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-a-clean-slate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting a Clean Slate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-python-and-vapoursynth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Python and VapourSynth
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-vapoursynth-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing VapourSynth Plugins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-jet-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing the JET Packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-your-code-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing your Code Editor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opening-your-first-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opening your First File
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-few-further-first-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      A few further First Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A few further First Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-comfortable-with-vs-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Comfortable with vs-preview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-second-output-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Second Output Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#going-jet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Going JET
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-better-source-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Better Source Filter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-primer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Primer on Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../howdoi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I ...?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../babys-first-script/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Baby's first script
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Filtering
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/order/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Order of Filtering Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Descaling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Descaling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/descaling/descaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Descaling Theory
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/descaling/known-resolutions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known Native Resolutions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/dehardsubbing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dehardsubbing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://wobbly.encode.moe" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wobbly 🡕
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://thewiki.moe/tutorials/dvdremux/#correcting-sarpar" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correcting SAR/PAR 🡕
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Encoding
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Encoding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encoding/x264params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x264 Parameters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Misc
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/codecs_containers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Codecs, Containers, and Source Filters
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comparison
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#getting-a-clean-slate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting a Clean Slate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-python-and-vapoursynth" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Python and VapourSynth
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-vapoursynth-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing VapourSynth Plugins
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-jet-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing the JET Packages
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-your-code-editor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing your Code Editor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opening-your-first-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opening your First File
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-few-further-first-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      A few further First Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A few further First Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getting-comfortable-with-vs-preview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting Comfortable with vs-preview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-second-output-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      A Second Output Node
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#going-jet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Going JET
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-a-better-source-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using a Better Source Filter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="setup-and-first-steps">Setup and First Steps</h1>
+<p>This page explains how to install VapourSynth and the JET packages,
+as well as how to properly set up your code editor and previewer.
+If you know what you're doing, you can skip or modify any of the steps listed here,
+but if you run into issues this should be a fairly foolproof way to get things working again.</p>
+<p>If you're using Linux, it's very strongly recommended to use Arch Linux or a derivative,
+as that is the only distribution that provides sufficiently many of the required programs
+and plugins as packages or via the AUR.
+On other distributions you risk a great amount of pain compiling a ton of programs and plugins manually.
+The rest of this page will assume that Linux users use Arch Linux.</p>
+<h2 id="getting-a-clean-slate">Getting a Clean Slate</h2>
+<p>If you're on Linux, you can probably skip this step.</p>
+<p>If you have VapourSynth or any version of Python installed, uninstall them.
+Also delete any leftover directories like</p>
+<ul>
+<li><code>%APPDATA%/VapourSynth</code></li>
+<li><code>%APPDATA%/Python</code></li>
+<li><code>%LOCALAPPDATA%/Programs/VapourSynth</code></li>
+<li><code>%LOCALAPPDATA%/Programs/Python</code></li>
+</ul>
+<p>on Windows.</p>
+<h2 id="installing-python-and-vapoursynth">Installing Python and VapourSynth</h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Check the <a href="http://www.vapoursynth.com/doc/installation.html">VapourSynth documentation</a>
+to find out the latest Python version currently supported by VapourSynth,
+and install it from the <a href="https://www.python.org/downloads/">Python website</a>.
+At the time of writing, that's Python 3.12.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure to install Python to PATH!
+This is not strictly necessary,
+but will make your life a lot easier.
+During installation, this will be
+the "Add Python to environment variables" option.</p>
+</div>
+<p>Then, download the latest <a href="https://github.com/vapoursynth/vapoursynth/releases">GitHub release</a>
+of VapourSynth and install it.</p>
+<p>Unless you want to risk running into issues, install the installer versions (not the portable ones)
+and select "Install for this user only" when asked.</p>
+</div>
+<div class="tabbed-block">
+<p>Install Python and VapourSynth using your package manager.
+Also install <code>vsgenstubs</code> (<code>vapoursynth-tools-genstubs-git</code> on the AUR)</p>
+</div>
+</div>
+</div>
+<h2 id="installing-vapoursynth-plugins">Installing VapourSynth Plugins</h2>
+<p>VapourSynth itself only provides a frame server,
+i.e. the ability to load plugins and use them to process audio and video.
+The meat of the VapourSynth ecosystem lies in these plugins,
+which need to be installed separately.</p>
+<p>If you ever want to run a VapourSynth script or call some function and get an error message like</p>
+<p><code>No attribute with the name bs exists. Did you mistype a plugin namespace or forget to install a plugin?</code>,</p>
+<p>this means that you need to install the mentioned plugin, in this case <code>bs</code> (which is short for bestsource).</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label><label for="__tabbed_2_2">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>On Windows, plugins are installed using VSRepo.
+Open a terminal and run <code>vsrepo.py available</code> to list all installable plugins.
+To install a plugin (e.g. <code>bs</code>), run <code>vsrepo.py install bs</code>.
+You can install multiple plugins at once to save time, e.g. <code>vsrepo.py install bs lsmas</code>.</p>
+<div class="admonition bug">
+<p class="admonition-title">Note</p>
+<p>VSRepo can be finnicky depending on your configuration and file associations.
+(TODO figure out some foolproof method to call it or fix it upstream)
+If you run into issues running vsrepo, try using a different terminal (cmd or PowerShell)
+or calling it as <code>vsrepo</code> or <code>python -m vsrepo</code> rather than <code>vsrepo.py</code>.
+If all else fails, you can manually navigate to the folder VSRepo is in
+(usually <code>%localappdata%/Programs/VapourSynth/vsrepo</code>), open a terminal there,
+and run <code>python vsrepo.py</code> with your arguments.
+Alternatively, you can also try <a href="https://github.com/theChaosCoder/VSRepoGUI">VSRepoGUI</a>.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p>Install plugins using your package manager, e.g. <code>vapoursynth-plugin-bestssource</code> on Arch Linux.
+A few plugins are available in the official repositories, but for most of them you'll need to use the AUR.</p>
+<p>After you've installed a plugin, run <code>vsgenstubs4</code> to generate function stubs for the installed plugins,
+which will help your language server.</p>
+</div>
+</div>
+</div>
+<p>To start out, install the following plugins:</p>
+<ul>
+<li><code>bs</code> and <code>lsmas</code>, to load audio and video</li>
+<li><code>akarin</code> and <code>libp2p</code>, which may be needed by vs-preview.</li>
+</ul>
+<h2 id="installing-the-jet-packages">Installing the JET Packages</h2>
+<p>The JET python packages build on top of the existing plugin ecosystem to provide</p>
+<ul>
+<li>More convenient and Pythonic wrapper functions around various plugins</li>
+<li>More complex filtering functions which combine functions of various plugins
+  to achieve various filtering goals</li>
+<li>vs-preview, a previewer for VapourSynth with plugin support and many useful features for encoders.</li>
+</ul>
+<p>To install it, open a terminal and run:</p>
+<p><code>pip install vsjet</code></p>
+<p>followed by</p>
+<p><code>vsjet</code></p>
+<p>To update your JET packages, you can run <code>vsjet</code> again.</p>
+<p>If you run into issues with any JET package,
+first update them to their latest git version by running <code>vsjet latest</code>.
+This will update to the absolute latest version,
+but since these can be very bleeding-edge,
+they're not normally recommended for inexperienced users.</p>
+<p>Linux users may need to create a virtualenv to install the packages or try their luck with <code>pipx</code>.
+On Arch Linux, you can use the <a href="https://aur.archlinux.org/packages/vapoursynth-plugin-vsjet-meta-git"><code>vapoursynth-plugin-vsjet-meta-git</code></a> AUR package.
+Note that reinstalling the meta package is not enough to update all vsjet packages, you need to reinstall all of its dependencies.
+Either try your luck with an option like <code>--rebuild tree</code> in your AUR helper (I couldn't get <code>--rebuildtree</code> working for this in <code>yay</code>, but maybe I was just too dumb),
+or just copy-paste the dependency list and reinstall all of the listed packages.</p>
+<h2 id="installing-your-code-editor">Installing your Code Editor</h2>
+<p>You're now ready to use JET packages with VapourSynth.
+However, it's strongly recommended to also install a code editor or IDE,
+in order to benefit from a Python language server to see available plugins, functions, documentation, etc.
+The simplest choice is VS Code:</p>
+<ul>
+<li>Install VS Code from <a href="https://code.visualstudio.com/download">its download page</a></li>
+<li>Follow the <a href="https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview/blob/master/docs/installation/install_vscode.rst">vs-preview documentation</a>
+  to configure VS Code to work with VapourSynth and vs-preview.</li>
+</ul>
+<h2 id="opening-your-first-file">Opening your First File</h2>
+<p>With everything set up, it's time to open your first video in VapourSynth.
+Start by finding your favorite video file, and copy its path (e.g. <code>C:/Path/to/my/file.mkv</code>).
+Then, make a file called <code>myscript.vpy</code>, and open it (for example in VS Code).
+Write the following into it:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span style="color: #C678DD">import</span> <span style="color: #E06C75">vapoursynth</span> <span style="color: #C678DD">as</span> <span style="color: #E06C75">vs</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span style="color: #E06C75">core</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">core</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Where, obviously, you should replace the path with the path to your own video file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example uses the <code>lsmas.LWLibavSource</code> source filter because of its faster indexing.
+For any kind of more serious work, <code>bs.VideoSource</code> is recommended,
+since only that filter can fully guarantee accurate seeking.</p>
+</div>
+<p>Then, open this file in vs-preview.
+If you've correctly set up VS Code, you should be able to just press F5.
+Otherwise, you can also open a terminal in your script's directory and run <code>vspreview myscript.vpy</code>.</p>
+<p>You should see vs-preview open and display your video.</p>
+<h2 id="a-few-further-first-steps">A few further First Steps</h2>
+<p>With this, you've learned how to install everything you need.
+The following will explain a few basic first steps if this is your first time using VapourSynth or vs-preview.</p>
+<h3 id="getting-comfortable-with-vs-preview">Getting Comfortable with vs-preview</h3>
+<p>If you've followed the instructions above, you should now have vs-preview opened and should be able to preview your video file.
+Here are a few things you can try out:</p>
+<ul>
+<li>Press Space to play or pause</li>
+<li>Click around in the timeline bar below the video display to step around the video</li>
+<li>Ctrl+Scroll to zoom and Click+Drag to pan around the displayed image</li>
+<li>Click the "Pipette" button at the bottom and look at the values at the bottom changing while you move your mouse around the image.</li>
+<li>Click the "Benchmark" button at the bottom and click "Run" to find out how fast your VapourSynth script runs.
+    At the moment, your script just loads a video, so it should be fairly fast,
+    but in the future your scripts might contain more complex filtering, and knowing how fast or slow your filtering is will be more important.</li>
+<li>Click the "Comp" button at the bottom and click "Start Upload".
+    Once the upload is done, find the box containing a <code>slow.pics</code> link and press the button next to it to copy that link to your clipboard.
+    Open that link in your browser: You'll get a <code>slow.pics</code> comparison of random frames in your video.
+    If your script has multiple outputs, the comparison will show all output nodes.</li>
+<li>
+<p>Move your mouse to the very right of vs-preview's window and drag the bar there to the left.
+    This opens the plugins panel, which contains one tab for each vs-preview plugin.
+    First, open the "Frame Props" tab and have a look at the values there.</p>
+<p>Then, open the "Split Planes" tab.
+This shows the individual planes of your video.
+For your average video clip, this will consist of one luma plane and two chroma planes with half the width and height.
+You can press Ctrl+A to unlock the split planes view,
+which will allow you to freely zoom and pan around in the view like you would on the normal video.</p>
+</li>
+</ul>
+<h3 id="a-second-output-node">A Second Output Node</h3>
+<p>Now, let's do some actual filtering.
+Add two lines to the bottom of your VapourSynth script, so that it looks as follows:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1"> 1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-2"> 2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-3"> 3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-4"> 4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-5"> 5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-6"> 6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-7"> 7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-8"> 8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-9"> 9</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-10">10</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span style="color: #C678DD">import</span> <span style="color: #E06C75">vapoursynth</span> <span style="color: #C678DD">as</span> <span style="color: #E06C75">vs</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span style="color: #E06C75">core</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">core</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">BoxBlur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span style="color: #E06C75">blurred</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Then press Ctrl+R to reload vs-preview.</p>
+<div class="admonition warning">
+<p class="admonition-title">Note</p>
+<p>Reloading vs-preview in-place with Ctrl+R uses dark magic and can occasionally break with certain complex scripts.
+If you run into issues with reloading, the foolproof way is always to close and reopen vs-preview.</p>
+</div>
+<p>If you open the drop-down at the bottom left of vs-preview,
+you should now see two output nodes you can switch between.
+The first is your video, the second is a slightly blurred version of your video.
+You can also press the 1 and 2 keys to switch between them (which is the recommended method since it's much faster).</p>
+<h3 id="going-jet">Going JET</h3>
+<p>The above example code only used standard VapourSynth functions; except for vs-preview we didn't use any JET packages.
+But even in such a simple script, JET packages can save you a bit of work.
+Let's see how this script could be modified:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-6">6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-7">7</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vstools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">core</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">set_output</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">BoxBlur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blurred</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Let's go over the differences:</p>
+<ol>
+<li>The top lines are different.
+   While standard VapourSynth scripts start with the incantations <code>import vapoursynth as vs</code> and <code>core = vs.core</code>,
+   the JET way is <code>from vstools import core, set_output</code> (possibly followed by further imports).
+   This is not a big difference, but it does cut down the boilerplate to one line.</li>
+<li>We no longer need to give numbers to <code>set_output</code>.
+   When using <code>clip.set_output</code>, you need to give <code>set_output</code> a number to specify what output node the given clip should be.
+   When you want to add another node at the start, you'd need to update the numbers of all following output nodes, which can be annoying.
+   The <code>set_output</code> function in vs-tools automatically numbers nodes based on the order they're output in.</li>
+<li>Nodes are automatically named.
+   If you open the above script in vs-preview, you'll see that the dropdown in the bottom left now contains the names <code>clip</code> and <code>blurred</code>
+   instead of <code>Video Node 1</code> and <code>Video Node 2</code>, matching how the clips were called in our script.
+   If you were to upload a comparison to slow.pics, the images in the comparison would also be labeled like this.</li>
+</ol>
+<p>We can also name nodes manually by passing another argument to <code>set_output</code>:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Source&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blurred</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Blurred&quot;</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>If you wanted to, you could also replace the <code>BoxBlur</code> call with a JET wrapper:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-6">6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-7">7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-8">8</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vstools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">core</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">set_output</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vsrgtools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">box_blur</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">box_blur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Source&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blurred</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Blurred&quot;</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Whether you want to do this or not is a matter of taste.
+The advantage of writing <code>core.std.BoxBlur</code> explicitly is that
+you see exactly what plugin is called and don't need to worry about understanding the Python wrapper.
+On the other hand, a wrapper like <code>box_blur</code> may have more features
+(e.g. here <code>box_blur</code> allows specifying a different radius for every plane, which <code>core.std.BoxBlur</code> doesn't allow out-of-the-box`)
+and be easier to use.</p>
+<h3 id="using-a-better-source-filter">Using a Better Source Filter</h3>
+<p>Finally, I need to talk about the line</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This is the line that loads your video using the <code>lsmas</code> plugin.
+The <code>LWLibavSource</code> video source is very reliable for most videos you'll encounter,
+but it's not infallible.
+When jumping around the video, it's possible for such source filters to sometimes return the wrong frame,
+which can render your encodes unusable.
+To avoid this, the source filter BestSource is recommended.
+In exchange for needing a long time to process when opening a video for the first time,
+this filter ensures perfect seeking accuracy in audio and video.
+You can call it using</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">bs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VideoSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">showprogress</span><span style="color: #56B6C2">=</span><span style="color: #E5C07B">True</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Don't be surprised if vs-preview takes a long time to open now.
+This is necessary in order for BestSource to be accurate.
+The second time you open the same video, it will be much faster.</p>
+<p>LWLibavSource is still fine when you want to quickly look through some video,
+but as soon as you want to do any kind of actual encoding,
+it's recommended to use BestSource.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      
+    
+  </body>
+</html>
