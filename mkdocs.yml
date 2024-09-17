@@ -1,7 +1,7 @@
 site_name: JET Encoding Guide
 site_description: Various guides on encoding by JET
 site_author: Jaded Encoding Thaumaturgy
-site_url: https://jaded-encoding-thaumaturgy.github.io/JET-guide
+site_url: https://jaded-encoding-thaumaturgy.github.io/JET-guide/
 repo_url: https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide
 
 theme:
@@ -15,6 +15,10 @@ theme:
     - content.code.copy
     - content.code.select
     - navigation.expand
+
+extra:
+  version:
+    provider: mike
 
 nav:
   - Home: index.md
