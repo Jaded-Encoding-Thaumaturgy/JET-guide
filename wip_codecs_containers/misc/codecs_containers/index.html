@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35f28582.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -784,6 +784,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Containers
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -866,6 +875,15 @@
   <a href="#codecs" class="md-nav__link">
     <span class="md-ellipsis">
       Codecs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Containers
     </span>
   </a>
   
@@ -962,6 +980,51 @@ These tricks include:</p>
 Technically, a codec (portmanteau of coder/decoder) is a concrete program or device that encodes or decodes video (or other data), as opposed to the abstract format.
 However, in the multimedia community, many people use "codec" to refer to the format itself (e.g. "What codec does this video use?"), and use "encoder" and "decoder" to refer to concrete programs.
 I will be committing this sin myself occasionally.</p>
+<p>There are two sets of common video coding formats that you are likely to meet in the wild:</p>
+<ol>
+<li>
+<p>The ISO MPEG and ITU-T line of formats. These consist of (among others):</p>
+<ul>
+<li>H.261, specified in <a href="https://www.itu.int/rec/T-REC-H.261">ITU-T Rec. H.261</a>.</li>
+<li>MPEG-1 Part 2, specified in <a href="https://www.iso.org/standard/22411.html">ISO/IEC 11172-2</a>.
+    This format is inspired by H.261.</li>
+<li><strong>H.262 or MPEG-2 Part 2</strong>, specified in <a href="https://www.itu.int/rec/T-REC-H.262">ITU-T Rec. H.262</a> or <a href="https://www.iso.org/standard/61152.html">ISO/IEC 13818-2</a>.
+    This is the video format primarily used in DVD-Video. (DVD-Video additionally supports MPEG-1 Part 2 compression for certain lower-quality formats.)</li>
+<li>H.263, specified in <a href="https://www.itu.int/rec/T-REC-H.263">ITU-T Rec. H.263</a>.</li>
+<li>MPEG-4 Part 2, specified in <a href="https://www.iso.org/standard/39259.html">ISO/IEC 14496-2</a>.
+    This format is partially based on H.263.
+    This is the format encoded by the DivX and Xvid codecs.</li>
+<li><strong>H.264</strong> or MPEG-4 Part 10 or AVC (Advanced Video Coding), specified in <a href="https://www.itu.int/rec/T-REC-H.264">ITU-T Rec. H.264</a> or <a href="https://www.iso.org/standard/83529.html">ISO/IEC 14496-10</a>.
+    This is by far the most ubiquitous video coding format worldwide, and will probably stay that way for at least another decade.
+    It is the format primarily used in (non-UHD) Blu-rays, as well as in many other places in the web, in digital television, or in consumer-level video cameras.
+    (Once again, all of these fields can use other formats, but H.264 is certainly the most common one.)
+    If you plan on learning about one video format in detail, I recommend H.264.</li>
+<li><strong>H.265</strong> or MPEG-H Part 2 or HEVC (High Efficiency Video Coding), specified in <a href="https://www.itu.int/rec/T-REC-H.265">ITU-T Rec. H.265</a> or <a href="https://www.iso.org/standard/85457.html">ISO/IEC 23008-2</a>. This is probably the second most common video format, but due to having a stricter patent situation, it is not natively supported in as many places as H.264. H.265 is used in UHD Blu-rays and frequently in UHD streaming.
+    In particular, HDR and Dolby Vision content is usually in H.265. (H.264 was retrofitted with support for HDR metadata, but in practice H.265 is used more often.)
+    A good short overview of H.265 and its differences to H.265 is given in <a href="https://ieeexplore.ieee.org/document/6316136">this IEEE paper</a>.</li>
+<li>
+<p>H.266 or MPEG-I<sup id="fnref:mpegi"><a class="footnote-ref" href="#fn:mpegi">2</a></sup> Part 3 or VVC (Versatile Video Coding), specified in <a href="https://www.itu.int/rec/T-REC-H.266">ITU-T Rec. H.266</a> or <a href="https://www.iso.org/standard/86516.html">ISO/IEC 23090-3</a>.
+    Starting with H.266, the specification for certain metadata that was mostly shared across H.264/5/6 (namely SEI and VUI) was outsourced into a separate standard document <a href="https://www.itu.int/rec/T-REC-H.274">ITU-T Rec. H.274</a> or <a href="https://www.iso.org/standard/83530.html">ISO/IEC 23002-7</a>, and the values mappings for most VUI fields were outsourced to <a href="https://www.itu.int/rec/T-REC-H.273">ITU-T Rec. H.273</a> or <a href="https://www.iso.org/standard/81546.html">ISO/IEC 23091-2</a>.
+    A short overview of H.266 is given in <a href="https://ieeexplore.ieee.org/document/9503377">this IEEE paper</a>.</p>
+<p>At the time of writing, H.266 was finalized a few years ago, but is only just starting to be adopted:
+Support in players is extremely limited, and next to no practical encoding tooling exists.</p>
+</li>
+<li>
+<p>MPEG-5 Part 1 or EVC (Essential Video Coding), specified in <a href="https://www.iso.org/standard/57797.html">ISO/IEC 23094-1</a> is currently being developed.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The specifications for the formats that are part of ITU-T are freely available, but their implementation and usage is restricted by patents.
+    This is why, for example, many web browsers cannot play H.265 video.
+    For this reason, another popular set of formats is the VPx/AV1 line.
+    This is a series of <em>royalty-free</em> standards, which is why they are, for example, supported in many web browsers.
+    The most notable formats are VP8, VP9, and AV1, with AV1 being the most recent one.
+    As an example, the average YouTube video provides VP9 and H.264 streams, with some videos also having AV1 streams.</p>
+</li>
+</ol>
+<p>There are various other coding formats (the other most notable ones being Theora, VC-1, and Apple ProRes, as well as raw formats like Y4M), but the formats listed above are the ones you're most likely to run into in the wild.</p>
+<h3 id="containers">Containers</h3>
 <h1 id="todo">TODO</h1>
 <ul>
 <li>Rant about bframes vs frame reordering</li>
@@ -973,6 +1036,9 @@ I will be committing this sin myself occasionally.</p>
 <ol>
 <li id="fn:binary">
 <p>Of course, when being completely precise this is only true for <em>digital</em> formats. There also exist analog video formats who have their own fun quirks and intricacies, but I won't really talk about them here.&#160;<a class="footnote-backref" href="#fnref:binary" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:mpegi">
+<p>Note that the I in MPEG-I is the capital letter <code>i</code>, not the number 1.&#160;<a class="footnote-backref" href="#fnref:mpegi" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -1022,10 +1088,10 @@ I will be committing this sin myself occasionally.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>
