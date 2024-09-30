@@ -72,6 +72,48 @@ Technically, a codec (portmanteau of coder/decoder) is a concrete program or dev
 However, in the multimedia community, many people use "codec" to refer to the format itself (e.g. "What codec does this video use?"), and use "encoder" and "decoder" to refer to concrete programs.
 I will be committing this sin myself occasionally.
 
+There are two sets of common video coding formats that you are likely to meet in the wild:
+
+1. The ISO MPEG and ITU-T line of formats. These consist of (among others):
+    - H.261, specified in [ITU-T Rec. H.261](https://www.itu.int/rec/T-REC-H.261).
+    - MPEG-1 Part 2, specified in [ISO/IEC 11172-2](https://www.iso.org/standard/22411.html).
+        This format is inspired by H.261.
+    - **H.262 or MPEG-2 Part 2**, specified in [ITU-T Rec. H.262](https://www.itu.int/rec/T-REC-H.262) or [ISO/IEC 13818-2](https://www.iso.org/standard/61152.html).
+        This is the video format primarily used in DVD-Video. (DVD-Video additionally supports MPEG-1 Part 2 compression for certain lower-quality formats.)
+    - H.263, specified in [ITU-T Rec. H.263](https://www.itu.int/rec/T-REC-H.263).
+    - MPEG-4 Part 2, specified in [ISO/IEC 14496-2](https://www.iso.org/standard/39259.html).
+        This format is partially based on H.263.
+        This is the format encoded by the DivX and Xvid codecs.
+    - **H.264** or MPEG-4 Part 10 or AVC (Advanced Video Coding), specified in [ITU-T Rec. H.264](https://www.itu.int/rec/T-REC-H.264) or [ISO/IEC 14496-10](https://www.iso.org/standard/83529.html).
+        This is by far the most ubiquitous video coding format worldwide, and will probably stay that way for at least another decade.
+        It is the format primarily used in (non-UHD) Blu-rays, as well as in many other places in the web, in digital television, or in consumer-level video cameras.
+        (Once again, all of these fields can use other formats, but H.264 is certainly the most common one.)
+        If you plan on learning about one video format in detail, I recommend H.264.
+    - **H.265** or MPEG-H Part 2 or HEVC (High Efficiency Video Coding), specified in [ITU-T Rec. H.265](https://www.itu.int/rec/T-REC-H.265) or [ISO/IEC 23008-2](https://www.iso.org/standard/85457.html). This is probably the second most common video format, but due to having a stricter patent situation, it is not natively supported in as many places as H.264. H.265 is used in UHD Blu-rays and frequently in UHD streaming.
+        In particular, HDR and Dolby Vision content is usually in H.265. (H.264 was retrofitted with support for HDR metadata, but in practice H.265 is used more often.)
+        A good short overview of H.265 and its differences to H.265 is given in [this IEEE paper](https://ieeexplore.ieee.org/document/6316136).
+    - H.266 or MPEG-I[^mpegi] Part 3 or VVC (Versatile Video Coding), specified in [ITU-T Rec. H.266](https://www.itu.int/rec/T-REC-H.266) or [ISO/IEC 23090-3](https://www.iso.org/standard/86516.html).
+        Starting with H.266, the specification for certain metadata that was mostly shared across H.264/5/6 (namely SEI and VUI) was outsourced into a separate standard document [ITU-T Rec. H.274](https://www.itu.int/rec/T-REC-H.274) or [ISO/IEC 23002-7](https://www.iso.org/standard/83530.html), and the values mappings for most VUI fields were outsourced to [ITU-T Rec. H.273](https://www.itu.int/rec/T-REC-H.273) or [ISO/IEC 23091-2](https://www.iso.org/standard/81546.html).
+        A short overview of H.266 is given in [this IEEE paper](https://ieeexplore.ieee.org/document/9503377).
+
+        At the time of writing, H.266 was finalized a few years ago, but is only just starting to be adopted:
+        Support in players is extremely limited, and next to no practical encoding tooling exists.
+
+    - MPEG-5 Part 1 or EVC (Essential Video Coding), specified in [ISO/IEC 23094-1](https://www.iso.org/standard/57797.html) is currently being developed.
+
+2. The specifications for the formats that are part of ITU-T are freely available, but their implementation and usage is restricted by patents.
+    This is why, for example, many web browsers cannot play H.265 video.
+    For this reason, another popular set of formats is the VPx/AV1 line.
+    This is a series of *royalty-free* standards, which is why they are, for example, supported in many web browsers.
+    The most notable formats are VP8, VP9, and AV1, with AV1 being the most recent one.
+    As an example, the average YouTube video provides VP9 and H.264 streams, with some videos also having AV1 streams.
+
+There are various other coding formats (the other most notable ones being Theora, VC-1, and Apple ProRes, as well as raw formats like Y4M), but the formats listed above are the ones you're most likely to run into in the wild.
+
+[^mpegi]: Note that the I in MPEG-I is the capital letter `i`, not the number 1.
+
+### Containers
+
 
 # TODO
 - Rant about bframes vs frame reordering
