@@ -793,6 +793,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#source-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Filters
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -889,6 +898,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#source-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Filters
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -973,7 +991,9 @@ These tricks include:</p>
 <p><em>Invisible frames</em>: For patent reasons, the VP9/AV1 family of video formats cannot use frame reordering.
       Instead, they use the "totally different, I promise!!" method where they allow marking frames as "Hidden", i.e. not to be output by the decoder, and allow instructions like "Copy this previously decoded frame to the current frame wholesale" to be encoded very efficiently (with only one or two bytes, according to the VP9 specification).
       Such frames are also sometimes called <em>alt-ref frames</em> (though this seems to be encoder-specific terminology, since I cannot find this term anywhere in the actual specifications).</p>
-<p>Once again, this is something that source filters need to be aware of when they want to determine where they need to start decoding to obtain the n-th frame that will actually be output.</p>
+<p>Once again, this is something that source filters need to be aware of when they want to determine where they need to start decoding to obtain the n-th frame that will actually be output.
+- Many other techniques, in particular DCT coding and quantization.
+  In fact, while they're not too relevant for the purposes of this article (since they work on a macroblock level, and don't really affect the encoding or decoding behavior on a frame level as seen from the outside), these are arguably the two most important feature of any video coding format.</p>
 </li>
 </ul>
 <p>Video coding formats are often conflated with <em>codecs</em>:
@@ -1024,7 +1044,97 @@ Support in players is extremely limited, and next to no practical encoding tooli
 </li>
 </ol>
 <p>There are various other coding formats (the other most notable ones being Theora, VC-1, and Apple ProRes, as well as raw formats like Y4M), but the formats listed above are the ones you're most likely to run into in the wild.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Some of the specifications linked above (as well as some of those that will be linked in the future), in particular the ISO specifications with no ITU-T analogue, are not available for free.
+However, you can find most of the important ones from other sources (albeit not always the latest version) with some clever googling.</p>
+</div>
 <h3 id="containers">Containers</h3>
+<p>If you've paid attention in the previous section, you might have picked up on the general theme I'm trying to get across:</p>
+<p><strong><p align=center>Decoding Video is HARD.</p></strong></p>
+<p>And, even worse:</p>
+<p><strong><p align=center>Accurately finding a given frame in a video is MUCH, MUCH, HARDER.</p></strong></p>
+<p>Of course, there exist reference decoders and decoding libraries, and ffmpeg can decode pretty much every video format under the sun (right??),
+so you won't need to write a decoder from scratch.
+So then, what's the problem?
+Well, the point is that the entire architecture of modern video formats is built for the use case of starting to decode at the beginning of a video stream,
+and sequentially decoding from that point onwards, eventually outputting a sequence of pictures in presentation order.
+If you play back a video this way, everything works out nicely.
+Sure, there may be inter-frame dependencies and frame reordering or hidden frames, but your decoding library takes care of all of that,
+so all you need to do as a library user is pass in your file's data and receive the decoded frames.
+But if your goal is "I want to get the frame that shows at exactly 11.803 seconds into the video", things get difficult.
+If you ask a video editor to play a video in reverse they'll click a button in their editing software and press render.
+If you ask a video player developer to play a video in reverse they'll run off sobbing.</p>
+<p>Now, admittedly I have been exaggerating a bit here.
+Of course, videos are not <em>only</em> indended to be played back from the very beginning.
+If they were, applications like live streams and digital television would be impossible.
+Video formats do contain methods to signal <em>random access points</em>,
+i.e. points in the video stream at which a decoder may start decoding and get sensible results.
+Alternatively, a decoder could just jump in at any point (provided that it at least knows where one picture ends and the next begins) and start decoding,
+not caring about the fact that the pictures reference unknown previous pictures.
+Usually, the decoder will recover after a few seconds and arrive at a point where all reference pictures are known.</p>
+<p>However, to be able to identify these random access points, one would need to (at least partially) parse every frame in the video (or at least around the place you want to seek to, provided that you know where to find it in the file).
+If you ("you" in this case being e.g. a video player or source filter) want to support multiple formats, you'd need to implement this parsing capability for every one of them (or rely on additional libraries to do it<sup id="fnref:ffmpeg_parse"><a class="footnote-ref" href="#fn:ffmpeg_parse">3</a></sup>).
+This adds a lot of additional complexity to playing back video.</p>
+<p>This is where container formats come in.
+Container formats package video streams (and other types) and (sometimes) provide metadata like random access points and the positions of different elements in the file,
+so that reading applications can access it in a more codec-agnostic way.
+Such metadata can greatly help with seeking around in video files.</p>
+<p>Of course, this is far from the only use or motivation for container formats.
+Some others include:</p>
+<ul>
+<li>Combining video, audio, subtitles, and additional data (possibly multiple streams of each) into a single file.
+    This is also called <em>multiplexing</em>, or <em>muxing</em> for short.
+    Moreover, most container formats allow for storing multiple streams in an <em>interleaved</em> way,
+    so that one can obtain video, audio, and subtitles for a given time slice just by linearly reading through the file
+    (as opposed to first storing the entire video, then storing the audio, etc, which would require reading multiple sections
+    of the file in order to read all streams at a given timestamp).
+    For the average consumer, this multiplexing is the main use of container formats.</li>
+<li>Storing timestamp/frame rate information.
+    This is another reason why container formats are crucial:
+    Many video formats have no or very little ability to store frame timing information.
+    For example, H.264 does have a way to specify frame timestamps using the picture timing SEI,
+    but to my knowledge it's not actually used.
+    Mkvtoolnix, for example, allows overwriting it with the container's timestamps,
+    but doesn't read it in any way.
+    (MPEG-2 Part 2, however, has an actual <code>frame_rate</code> field, but I don't know to what degree it is used in practice.)
+    Instead, the container formats specify timestamps for video, audio, and subtitles
+    (again in a codec-agnostic way, which makes things much easier for players).
+    This makes both arbitrary constant frame rates and variable frame rates possible.</li>
+<li>Storing additional metadata in a codec-agnostic way.
+    This includes, among others,<ul>
+<li>The video's duration</li>
+<li>Color space and pixel format (including chroma location) information, possibly also HDR metadata</li>
+<li>Cropping information</li>
+<li>File titles, track names, types, and languages, tagging, etc.</li>
+<li>Chapters</li>
+</ul>
+</li>
+<li>Providing checksums or other error detection/recovery methods to minimize the impact of data corruption</li>
+<li>Storing multiple "versions" of the same video/audio in the same file (or group of files), as in DVD angles, BD seamless branching, matroska editions, etc.</li>
+</ul>
+<p>The following are the most common container formats for our purposes:
+- <strong>MPEG-2 Transport Streams</strong> and <strong>Program Streams</strong>:
+    These are specified in <a href="https://www.iso.org/standard/87619.html">MPEG-2 Part 1 (ISO/IEC 13818-2)</a> or <a href="https://www.itu.int/rec/T-REC-H.222.0">ITU-T Rec. H.222</a>.
+    Transport streams (known under file extensions like <code>.ts</code>, <code>.mts</code>, <code>.m2ts</code>, etc.) package video/audio streams into small packets suitable for stream-based transmission.
+    They are used in digital television and on Blu-ray discs.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code>Program streams (known under file extensions like `.ps`, `.mpg`, or `.mpeg`) are designed for more reliable storage media like files on discs.
+For example, VOB files (which are used in DVD-Video) are a subset of MPEG-2 Program Streams.
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>AVI (Audio Video Interleave). I don't know much about this yet but it exists and feels like it should be listed here.</li>
+<li><strong>MPEG-4 files</strong> and their variants:
+    This is a large family of container formats based on the <strong>ISO base media file format</strong> (<a href="https://www.iso.org/standard/83102.html">ISO/IEC 14496-12</a>).
+    The most well-known incarnation is the MPEG-4 format (popular extensions being <code>.mp4</code> and <code>.m4v</code>/<code>.m4a</code>), which is specified in <a href="https://www.iso.org/standard/79110.html">ISO/IEC 14496-14</a>.
+    Other variants include 3GP.
+    There is also the <a href="https://developer.apple.com/documentation/quicktime-file-format">QuickTime File Format</a> (known for the extension <code>.mov</code>) on which the ISO base media file format is based.</li>
+<li><strong>Matroska</strong>: Matroska, known for file extensions like <code>.mkv</code> and <code>.mka</code>/<code>.mks</code>, is an open standard (specified on <a href="https://www.matroska.org/">the Matroska website</a>) that aims to become a universal multimedia container format.
+    Due to its large set of features and supported codecs (like, e.g., it being the only container format to support <code>.ass</code> subtitles),
+    Matroska files have become almost universal in fields like video piracy.
+    Furthermore, the WEBM format, a subset of Matroska, is widely used in the web.</li>
+</ul>
+<h3 id="source-filters">Source Filters</h3>
 <h1 id="todo">TODO</h1>
 <ul>
 <li>Rant about bframes vs frame reordering</li>
@@ -1039,6 +1149,9 @@ Support in players is extremely limited, and next to no practical encoding tooli
 </li>
 <li id="fn:mpegi">
 <p>Note that the I in MPEG-I is the capital letter <code>i</code>, not the number 1.&#160;<a class="footnote-backref" href="#fnref:mpegi" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:ffmpeg_parse">
+<p>ffmpeg will automatically parse packets for you when demuxing and, among others, return a keyframe flag, but I hope that it's still clear that it's very useful to also have metadata about this on a container level.&#160;<a class="footnote-backref" href="#fnref:ffmpeg_parse" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
