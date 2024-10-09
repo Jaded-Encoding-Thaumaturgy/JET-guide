@@ -188,9 +188,10 @@ Some others include:
     - File titles, track names, types, and languages, tagging, etc.
     - Chapters
 - Providing checksums or other error detection/recovery methods to minimize the impact of data corruption
-- Storing multiple "versions" of the same video/audio in the same file (or group of files), as in DVD angles, BD seamless branching, matroska editions, etc.
+- Storing multiple "versions" of the same video/audio in the same file (or group of files), as with DVD angles, BD seamless branching, matroska editions, etc.
 
 The following are the most common container formats for our purposes:
+
 - **MPEG-2 Transport Streams** and **Program Streams**:
     These are specified in [MPEG-2 Part 1 (ISO/IEC 13818-2)](https://www.iso.org/standard/87619.html) or [ITU-T Rec. H.222](https://www.itu.int/rec/T-REC-H.222.0).
     Transport streams (known under file extensions like `.ts`, `.mts`, `.m2ts`, etc.) package video/audio streams into small packets suitable for stream-based transmission.
@@ -198,6 +199,7 @@ The following are the most common container formats for our purposes:
 
     Program streams (known under file extensions like `.ps`, `.mpg`, or `.mpeg`) are designed for more reliable storage media like files on discs.
     For example, VOB files (which are used in DVD-Video) are a subset of MPEG-2 Program Streams.
+
 - AVI (Audio Video Interleave). I don't know much about this yet but it exists and feels like it should be listed here.
 - **MPEG-4 files** and their variants:
     This is a large family of container formats based on the **ISO base media file format** ([ISO/IEC 14496-12](https://www.iso.org/standard/83102.html)).
@@ -208,6 +210,18 @@ The following are the most common container formats for our purposes:
     Due to its large set of features and supported codecs (like, e.g., it being the only container format to support `.ass` subtitles),
     Matroska files have become almost universal in fields like video piracy.
     Furthermore, the WEBM format, a subset of Matroska, is widely used in the web.
+- Raw codecs: While one can argue that these aren't really containers, they should still be mentioned here (and are treated like containers in a lot of software like ffmpeg).
+    A "raw" codec file (e.g. `.h264` or `.h265`/`.hevc` files) is just the video format's encoded data stored in a file.
+    This is a simple but necessary step: Raw H.264/5 video data, for example, is not a file in and of itself.
+    Instead (as we will see further below) it is a series of *NAL units*, i.e. a sequence of blocks of encoded data
+    (which can then be encoded in some container format or transfered via some network protocol).
+    Hence, collecting these blocks of data into a single file requires an additional step.
+    In the case of H.264/5, the format for storing an H.264/5 stream in a single file is called the *bytestream format* and specified in one of the appendices.
+    This is done by just concatenating all NAL units together with a 4-byte delimiter marker (and a process for escaping this 4-byte sequence when it appears inside of a NAL unit[^emulation_prevention]).
+    No length metadata, no checksums, no timestamps, nothing else.
+    Thus if you want to think of H.264/5 bytestreams as containers, then the only feature they provide is *synchronization*, i.e. a parser being able to find the boundaries of the next or previous NAL unit when jumping anywhere into the bytestream.
+
+[^emulation_prevention]: Technically this escaping process is not part of the bytestream specification (and instead of the specification of the normal NAL unit format), but you get the idea.
 
 ### Source Filters
 
