@@ -1111,19 +1111,21 @@ Some others include:</p>
 </ul>
 </li>
 <li>Providing checksums or other error detection/recovery methods to minimize the impact of data corruption</li>
-<li>Storing multiple "versions" of the same video/audio in the same file (or group of files), as in DVD angles, BD seamless branching, matroska editions, etc.</li>
+<li>Storing multiple "versions" of the same video/audio in the same file (or group of files), as with DVD angles, BD seamless branching, matroska editions, etc.</li>
 </ul>
-<p>The following are the most common container formats for our purposes:
-- <strong>MPEG-2 Transport Streams</strong> and <strong>Program Streams</strong>:
+<p>The following are the most common container formats for our purposes:</p>
+<ul>
+<li>
+<p><strong>MPEG-2 Transport Streams</strong> and <strong>Program Streams</strong>:
     These are specified in <a href="https://www.iso.org/standard/87619.html">MPEG-2 Part 1 (ISO/IEC 13818-2)</a> or <a href="https://www.itu.int/rec/T-REC-H.222.0">ITU-T Rec. H.222</a>.
     Transport streams (known under file extensions like <code>.ts</code>, <code>.mts</code>, <code>.m2ts</code>, etc.) package video/audio streams into small packets suitable for stream-based transmission.
     They are used in digital television and on Blu-ray discs.</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">1</span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;">2</span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code>Program streams (known under file extensions like `.ps`, `.mpg`, or `.mpeg`) are designed for more reliable storage media like files on discs.
-For example, VOB files (which are used in DVD-Video) are a subset of MPEG-2 Program Streams.
-</code></pre></div></td></tr></table></div>
-<ul>
-<li>AVI (Audio Video Interleave). I don't know much about this yet but it exists and feels like it should be listed here.</li>
+<p>Program streams (known under file extensions like <code>.ps</code>, <code>.mpg</code>, or <code>.mpeg</code>) are designed for more reliable storage media like files on discs.
+For example, VOB files (which are used in DVD-Video) are a subset of MPEG-2 Program Streams.</p>
+</li>
+<li>
+<p>AVI (Audio Video Interleave). I don't know much about this yet but it exists and feels like it should be listed here.</p>
+</li>
 <li><strong>MPEG-4 files</strong> and their variants:
     This is a large family of container formats based on the <strong>ISO base media file format</strong> (<a href="https://www.iso.org/standard/83102.html">ISO/IEC 14496-12</a>).
     The most well-known incarnation is the MPEG-4 format (popular extensions being <code>.mp4</code> and <code>.m4v</code>/<code>.m4a</code>), which is specified in <a href="https://www.iso.org/standard/79110.html">ISO/IEC 14496-14</a>.
@@ -1133,6 +1135,16 @@ For example, VOB files (which are used in DVD-Video) are a subset of MPEG-2 Prog
     Due to its large set of features and supported codecs (like, e.g., it being the only container format to support <code>.ass</code> subtitles),
     Matroska files have become almost universal in fields like video piracy.
     Furthermore, the WEBM format, a subset of Matroska, is widely used in the web.</li>
+<li>Raw codecs: While one can argue that these aren't really containers, they should still be mentioned here (and are treated like containers in a lot of software like ffmpeg).
+    A "raw" codec file (e.g. <code>.h264</code> or <code>.h265</code>/<code>.hevc</code> files) is just the video format's encoded data stored in a file.
+    This is a simple but necessary step: Raw H.264/5 video data, for example, is not a file in and of itself.
+    Instead (as we will see further below) it is a series of <em>NAL units</em>, i.e. a sequence of blocks of encoded data
+    (which can then be encoded in some container format or transfered via some network protocol).
+    Hence, collecting these blocks of data into a single file requires an additional step.
+    In the case of H.264/5, the format for storing an H.264/5 stream in a single file is called the <em>bytestream format</em> and specified in one of the appendices.
+    This is done by just concatenating all NAL units together with a 4-byte delimiter marker (and a process for escaping this 4-byte sequence when it appears inside of a NAL unit<sup id="fnref:emulation_prevention"><a class="footnote-ref" href="#fn:emulation_prevention">4</a></sup>).
+    No length metadata, no checksums, no timestamps, nothing else.
+    Thus if you want to think of H.264/5 bytestreams as containers, then the only feature they provide is <em>synchronization</em>, i.e. a parser being able to find the boundaries of the next or previous NAL unit when jumping anywhere into the bytestream.</li>
 </ul>
 <h3 id="source-filters">Source Filters</h3>
 <h1 id="todo">TODO</h1>
@@ -1152,6 +1164,9 @@ For example, VOB files (which are used in DVD-Video) are a subset of MPEG-2 Prog
 </li>
 <li id="fn:ffmpeg_parse">
 <p>ffmpeg will automatically parse packets for you when demuxing and, among others, return a keyframe flag, but I hope that it's still clear that it's very useful to also have metadata about this on a container level.&#160;<a class="footnote-backref" href="#fnref:ffmpeg_parse" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:emulation_prevention">
+<p>Technically this escaping process is not part of the bytestream specification (and instead of the specification of the normal NAL unit format), but you get the idea.&#160;<a class="footnote-backref" href="#fnref:emulation_prevention" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
