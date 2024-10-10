@@ -13,5 +13,10 @@
     "version": "installation",
     "title": "installation",
     "aliases": []
+  },
+  {
+    "version": "common-errors",
+    "title": "common-errors",
+    "aliases": []
   }
 ]
