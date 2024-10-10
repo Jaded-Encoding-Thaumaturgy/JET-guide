@@ -115,7 +115,7 @@ There are various other coding formats (the other most notable ones being Theora
 [^mpegi]: Note that the I in MPEG-I is the capital letter `i`, not the number 1.
 
 !!! Note
-    Some of the specifications linked above (as well as some of those that will be linked in the future), in particular the ISO specifications with no ITU-T analogue, are not available for free.
+    Some of the specifications linked above (as well as some of those that will be linked further below), in particular the ISO specifications with no ITU-T analogue, are not available for free.
     However, you can find most of the important ones from other sources (albeit not always the latest version) with some clever googling.
 
 ### Containers
