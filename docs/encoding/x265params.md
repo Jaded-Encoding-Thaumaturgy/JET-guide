@@ -232,6 +232,14 @@ Be cautious about setting the value too low,
 as some degree of adaptive quantization
 is still beneficial for overall picture quality.
 
+!!! warning "Lower `aq-strength` values increase QP"
+     Lower `aq-strength` values increase QP,
+     which increases compression
+     and may lead to more noticeable artifacts.
+     To counteract this,
+     you should reduce the `crf` value slightly
+     as you decrease `aq-strength`.
+
 ### Psychovisual Optimization
 
 Use `--psy-rd 2.0` and `--psy-rdoq 2.0`,
@@ -308,5 +316,3 @@ For example:
 - If P-frames are causing issues, you might adjust both `--ipratio` and `--pbratio`.
 
 These parameters will be mostly useful on very grainy content.
-
-
