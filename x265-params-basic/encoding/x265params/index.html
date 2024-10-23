@@ -1381,6 +1381,15 @@ you may need to decrease the value slightly.
 Be cautious about setting the value too low,
 as some degree of adaptive quantization
 is still beneficial for overall picture quality.</p>
+<div class="admonition warning">
+<p class="admonition-title">Lower <code>aq-strength</code> values increase QP</p>
+<p>Lower <code>aq-strength</code> values increase QP,
+ which increases compression
+ and may lead to more noticeable artifacts.
+ To counteract this,
+ you should reduce the <code>crf</code> value slightly
+ as you decrease <code>aq-strength</code>.</p>
+</div>
 <h3 id="psychovisual-optimization">Psychovisual Optimization</h3>
 <p>Use <code>--psy-rd 2.0</code> and <code>--psy-rdoq 2.0</code>,
 and avoid values higher than <code>2.5</code>.</p>
