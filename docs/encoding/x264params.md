@@ -109,7 +109,7 @@ To lower the chroma QP offset from -2 to -3, granting chroma more bits:
 
 ### Deblock
 
-For an explanation of what deblock does, read [this Doom9 post](https://forum.doom9.org/showthread.php?p=1692393#post1692393) and [this blog post](https://web.archive.org/web/20220323033558/https://huyunf.github.io/blogs/2017/11/20/h264_deblocking_algorithm/)
+For an explanation of what deblock does, read [this Doom9 post](https://forum.doom9.org/showthread.php?p=1692393#post1692393) and [this blog post](https://huyunf.github.io/blogs/2017/11/20/h264_deblocking_algorithm/)
 
 Set this too high and you'll have a blurry encode, set it too low and you'll have an overly blocky encode.
 We recommend testing deblock in a range of `-2:-2` to `0:0` (animated content should use stronger deblock settings).
