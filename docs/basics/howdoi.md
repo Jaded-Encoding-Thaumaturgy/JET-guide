@@ -249,11 +249,11 @@ even though the pixel values are different.
 from vstools import Matrix, ColorRange  # You can also use Vanilla VS, see above
 
 # Convert a clip from the SMPTE170M matrix to the BT709 matrix
-clip_converted = clip.resize.Point(Matrix.SMPTE170M.apply(clip), matrix=Matrix.BT709)
+clip_converted = core.resize.Point(Matrix.SMPTE170M.apply(clip), matrix=Matrix.BT709)
 
 # Convert a clip from limited range to full range
-# Note that you cannot use the ColorRange enum for the `range` argument here!
-clip_converted = clip.resize.Point(ColorRange.LIMITED.apply(clip), range=1)
+# Note that you have to append `.value_zimg` to the `range` argument here! Otherwise it would pass the wrong value (or just do `range=1`).
+clip_converted = core.resize.Point(ColorRange.LIMITED.apply(clip), range=ColorRange.LIMITED.value_zimg)
 ```
 Note that the resizing does not dither by default. That does not mean you *should* dither
 (usually it's better practice to do most of your filter chain with float clips, and then dither down at the end),
