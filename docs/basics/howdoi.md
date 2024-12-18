@@ -421,4 +421,4 @@ result = core.std.ModifyFrame(blank, [blank, clip], modify)
 ### How do I remove artifacts from a video without being too destructive?
 Very carefully.
 
-[setup]: ./setup.md
+[setup]: ../installation/standard.md
