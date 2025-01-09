@@ -242,22 +242,22 @@ is still beneficial for overall picture quality.
 
 ### Psychovisual Optimization
 
-Use `--psy-rd 2.0` and `--psy-rdoq 2.0`,
-and avoid values higher than `2.5`.
+Use `--psy-rd 1.5` and `--psy-rdoq 1.5`,
+and avoid values higher than `2.0`.
 
 The `--psy-rd` parameter controls the strength of psychovisual optimization
 during the rate-distortion optimization process.
-A value of `2.0` is generally a good starting point for anime,
+A value of `1.5` is generally a good starting point for anime,
 as it helps preserve detail and texture without introducing too many artifacts.
 
 The `--psy-rdoq` parameter affects the psychovisual optimization during
-quantization. Like `--psy-rd`, a value of `2.0` is often suitable for anime content.
+quantization. Like `--psy-rd`, a value of `1.5` is often suitable for anime content.
 
 These parameters can be quite sensitive,
 and their effects may vary depending on the specific content.
-Higher values will try to match the source structure more aggressively,
-which can help preserve grain and detail.
-However, they may also introduce noticeable distortions if set too high.
+Higher values may result in an overall "sharper" image,
+at the cost of more noticeable artifacts such as ringing.
+It may also introduce noticeable distortions if set too high.
 
 ### Keyframe Interval
 
@@ -269,7 +269,7 @@ using `--min-keyint 24`.
 These parameters help control where I-frames (or "keyframes") are placed.
 In most scenarios,
 you want I-frames to be as spread out as possible,
-so that you can get the benefits of B-Frames
+so that you can get the maximum benefits of B-Frames
 while minimizing the bitrate cost.
 
 A good rule of thumb is to set the keyframe interval to 10 seconds of content,
@@ -313,6 +313,7 @@ you might want to adjust these.
 For example:
 
 - If I-frames look noticeably worse than other frames, try increasing `--ipratio`.
-- If P-frames are causing issues, you might adjust both `--ipratio` and `--pbratio`.
+- If P-frames look noticeably worse than other frames, you might adjust both `--ipratio` and `--pbratio`.
 
-These parameters will be mostly useful on very grainy content.
+These parameters will be mostly useful on very grainy content,
+and should probably not be touched for most regular anime content.
