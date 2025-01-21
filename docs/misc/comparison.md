@@ -311,7 +311,7 @@ vspreview comp.py
 - Label your sources clearly.
 - Try to capture a large variety of scenes (e.g. low/high detail, bright/dark, low/high motion).
 - Try to capture frames of the same type.
-- Try to capture `P` or `B` type frames when possible. Although it's not always guranteed that your source will have all the picture types (e.g. Crunchyroll WEB-DLs don't have `B` frames).
+- Try to capture `P` or `B` type frames when possible. Although it's not always guaranteed that your source will have all the picture types (e.g. Crunchyroll WEB-DLs don't have `B` frames).
 
 ### Basic Keybinds
 
