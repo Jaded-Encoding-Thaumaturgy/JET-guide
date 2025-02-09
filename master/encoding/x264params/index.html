@@ -1402,7 +1402,7 @@ To specify which of the two passes you're encoding all we need to change is <cod
 <p>If you're struggling with chroma getting overly distorted, it can be worth tinkering with this option.
 You can find examples of what bitstarved chroma can look like <a href="https://silentaperture.gitlab.io/mdbook-guide/encoding/images/godfather_road_sky.png">HERE</a> and <a href="https://silentaperture.gitlab.io/mdbook-guide/encoding/images/godfather_plane_split.png">HERE</a>.
 Lower values give more bits to chroma, higher values will take away.
-By default, this will be -2 for 4:2:0 and -6 for 4:4:4.
+By default, this will be -2 for 4:2:0 and 6 for 4:4:4.
 Setting this will add your offset onto -2.</p>
 <p>To lower the chroma QP offset from -2 to -3, granting chroma more bits:</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>--chroma-qp-offset -1
