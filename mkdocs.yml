@@ -38,6 +38,7 @@ nav:
     - Correcting SAR/PAR 🡕: https://thewiki.moe/tutorials/dvdremux/#correcting-sarpar
   - Encoding:
     - x264 Parameters: encoding/x264params.md
+    - x265 Parameters: encoding/x265params.md
   - Misc:
     - Comparison: misc/comparison.md
 
@@ -57,6 +58,7 @@ markdown_extensions:
   - admonition
   - footnotes
   - tables
+  - pymdownx.details
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.highlight:
