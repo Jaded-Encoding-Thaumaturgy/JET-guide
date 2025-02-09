@@ -155,6 +155,8 @@ which anime often has a lot of.
 
 ### Chroma QP Offset
 
+By default, this will be 0 for 4:2:0 and 6 for 4:4:4.
+
 Use at least `--cbqpoffs -2`,
 or `--cbqpoffs -3`
 if you don't mind the additional file size.

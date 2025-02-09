@@ -98,7 +98,7 @@ vspipe -c y4m script.vpy - | x264 --demuxer y4m --preset placebo --pass 2 --bitr
 If you're struggling with chroma getting overly distorted, it can be worth tinkering with this option.
 You can find examples of what bitstarved chroma can look like [HERE](https://silentaperture.gitlab.io/mdbook-guide/encoding/images/godfather_road_sky.png) and [HERE](https://silentaperture.gitlab.io/mdbook-guide/encoding/images/godfather_plane_split.png).
 Lower values give more bits to chroma, higher values will take away.
-By default, this will be -2 for 4:2:0 and -6 for 4:4:4.
+By default, this will be -2 for 4:2:0 and 6 for 4:4:4.
 Setting this will add your offset onto -2.
 
 To lower the chroma QP offset from -2 to -3, granting chroma more bits:
