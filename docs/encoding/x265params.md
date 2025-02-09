@@ -242,22 +242,23 @@ is still beneficial for overall picture quality.
 
 ### Psychovisual Optimization
 
-Use `--psy-rd 1.5` and `--psy-rdoq 1.5`,
-and avoid values higher than `2.0`.
+Use `--psy-rd 2.0` and `--psy-rdoq 1.5`,
+and avoid values higher than `2.5`.
 
 The `--psy-rd` parameter controls the strength of psychovisual optimization
 during the rate-distortion optimization process.
-A value of `1.5` is generally a good starting point for anime,
+A value of `2.0` is generally a good starting point for anime,
 as it helps preserve detail and texture without introducing too many artifacts.
 
 The `--psy-rdoq` parameter affects the psychovisual optimization during
-quantization. Like `--psy-rd`, a value of `1.5` is often suitable for anime content.
+quantization. This should usually be set lower than `--psy-rd`, as it has
+a more pronounced effect. A value of `1.5` can be considered a suitable starting point.
 
 These parameters can be quite sensitive,
 and their effects may vary depending on the specific content.
-Higher values may result in an overall "sharper" image,
-at the cost of more noticeable artifacts such as ringing.
-It may also introduce noticeable distortions if set too high.
+Higher values will try to match the source structure more aggressively,
+which can help preserve grain and detail.
+However, they may also introduce noticeable distortions if set too high.
 
 ### Keyframe Interval
 
