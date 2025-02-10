@@ -33,7 +33,7 @@ you might want to capture all available angles as well.
 Below are multiple methods to remux your DVDISO,
 in order of safest to least safe:
 
-!!! example "Different remuxing methods"
+!!! example "Remuxing methods"
 
     === "FFmpeg"
 
@@ -364,4 +364,208 @@ in order of safest to least safe:
 
 ## Setting the correct aspect ratio
 
-TODO
+DVDs use a format called "anamorphic video",
+which means the stored video dimensions
+differ from the intended display dimensions.
+A typical NTSC DVD stores video at 720x480 pixels
+(a 3:2 aspect ratio),
+but displays it at either widescreen (16:9)
+or standard definition (4:3).
+
+To achieve the correct display size,
+DVDs use a [SAR (Sample Aspect Ratio)](https://en.wikipedia.org/wiki/Sample_aspect_ratio),
+also known as PAR (Pixel Aspect Ratio).
+This value tells the player how much to stretch each pixel
+to reach its intended [DAR (Display Aspect Ratio)](https://en.wikipedia.org/wiki/Display_aspect_ratio)
+after cropping the image.
+The system was designed for CRT televisions,
+which had [overscan](https://en.wikipedia.org/wiki/Overscan) -
+meaning they would stretch and slightly crop
+the edges of the image.
+
+DVD authorers accounted for this by keeping important content
+within a smaller [active area](https://en.wikipedia.org/wiki/Overscan#Overscan_amounts).
+When played on a CRT,
+the television's natural stretching
+would result in the correct final aspect ratio
+being displayed.
+
+Modern displays lack both overscan
+and the automatic stretching of CRTs.
+As a result, DVDs will display incorrectly
+on modern screens without proper correction
+during the remux process.
+
+### Heuristics
+
+Determining the correct SAR values for a DVD
+requires understanding several standards
+that have evolved over time.
+Different DVD manufacturers and regions
+have had varying approaches,
+making it challenging to identify
+the exact standard used for any given disc.
+
+To help narrow down the correct values,
+below is a reference table of common SAR values
+and their corresponding active areas:
+
+!!! info "Common DVD anamorphic resolution standards"
+
+    !!! warning "Other standards"
+        While other standards exist,
+        they are extremely uncommon.
+        If your DVD's aspect ratio values
+        don't match any listed here,
+        there's a high probability
+        that something is incorrect
+        in your analysis.
+
+    === "NTSC"
+
+        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area (px) | Display Resolution |
+        |----------------------|----------------------------------------|------------------|--------------------|
+        | 4:3                  | 4320:4739                              | 710.85x486       |                    |
+        |                      | 640:711                                | 711x480          | 711x533            |
+        |                      | 160:177                                | 708x480          |                    |
+        |                      | 10:11                                  | 704x480          | 704x528            |
+        | 16:9                 | 2560:2133                              | 711x480          | 853x480            |
+        |                      | 640:531                                | 708x480          |                    |
+        |                      | 40:33                                  | 704x480          |                    |
+
+    === "PAL"
+
+        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area (px) | Display Resolution |
+        |----------------------|----------------------------------------|------------------|--------------------|
+        | 4:3                  | 128:117                                | 702x576          |                    |
+        |                      | 1132:1035                              | 690x566          |                    |
+
+!!! warning "NTSC to PAL conversions"
+    When working with DVDs that have been converted between NTSC and PAL formats,
+    the standard aspect ratio values may not apply.
+
+    For these cases:
+
+    1. First determine and correct the SAR/PAR values of the original format
+    2. Analyze how the conversion process transformed the video
+    3. Adjust your settings to match the original content's intended display
+
+The following methods can be used
+to help determine the correct SAR values:
+
+!!! example "SAR heuristic methods"
+
+    === "Faded columns"
+
+        !!! warning "NTSC Active Area Standards"
+            NTSC has two common active area standards that are very similar:
+            - 710.85x486 (typically from analog transfers)
+            - 704x480 (more common in digital sources)
+
+            While the faded columns method below can help identify the active area,
+            additional analysis may be needed to definitively determine which standard is being used.
+
+        One way to determine the active area
+        is by looking for faded columns
+        on the edges of the frame.
+        These dark borders are intentionally added
+        to mark the boundaries of the active picture area.
+
+        ![Example frame from Nurse Witch Komugi](./img/sar/faded-columns-method.png)
+
+        To calculate the active area width:
+
+        1. Identify the fade width on the left and right sides (ignoring the top and bottom)
+        2. Subtract both fades from the total frame width
+
+        For example, if you have:
+
+        - Total frame width: 720 pixels
+        - Left fade: 9 pixels
+        - Right fade: 7 pixels
+
+        The active area width would be:
+        `720 - 9 - 7 = 704 pixels`
+
+        Once you know the active area
+        and display aspect ratio (DAR),
+        you can determine the correct SAR
+        from the reference table above.
+
+        In this example frame:
+
+        - Active area: 704x480
+        - DAR: 4:3
+        - Therefore SAR: 10:11
+        - Final display resolution: 704x528
+
+        ![Example frame from Nurse Witch Komugi](./img/sar/faded-columns-stretched.png)
+
+    === "Circle method"
+
+        Another method to determine the correct SAR
+        is by finding objects in the frame
+        that should be perfectly circular,
+        like clocks, wheels, or logos.
+
+        The process is straightforward:
+
+        1. Find a frame with an object that should be a perfect circle
+        2. In an image editor, overlay a perfect circle on top of the object
+        3. Test different standard SAR values until the object matches the overlay
+
+        ![Perfect circle overlaid onto a frame, example from Kaleido Star](./img/sar/circle-method.png)
+
+        The image above demonstrates a perfect match
+        using a SAR of 2560:2133,
+        which corresponds to a 711x480 active area.
+        When the overlay aligns perfectly with the object,
+        you've found the correct SAR.
+
+    === "Logo method"
+
+        Another approach is to compare text
+        or studio logos
+        against reference images.
+        Many studio logos can be found online
+        in their original square pixel form,
+        which makes them useful reference points.
+
+        The process is similar to the circle method,
+        but uses a studio logo or text
+        as the reference
+        instead of a circle.
+        You overlay the reference logo
+        on top of the frame
+        and adjust the SAR
+        until they match perfectly.
+
+        ![Logo from Google overlaid onto the OP credits](./img/sar/logo-method.png)
+
+        In this example,
+        matching the logo
+        gave us a SAR of 4320:4739
+        (equivalent to a 710.85x486 active area).
+        This level of precision
+        would be difficult to achieve
+        using just the faded column method.
+
+    === "Ground Truth"
+
+        If you have access to a natively square pixel source
+        (such as a Blu-ray release),
+        you can use it as a reference
+        to determine the correct SAR.
+        Note that SD upscales do not qualify
+        as valid reference sources.
+
+        This method is particularly useful
+        for episodes that were only released on DVD
+        when Blu-rays exist for other episodes,
+        such as DVD-only OVAs.
+        The process involves:
+
+        4. Downscale the Blu-ray to 864x486
+        5. Crop it to 864x480 (matching the DVD crop)
+        6. Test different SAR/PAR standards
+           until the DVD matches the Blu-ray perfectly
