@@ -1,0 +1,1391 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Various guides on encoding by JET">
+      
+      
+        <meta name="author" content="Jaded Encoding Thaumaturgy">
+      
+      
+        <link rel="canonical" href="https://jaded-encoding-thaumaturgy.github.io/JET-guide/dvd-remux/filtering/descaling/descaling/">
+      
+      
+        <link rel="prev" href="../../order/">
+      
+      
+        <link rel="next" href="../known-resolutions/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Descaling Theory - JET Encoding Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#descaling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="JET Encoding Guide" class="md-header__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JET Encoding Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Descaling Theory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="JET Encoding Guide" class="md-nav__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    JET Encoding Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encoding Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Basics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup and First Steps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/python-primer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Primer on Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/howdoi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I ...?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../basics/babys-first-script/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Baby's first script
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Filtering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../order/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Order of Filtering Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Descaling
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Descaling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Descaling Theory
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Descaling Theory
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-descaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Descaling?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-descaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why is Descaling?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why is Descaling?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-upscale-back-to-1080p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why upscale back to 1080p?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descaling-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descaling Theory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Descaling Theory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Dimensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      TODO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluating-descales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluating Descales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluating Descales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-code-for-evaluating-descales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Code for Evaluating Descales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upscaling-with-the-descale-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upscaling with the Descale Plugin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../known-resolutions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known Native Resolutions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dehardsubbing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dehardsubbing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://wobbly.encode.moe" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wobbly 🡕
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://thewiki.moe/tutorials/dvdremux/#correcting-sarpar" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Correcting SAR/PAR 🡕
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Encoding
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Encoding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../encoding/x264params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x264 Parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../encoding/x265params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x265 Parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comparison
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/remux/dvd-remux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Remuxing DVDs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-descaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Descaling?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-is-descaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why is Descaling?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why is Descaling?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-upscale-back-to-1080p" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why upscale back to 1080p?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#descaling-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Descaling Theory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Descaling Theory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#source-dimensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Source Dimensions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#todo" class="md-nav__link">
+    <span class="md-ellipsis">
+      TODO
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evaluating-descales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluating Descales
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Evaluating Descales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-code-for-evaluating-descales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Code for Evaluating Descales
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upscaling-with-the-descale-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upscaling with the Descale Plugin
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="descaling">Descaling</h1>
+<p>Descaling can be one of the most powerful filtering techniques when used correctly,
+but it can also be extremely destructive when used incorrectly.
+This page introduces descaling and outlines the current state of knowledge surrounding
+methods to find and judge descale parameters.</p>
+<h2 id="what-is-descaling">What is Descaling?</h2>
+<p>Descaling is the process of mathematically inverting an upscaling operation.
+Since conventional upscaling algorithms are linear (when ignoring rounding and clipping)
+and separable, this can be done fairly efficiently by solving a system of linear equations,
+provided that the parameters that were used for the upscale are known.</p>
+<p>Descaling itself is easy; it's fully handled by
+the <a href="https://github.com/Jaded-Encoding-Thaumaturgy/vapoursynth-descale"><code>descale</code> plugin</a>.
+The much, much harder part is <em>finding</em> the parameters to descale with,
+and ensuring that they are correct.
+More often than not, the best decision is not to descale at all.</p>
+<h2 id="why-is-descaling">Why is Descaling?</h2>
+<p>While the vast majority of modern anime is released in 1080p
+(either via web streams or with BluRay releases),
+many productions are not actually <em>produced</em> in that resolution.
+Instead, they're animated in some lower resolution and then upscaled
+to 1080p later in the production pipeline.
+The original resolution can be a well-known resolution like 540p, 720p, 810p, or 900p,
+but it can also have more obscure dimensions like 873 or even fractional values like 843.75.</p>
+<p>When upscaling to 1080p, studios usually use some conventional convolutional scaling algorithm
+like bilinear or some bicubic kernel.
+The core idea of rescaling is to invert that upscaling process,
+and reupscale the footage using some better scaling method like a Waifu2x-based one.
+An example where this is especially effective is shows that have been upscaled
+with BicubicSharp (the bicubic kernel with b=0 and c=1),
+which causes strong aliasing and haloing.
+But even for other kernels such a rescale can be a noticeable improvement.
+For example, a Waifu2x-based rescale with Hermite (bicubic with b=0 c=0) as a downscaler
+can completely remove halos created by upscaling while still being fairly sharp.</p>
+<h3 id="why-upscale-back-to-1080p">Why upscale back to 1080p?</h3>
+<p>You might wonder why, after descaling to the original resolution,
+the video should even be upscaled back to 1080p.
+Shouldn't it be better to just leave it at its original resolution,
+which is closer to the source?
+Well, there are two main reasons why this isn't done:</p>
+<ol>
+<li>Descaling can only be done to the luma.
+   The video's chroma is subsampled to 960x540, so it can no longer be descaled.
+   If the original resolution was, say, 720p, encoding a 720p video would mean storing
+   its chroma at a resolution 640x360, which would lose even more information.
+   If one was to instead encode with 444 chroma subsampling, the chroma would
+   need to be upscaled to 1280x720 which creates its own problems
+   (since then it'd likely still be upscaled a second time during playback).</li>
+<li>Shows can rarely be descaled completely.
+   Often, some elements of shows were added in 1080p after upscaling.
+   One common example is credits in openings or endings.
+   It's also possible for different scenes to have different native resolutions,
+   or for some scenes to not be descaleable at all.</li>
+</ol>
+<h2 id="descaling-theory">Descaling Theory</h2>
+<p>As explained above, the difficult part in descaling is finding the parameters used to upscale
+(in fact, it's easy to make <em>guesses</em> at these parameters, the hard part is determining whether one's guess is correct).
+These "parameters" involve the following:</p>
+<ul>
+<li>The original width and height.
+  These can be integers, but they can also be fractional values when the video was cropped after resizing or
+  when the resize used a different sample grid model (see below).</li>
+<li>The sample grid model used when upscaling.
+  VapourSynth's resize functions and the <code>descale</code> plugin use the common "match edges" model
+  (see <a href="https://entropymine.com/imageworsener/matching/">the entropymine article</a> for an explanation of these terms).
+  When a video is upscaled from an integer resolution like 720p using a different model like "match centers",
+  this is equivalent to upscaling with a non-integer source width/height (e.g. a <code>src_height</code> of <code>1080 * 719/1079 ≈ 719.67</code>)
+  using a "match edges" model.
+  Hence, when descaling such an upscale, these non-integer dimensions would need to be passed to the <code>descale</code> plugin.</li>
+<li>The kernel used for upscaling. Determining this is often the most difficult part.</li>
+<li>How the original upscale handled the edges of the frame,
+  i.e. whether it implicitly padded width values of zero, mirrored the image, or did something else entirely.</li>
+<li>Any shifts that were applied when upscaling.</li>
+<li>Any post-processing that was applied after upscaling.
+  In the vast majority of cases, post-processing after upscaling implies that your source is not descaleable,
+  but if the post-processing was a somewhat reversible (ideally linear) function like convolutional sharpening, you might still have a chance.</li>
+<li>What color space the video was upscaled in, i.e. what color space conversions were performed after the upscale.
+  Note that a nonlinear color space conversion after upscaling can make a fully accurate descale impossible.</li>
+<li>Whether there are any non-descaleable elements (e.g. credits) in the video or elements that'd otherwise negatively affect the descale
+  and should be masked out in the descale (e.g. clipped pixels).</li>
+<li>The order in which the video was upscaled (horizontally, then vertically, or vice-versa).
+  Since resampling is linear this is usually irrelevant, but it becomes relevant when dealing with clipped values.</li>
+</ul>
+<p>Additionally, these parameters (including whether the video is descaleable at all) can vary between scenes or frames,
+and the parameters for a horizontal descale can be different from the parameters for a vertical descale.
+In particular, it's possible for a source to be descaleable only along one axis.
+An example for this is footage that went through the HDCAM format, which subsamples luma to a width of 1440 (from 1920).
+Such footage will not be horizontally descalable to its original resolution (maybe to 1440 if you're lucky),
+but can sometimes still be descaled vertically.
+Whether a source like this is worth descaling is a separate question.</p>
+<p>The following sections will explain some of these parameters in more detail, as well as how to attempt to determine them.</p>
+<h3 id="source-dimensions">Source Dimensions</h3>
+<p>The source dimensions are, of course, the essential part of rescaling.
+Luckily, they're also fairly easy to approximately determine.
+There exist two methods for determining source resolutions:</p>
+<ol>
+<li>The brute-force method, which simply tries descaling the source clip to a large set of resolutions,
+   scales them back up with the same kernel, and graphs the total error relative to the original image.
+   It turns out empirically that the resulting graph will show a spike around the "correct" resolution even
+   when the kernel used in the descales is not the correct one.</li>
+<li>Frequency-based methods, which exploit the behavior of convolutional resampling in the frequency domain.
+   These include various different methods: On one hand, simply looking at the size of the "center blob"
+   in a two-dimensional frequency plot of an image can already give an indication of whether this image was upscaled,
+   and (very) approximately by how much.
+   A slightly more quantitative method is to take the one-dimensional discrete cosine transform of every row (resp. column)
+   and sum the entry-wise absolute values across all columns (resp. rows).
+   Due to how resampling behaves in frequency space, the resulting graph will show a spike at the source resolution.
+   This is the method used by the "Frequency Analysis" tab in vs-preview's native resolution plugin.</li>
+</ol>
+<h3 id="todo">TODO</h3>
+<h2 id="evaluating-descales">Evaluating Descales</h2>
+<p>The above sections explained how to find candidates for descale parameters, but ultimately these were all just heuristics.
+In the end, every descale needs to be evaluated manually.
+This is so important that it warrants being repeated even louder:</p>
+<div class="admonition danger">
+<p class="admonition-title">Attention</p>
+<p><strong>NEVER</strong> blindly decide on a descale purely based on graphs and error values.
+<strong>ALWAYS</strong> manually verify that your candidate parameters are correct, using the methods explained below.</p>
+</div>
+<p>Evaluating a descale entails</p>
+<ol>
+<li>Comparing a rescale of the descaled clip with the same parameters to the original clip.
+   This is the most obvious necessary condition for a descale to be correct.
+   For the theoretical perfectly descaleable clip, these two should match exactly.
+   In practice, there can be some slight differences due to quantization and compression noise,
+   but nonetheless if a same-kernel rescale significantly differs from the original clip,
+   that always means that the descale cannot be correct.</li>
+<li>Inspecting the descale itself. An accurate descale will have line-art that looks "clean" at least to some degree.
+   If your descale has higher-order haloing or very fuzzy-looking lines, it's likely not correct even if the rescale is very close to the descale.
+   Even first-order haloing in a descale is usually an indication of an incorrect descale,
+   but to our knowledge it's possible in theory (but fairly rare in the wild) for footage to have been sharpened before upscaling.</li>
+</ol>
+<p>Comparing the rescale to the source or inspecting a descale is best done around sharp lines.
+Exactly horizontal or exactly vertical lines are especially good indicators of rescale quality,
+since around such lines the descale is essentially purely one-dimensional.
+The same is true for borders when the video was upscaled using zero-padding:
+here it's crucial to check whether descaling with <code>border_handling=1</code> fixes the borders or not
+(and whether the rescale matches the original borders).</p>
+<p>When searching for descales it can and will happen that you simply will not find any
+set of parameters giving you satisfying results, even if you find one or more parameters
+that get you closer than any other ones.
+Once again, in a situation like this, the answer is usually to just give up descaling.
+There are plenty of other methods to antialias or dehalo that do not carry the same risks
+as incorrect descales.
+Not every show has to be descaled.</p>
+<h3 id="example-code-for-evaluating-descales">Example Code for Evaluating Descales</h3>
+<p>Here's the code snippet that I (arch1t3cht) usually use when evaluating descales.
+Of course, this is just one possible method and you can just as well use any other system, including some wrapper library like vodesfunc.
+The important part is that you're able to see the descale, the same-kernel rescale, and the difference clip.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-1"> 1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-2"> 2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-3"> 3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-4"> 4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-5"> 5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-6"> 6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-7"> 7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-8"> 8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-9"> 9</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-10">10</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-11">11</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-12">12</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-13">13</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-14">14</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-15">15</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-16">16</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-17">17</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-18">18</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-19">19</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">get_y</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">depth</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">set_output</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vskernels</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">Bilinear</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">Catrom</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">BicubicSharp</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">Lanczos</span>   <span style="color: #7F848E"># import more here if you need</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span style="color: #7F848E"># Load your clip here</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">depth</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">get_y</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">),</span> <span style="color: #D19A66">32</span><span style="color: #ABB2BF">)</span>   <span style="color: #7F848E"># take the luma and convert to 32 bits if you haven&#39;t already</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span style="color: #C678DD">for</span> <span style="color: #E06C75">kernel</span> <span style="color: #56B6C2">in</span> <span style="color: #ABB2BF">[</span><span style="color: #E06C75">Bilinear</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">Catrom</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">BicubicSharp</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">Lanczos</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">3</span><span style="color: #ABB2BF">)]:</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a>    <span style="color: #E06C75">desc</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">kernel</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">descale</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">1280</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">720</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a>    <span style="color: #E06C75">resc</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">kernel</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">scale</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">desc</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">height</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span style="color: #E06C75">err</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Expr</span><span style="color: #ABB2BF">([</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">resc</span><span style="color: #ABB2BF">],</span> <span style="color: #98C379">&quot;x y - abs 10 *&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span style="color: #E06C75">name</span> <span style="color: #56B6C2">=</span> <span style="color: #98C379">f&quot;{</span><span style="color: #E06C75">kernel</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">__name__</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">if</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">hasattr</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">kernel</span><span style="color: #ABB2BF">, </span><span style="color: #98C379">&#39;__name__&#39;</span><span style="color: #ABB2BF">) </span><span style="color: #C678DD">else</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">kernel</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">__class__</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">__name__</span><span style="color: #98C379">}&quot;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">desc</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">f&quot;{</span><span style="color: #E06C75">name</span><span style="color: #98C379">} Descale&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a>    <span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">resc</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">f&quot;{</span><span style="color: #E06C75">name</span><span style="color: #98C379">} Rescale&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a>    <span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">err</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">f&quot;{</span><span style="color: #E06C75">name</span><span style="color: #98C379">} Diff&quot;</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Of course, it can be freely adapted to use other kernels, another resolution
+(possibly a fractional resolution, or possibly multiple resolutions using a second loop),
+or other additional parameters like border handling.
+You can comment out one or more of the <code>set_output</code> calls as you wish to only focus on the descales, rescales, or the difference clips.
+Usually, looking at the difference clips is the easiest way to quickly rule out incorrect parameters.
+In more ambiguous cases they also make it easier to find areas where the rescales are most inaccurate (e.g. horizontal/vertical lines),
+which you can then investigate on the descales or rescales.
+Before deciding that a rescale is accurate, you should inspect all three clips for any possible issues.</p>
+<h3 id="upscaling-with-the-descale-plugin">Upscaling with the Descale Plugin</h3>
+<p>When descaling with some of the more exotic parameters like custom kernels or blur
+(in which case you should make sure that you know what you're doing),
+it becomes harder to rescale with the same parameters since VapourSynth's resize functions
+support neither of these. In fact this problem arises even for <code>border_handling</code>
+(unless you want to mess around with manually padding your clip, which can be annoying),
+but there it's not as much of an issue since that doesn't affect the rest of the frame.
+To help with this issue, the <code>descale</code> plugin can also upscale clips using the same parameter syntax.
+For example, a BicubicSharp descale with <code>border_handling=1</code>:
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span style="color: #E06C75">desc</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">descale</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Debicubic</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">1280</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">720</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">b</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">c</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">border_handling</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+can be reverted with the exact same keyword parameters with <code>core.descale.Bicubic</code>:
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span style="color: #E06C75">resc</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">desc</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">descale</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Bicubic</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">height</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">b</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">c</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">border_handling</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+Unfortunately, this is not yet supported by vs-kernels.
+If you want a lightweight similar alternative in the meantime, you can use the following code:
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-1"> 1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-2"> 2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-3"> 3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-4"> 4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-5"> 5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-6"> 6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-7"> 7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-8"> 8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-9"> 9</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-10">10</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-11">11</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-12">12</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-13">13</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-14">14</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-15">15</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-16">16</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-17">17</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-18">18</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span style="color: #C678DD">class</span><span style="color: #ABB2BF"> </span><span style="color: #E5C07B">MyKernel</span><span style="color: #ABB2BF">():</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span style="color: #C678DD">def</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2; font-weight: bold">__init__</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">self</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">name</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">**</span><span style="color: #E06C75">kwargs</span><span style="color: #ABB2BF">):</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a>        <span style="color: #E5C07B">self</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">name</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">name</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a>        <span style="color: #E5C07B">self</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">kwargs</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">kwargs</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>    <span style="color: #C678DD">def</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF; font-weight: bold">scale</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">self</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">height</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">**</span><span style="color: #E06C75">kwargs</span><span style="color: #ABB2BF">):</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>        <span style="color: #C678DD">return</span> <span style="color: #E5C07B">getattr</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">descale</span><span style="color: #ABB2BF">,</span> <span style="color: #E5C07B">self</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">name</span><span style="color: #ABB2BF">)(</span><span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">height</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">**</span><span style="color: #E5C07B">self</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">kwargs</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">**</span><span style="color: #E06C75">kwargs</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a>    <span style="color: #C678DD">def</span><span style="color: #ABB2BF"> </span><span style="color: #61AFEF; font-weight: bold">descale</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">self</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">height</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">**</span><span style="color: #E06C75">kwargs</span><span style="color: #ABB2BF">):</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a>        <span style="color: #C678DD">return</span> <span style="color: #E5C07B">getattr</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">descale</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;De&quot;</span> <span style="color: #56B6C2">+</span> <span style="color: #E5C07B">self</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">name</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lower</span><span style="color: #ABB2BF">())(</span><span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">height</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">**</span><span style="color: #E5C07B">self</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">kwargs</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">**</span><span style="color: #E06C75">kwargs</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span style="color: #7F848E"># Then, define your own kernels like this, which can mostly be used like vs-kernels kernels</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span style="color: #E06C75">MBilinear</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MyKernel</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;Bilinear&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span style="color: #E06C75">MCatrom</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MyKernel</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;Bicubic&quot;</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">b</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">c</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">0.5</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15"></a><span style="color: #E06C75">MFFmpeg</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MyKernel</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;Bicubic&quot;</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">b</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">c</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">0.6</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16"></a><span style="color: #E06C75">MLanczos2</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MyKernel</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;Lanczos&quot;</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">taps</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">2</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17"></a><span style="color: #E06C75">MLanczos3</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MyKernel</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;Lanczos&quot;</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">taps</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">3</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18"></a><span style="color: #E06C75">MLanczos4</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MyKernel</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;Lanczos&quot;</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">taps</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">4</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+This method has its own limitations, though, since for example it does not support (de-)scaling in linear light with <code>linear=True</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>
