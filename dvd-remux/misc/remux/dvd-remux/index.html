@@ -845,6 +845,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#setting-the-correct-aspect-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting the correct aspect ratio
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -905,6 +914,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#setting-the-correct-aspect-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting the correct aspect ratio
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -960,10 +978,10 @@ in order of safest to least safe:</p>
 <div class="tabbed-block">
 <div class="admonition warning">
 <p class="admonition-title">Version</p>
-<p>This method requires FFmpeg 7.0 or later!
+<p>This method requires BtbN nightly FFmpeg build!
 If you are using an older version,
-you will need to upgrade.<br>
-You can find the latest BtbN builds <a href="https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-win64-gpl-7.1.zip">here</a>.</p>
+you will need to upgrade.
+You can find the latest BtbN nightly builds <a href="https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-win64-gpl-7.1.zip">here</a>.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Documentation</p>
@@ -1090,25 +1108,31 @@ based on your needs:</p>
 </ul>
 </div>
 <div class="tabbed-block">
+<details class="question">
+<summary>What are PGCs?</summary>
+<p>PGCs are a way to organize the video streams on a DVD.
+For more information,
+see <a href="https://dvd.sourceforge.net/dvdinfo/pgc.html">this page</a>.</p>
+</details>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>ffmpeg<span style="color: #ABB2BF"> </span>-f<span style="color: #ABB2BF"> </span>dvdvideo<span style="color: #ABB2BF"> </span>-i<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;input_file&gt;&quot;</span><span style="color: #ABB2BF"> </span>-menu<span style="color: #ABB2BF"> </span>True<span style="color: #ABB2BF"> </span>-pgc<span style="color: #ABB2BF"> </span>&lt;pgc&gt;<span style="color: #ABB2BF"> </span>-map<span style="color: #ABB2BF"> </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF"> </span>-c<span style="color: #ABB2BF"> </span>copy<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;output_file&gt;&quot;</span>
 </code></pre></div></td></tr></table></div>
 <p>Replace the following keys:</p>
 <ul>
 <li><code>&lt;input_file&gt;</code>: The path to your DVDISO</li>
-<li><code>&lt;pgc&gt;</code>: The PGC number you want to remux (integer between 1 and 99)</li>
+<li><code>&lt;pgc&gt;</code>: The number of the PGC you want to remux (integer between 1 and 99)</li>
 <li><code>&lt;output_file&gt;</code>: The path to the output file</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="admonition question">
+<div class="admonition warning">
 <p class="admonition-title">Converting PCM audio to FLAC</p>
 <p>If your DVDISO has PCM audio
 (which you can figure out
 by checking the file
 in either FFprobe or MediaInfo),<br>
-you may want to convert it to FLAC.
+you <strong>must</strong> to convert it to FLAC.
 You can do that
 by adding the following parameter
 after <code>-c copy</code>:</p>
@@ -1245,8 +1269,8 @@ It will now start creating
 a back-up of your disc.</p>
 <p><img alt="MakeMKV backup window" src="../img/makemkv/copy-dvd-window.png" /></p>
 <p>Once it's done,
-follow the instructions
-for the ISO method.</p>
+<a href="#__tabbed_5_1">follow the instructions
+for the ISO method</a>.</p>
 </div>
 </div>
 </div>
@@ -1262,7 +1286,8 @@ the files will be in the output folder.</p>
 </div>
 </div>
 </div>
-<p>The file should be ready for further processing!</p>
+<h2 id="setting-the-correct-aspect-ratio">Setting the correct aspect ratio</h2>
+<p>TODO</p>
 
 
 
