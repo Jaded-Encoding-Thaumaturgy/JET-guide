@@ -5,18 +5,19 @@ it helps a lot to have a clean mux
 of each episode ready.
 To do this,
 you will need to remux the DVDISO,
-and somehow split the mux into individual episodes.
-This guide will cover the best way to do this,
+and somehow split the remux into individual episodes.
+This guide will cover different methods to accomplish this,
 as well as cover some additional information
 that's useful if you want to release a DVD remux.
 
 ## Understanding DVD Structure
 
 There are multiple ways to remux a DVDISO.
-However, it's also important to realize _what_ you are remuxing.
+However, it's also important
+to understand _what_ you are remuxing.
 DVDISOs are made up of the following:
 
-- **Titles**: The main content units on a DVD. Each title typically contains one episode, movie, or bonus feature.
+- **Titles**: The main content units on a DVD. Each title typically contains one episode, movie, or bonus feature. These may also contain multiple episodes in one big title.
 - **Angles**: Alternative video streams within a title, often used for different versions of the same content (such as theatrical and director's cut versions).
 - **Chapters**: Markers within a title that allow skipping to specific points, like scene transitions or commercial break points.
 
