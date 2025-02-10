@@ -38,10 +38,10 @@ in order of safest to least safe:
     === "FFmpeg"
 
         !!! warning "Version"
-            This method requires FFmpeg 7.0 or later!
+            This method requires BtbN nightly FFmpeg build!
             If you are using an older version,
-            you will need to upgrade.<br>
-            You can find the latest BtbN builds [here](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-win64-gpl-7.1.zip).
+            you will need to upgrade.
+            You can find the latest BtbN nightly builds [here](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-win64-gpl-7.1.zip).
 
         !!! info "Documentation"
             For more information on the command line arguments,
@@ -168,6 +168,11 @@ in order of safest to least safe:
 
             === "Menus"
 
+                ??? question "What are PGCs?"
+                    PGCs are a way to organize the video streams on a DVD.
+                    For more information,
+                    see [this page](https://dvd.sourceforge.net/dvdinfo/pgc.html).
+
                 ```bash
                 ffmpeg -f dvdvideo -i "<input_file>" -menu True -pgc <pgc> -map 0 -c copy "<output_file>"
                 ```
@@ -175,15 +180,15 @@ in order of safest to least safe:
                 Replace the following keys:
 
                 - `<input_file>`: The path to your DVDISO
-                - `<pgc>`: The PGC number you want to remux (integer between 1 and 99)
+                - `<pgc>`: The number of the PGC you want to remux (integer between 1 and 99)
                 - `<output_file>`: The path to the output file
 
-        !!! question "Converting PCM audio to FLAC"
+        !!! warning "Converting PCM audio to FLAC"
             If your DVDISO has PCM audio
             (which you can figure out
             by checking the file
             in either FFprobe or MediaInfo),<br>
-            you may want to convert it to FLAC.
+            you **must** to convert it to FLAC.
             You can do that
             by adding the following parameter
             after `-c copy`:
@@ -343,8 +348,8 @@ in order of safest to least safe:
                 ![MakeMKV backup window](./img/makemkv/copy-dvd-window.png)
 
                 Once it's done,
-                follow the instructions
-                for the ISO method.
+                [follow the instructions
+                for the ISO method](#__tabbed_5_1).
 
         Select the titles you want to remux,
         give it an output folder and name,
@@ -357,4 +362,6 @@ in order of safest to least safe:
 
         ![MakeMKV output folder](./img/makemkv/output.png)
 
-The file should be ready for further processing!
+## Setting the correct aspect ratio
+
+TODO
