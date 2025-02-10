@@ -142,7 +142,7 @@ in order of safest to least safe:
             === "Title with multiple episodes"
 
                 ```bash
-                ffmpeg -f dvdvideo -i "<input_file>" -preindex True -title <title> -chapter_start <chapter> -chapter_end <chapter> -map 0 -c copy "<output_file>"
+                ffmpeg -f dvdvideo -i "<input_file>" -preindex True -title <title> -chapter_start <chapter_start> -chapter_end <chapter_end> -map 0 -c copy "<output_file>"
                 ```
 
                 Replace the following keys:
@@ -229,7 +229,7 @@ in order of safest to least safe:
         you will need to unpack it first.
         This can be done with either WinRAR or 7-Zip.
 
-        ![Unpacking a DVDISO with 7-Zip](./img/unpack-context-menu.png)
+        ![Unpacking a DVDISO with 7-Zip](./img/pgcdemux/unpack-context-menu.png)
 
         Once you have an unpacked DVDISO,
         you can open PgcDemux
@@ -257,9 +257,9 @@ in order of safest to least safe:
         we will be using the "By PGC" mode.
 
         ??? question "What are PGCs?"
-              PGCs are a way to organize the video streams on a DVD.
-              For more information,
-              see [this page](https://dvd.sourceforge.net/dvdinfo/pgc.html).
+            PGCs are a way to organize the video streams on a DVD.
+            For more information,
+            see [this page](https://dvd.sourceforge.net/dvdinfo/pgc.html).
 
         You can select different PGCs in the "PGC Selection" box.
         Under the dropdown menu, you can find invididual titles:
