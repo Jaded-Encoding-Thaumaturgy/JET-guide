@@ -41,6 +41,7 @@ nav:
     - x265 Parameters: encoding/x265params.md
   - Misc:
     - Comparison: misc/comparison.md
+    - Remuxing DVDs: misc/remux/dvd-remux.md
 
 plugins:
 - search
