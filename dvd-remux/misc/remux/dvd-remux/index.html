@@ -852,6 +852,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Setting the correct aspect ratio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#heuristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heuristics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -921,6 +936,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Setting the correct aspect ratio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#heuristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heuristics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -972,7 +1002,7 @@ you might want to capture all available angles as well.</p>
 <p>Below are multiple methods to remux your DVDISO,
 in order of safest to least safe:</p>
 <div class="admonition example">
-<p class="admonition-title">Different remuxing methods</p>
+<p class="admonition-title">Remuxing methods</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">FFmpeg</label><label for="__tabbed_1_2">PgcDemux</label><label for="__tabbed_1_3">MakeMKV</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1085,7 +1115,7 @@ based on your needs:</p>
 </ul>
 </div>
 <div class="tabbed-block">
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>ffmpeg<span style="color: #ABB2BF"> </span>-f<span style="color: #ABB2BF"> </span>dvdvideo<span style="color: #ABB2BF"> </span>-i<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;input_file&gt;&quot;</span><span style="color: #ABB2BF"> </span>-preindex<span style="color: #ABB2BF"> </span>True<span style="color: #ABB2BF"> </span>-title<span style="color: #ABB2BF"> </span>&lt;title&gt;<span style="color: #ABB2BF"> </span>-chapter_start<span style="color: #ABB2BF"> </span>&lt;chapter&gt;<span style="color: #ABB2BF"> </span>-chapter_end<span style="color: #ABB2BF"> </span>&lt;chapter&gt;<span style="color: #ABB2BF"> </span>-map<span style="color: #ABB2BF"> </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF"> </span>-c<span style="color: #ABB2BF"> </span>copy<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;output_file&gt;&quot;</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>ffmpeg<span style="color: #ABB2BF"> </span>-f<span style="color: #ABB2BF"> </span>dvdvideo<span style="color: #ABB2BF"> </span>-i<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;input_file&gt;&quot;</span><span style="color: #ABB2BF"> </span>-preindex<span style="color: #ABB2BF"> </span>True<span style="color: #ABB2BF"> </span>-title<span style="color: #ABB2BF"> </span>&lt;title&gt;<span style="color: #ABB2BF"> </span>-chapter_start<span style="color: #ABB2BF"> </span>&lt;chapter_start&gt;<span style="color: #ABB2BF"> </span>-chapter_end<span style="color: #ABB2BF"> </span>&lt;chapter_end&gt;<span style="color: #ABB2BF"> </span>-map<span style="color: #ABB2BF"> </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF"> </span>-c<span style="color: #ABB2BF"> </span>copy<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;output_file&gt;&quot;</span>
 </code></pre></div></td></tr></table></div>
 <p>Replace the following keys:</p>
 <ul>
@@ -1169,7 +1199,7 @@ Some downloads will come unpacked,
 but if you have a compressed ISO,
 you will need to unpack it first.
 This can be done with either WinRAR or 7-Zip.</p>
-<p><img alt="Unpacking a DVDISO with 7-Zip" src="../img/unpack-context-menu.png" /></p>
+<p><img alt="Unpacking a DVDISO with 7-Zip" src="../img/pgcdemux/unpack-context-menu.png" /></p>
 <p>Once you have an unpacked DVDISO,
 you can open PgcDemux
 and drag the <code>VTS_XX_0.IFO</code> file,
@@ -1192,8 +1222,8 @@ we will be using the "By PGC" mode.</p>
 <details class="question">
 <summary>What are PGCs?</summary>
 <p>PGCs are a way to organize the video streams on a DVD.
-  For more information,
-  see <a href="https://dvd.sourceforge.net/dvdinfo/pgc.html">this page</a>.</p>
+For more information,
+see <a href="https://dvd.sourceforge.net/dvdinfo/pgc.html">this page</a>.</p>
 </details>
 <p>You can select different PGCs in the "PGC Selection" box.
 Under the dropdown menu, you can find invididual titles:</p>
@@ -1287,7 +1317,266 @@ the files will be in the output folder.</p>
 </div>
 </div>
 <h2 id="setting-the-correct-aspect-ratio">Setting the correct aspect ratio</h2>
-<p>TODO</p>
+<p>DVDs use a format called "anamorphic video",
+which means the stored video dimensions
+differ from the intended display dimensions.
+A typical NTSC DVD stores video at 720x480 pixels
+(a 3:2 aspect ratio),
+but displays it at either widescreen (16:9)
+or standard definition (4:3).</p>
+<p>To achieve the correct display size,
+DVDs use a <a href="https://en.wikipedia.org/wiki/Sample_aspect_ratio">SAR (Sample Aspect Ratio)</a>,
+also known as PAR (Pixel Aspect Ratio).
+This value tells the player how much to stretch each pixel
+to reach its intended <a href="https://en.wikipedia.org/wiki/Display_aspect_ratio">DAR (Display Aspect Ratio)</a>
+after cropping the image.
+The system was designed for CRT televisions,
+which had <a href="https://en.wikipedia.org/wiki/Overscan">overscan</a> -
+meaning they would stretch and slightly crop
+the edges of the image.</p>
+<p>DVD authorers accounted for this by keeping important content
+within a smaller <a href="https://en.wikipedia.org/wiki/Overscan#Overscan_amounts">active area</a>.
+When played on a CRT,
+the television's natural stretching
+would result in the correct final aspect ratio
+being displayed.</p>
+<p>Modern displays lack both overscan
+and the automatic stretching of CRTs.
+As a result, DVDs will display incorrectly
+on modern screens without proper correction
+during the remux process.</p>
+<h3 id="heuristics">Heuristics</h3>
+<p>Determining the correct SAR values for a DVD
+requires understanding several standards
+that have evolved over time.
+Different DVD manufacturers and regions
+have had varying approaches,
+making it challenging to identify
+the exact standard used for any given disc.</p>
+<p>To help narrow down the correct values,
+below is a reference table of common SAR values
+and their corresponding active areas:</p>
+<div class="admonition info">
+<p class="admonition-title">Common DVD anamorphic resolution standards</p>
+<div class="admonition warning">
+<p class="admonition-title">Other standards</p>
+<p>While other standards exist,
+they are extremely uncommon.
+If your DVD's aspect ratio values
+don't match any listed here,
+there's a high probability
+that something is incorrect
+in your analysis.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">NTSC</label><label for="__tabbed_6_2">PAL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Display Aspect Ratio</th>
+<th>Sample Aspect Ratio/Pixel Aspect Ratio</th>
+<th>Active Area (px)</th>
+<th>Display Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4:3</td>
+<td>4320:4739</td>
+<td>710.85x486</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>640:711</td>
+<td>711x480</td>
+<td>711x533</td>
+</tr>
+<tr>
+<td></td>
+<td>160:177</td>
+<td>708x480</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>10:11</td>
+<td>704x480</td>
+<td>704x528</td>
+</tr>
+<tr>
+<td>16:9</td>
+<td>2560:2133</td>
+<td>711x480</td>
+<td>853x480</td>
+</tr>
+<tr>
+<td></td>
+<td>640:531</td>
+<td>708x480</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>40:33</td>
+<td>704x480</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Display Aspect Ratio</th>
+<th>Sample Aspect Ratio/Pixel Aspect Ratio</th>
+<th>Active Area (px)</th>
+<th>Display Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4:3</td>
+<td>128:117</td>
+<td>702x576</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>1132:1035</td>
+<td>690x566</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">NTSC to PAL conversions</p>
+<p>When working with DVDs that have been converted between NTSC and PAL formats,
+the standard aspect ratio values may not apply.</p>
+<p>For these cases:</p>
+<ol>
+<li>First determine and correct the SAR/PAR values of the original format</li>
+<li>Analyze how the conversion process transformed the video</li>
+<li>Adjust your settings to match the original content's intended display</li>
+</ol>
+</div>
+<p>The following methods can be used
+to help determine the correct SAR values:</p>
+<div class="admonition example">
+<p class="admonition-title">SAR heuristic methods</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:4"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Faded columns</label><label for="__tabbed_7_2">Circle method</label><label for="__tabbed_7_3">Logo method</label><label for="__tabbed_7_4">Ground Truth</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">NTSC Active Area Standards</p>
+<p>NTSC has two common active area standards that are very similar:
+- 710.85x486 (typically from analog transfers)
+- 704x480 (more common in digital sources)</p>
+<p>While the faded columns method below can help identify the active area,
+additional analysis may be needed to definitively determine which standard is being used.</p>
+</div>
+<p>One way to determine the active area
+is by looking for faded columns
+on the edges of the frame.
+These dark borders are intentionally added
+to mark the boundaries of the active picture area.</p>
+<p><img alt="Example frame from Nurse Witch Komugi" src="../img/sar/faded-columns-method.png" /></p>
+<p>To calculate the active area width:</p>
+<ol>
+<li>Identify the fade width on the left and right sides (ignoring the top and bottom)</li>
+<li>Subtract both fades from the total frame width</li>
+</ol>
+<p>For example, if you have:</p>
+<ul>
+<li>Total frame width: 720 pixels</li>
+<li>Left fade: 9 pixels</li>
+<li>Right fade: 7 pixels</li>
+</ul>
+<p>The active area width would be:
+<code>720 - 9 - 7 = 704 pixels</code></p>
+<p>Once you know the active area
+and display aspect ratio (DAR),
+you can determine the correct SAR
+from the reference table above.</p>
+<p>In this example frame:</p>
+<ul>
+<li>Active area: 704x480</li>
+<li>DAR: 4:3</li>
+<li>Therefore SAR: 10:11</li>
+<li>Final display resolution: 704x528</li>
+</ul>
+<p><img alt="Example frame from Nurse Witch Komugi" src="../img/sar/faded-columns-stretched.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>Another method to determine the correct SAR
+is by finding objects in the frame
+that should be perfectly circular,
+like clocks, wheels, or logos.</p>
+<p>The process is straightforward:</p>
+<ol>
+<li>Find a frame with an object that should be a perfect circle</li>
+<li>In an image editor, overlay a perfect circle on top of the object</li>
+<li>Test different standard SAR values until the object matches the overlay</li>
+</ol>
+<p><img alt="Perfect circle overlaid onto a frame, example from Kaleido Star" src="../img/sar/circle-method.png" /></p>
+<p>The image above demonstrates a perfect match
+using a SAR of 2560:2133,
+which corresponds to a 711x480 active area.
+When the overlay aligns perfectly with the object,
+you've found the correct SAR.</p>
+</div>
+<div class="tabbed-block">
+<p>Another approach is to compare text
+or studio logos
+against reference images.
+Many studio logos can be found online
+in their original square pixel form,
+which makes them useful reference points.</p>
+<p>The process is similar to the circle method,
+but uses a studio logo or text
+as the reference
+instead of a circle.
+You overlay the reference logo
+on top of the frame
+and adjust the SAR
+until they match perfectly.</p>
+<p><img alt="Logo from Google overlaid onto the OP credits" src="../img/sar/logo-method.png" /></p>
+<p>In this example,
+matching the logo
+gave us a SAR of 4320:4739
+(equivalent to a 710.85x486 active area).
+This level of precision
+would be difficult to achieve
+using just the faded column method.</p>
+</div>
+<div class="tabbed-block">
+<p>If you have access to a natively square pixel source
+(such as a Blu-ray release),
+you can use it as a reference
+to determine the correct SAR.
+Note that SD upscales do not qualify
+as valid reference sources.</p>
+<p>This method is particularly useful
+for episodes that were only released on DVD
+when Blu-rays exist for other episodes,
+such as DVD-only OVAs.
+The process involves:</p>
+<ol>
+<li>Downscale the Blu-ray to 864x486</li>
+<li>Crop it to 864x480 (matching the DVD crop)</li>
+<li>Test different SAR/PAR standards
+   until the DVD matches the Blu-ray perfectly</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
 
 
 
