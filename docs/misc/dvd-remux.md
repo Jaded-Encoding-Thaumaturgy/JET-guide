@@ -28,10 +28,29 @@ you'll typically want to focus on the main title and chapters.
 However, for a complete preservation,
 you might want to capture all available angles as well.
 
+??? question "What are PGCs?"
+    PGCs (Program Chains) are part of the DVD video structure hierarchy.
+    At the lowest level, multiple VOBUs (Video Object Units) form a cell.
+    One or more cells make up a program,
+    and one or more programs form a PGC.
+    Programs can be identified as PTTs (Parts of Title),
+    also commonly known as chapters.
+    A title on a DVD consists of one or more PGCs,
+    while a menu is made up of a single PGC[^pgc-references].
+
+[^pgc-references]: For more information,
+    see [this page](https://dvd.sourceforge.net/dvdinfo/pgc.html),
+    [this page](http://www.mpucoder.com/DVD/),
+    and [this page](https://en.wikibooks.org/wiki/Inside_DVD-Video/MPEG_Format#VOBU,_Cell,_Program,_PGC).
+
 ## Remuxing Methods
 
-Below are multiple methods to remux your DVDISO,
-in order of safest to least safe:
+Below are multiple methods to remux your DVDISO.
+If you are unsure if one method
+produced the correct result,
+try another method
+and see if the result
+is the same.
 
 !!! example "Remuxing methods"
 
@@ -52,8 +71,29 @@ in order of safest to least safe:
         You will ideally want all of the above,
         and the most straight-forward way to find them
         is by using [MPC-HC](https://github.com/clsid2/mpc-hc)
-        (note that VLC and mpv do not support this functionality
+        (note that VLC and mpv
+        do not support all the functionality
+        covered in this guide
         as of the time of writing).
+
+        ??? question "What _do_ VLC and mpv support?"
+            On Linux,
+            mpv has okay-ish libdvdnav support,
+            meaning you can use scripts
+            such as [mpv-dvd-browser](https://github.com/CogentRedTester/mpv-dvd-browser)
+            to navigate to different titles.
+            Angles are still only accessible via the command line,
+            and menus are unsupported.
+            VLC also supports most functionalities,
+            but has no support for different angles.
+
+            If you don't need angle/menu support,
+            and _really_ don't want to use MPC-HC,
+            either of the above options
+            may work for you.
+            Nonetheless,
+            this guide
+            will only cover MPC-HC usage.
 
         !!! example "How to view your DVD"
 
@@ -65,7 +105,7 @@ in order of safest to least safe:
                      2. Hover over the _Files > Open File_ button
                      3. Select your DVDISO
 
-                     ![Opening the ISO with MPC-HC from MPC-HC](./img/ffmpeg/open-dvd-iso-mpchc.png)
+                     ![Opening the ISO with MPC-HC from MPC-HC](./img/dvd-remux/ffmpeg/open-dvd-iso-mpchc.png)
 
                 === "From Explorer"
 
@@ -77,7 +117,7 @@ in order of safest to least safe:
                         2. Find the mpc-hc.exe file
                         3. Click on it.
 
-                     ![Opening the ISO with MPC-HC from explorer](./img/ffmpeg/open-dvd-iso-explorer.png)
+                     ![Opening the ISO with MPC-HC from explorer](./img/dvd-remux/ffmpeg/open-dvd-iso-explorer.png)
 
             === "Physical DVD"
 
@@ -86,7 +126,7 @@ in order of safest to least safe:
                 3. Hover over the _Files > Open Disc_ button
                 4. Select your DVD drive
 
-                 ![MPC-HC main window](./img/ffmpeg/open-dvd-physical.png)
+                 ![MPC-HC main window](./img/dvd-remux/ffmpeg/open-dvd-physical.png)
 
             === "Unpacked DVD"
 
@@ -96,7 +136,7 @@ in order of safest to least safe:
                 8. Click on the folder the DVD was unpacked into
                 9. Click "Select folder"
 
-                ![Opening the unpacked DVD with MPC-HC](./img/ffmpeg/open-dvd-unpacked.png)
+                ![Opening the unpacked DVD with MPC-HC](./img/dvd-remux/ffmpeg/open-dvd-unpacked.png)
 
             !!! info "Skipping to the menu"
                 You can click _Navigate > Title Menu_ to skip the trailers/warning
@@ -104,7 +144,7 @@ in order of safest to least safe:
 
         You should now be able to see the DVD content.
 
-        ![Example of MPC-HC opened to a DVD](./img/ffmpeg/mpc-dvd-opened.png)
+        ![Example of MPC-HC opened to a DVD](./img/dvd-remux/ffmpeg/mpc-dvd-opened.png)
 
         You will want to take note of whether there are individual titles for each episode,
         or if they're all in one big title.
@@ -129,7 +169,7 @@ in order of safest to least safe:
             === "Title with chapters"
 
                 ```bash
-                ffmpeg -f dvdvideo -i "<input_file>" -preindex True -title <title> -map 0 -c copy "<output_file>"
+                ffmpeg -f dvdvideo -preindex True -title <title> -i "<input_file>" -map 0 -c copy "<output_file>"
                 ```
 
                 Replace the following keys:
@@ -141,7 +181,7 @@ in order of safest to least safe:
             === "Title with multiple episodes"
 
                 ```bash
-                ffmpeg -f dvdvideo -i "<input_file>" -preindex True -title <title> -chapter_start <chapter_start> -chapter_end <chapter_end> -map 0 -c copy "<output_file>"
+                ffmpeg -f dvdvideo -preindex True -title <title> -chapter_start <chapter_start> -chapter_end <chapter_end> -i "<input_file>" -map 0 -c copy "<output_file>"
                 ```
 
                 Replace the following keys:
@@ -155,7 +195,7 @@ in order of safest to least safe:
             === "Title with a different angle"
 
                 ```bash
-                ffmpeg -f dvdvideo -i "<input_file>" -preindex True -title <title> -angle <angle> -map 0 -c copy "<output_file>"
+                ffmpeg -f dvdvideo -preindex True -title <title> -angle <angle> -i "<input_file>" -map 0 -c copy "<output_file>"
                 ```
 
                 Replace the following keys:
@@ -167,13 +207,8 @@ in order of safest to least safe:
 
             === "Menus"
 
-                ??? question "What are PGCs?"
-                    PGCs are a way to organize the video streams on a DVD.
-                    For more information,
-                    see [this page](https://dvd.sourceforge.net/dvdinfo/pgc.html).
-
                 ```bash
-                ffmpeg -f dvdvideo -i "<input_file>" -menu True -pgc <pgc> -map 0 -c copy "<output_file>"
+                ffmpeg -f dvdvideo -menu True -pgc <pgc> -i "<input_file>" -map 0 -c copy "<output_file>"
                 ```
 
                 Replace the following keys:
@@ -225,10 +260,14 @@ in order of safest to least safe:
     === "PgcDemux"
 
         !!! warning "Binaries"
-            This program is only available as a Windows binary.
-            If you are on Linux,
-            you may need to build it from source yourself
-            (which is also included in the link).
+            The GUI for PgcDemux is only available as a Windows binary.
+            If you are on Arch Linux,
+            the AUR has a cpgcdemux package
+            for CLI functionality.
+            PgcDemux reportedly works with Wine,
+            but no guarantees are made
+            that it will work
+            as expected.
 
         PgcDemux is a tool
         that allows you to demux a DVDISO
@@ -246,7 +285,7 @@ in order of safest to least safe:
         you will need to unpack it first.
         This can be done with either WinRAR or 7-Zip.
 
-        ![Unpacking a DVDISO with 7-Zip](./img/pgcdemux/unpack-context-menu.png)
+        ![Unpacking a DVDISO with 7-Zip](./img/dvd-remux/pgcdemux/unpack-context-menu.png)
 
         Once you have an unpacked DVDISO,
         you can open PgcDemux
@@ -261,27 +300,22 @@ in order of safest to least safe:
         in the path,
         such as Japanese characters.
 
-        ![Error when path contains unicode characters](./img/pgcdemux/name-error.png)
+        ![Error when path contains unicode characters](./img/dvd-remux/pgcdemux/name-error.png)
 
         Once you have dragged the file into the program,
         you will see a window like the following:
 
-        ![PgcDemux main window](./img/pgcdemux/main-window.png)
+        ![PgcDemux main window](./img/dvd-remux/pgcdemux/main-window.png)
 
         There are three modes
         to choose from.
         For our purposes,
         we will be using the "By PGC" mode.
 
-        ??? question "What are PGCs?"
-            PGCs are a way to organize the video streams on a DVD.
-            For more information,
-            see [this page](https://dvd.sourceforge.net/dvdinfo/pgc.html).
-
         You can select different PGCs in the "PGC Selection" box.
         Under the dropdown menu, you can find invididual titles:
 
-        ![PGC selection dropdown](./img/pgcdemux/selection-dropdown.png)
+        ![PGC selection dropdown](./img/dvd-remux/pgcdemux/selection-dropdown.png)
 
         In most cases, these will be split into individual episodes.
         If that's not the case,
@@ -293,14 +327,14 @@ in order of safest to least safe:
         You will see a list of demuxing options.
         Set these to the following:
 
-        ![PgcDemux options window, with "Create a PGC VOB" and "One file per VID" option ticked, and everything else unticked](./img/pgcdemux/options-window.png)
+        ![PgcDemux options window, with "Create a PGC VOB" and "One file per VID" option ticked, and everything else unticked](./img/dvd-remux/pgcdemux/options-window.png)
 
         Once you have set the options,
         you can click the "Process!" button
         to begin the demuxing process.
         This will output the files into your output directory.
 
-        ![Output directory](./img/pgcdemux/output.png)
+        ![Output directory](./img/dvd-remux/pgcdemux/output.png)
 
         If the episodes are not split into individual files,
         you will need to split them manually.
@@ -308,7 +342,7 @@ in order of safest to least safe:
         using [mkvtoolnix](https://mkvtoolnix.download/)
         and splitting by time under the "Output" tab.
 
-        ![mkvtoolnix splitting menu](./img/pgcdemux/mkvtoolnix-split.png)
+        ![mkvtoolnix splitting menu](./img/dvd-remux/pgcdemux/mkvtoolnix-split.png)
 
     === "MakeMKV"
 
@@ -346,18 +380,18 @@ in order of safest to least safe:
                 It will start processing the file,
                 and then show you this window:
 
-                ![MakeMKV main window](./img/makemkv/main-window.png)
+                ![MakeMKV main window](./img/dvd-remux/makemkv/main-window.png)
 
                 Select the titles you want to remux,
                 give it an output folder and name,
                 and click the button underneath "Make MKV".
 
-                ![MakeMKV Progress window](./img/makemkv/progress-window.png)
+                ![MakeMKV Progress window](./img/dvd-remux/makemkv/progress-window.png)
 
                 Once it's done,
                 the files will be in the output folder.
 
-                ![MakeMKV output folder](./img/makemkv/output.png)
+                ![MakeMKV output folder](./img/dvd-remux/makemkv/output.png)
 
             === "Physical disc"
 
@@ -365,7 +399,7 @@ in order of safest to least safe:
                 MakeMKV will automatically detect it,
                 and then show you this window:
 
-                ![MakeMKV main window](./img/makemkv/inserted-disc-window.png)
+                ![MakeMKV main window](./img/dvd-remux/makemkv/inserted-disc-window.png)
 
                 Click the "Backup" button,
                 select "Decrypt video files"
@@ -375,7 +409,7 @@ in order of safest to least safe:
                 It will now start creating
                 a back-up of your disc.
 
-                ![MakeMKV backup window](./img/makemkv/copy-dvd-window.png)
+                ![MakeMKV backup window](./img/dvd-remux/makemkv/copy-dvd-window.png)
 
                 Once it's done,
                 [follow the instructions
@@ -435,7 +469,7 @@ a reference table of common SAR values
 and their corresponding active areas
 is provided below[^sar-source]:
 
-[^sar-source]: A lot of these SAR values were derived from [this page](https://web.archive.org/web/20140218044518/http://lipas.uwasa.fi/~f76998/video/conversion/#conversion_table).
+[^sar-source]: A number of SAR values were derived from [this page](https://web.archive.org/web/20140218044518/http://lipas.uwasa.fi/~f76998/video/conversion/#conversion_table).
 
 !!! info "Common DVD anamorphic resolution standards"
 
@@ -477,6 +511,8 @@ is provided below[^sar-source]:
     2. Analyze how the conversion process transformed the video
     3. Adjust your settings to match the original content's intended display
 
+<!-- TODO: Maybe mention dvdunauthor? I only see Linux builds for this, but it may be useful for troubleshooting? -->
+
 ### Determining the correct SAR values
 
 The following methods can be used
@@ -506,7 +542,7 @@ to derive the most accurate SAR values.
         These dark borders are intentionally added
         to mark the boundaries of the active picture area.
 
-        ![Example frame from Nurse Witch Komugi Magikarte](./img/sar/faded-columns-method.png)
+        ![Example frame from Nurse Witch Komugi Magikarte](./img/dvd-remux/sar/faded-columns-method.png)
 
         To calculate the active area width:
 
@@ -534,7 +570,7 @@ to derive the most accurate SAR values.
         - Therefore SAR: 10:11
         - Final display resolution: 704x528
 
-        ![Example frame from Nurse Witch Komugi Magikarte with all the relevant information](./img/sar/faded-columns-stretched.png)
+        ![Example frame from Nurse Witch Komugi Magikarte with all the relevant information](./img/dvd-remux/sar/faded-columns-stretched.png)
 
     === "Circle method"
 
@@ -549,7 +585,7 @@ to derive the most accurate SAR values.
         2. In an image editor, overlay a perfect circle on top of the object
         3. Test different standard SAR values until the object matches the overlay
 
-        ![Perfect circle overlaid onto a frame, example from Kaleido Star](./img/sar/circle-method.png)
+        ![Perfect circle overlaid onto a frame, example from Kaleido Star](./img/dvd-remux/sar/circle-method.png)
 
         The image above demonstrates a perfect match
         using a SAR of 2560:2133,
@@ -575,7 +611,7 @@ to derive the most accurate SAR values.
         and adjust the SAR
         until they match perfectly.
 
-        ![Logo from Google overlaid onto the OP credits](./img/sar/logo-method.png)
+        ![Logo from Google overlaid onto the OP credits](./img/dvd-remux/sar/logo-method.png)
 
         In this example,
         matching the logo
@@ -587,12 +623,19 @@ to derive the most accurate SAR values.
 
     === "Ground Truth"
 
+        !!! warning "SD upscales do not qualify"
+            Note that SD upscales do not qualify
+            as valid reference sources,
+            as they are not native square pixel sources.
+            They had to go through the same process
+            as you are doing now,
+            and it's very likely
+            that they were handled incorrectly!
+
         If you have access to a natively square pixel source
         (such as a Blu-ray release),
         you can use it as a reference
         to determine the correct SAR.
-        Note that SD upscales do not qualify
-        as valid reference sources.
 
         This method is particularly useful
         for episodes that were only released on DVD
@@ -601,9 +644,27 @@ to derive the most accurate SAR values.
 
         The process works as follows:
 
-        1. Downscale the Blu-ray to 864x486
-        2. Crop the image to 864x480 (matching the DVD master's crop)
-        3. Test different SAR standards
+        4. Downscale the Blu-ray to 864x486
+        5. Crop the image to 864x480 (matching the DVD master's crop)
+        6. Test different SAR standards
            until the DVD matches the Blu-ray perfectly
+
+??? question "None of these methods worked! What now?"
+    If you do not see any faded columns,
+    you should use the circle
+    or logo method instead.
+    If neither of these give you useful results
+    and there is no ground truth available,
+    you may be able to fall back on
+    an active area of `711x480`.
+
+    This will _always_ be an assumption,
+    however,
+    and should only be fallen back on
+    as a last resort.
+    Double-check as many scenes as possible
+    to ensure this is indeed the correct SAR,
+    or ask an experienced encoder/remuxer
+    for help.
 
 <!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
