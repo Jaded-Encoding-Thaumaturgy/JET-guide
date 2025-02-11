@@ -864,6 +864,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#determining-the-correct-sar-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Determining the correct SAR values
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -943,6 +952,15 @@
   <a href="#heuristics" class="md-nav__link">
     <span class="md-ellipsis">
       Heuristics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#determining-the-correct-sar-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Determining the correct SAR values
     </span>
   </a>
   
@@ -1166,12 +1184,12 @@ you <strong>must</strong> to convert it to FLAC.
 You can do that
 by adding the following parameter
 after <code>-c copy</code>:</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>-c:a<span style="color: #ABB2BF"> </span>flac<span style="color: #ABB2BF"> </span>-compression_level:a<span style="color: #ABB2BF"> </span><span style="color: #D19A66">12</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>-c:a<span style="color: #ABB2BF"> </span>flac<span style="color: #ABB2BF"> </span>-compression_level:a<span style="color: #ABB2BF"> </span><span style="color: #D19A66">8</span>
 </code></pre></div></td></tr></table></div>
 <p>If you have any tracks that are not PCM,
 you can prevent them from being converted
-by replacing <code>-c:a</code> with <code>-codec:stream_id</code>,
-where <code>stream_id</code> is the ID of the track
+by replacing <code>-c:a</code> with <code>-codec:&lt;stream_id&gt;</code>,
+where <code>&lt;stream_id&gt;</code> is the ID of the track
 you want to convert.
 You will need to add one of these
 for each track
@@ -1188,7 +1206,8 @@ you may need to build it from source yourself
 </div>
 <p>PgcDemux is a tool
 that allows you to demux a DVDISO
-into individual "titles" and "menus".</p>
+into individual titles and menus,
+as well as select angles.</p>
 <p>The download link can be found here:</p>
 <ul>
 <li><a href="https://download.videohelp.com/jsoto/dvdtools.htm">Jsoto's Vob/Ifo tools</a></li>
@@ -1337,25 +1356,23 @@ which allowed the image to reach its intended <a href="https://en.wikipedia.org/
 by keeping important content
 within a smaller <a href="https://en.wikipedia.org/wiki/Overscan#Overscan_amounts">active area</a>.
 When played on a CRT,
-the television's natural stretching
+the television's natural stretching and cropping
 would result in the correct final aspect ratio
-being displayed.</p>
-<p>Modern displays lack both overscan
+being displayed.
+Modern displays lack both overscan
 and the automatic stretching of CRTs.
 As a result, DVDs will display incorrectly
 on modern screens without proper correction
 during the remux process.</p>
 <h3 id="heuristics">Heuristics</h3>
-<p>Determining the correct SAR values for a DVD
-requires understanding several standards
-that have evolved over time.
-Different DVD manufacturers and regions
-have had varying approaches,
+<p>SAR values have evolved
+through multiple standards over time,
 making it challenging to identify
-the exact standard used for any given disc.</p>
-<p>To help narrow down the correct values,
-below is a reference table of common SAR values
-and their corresponding active areas:</p>
+the exact standard used for any given disc.
+To help narrow down the correct values,
+a reference table of common SAR values
+and their corresponding active areas
+is provided below:</p>
 <div class="admonition info">
 <p class="admonition-title">Common DVD anamorphic resolution standards</p>
 <div class="admonition warning">
@@ -1466,8 +1483,14 @@ the standard aspect ratio values may not apply.</p>
 <li>Adjust your settings to match the original content's intended display</li>
 </ol>
 </div>
+<h3 id="determining-the-correct-sar-values">Determining the correct SAR values</h3>
 <p>The following methods can be used
-to help determine the correct SAR values:</p>
+to help determine the correct SAR values.
+Ideally,
+you should cross-reference the results
+of as many of these methods
+as possible
+to derive the most accurate SAR values.</p>
 <div class="admonition example">
 <p class="admonition-title">SAR heuristic methods</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="7:4"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Faded columns</label><label for="__tabbed_7_2">Circle method</label><label for="__tabbed_7_3">Logo method</label><label for="__tabbed_7_4">Ground Truth</label></div>
@@ -1488,7 +1511,7 @@ is by looking for faded columns
 on the edges of the frame.
 These dark borders are intentionally added
 to mark the boundaries of the active picture area.</p>
-<p><img alt="Example frame from Nurse Witch Komugi" src="../img/sar/faded-columns-method.png" /></p>
+<p><img alt="Example frame from Nurse Witch Komugi Magikarte" src="../img/sar/faded-columns-method.png" /></p>
 <p>To calculate the active area width:</p>
 <ol>
 <li>Identify the fade width on the left and right sides (ignoring the top and bottom)</li>
@@ -1505,15 +1528,15 @@ to mark the boundaries of the active picture area.</p>
 <p>Once you know the active area
 and display aspect ratio (DAR),
 you can determine the correct SAR
-from the reference table above.</p>
+using the reference table above.</p>
 <p>In this example frame:</p>
 <ul>
-<li>Active area: 704x480</li>
+<li>Active area: 704x480 (crop 9px left, 7px right)</li>
 <li>DAR: 4:3</li>
 <li>Therefore SAR: 10:11</li>
 <li>Final display resolution: 704x528</li>
 </ul>
-<p><img alt="Example frame from Nurse Witch Komugi" src="../img/sar/faded-columns-stretched.png" /></p>
+<p><img alt="Example frame from Nurse Witch Komugi Magikarte with all the relevant information" src="../img/sar/faded-columns-stretched.png" /></p>
 </div>
 <div class="tabbed-block">
 <p>Another method to determine the correct SAR
