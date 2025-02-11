@@ -375,20 +375,21 @@ or standard definition (4:3).
 To achieve the correct display size,
 DVDs use a [SAR (Sample Aspect Ratio)](https://en.wikipedia.org/wiki/Sample_aspect_ratio),
 also known as PAR (Pixel Aspect Ratio).
-This value tells the player how much to stretch each pixel
-to reach its intended [DAR (Display Aspect Ratio)](https://en.wikipedia.org/wiki/Display_aspect_ratio)
-after cropping the image.
+This value tells the player how much to stretch each pixel.
 The system was designed for CRT televisions,
-which had [overscan](https://en.wikipedia.org/wiki/Overscan) -
+which had [overscan](https://en.wikipedia.org/wiki/Overscan),
 meaning they would stretch and slightly crop
-the edges of the image.
+the edges of the image,
+which allowed the image to reach its intended [DAR (Display Aspect Ratio)](https://en.wikipedia.org/wiki/Display_aspect_ratio).
 
-DVD authorers accounted for this by keeping important content
+DVD authors accounted for this
+by keeping important content
 within a smaller [active area](https://en.wikipedia.org/wiki/Overscan#Overscan_amounts).
 When played on a CRT,
 the television's natural stretching
 would result in the correct final aspect ratio
 being displayed.
+
 
 Modern displays lack both overscan
 and the automatic stretching of CRTs.
@@ -423,22 +424,22 @@ and their corresponding active areas:
 
     === "NTSC"
 
-        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area (px) | Display Resolution |
-        |----------------------|----------------------------------------|------------------|--------------------|
-        | 4:3                  | 4320:4739                              | 710.85x486       |                    |
-        |                      | 640:711                                | 711x480          | 711x533            |
-        |                      | 160:177                                | 708x480          |                    |
-        |                      | 10:11                                  | 704x480          | 704x528            |
-        | 16:9                 | 2560:2133                              | 711x480          | 853x480            |
-        |                      | 640:531                                | 708x480          |                    |
-        |                      | 40:33                                  | 704x480          |                    |
+        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area | Display Resolution |
+        |----------------------|----------------------------------------|-------------|--------------------|
+        | 4:3                  | 4320:4739                              | 710.85x486  |                    |
+        |                      | 640:711                                | 711x480     | 711x533            |
+        |                      | 160:177                                | 708x480     |                    |
+        |                      | 10:11                                  | 704x480     | 704x528            |
+        | 16:9                 | 2560:2133                              | 711x480     | 853x480            |
+        |                      | 640:531                                | 708x480     |                    |
+        |                      | 40:33                                  | 704x480     |                    |
 
     === "PAL"
 
-        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area (px) | Display Resolution |
-        |----------------------|----------------------------------------|------------------|--------------------|
-        | 4:3                  | 128:117                                | 702x576          |                    |
-        |                      | 1132:1035                              | 690x566          |                    |
+        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area | Display Resolution |
+        |----------------------|----------------------------------------|-------------|--------------------|
+        | 4:3                  | 128:117                                | 702x576     |                    |
+        |                      | 1132:1035                              | 690x566     |                    |
 
 !!! warning "NTSC to PAL conversions"
     When working with DVDs that have been converted between NTSC and PAL formats,
@@ -446,7 +447,7 @@ and their corresponding active areas:
 
     For these cases:
 
-    1. First determine and correct the SAR/PAR values of the original format
+    1. First determine and correct the SAR values of the original format
     2. Analyze how the conversion process transformed the video
     3. Adjust your settings to match the original content's intended display
 
@@ -459,6 +460,7 @@ to help determine the correct SAR values:
 
         !!! warning "NTSC Active Area Standards"
             NTSC has two common active area standards that are very similar:
+
             - 710.85x486 (typically from analog transfers)
             - 704x480 (more common in digital sources)
 
@@ -563,9 +565,10 @@ to help determine the correct SAR values:
         for episodes that were only released on DVD
         when Blu-rays exist for other episodes,
         such as DVD-only OVAs.
-        The process involves:
 
-        4. Downscale the Blu-ray to 864x486
-        5. Crop it to 864x480 (matching the DVD crop)
-        6. Test different SAR/PAR standards
+        The process works as follows:
+
+        1. Downscale the Blu-ray to 864x486
+        2. Crop the image to 864x480 (matching the DVD master's crop)
+        3. Test different SAR standards
            until the DVD matches the Blu-ray perfectly
