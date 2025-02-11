@@ -184,6 +184,23 @@ in order of safest to least safe:
                 - `<output_file>`: The path to the output file
 
         !!! warning "Converting PCM audio to FLAC"
+
+            ??? question "Why is this necessary?"
+                DVD PCM audio uses big-endian byte order,
+                while WAV files use little-endian.
+                FFmpeg,
+                at the time of writing,
+                does not automatically handle this,
+                so we need to do it manually ourselves.
+
+                Since PCM is already raw,
+                it makes sense to convert it to FLAC
+                which will maintain the quality
+                while also ensuring proper byte order.
+                You can also opt to convert it to a lossy audio format,
+                such as AAC or Opus,
+                should you not want to use FLAC.
+
             If your DVDISO has PCM audio
             (which you can figure out
             by checking the file
@@ -194,13 +211,13 @@ in order of safest to least safe:
             after `-c copy`:
 
             ```bash
-            -c:a flac -compression_level:a 12
+            -c:a flac -compression_level:a 8
             ```
 
             If you have any tracks that are not PCM,
             you can prevent them from being converted
-            by replacing `-c:a` with `-codec:stream_id`,
-            where `stream_id` is the ID of the track
+            by replacing `-c:a` with `-codec:<stream_id>`,
+            where `<stream_id>` is the ID of the track
             you want to convert.
             You will need to add one of these
             for each track
@@ -216,7 +233,8 @@ in order of safest to least safe:
 
         PgcDemux is a tool
         that allows you to demux a DVDISO
-        into individual "titles" and "menus".
+        into individual titles and menus,
+        as well as select angles.
 
         The download link can be found here:
 
@@ -386,11 +404,9 @@ DVD authors accounted for this
 by keeping important content
 within a smaller [active area](https://en.wikipedia.org/wiki/Overscan#Overscan_amounts).
 When played on a CRT,
-the television's natural stretching
+the television's natural stretching and cropping
 would result in the correct final aspect ratio
 being displayed.
-
-
 Modern displays lack both overscan
 and the automatic stretching of CRTs.
 As a result, DVDs will display incorrectly
@@ -399,17 +415,14 @@ during the remux process.
 
 ### Heuristics
 
-Determining the correct SAR values for a DVD
-requires understanding several standards
-that have evolved over time.
-Different DVD manufacturers and regions
-have had varying approaches,
+SAR values have evolved
+through multiple standards over time,
 making it challenging to identify
 the exact standard used for any given disc.
-
 To help narrow down the correct values,
-below is a reference table of common SAR values
-and their corresponding active areas:
+a reference table of common SAR values
+and their corresponding active areas
+is provided below:
 
 !!! info "Common DVD anamorphic resolution standards"
 
@@ -451,8 +464,15 @@ and their corresponding active areas:
     2. Analyze how the conversion process transformed the video
     3. Adjust your settings to match the original content's intended display
 
+### Determining the correct SAR values
+
 The following methods can be used
-to help determine the correct SAR values:
+to help determine the correct SAR values.
+Ideally,
+you should cross-reference the results
+of as many of these methods
+as possible
+to derive the most accurate SAR values.
 
 !!! example "SAR heuristic methods"
 
@@ -473,7 +493,7 @@ to help determine the correct SAR values:
         These dark borders are intentionally added
         to mark the boundaries of the active picture area.
 
-        ![Example frame from Nurse Witch Komugi](./img/sar/faded-columns-method.png)
+        ![Example frame from Nurse Witch Komugi Magikarte](./img/sar/faded-columns-method.png)
 
         To calculate the active area width:
 
@@ -492,16 +512,16 @@ to help determine the correct SAR values:
         Once you know the active area
         and display aspect ratio (DAR),
         you can determine the correct SAR
-        from the reference table above.
+        using the reference table above.
 
         In this example frame:
 
-        - Active area: 704x480
+        - Active area: 704x480 (crop 9px left, 7px right)
         - DAR: 4:3
         - Therefore SAR: 10:11
         - Final display resolution: 704x528
 
-        ![Example frame from Nurse Witch Komugi](./img/sar/faded-columns-stretched.png)
+        ![Example frame from Nurse Witch Komugi Magikarte with all the relevant information](./img/sar/faded-columns-stretched.png)
 
     === "Circle method"
 
