@@ -1176,6 +1176,22 @@ see <a href="https://dvd.sourceforge.net/dvdinfo/pgc.html">this page</a>.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Converting PCM audio to FLAC</p>
+<details class="question">
+<summary>Why is this necessary?</summary>
+<p>DVD PCM audio uses big-endian byte order,
+while WAV files use little-endian.
+FFmpeg,
+at the time of writing,
+does not automatically handle this,
+so we need to do it manually ourselves.</p>
+<p>Since PCM is already raw,
+it makes sense to convert it to FLAC
+which will maintain the quality
+while also ensuring proper byte order.
+You can also opt to convert it to a lossy audio format,
+such as AAC or Opus,
+should you not want to use FLAC.</p>
+</details>
 <p>If your DVDISO has PCM audio
 (which you can figure out
 by checking the file
