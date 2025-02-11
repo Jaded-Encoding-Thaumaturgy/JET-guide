@@ -1327,14 +1327,14 @@ or standard definition (4:3).</p>
 <p>To achieve the correct display size,
 DVDs use a <a href="https://en.wikipedia.org/wiki/Sample_aspect_ratio">SAR (Sample Aspect Ratio)</a>,
 also known as PAR (Pixel Aspect Ratio).
-This value tells the player how much to stretch each pixel
-to reach its intended <a href="https://en.wikipedia.org/wiki/Display_aspect_ratio">DAR (Display Aspect Ratio)</a>
-after cropping the image.
+This value tells the player how much to stretch each pixel.
 The system was designed for CRT televisions,
-which had <a href="https://en.wikipedia.org/wiki/Overscan">overscan</a> -
+which had <a href="https://en.wikipedia.org/wiki/Overscan">overscan</a>,
 meaning they would stretch and slightly crop
-the edges of the image.</p>
-<p>DVD authorers accounted for this by keeping important content
+the edges of the image,
+which allowed the image to reach its intended <a href="https://en.wikipedia.org/wiki/Display_aspect_ratio">DAR (Display Aspect Ratio)</a>.</p>
+<p>DVD authors accounted for this
+by keeping important content
 within a smaller <a href="https://en.wikipedia.org/wiki/Overscan#Overscan_amounts">active area</a>.
 When played on a CRT,
 the television's natural stretching
@@ -1376,7 +1376,7 @@ in your analysis.</p>
 <tr>
 <th>Display Aspect Ratio</th>
 <th>Sample Aspect Ratio/Pixel Aspect Ratio</th>
-<th>Active Area (px)</th>
+<th>Active Area</th>
 <th>Display Resolution</th>
 </tr>
 </thead>
@@ -1432,7 +1432,7 @@ in your analysis.</p>
 <tr>
 <th>Display Aspect Ratio</th>
 <th>Sample Aspect Ratio/Pixel Aspect Ratio</th>
-<th>Active Area (px)</th>
+<th>Active Area</th>
 <th>Display Resolution</th>
 </tr>
 </thead>
@@ -1461,7 +1461,7 @@ in your analysis.</p>
 the standard aspect ratio values may not apply.</p>
 <p>For these cases:</p>
 <ol>
-<li>First determine and correct the SAR/PAR values of the original format</li>
+<li>First determine and correct the SAR values of the original format</li>
 <li>Analyze how the conversion process transformed the video</li>
 <li>Adjust your settings to match the original content's intended display</li>
 </ol>
@@ -1475,9 +1475,11 @@ to help determine the correct SAR values:</p>
 <div class="tabbed-block">
 <div class="admonition warning">
 <p class="admonition-title">NTSC Active Area Standards</p>
-<p>NTSC has two common active area standards that are very similar:
-- 710.85x486 (typically from analog transfers)
-- 704x480 (more common in digital sources)</p>
+<p>NTSC has two common active area standards that are very similar:</p>
+<ul>
+<li>710.85x486 (typically from analog transfers)</li>
+<li>704x480 (more common in digital sources)</li>
+</ul>
 <p>While the faded columns method below can help identify the active area,
 additional analysis may be needed to definitively determine which standard is being used.</p>
 </div>
@@ -1565,12 +1567,12 @@ as valid reference sources.</p>
 <p>This method is particularly useful
 for episodes that were only released on DVD
 when Blu-rays exist for other episodes,
-such as DVD-only OVAs.
-The process involves:</p>
+such as DVD-only OVAs.</p>
+<p>The process works as follows:</p>
 <ol>
 <li>Downscale the Blu-ray to 864x486</li>
-<li>Crop it to 864x480 (matching the DVD crop)</li>
-<li>Test different SAR/PAR standards
+<li>Crop the image to 864x480 (matching the DVD master's crop)</li>
+<li>Test different SAR standards
    until the DVD matches the Blu-ray perfectly</li>
 </ol>
 </div>
