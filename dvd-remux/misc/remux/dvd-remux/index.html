@@ -1105,14 +1105,14 @@ and get straight to the menu.</p>
 <p><img alt="Example of MPC-HC opened to a DVD" src="../img/ffmpeg/mpc-dvd-opened.png" /></p>
 <p>You will want to take note of whether there are individual titles for each episode,
 or if they're all in one big title.
-You can check this by clicking on the titles in <em>Navigate &gt; Titles</em>.</p>
-<p>If they're all in one big title,
+You can check this by clicking on the titles in <em>Navigate &gt; Titles</em>.
+If they're all in one big title,
 you will need to figure out how to split them.
 You can find the split points by referencing the chapters.
 These can be found on the timeline,
 or by using the <em>Navigate &gt; Chapters</em> menu.</p>
 <p>If you want to preserve the original video as closely as possible,
-you'll also want to take note of the angles.
+you'll also want to preserve the angles.
 If there are multiple angles,
 they can be found in <em>Navigate &gt; Angles</em>.</p>
 <p>To remux the DVDISO,
@@ -1308,17 +1308,26 @@ you will need to use a different method.</p>
 </ul>
 <p>Once you have downloaded and installed MakeMKV,
 you will need to register it.
-A free key can be found <a href="https://forum.makemkv.com/forum/viewtopic.php?t=1053">here</a>.</p>
+A free key can be found <a href="https://forum.makemkv.com/forum/viewtopic.php?t=1053">here</a>.
+Once you have registered it,
+you will need to restart the program.</p>
 <div class="admonition example">
 <p class="admonition-title">Selecting titles</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">ISO</label><label for="__tabbed_5_2">Physical disc</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>click the "Open File" button
+<p>Click the "Open File" button
 and select your DVDISO.
 It will start processing the file,
 and then show you this window:</p>
 <p><img alt="MakeMKV main window" src="../img/makemkv/main-window.png" /></p>
+<p>Select the titles you want to remux,
+give it an output folder and name,
+and click the button underneath "Make MKV".</p>
+<p><img alt="MakeMKV Progress window" src="../img/makemkv/progress-window.png" /></p>
+<p>Once it's done,
+the files will be in the output folder.</p>
+<p><img alt="MakeMKV output folder" src="../img/makemkv/output.png" /></p>
 </div>
 <div class="tabbed-block">
 <p>Insert your physical disc.
@@ -1340,46 +1349,48 @@ for the ISO method</a>.</p>
 </div>
 </div>
 </div>
-<p>Select the titles you want to remux,
-give it an output folder and name,
-and click the button underneath "Make MKV".</p>
-<p><img alt="MakeMKV Progress window" src="../img/makemkv/progress-window.png" /></p>
-<p>Once it's done,
-the files will be in the output folder.</p>
-<p><img alt="MakeMKV output folder" src="../img/makemkv/output.png" /></p>
 </div>
 </div>
 </div>
 </div>
 <h2 id="setting-the-correct-aspect-ratio">Setting the correct aspect ratio</h2>
-<p>DVDs use a format called "anamorphic video",
-which means the stored video dimensions
+<p>DVDs (and later SD Blu-rays)
+are stored in a format known as "anamorphic video".
+This means that the stored video dimensions
 differ from the intended display dimensions.
 A typical NTSC DVD stores video at 720x480 pixels
 (a 3:2 aspect ratio),
 but displays it at either widescreen (16:9)
-or standard definition (4:3).</p>
+or standard definition (4:3) aspect ratios.</p>
 <p>To achieve the correct display size,
-DVDs use a <a href="https://en.wikipedia.org/wiki/Sample_aspect_ratio">SAR (Sample Aspect Ratio)</a>,
-also known as PAR (Pixel Aspect Ratio).
+DVDs make use of a <a href="https://en.wikipedia.org/wiki/Sample_aspect_ratio">Sample Aspect Ratio (SAR)</a>,
+also known as a <a href="https://en.wikipedia.org/wiki/Pixel_aspect_ratio">Pixel Aspect Ratio (PAR)</a>.
 This value tells the player how much to stretch each pixel.
 The system was designed for CRT televisions,
 which had <a href="https://en.wikipedia.org/wiki/Overscan">overscan</a>,
 meaning they would stretch and slightly crop
 the edges of the image,
-which allowed the image to reach its intended <a href="https://en.wikipedia.org/wiki/Display_aspect_ratio">DAR (Display Aspect Ratio)</a>.</p>
-<p>DVD authors accounted for this
+which allowed the image to reach its intended <a href="https://en.wikipedia.org/wiki/Display_aspect_ratio">Display Aspect Ratio (DAR)</a>.</p>
+<p>At the start of the digital age,
+DVD authors accounted for this
 by keeping important content
 within a smaller <a href="https://en.wikipedia.org/wiki/Overscan#Overscan_amounts">active area</a>.
 When played on a CRT,
 the television's natural stretching and cropping
 would result in the correct final aspect ratio
 being displayed.
-Modern displays lack both overscan
+Modern displays,
+however,
+lack both overscan
 and the automatic stretching of CRTs.
-As a result, DVDs will display incorrectly
-on modern screens without proper correction
+As a result,
+DVDs will display incorrectly
+if we don't correct for this
 during the remux process.</p>
+<p>As such,
+any remux of a DVD
+that does not correct for this
+should be considered <strong><em>broken</em></strong>.</p>
 <h3 id="heuristics">Heuristics</h3>
 <p>SAR values have evolved
 through multiple standards over time,
@@ -1388,7 +1399,7 @@ the exact standard used for any given disc.
 To help narrow down the correct values,
 a reference table of common SAR values
 and their corresponding active areas
-is provided below:</p>
+is provided below<sup id="fnref:sar-source"><a class="footnote-ref" href="#fn:sar-source">1</a></sup>:</p>
 <div class="admonition info">
 <p class="admonition-title">Common DVD anamorphic resolution standards</p>
 <div class="admonition warning">
@@ -1617,6 +1628,16 @@ such as DVD-only OVAs.</p>
 </div>
 </div>
 </div>
+</div>
+<!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:sar-source">
+<p>A lot of these SAR values were derived from <a href="https://web.archive.org/web/20140218044518/http://lipas.uwasa.fi/~f76998/video/conversion/#conversion_table">this page</a>.&#160;<a class="footnote-backref" href="#fnref:sar-source" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
 </div>
 
 
