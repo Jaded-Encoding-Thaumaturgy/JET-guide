@@ -109,7 +109,6 @@ in order of safest to least safe:
         You will want to take note of whether there are individual titles for each episode,
         or if they're all in one big title.
         You can check this by clicking on the titles in _Navigate > Titles_.
-
         If they're all in one big title,
         you will need to figure out how to split them.
         You can find the split points by referencing the chapters.
@@ -117,7 +116,7 @@ in order of safest to least safe:
         or by using the _Navigate > Chapters_ menu.
 
         If you want to preserve the original video as closely as possible,
-        you'll also want to take note of the angles.
+        you'll also want to preserve the angles.
         If there are multiple angles,
         they can be found in _Navigate > Angles_.
 
@@ -335,17 +334,30 @@ in order of safest to least safe:
         Once you have downloaded and installed MakeMKV,
         you will need to register it.
         A free key can be found [here](https://forum.makemkv.com/forum/viewtopic.php?t=1053).
+        Once you have registered it,
+        you will need to restart the program.
 
         !!! example "Selecting titles"
 
             === "ISO"
 
-                click the "Open File" button
+                Click the "Open File" button
                 and select your DVDISO.
                 It will start processing the file,
                 and then show you this window:
 
                 ![MakeMKV main window](./img/makemkv/main-window.png)
+
+                Select the titles you want to remux,
+                give it an output folder and name,
+                and click the button underneath "Make MKV".
+
+                ![MakeMKV Progress window](./img/makemkv/progress-window.png)
+
+                Once it's done,
+                the files will be in the output folder.
+
+                ![MakeMKV output folder](./img/makemkv/output.png)
 
             === "Physical disc"
 
@@ -369,37 +381,28 @@ in order of safest to least safe:
                 [follow the instructions
                 for the ISO method](#__tabbed_5_1).
 
-        Select the titles you want to remux,
-        give it an output folder and name,
-        and click the button underneath "Make MKV".
-
-        ![MakeMKV Progress window](./img/makemkv/progress-window.png)
-
-        Once it's done,
-        the files will be in the output folder.
-
-        ![MakeMKV output folder](./img/makemkv/output.png)
-
 ## Setting the correct aspect ratio
 
-DVDs use a format called "anamorphic video",
-which means the stored video dimensions
+DVDs (and later SD Blu-rays)
+are stored in a format known as "anamorphic video".
+This means that the stored video dimensions
 differ from the intended display dimensions.
 A typical NTSC DVD stores video at 720x480 pixels
 (a 3:2 aspect ratio),
 but displays it at either widescreen (16:9)
-or standard definition (4:3).
+or standard definition (4:3) aspect ratios.
 
 To achieve the correct display size,
-DVDs use a [SAR (Sample Aspect Ratio)](https://en.wikipedia.org/wiki/Sample_aspect_ratio),
-also known as PAR (Pixel Aspect Ratio).
+DVDs make use of a [Sample Aspect Ratio (SAR)](https://en.wikipedia.org/wiki/Sample_aspect_ratio),
+also known as a [Pixel Aspect Ratio (PAR)](https://en.wikipedia.org/wiki/Pixel_aspect_ratio).
 This value tells the player how much to stretch each pixel.
 The system was designed for CRT televisions,
 which had [overscan](https://en.wikipedia.org/wiki/Overscan),
 meaning they would stretch and slightly crop
 the edges of the image,
-which allowed the image to reach its intended [DAR (Display Aspect Ratio)](https://en.wikipedia.org/wiki/Display_aspect_ratio).
+which allowed the image to reach its intended [Display Aspect Ratio (DAR)](https://en.wikipedia.org/wiki/Display_aspect_ratio).
 
+At the start of the digital age,
 DVD authors accounted for this
 by keeping important content
 within a smaller [active area](https://en.wikipedia.org/wiki/Overscan#Overscan_amounts).
@@ -407,11 +410,19 @@ When played on a CRT,
 the television's natural stretching and cropping
 would result in the correct final aspect ratio
 being displayed.
-Modern displays lack both overscan
+Modern displays,
+however,
+lack both overscan
 and the automatic stretching of CRTs.
-As a result, DVDs will display incorrectly
-on modern screens without proper correction
+As a result,
+DVDs will display incorrectly
+if we don't correct for this
 during the remux process.
+
+Due to the above,
+any DVD remux
+that does not properly account for SAR/DAR
+should be considered ***broken***.
 
 ### Heuristics
 
@@ -422,7 +433,9 @@ the exact standard used for any given disc.
 To help narrow down the correct values,
 a reference table of common SAR values
 and their corresponding active areas
-is provided below:
+is provided below[^sar-source]:
+
+[^sar-source]: A lot of these SAR values were derived from [this page](https://web.archive.org/web/20140218044518/http://lipas.uwasa.fi/~f76998/video/conversion/#conversion_table).
 
 !!! info "Common DVD anamorphic resolution standards"
 
@@ -592,3 +605,5 @@ to derive the most accurate SAR values.
         2. Crop the image to 864x480 (matching the DVD master's crop)
         3. Test different SAR standards
            until the DVD matches the Blu-ray perfectly
+
+<!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
