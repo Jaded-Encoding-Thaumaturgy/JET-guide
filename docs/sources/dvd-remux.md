@@ -80,25 +80,12 @@ as of the time of writing).
 
     === "ISO"
 
-        === "From MPC-HC"
+        1. Mount your DVDISO
+        2. Open MPC-HC
+        3. Hover over the _Files > Open Disc_ button
+        4. Select your DVDISO
 
-             1. Open MPC-HC
-             2. Hover over the _Files > Open File_ button
-             3. Select your DVDISO
-
-             ![Opening the ISO with MPC-HC from MPC-HC](./img/dvd-remux/ffmpeg/open-dvd-iso-mpchc.png)
-
-        === "From Explorer"
-
-            1. Navigate to your DVDISO
-            2. Right click on it
-            3. Select "Open with"
-            4. Select MPC-HC
-                1. If you can't see it in the list, press "Choose an app on your PC"
-                2. Find the mpc-hc.exe file
-                3. Click on it.
-
-             ![Opening the ISO with MPC-HC from explorer](./img/dvd-remux/ffmpeg/open-dvd-iso-explorer.png)
+        ![Opening the ISO with MPC-HC from MPC-HC](./img/dvd-remux/preview/mpc-open-disc.png)
 
     === "Physical DVD"
 
@@ -107,17 +94,17 @@ as of the time of writing).
         3. Hover over the _Files > Open Disc_ button
         4. Select your DVD drive
 
-         ![MPC-HC main window](./img/dvd-remux/ffmpeg/open-dvd-physical.png)
+        ![Opening the physical DVD with MPC-HC](./img/dvd-remux/preview/mpc-open-disc.png)
 
     === "Unpacked DVD"
 
-        5. Open MPC-HC
-        6. Hover over the _Files > Open DVD/BD button_
-        7. Navigate to the directory containing your unpacked DVDISO
-        8. Click on the folder the DVD was unpacked into
-        9. Click "Select folder"
+        1. Open MPC-HC
+        2. Hover over the _Files > Open DVD/BD button_
+        3. Navigate to the directory containing your unpacked DVDISO
+        4. Click on the folder the DVD was unpacked into
+        5. Click "Select folder"
 
-        ![Opening the unpacked DVD with MPC-HC](./img/dvd-remux/ffmpeg/open-dvd-unpacked.png)
+        ![Opening the unpacked DVD with MPC-HC](./img/dvd-remux/preview/mpc-open-dvd-unpacked.png)
 
 You should now be able to see the DVD content.
 
@@ -125,7 +112,7 @@ You should now be able to see the DVD content.
     You can click _Navigate > Title Menu_ to skip the trailers/warning
     and get straight to the menu.
 
-![Example of MPC-HC opened to a DVD](./img/dvd-remux/ffmpeg/mpc-dvd-opened.png)
+![Example of MPC-HC opened to a DVD](./img/dvd-remux/preview/mpc-dvd-opened.png)
 
 You will want to take note of whether there are individual titles for each episode,
 or if they're all in one big title.
