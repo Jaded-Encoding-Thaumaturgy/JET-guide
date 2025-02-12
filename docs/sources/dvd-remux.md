@@ -29,6 +29,7 @@ However, for a complete preservation,
 you might want to capture all available angles as well.
 
 ??? question "What are PGCs?"
+
     PGCs (Program Chains) are part of the DVD video structure hierarchy.
     At the lowest level, multiple VOBUs (Video Object Units) form a cell.
     One or more cells make up a program,
@@ -54,6 +55,7 @@ covered in this guide
 as of the time of writing).
 
 ??? question "What _do_ VLC and mpv support?"
+
     On Linux,
     mpv has okay-ish libdvdnav support,
     meaning you can use scripts
@@ -155,6 +157,7 @@ for certain methods,
 such as FFmpeg remuxing.
 
 ??? question "Why do PCM tracks need special handling?"
+
     DVD PCM audio uses big-endian byte order,
     while most computer audio uses little-endian.
     FFmpeg does not automatically handle this conversion,
@@ -526,7 +529,7 @@ any DVD remux
 that does not properly account for SAR/DAR
 should be considered **_broken_**.
 
-### Heuristics
+### Heuristics and reference table
 
 SAR values have evolved
 through multiple standards over time,
@@ -582,7 +585,7 @@ is provided below[^sar-source]:
 
 <!-- TODO: Maybe mention dvdunauthor? I only see Linux builds for this, but it may be useful for troubleshooting? -->
 
-### Determining the correct SAR values
+### Determining accurate SAR values
 
 !!! warning "Square pixels"
     These methods will only work
@@ -738,22 +741,194 @@ to derive the most accurate SAR values.
         6. Test different SAR standards
            until the DVD matches the Blu-ray perfectly
 
-??? question "None of these methods worked! What now?"
-    If you do not see any faded columns,
-    you should use the circle
-    or logo method instead.
-    If neither of these give you useful results
-    and there is no ground truth available,
-    you may be able to fall back on
-    an active area of `711×480`.
+??? question "I have black bars at the top/bottom! Do I need to change the height?"
 
-    This will _always_ be an assumption,
-    however,
-    and should only be fallen back on
-    as a last resort.
-    Double-check as many scenes as possible
-    to ensure this is indeed the correct SAR,
-    or ask an experienced encoder/remuxer
-    for help.
+    The SAR's standard active area height
+    should be the height
+    taken into account
+    for this calculation.
+
+    !TOOD: Further explain what to do here.
+
+These checks can all be performed
+using the following Vapoursynth code snippet:
+
+```py
+from vstools import Sar, mod4
+from vskernels import Bicubic
+
+sar = Sar.from_ar(
+    <dar_num>, <dar_den>, <active_width>, <active_height>
+)
+
+if sar > 1:
+    width, height = mod4(clip.width * float(sar)), mod4(clip.height)
+else:
+    width, height = mod4(clip.width), mod4(clip.height / float(sar))
+
+clip_resized = Bicubic.scale(
+    clip, width, height, keep_ar=True, sar=sar
+)
+```
+
+??? question "Why use Vapoursynth?"
+
+    Image editors are not capable of
+    properly ensuring the active area
+    gets stretched and cropped correctly,
+    so we need to use a tool
+    that can do this.
+
+    The `vskernels` `Kernel` classes
+    are all capable of
+    handling the scaling
+    and cropping correctly,
+    including proper subpixel cropping
+    and SAR adjustments
+    that are essential
+    for anamorphic content.
+
+Replace the following keys:
+
+- `<dar_num>` with the DVD's DAR numerator
+- `<dar_den>` with the DVD's DAR denominator
+- `<active_width>` with the SAR's standard active area width
+- `<active_height>` with the SAR's standard active area height
+
+Once you've determined the correct SAR values,
+you can print out the new display dimensions
+by printing the following values
+at the end of the script:
+
+```py
+new_sar = sar * clip.width / clip.height
+print(f"New display width: {new_sar.numerator}\nNew display height: {new_sar.denominator}")
+```
+
+??? info "Understanding the output"
+
+    The formula multiplies the SAR
+    by the stored frame's width/height ratio
+    to calculate the intended display ratio.
+
+    For example,
+    using a 720×480 NTSC DVD
+    with a SAR of 2560:2133:
+
+    ```py
+    Fraction(2560, 2133) * Fraction(720, 480) = Fraction(1280, 711)
+    ```
+
+    This results in a fraction
+    that equals roughly 1.8,
+    which matches the 16:9 DAR.
+    While this could also be expressed as 853×480,
+    keeping it as a reduced integer fraction
+    like 1280:711 is preferable,
+    since players treat these values as a ratio
+    rather than actual final dimensions.
+    Using larger integers in the ratio
+    helps avoid rounding errors
+    that could occur with smaller numbers.
+
+### Setting SAR metadata
+
+!!! note "Encode metadata"
+
+    When encoding anamorphic content like DVDs,
+    proper handling of display metadata is necessary
+    to preserve the correct aspect ratio.
+    The following sections explain how to do this.
+    However,
+    these steps only apply
+    if you want to keep the video
+    in its anamorphic format.
+    If you plan to resample the video
+    to square pixels,
+    you can skip ahead,
+    as the aspect ratio should be corrected
+    during the resampling process.
+
+Once we've obtained
+the correct SAR values,
+we can apply them
+to the video.
+Assuming a matroska output,
+we can use the following command:
+
+```bash
+mkvpropedit <input_file> --edit track:v1 --set display-unit=3 --set display-width=<display_width> --set display-height=<display_height>
+```
+
+Replace the following keys:
+
+- `<input_file>`: The path to your input file
+- `<display_width>`: The new display width value
+    obtained from the SAR calculation
+- `<display_height>`: The height of the display
+    obtained from the SAR calculation
+
+### Setting cropping metadata
+
+!!! warning "Supported players"
+    Container-side cropping metadata
+    is not widely supported!
+    Most players will not respect this metadata
+    and still show the faded columns.
+    Support for this
+    should improve
+    with time,
+    so you should still
+    set this metadata.
+
+    ??? info "Currently supported players"
+        The following players support
+        this metadata
+        as of the time of writing:
+
+        | Player        | Supports it? |
+        | ------------- | ------------ |
+        | mpv           | ✅           |
+        | VLC           | ❌           |
+        | MPC-HC        | ❌           |
+
+Container-side cropping metadata defines
+which parts of the video frame
+should be cropped during playback.
+Like the SAR metadata discussed earlier,
+this information can be embedded
+into Matroska files
+using mkvpropedit:
+
+```bash
+mkvpropedit <input_file> --edit track:v1 --set pixel-crop-left=<left> --set pixel-crop-right=<right>
+```
+
+Replace the following keys:
+
+- `<left>`: Number of pixels to crop from the left edge of the frame
+- `<right>`: Number of pixels to crop from the right edge of the frame
+
+If your disc contains black bars
+at the top and/or bottom of the frame,
+you should crop those as well
+using the following command:
+
+```bash
+mkvpropedit <input_file> --edit track:v1 --set pixel-crop-top=<top> --set pixel-crop-bottom=<bottom>
+```
+
+Replace the following keys:
+
+- `<top>`: Number of pixels to crop from the top edge of the frame
+- `<bottom>`: Number of pixels to crop from the bottom edge of the frame
+
+These cropping values can be combined with the SAR metadata settings
+from the previous section into a single mkvpropedit command,
+as shown in the example below.
+
+```bash
+mkvpropedit <input_file> --edit track:v1 --set display-unit=3 --set display-width=<display_width> --set display-height=<display_height> --set pixel-crop-left=<left> --set pixel-crop-right=<right> --set pixel-crop-top=<top> --set pixel-crop-bottom=<bottom>
+```
 
 <!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
