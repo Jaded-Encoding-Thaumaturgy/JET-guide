@@ -39,9 +39,142 @@ you might want to capture all available angles as well.
     while a menu is made up of a single PGC[^pgc-references].
 
 [^pgc-references]: For more information,
-    see [this page](https://dvd.sourceforge.net/dvdinfo/pgc.html),
-    [this page](http://www.mpucoder.com/DVD/),
-    and [this page](https://en.wikibooks.org/wiki/Inside_DVD-Video/MPEG_Format#VOBU,_Cell,_Program,_PGC).
+    see [the DVD-Video Program Chain structure information page](https://dvd.sourceforge.net/dvdinfo/pgc.html),
+    [the DVD-Video Format Specification](http://www.mpucoder.com/DVD/),
+    and [the Inside DVD-Video Wikibook](https://en.wikibooks.org/wiki/Inside_DVD-Video/MPEG_Format#VOBU,_Cell,_Program,_PGC).
+
+## Analyzing Your DVD's Content
+
+You will ideally want all of the above,
+and the most straight-forward way to find them
+is by using [MPC-HC](https://github.com/clsid2/mpc-hc)
+(note that VLC and mpv
+do not support all the functionality
+covered in this guide
+as of the time of writing).
+
+??? question "What _do_ VLC and mpv support?"
+    On Linux,
+    mpv has okay-ish libdvdnav support,
+    meaning you can use scripts
+    such as [mpv-dvd-browser](https://github.com/CogentRedTester/mpv-dvd-browser)
+    to navigate to different titles.
+    Angles are still only accessible via the command line,
+    and menus are unsupported.
+    VLC also supports most functionalities,
+    but has no support for different angles.
+
+    If you don't need angle/menu support,
+    and _really_ don't want to use MPC-HC,
+    either of the above options
+    may work for you.
+    Nonetheless,
+    this guide
+    will only cover MPC-HC usage.
+
+### Video
+
+!!! example "How to view your DVD"
+
+    === "ISO"
+
+        === "From MPC-HC"
+
+             1. Open MPC-HC
+             2. Hover over the _Files > Open File_ button
+             3. Select your DVDISO
+
+             ![Opening the ISO with MPC-HC from MPC-HC](./img/dvd-remux/ffmpeg/open-dvd-iso-mpchc.png)
+
+        === "From Explorer"
+
+            1. Navigate to your DVDISO
+            2. Right click on it
+            3. Select "Open with"
+            4. Select MPC-HC
+                1. If you can't see it in the list, press "Choose an app on your PC"
+                2. Find the mpc-hc.exe file
+                3. Click on it.
+
+             ![Opening the ISO with MPC-HC from explorer](./img/dvd-remux/ffmpeg/open-dvd-iso-explorer.png)
+
+    === "Physical DVD"
+
+        1. Insert your DVD into your DVD drive
+        2. Open MPC-HC
+        3. Hover over the _Files > Open Disc_ button
+        4. Select your DVD drive
+
+         ![MPC-HC main window](./img/dvd-remux/ffmpeg/open-dvd-physical.png)
+
+    === "Unpacked DVD"
+
+        5. Open MPC-HC
+        6. Hover over the _Files > Open DVD/BD button_
+        7. Navigate to the directory containing your unpacked DVDISO
+        8. Click on the folder the DVD was unpacked into
+        9. Click "Select folder"
+
+        ![Opening the unpacked DVD with MPC-HC](./img/dvd-remux/ffmpeg/open-dvd-unpacked.png)
+
+You should now be able to see the DVD content.
+
+!!! info "Skipping to the menu"
+    You can click _Navigate > Title Menu_ to skip the trailers/warning
+    and get straight to the menu.
+
+![Example of MPC-HC opened to a DVD](./img/dvd-remux/ffmpeg/mpc-dvd-opened.png)
+
+You will want to take note of whether there are individual titles for each episode,
+or if they're all in one big title.
+You can check this by clicking on the titles in _Navigate > Titles_.
+If they're all in one big title,
+you will need to figure out how to split them.
+You can find the split points by referencing the chapters.
+These can be found on the timeline,
+or by using the _Navigate > Chapters_ menu.
+
+If you want to preserve the original video as closely as possible,
+you'll also want to preserve the angles.
+If there are multiple angles,
+they can be found in _Navigate > Angles_.
+
+### Audio
+
+You will also want to take note of the audio tracks.
+DVDs can contain multiple audio tracks in different formats:
+
+- PCM (uncompressed)
+- AC3 (Dolby Digital)
+
+The remuxing methods mentioned further below
+will allow you to split these audio tracks
+alongside the video.
+However, special care needs to be taken with PCM tracks
+for certain methods,
+such as FFmpeg remuxing.
+
+??? question "Why do PCM tracks need special handling?"
+    DVD PCM audio uses big-endian byte order,
+    while most computer audio uses little-endian.
+    FFmpeg does not automatically handle this conversion,
+    so PCM tracks need to be manually converted
+    during the remuxing process.
+
+    Since PCM is already uncompressed,
+    it's recommended to convert it to FLAC
+    to maintain the quality
+    while ensuring proper byte order.
+    Alternatively, you can convert to a lossy format
+    like AAC or Opus if file size is a concern.
+
+You can check which audio tracks are available
+and their formats in MPC-HC
+under _Navigate > Audio Menu_
+and pressing `Ctrl + 3`,
+<!-- TODO: Fact-check the above once my MPC-HC wants to play nice -->
+by using FFprobe,
+or by using [MediaInfo](https://mediaarea.net/en/MediaInfo/Download).
 
 ## Remuxing Methods
 
@@ -67,98 +200,6 @@ is the same.
             see the [FFmpeg documentation](https://ffmpeg.org/ffmpeg-formats.html#dvdvideo).
 
         FFmpeg can be used to help split a DVDISO by Title, Angle, or Chapters.
-
-        You will ideally want all of the above,
-        and the most straight-forward way to find them
-        is by using [MPC-HC](https://github.com/clsid2/mpc-hc)
-        (note that VLC and mpv
-        do not support all the functionality
-        covered in this guide
-        as of the time of writing).
-
-        ??? question "What _do_ VLC and mpv support?"
-            On Linux,
-            mpv has okay-ish libdvdnav support,
-            meaning you can use scripts
-            such as [mpv-dvd-browser](https://github.com/CogentRedTester/mpv-dvd-browser)
-            to navigate to different titles.
-            Angles are still only accessible via the command line,
-            and menus are unsupported.
-            VLC also supports most functionalities,
-            but has no support for different angles.
-
-            If you don't need angle/menu support,
-            and _really_ don't want to use MPC-HC,
-            either of the above options
-            may work for you.
-            Nonetheless,
-            this guide
-            will only cover MPC-HC usage.
-
-        !!! example "How to view your DVD"
-
-            === "ISO"
-
-                === "From MPC-HC"
-
-                     1. Open MPC-HC
-                     2. Hover over the _Files > Open File_ button
-                     3. Select your DVDISO
-
-                     ![Opening the ISO with MPC-HC from MPC-HC](./img/dvd-remux/ffmpeg/open-dvd-iso-mpchc.png)
-
-                === "From Explorer"
-
-                    1. Navigate to your DVDISO
-                    2. Right click on it
-                    3. Select "Open with"
-                    4. Select MPC-HC
-                        1. If you can't see it in the list, press "Choose an app on your PC"
-                        2. Find the mpc-hc.exe file
-                        3. Click on it.
-
-                     ![Opening the ISO with MPC-HC from explorer](./img/dvd-remux/ffmpeg/open-dvd-iso-explorer.png)
-
-            === "Physical DVD"
-
-                1. Insert your DVD into your DVD drive
-                2. Open MPC-HC
-                3. Hover over the _Files > Open Disc_ button
-                4. Select your DVD drive
-
-                 ![MPC-HC main window](./img/dvd-remux/ffmpeg/open-dvd-physical.png)
-
-            === "Unpacked DVD"
-
-                5. Open MPC-HC
-                6. Hover over the _Files > Open DVD/BD button_
-                7. Navigate to the directory containing your unpacked DVDISO
-                8. Click on the folder the DVD was unpacked into
-                9. Click "Select folder"
-
-                ![Opening the unpacked DVD with MPC-HC](./img/dvd-remux/ffmpeg/open-dvd-unpacked.png)
-
-            !!! info "Skipping to the menu"
-                You can click _Navigate > Title Menu_ to skip the trailers/warning
-                and get straight to the menu.
-
-        You should now be able to see the DVD content.
-
-        ![Example of MPC-HC opened to a DVD](./img/dvd-remux/ffmpeg/mpc-dvd-opened.png)
-
-        You will want to take note of whether there are individual titles for each episode,
-        or if they're all in one big title.
-        You can check this by clicking on the titles in _Navigate > Titles_.
-        If they're all in one big title,
-        you will need to figure out how to split them.
-        You can find the split points by referencing the chapters.
-        These can be found on the timeline,
-        or by using the _Navigate > Chapters_ menu.
-
-        If you want to preserve the original video as closely as possible,
-        you'll also want to preserve the angles.
-        If there are multiple angles,
-        they can be found in _Navigate > Angles_.
 
         To remux the DVDISO,
         you will need to use the following command
@@ -217,45 +258,27 @@ is the same.
                 - `<pgc>`: The number of the PGC you want to remux (integer between 1 and 99)
                 - `<output_file>`: The path to the output file
 
-        !!! warning "Converting PCM audio to FLAC"
+            !!! warning "PCM audio"
+                If your DVDISO has PCM audio,
+                you **must** to convert it to FLAC,
+                as FFmpeg does not
+                automatically handle this conversion.
+                You can do that
+                by adding the following parameter
+                after `-c copy`:
 
-            ??? question "Why is this necessary?"
-                DVD PCM audio uses big-endian byte order,
-                while WAV files use little-endian.
-                FFmpeg,
-                at the time of writing,
-                does not automatically handle this,
-                so we need to do it manually ourselves.
+                ```bash
+                -c:a flac -compression_level:a 8
+                ```
 
-                Since PCM is already raw,
-                it makes sense to convert it to FLAC
-                which will maintain the quality
-                while also ensuring proper byte order.
-                You can also opt to convert it to a lossy audio format,
-                such as AAC or Opus,
-                should you not want to use FLAC.
-
-            If your DVDISO has PCM audio
-            (which you can figure out
-            by checking the file
-            in either FFprobe or MediaInfo),<br>
-            you **must** to convert it to FLAC.
-            You can do that
-            by adding the following parameter
-            after `-c copy`:
-
-            ```bash
-            -c:a flac -compression_level:a 8
-            ```
-
-            If you have any tracks that are not PCM,
-            you can prevent them from being converted
-            by replacing `-c:a` with `-codec:<stream_id>`,
-            where `<stream_id>` is the ID of the track
-            you want to convert.
-            You will need to add one of these
-            for each track
-            you want to convert.
+                If you have any tracks that are not PCM,
+                you can prevent them from being converted
+                by replacing `-c:a` with `-codec:<stream_id>`,
+                where `<stream_id>` is the ID of the track
+                you want to convert.
+                You will need to add one of these
+                for each track
+                you want to convert.
 
     === "PgcDemux"
 
@@ -421,7 +444,7 @@ DVDs (and later SD Blu-rays)
 are stored in a format known as "anamorphic video".
 This means that the stored video dimensions
 differ from the intended display dimensions.
-A typical NTSC DVD stores video at 720x480 pixels
+A typical NTSC DVD stores video at 720×480 pixels
 (a 3:2 aspect ratio),
 but displays it at either widescreen (16:9)
 or standard definition (4:3) aspect ratios.
@@ -436,14 +459,59 @@ meaning they would stretch and slightly crop
 the edges of the image,
 which allowed the image to reach its intended [Display Aspect Ratio (DAR)](https://en.wikipedia.org/wiki/Display_aspect_ratio).
 
+??? info "Understanding Aspect Ratio Math"
+
+    To properly handle DVD aspect ratios,
+    we need to understand three key components:
+
+    1. **Display Aspect Ratio (DAR)**:
+        The final width-to-height ratio
+        of the displayed picture.
+
+        - Widescreen content:
+          DAR = 16:9 (~1.778:1)
+        - Fullscreen content:
+          DAR = 4:3 (~1.333:1)
+
+    2. The **active area** of the frame.
+        - This represents
+          the actual visible picture area
+          intended for display.
+          This value is _not_
+          explicitly stored
+          as metadata,
+          and must be [derived through heuristics](#heuristics).
+
+    3. **Sample Aspect Ratio (SAR)**:
+        The ratio that defines
+        how rectangular each sample
+        (aka pixel)
+        should be
+        when displayed.
+
+        - Widescreen (DAR = 16:9):
+          Samples are stretched horizontally
+        - Fullscreen (DAR = 4:3):
+          Samples are typically stretched vertically
+          to reduce information loss,
+          except when the height
+          is constrained to 480px
+          (such as for most streaming services),
+          in which case horizontal stretching is used.
+
+    TODO: Let arch write the rest
+
 At the start of the digital age,
 DVD authors accounted for this
 by keeping important content
 within a smaller [active area](https://en.wikipedia.org/wiki/Overscan#Overscan_amounts).
 When played on a CRT,
 the television's natural stretching and cropping
-would result in the correct final aspect ratio
-being displayed.
+would result in the active area
+being displayed
+at the correct final aspect ratio,
+while the edges of the full frame
+would be cropped.
 Modern displays,
 however,
 lack both overscan
@@ -456,7 +524,7 @@ during the remux process.
 Due to the above,
 any DVD remux
 that does not properly account for SAR/DAR
-should be considered ***broken***.
+should be considered **_broken_**.
 
 ### Heuristics
 
@@ -469,7 +537,8 @@ a reference table of common SAR values
 and their corresponding active areas
 is provided below[^sar-source]:
 
-[^sar-source]: A number of SAR values were derived from [this page](https://web.archive.org/web/20140218044518/http://lipas.uwasa.fi/~f76998/video/conversion/#conversion_table).
+[^sar-source]: A number of SAR values were derived from
+    [A Quick Guide to Digital Video Resolution and Aspect Ratio Conversions](https://web.archive.org/web/20140218044518/http://lipas.uwasa.fi/~f76998/video/conversion/#conversion_table).
 
 !!! info "Common DVD anamorphic resolution standards"
 
@@ -486,20 +555,20 @@ is provided below[^sar-source]:
 
         | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area | Display Resolution |
         |----------------------|----------------------------------------|-------------|--------------------|
-        | 4:3                  | 4320:4739                              | 710.85x486  |                    |
-        |                      | 640:711                                | 711x480     | 711x533            |
-        |                      | 160:177                                | 708x480     |                    |
-        |                      | 10:11                                  | 704x480     | 704x528            |
-        | 16:9                 | 2560:2133                              | 711x480     | 853x480            |
-        |                      | 640:531                                | 708x480     |                    |
-        |                      | 40:33                                  | 704x480     |                    |
+        | 4:3                  | 4320:4739                              | 710.85×486  |                    |
+        |                      | 640:711                                | 711×480     | 711×533            |
+        |                      | 160:177                                | 708×480     |                    |
+        |                      | 10:11                                  | 704×480     | 704×528            |
+        | 16:9                 | 2560:2133                              | 711×480     | 853×480            |
+        |                      | 640:531                                | 708×480     |                    |
+        |                      | 40:33                                  | 704×480     |                    |
 
     === "PAL"
 
         | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area | Display Resolution |
         |----------------------|----------------------------------------|-------------|--------------------|
-        | 4:3                  | 128:117                                | 702x576     |                    |
-        |                      | 1132:1035                              | 690x566     |                    |
+        | 4:3                  | 128:117                                | 702×576     |                    |
+        |                      | 1132:1035                              | 690×566     |                    |
 
 !!! warning "NTSC to PAL conversions"
     When working with DVDs that have been converted between NTSC and PAL formats,
@@ -514,6 +583,26 @@ is provided below[^sar-source]:
 <!-- TODO: Maybe mention dvdunauthor? I only see Linux builds for this, but it may be useful for troubleshooting? -->
 
 ### Determining the correct SAR values
+
+!!! warning "Square pixels"
+    These methods will only work
+    if you are using a frame server
+    or are otherwise viewing
+    the direct output
+    of a DVD decoder.
+    This is because the frames
+    will be displayed
+    as its storage
+    as square pixels
+    (720×480, SAR 1:1).
+
+    All the frames
+    given as examples
+    are shown as square pixels,
+    and the end result
+    should look like
+    the video would be displayed
+    on a CRT monitor.
 
 The following methods can be used
 to help determine the correct SAR values.
@@ -530,8 +619,8 @@ to derive the most accurate SAR values.
         !!! warning "NTSC Active Area Standards"
             NTSC has two common active area standards that are very similar:
 
-            - 710.85x486 (typically from analog transfers)
-            - 704x480 (more common in digital sources)
+            - 710.85×486 (typically from analog transfers)
+            - 704×480 (more common in digital sources)
 
             While the faded columns method below can help identify the active area,
             additional analysis may be needed to definitively determine which standard is being used.
@@ -539,7 +628,7 @@ to derive the most accurate SAR values.
         One way to determine the active area
         is by looking for faded columns
         on the edges of the frame.
-        These dark borders are intentionally added
+        These faded borders are intentionally added
         to mark the boundaries of the active picture area.
 
         ![Example frame from Nurse Witch Komugi Magikarte](./img/dvd-remux/sar/faded-columns-method.png)
@@ -565,10 +654,10 @@ to derive the most accurate SAR values.
 
         In this example frame:
 
-        - Active area: 704x480 (crop 9px left, 7px right)
+        - Active area: 704×480 (crop 9px left, 7px right)
         - DAR: 4:3
         - Therefore SAR: 10:11
-        - Final display resolution: 704x528
+        - Final display resolution: 704×528
 
         ![Example frame from Nurse Witch Komugi Magikarte with all the relevant information](./img/dvd-remux/sar/faded-columns-stretched.png)
 
@@ -589,7 +678,7 @@ to derive the most accurate SAR values.
 
         The image above demonstrates a perfect match
         using a SAR of 2560:2133,
-        which corresponds to a 711x480 active area.
+        which corresponds to a 711×480 active area.
         When the overlay aligns perfectly with the object,
         you've found the correct SAR.
 
@@ -616,7 +705,7 @@ to derive the most accurate SAR values.
         In this example,
         matching the logo
         gave us a SAR of 4320:4739
-        (equivalent to a 710.85x486 active area).
+        (equivalent to a 710.85×486 active area).
         This level of precision
         would be difficult to achieve
         using just the faded column method.
@@ -644,8 +733,8 @@ to derive the most accurate SAR values.
 
         The process works as follows:
 
-        4. Downscale the Blu-ray to 864x486
-        5. Crop the image to 864x480 (matching the DVD master's crop)
+        4. Downscale the Blu-ray to 864×486
+        5. Crop the image to 864×480 (matching the DVD master's crop)
         6. Test different SAR standards
            until the DVD matches the Blu-ray perfectly
 
@@ -656,7 +745,7 @@ to derive the most accurate SAR values.
     If neither of these give you useful results
     and there is no ground truth available,
     you may be able to fall back on
-    an active area of `711x480`.
+    an active area of `711×480`.
 
     This will _always_ be an assumption,
     however,
