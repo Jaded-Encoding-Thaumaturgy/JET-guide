@@ -557,18 +557,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#heuristics" class="md-nav__link">
+  <a href="#heuristics-and-reference-table" class="md-nav__link">
     <span class="md-ellipsis">
-      Heuristics
+      Heuristics and reference table
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#determining-the-correct-sar-values" class="md-nav__link">
+  <a href="#determining-accurate-sar-values" class="md-nav__link">
     <span class="md-ellipsis">
-      Determining the correct SAR values
+      Determining accurate SAR values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-sar-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting SAR metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-cropping-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting cropping metadata
     </span>
   </a>
   
@@ -1084,18 +1102,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#heuristics" class="md-nav__link">
+  <a href="#heuristics-and-reference-table" class="md-nav__link">
     <span class="md-ellipsis">
-      Heuristics
+      Heuristics and reference table
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#determining-the-correct-sar-values" class="md-nav__link">
+  <a href="#determining-accurate-sar-values" class="md-nav__link">
     <span class="md-ellipsis">
-      Determining the correct SAR values
+      Determining accurate SAR values
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-sar-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting SAR metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setting-cropping-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting cropping metadata
     </span>
   </a>
   
@@ -1626,7 +1662,7 @@ during the remux process.</p>
 any DVD remux
 that does not properly account for SAR/DAR
 should be considered <strong><em>broken</em></strong>.</p>
-<h3 id="heuristics">Heuristics</h3>
+<h3 id="heuristics-and-reference-table">Heuristics and reference table</h3>
 <p>SAR values have evolved
 through multiple standards over time,
 making it challenging to identify
@@ -1747,7 +1783,7 @@ the standard aspect ratio values may not apply.</p>
 </div>
 <!-- TODO: Maybe mention dvdunauthor? I only see Linux builds for this, but it may be useful for troubleshooting? -->
 
-<h3 id="determining-the-correct-sar-values">Determining the correct SAR values</h3>
+<h3 id="determining-accurate-sar-values">Determining accurate SAR values</h3>
 <div class="admonition warning">
 <p class="admonition-title">Square pixels</p>
 <p>These methods will only work
@@ -1895,23 +1931,202 @@ such as DVD-only OVAs.</p>
 </div>
 </div>
 <details class="question">
-<summary>None of these methods worked! What now?</summary>
-<p>If you do not see any faded columns,
-you should use the circle
-or logo method instead.
-If neither of these give you useful results
-and there is no ground truth available,
-you may be able to fall back on
-an active area of <code>711×480</code>.</p>
-<p>This will <em>always</em> be an assumption,
-however,
-and should only be fallen back on
-as a last resort.
-Double-check as many scenes as possible
-to ensure this is indeed the correct SAR,
-or ask an experienced encoder/remuxer
-for help.</p>
+<summary>I have black bars at the top/bottom! Do I need to change the height?</summary>
+<p>The SAR's standard active area height
+should be the height
+taken into account
+for this calculation.</p>
+<p>!TOOD: Further explain what to do here.</p>
 </details>
+<p>These checks can all be performed
+using the following Vapoursynth code snippet:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-1"> 1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-2"> 2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-3"> 3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-4"> 4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-5"> 5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-6"> 6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-7"> 7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-8"> 8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-9"> 9</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-10">10</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-11">11</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-12">12</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-13">13</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-14">14</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-15">15</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">Sar</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">mod4</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vskernels</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">Bicubic</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span style="color: #E06C75">sar</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">Sar</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">from_ar</span><span style="color: #ABB2BF">(</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>    <span style="color: #56B6C2">&lt;</span><span style="color: #E06C75">dar_num</span><span style="color: #56B6C2">&gt;</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">&lt;</span><span style="color: #E06C75">dar_den</span><span style="color: #56B6C2">&gt;</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">&lt;</span><span style="color: #E06C75">active_width</span><span style="color: #56B6C2">&gt;</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">&lt;</span><span style="color: #E06C75">active_height</span><span style="color: #56B6C2">&gt;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span style="color: #C678DD">if</span> <span style="color: #E06C75">sar</span> <span style="color: #56B6C2">&gt;</span> <span style="color: #D19A66">1</span><span style="color: #ABB2BF">:</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>    <span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">height</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">mod4</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">width</span> <span style="color: #56B6C2">*</span> <span style="color: #E5C07B">float</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">sar</span><span style="color: #ABB2BF">)),</span> <span style="color: #E06C75">mod4</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">height</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span style="color: #C678DD">else</span><span style="color: #ABB2BF">:</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>    <span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">height</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">mod4</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">width</span><span style="color: #ABB2BF">),</span> <span style="color: #E06C75">mod4</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">height</span> <span style="color: #56B6C2">/</span> <span style="color: #E5C07B">float</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">sar</span><span style="color: #ABB2BF">))</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span style="color: #E06C75">clip_resized</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">Bicubic</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">scale</span><span style="color: #ABB2BF">(</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a>    <span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">height</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">keep_ar</span><span style="color: #56B6C2">=</span><span style="color: #E5C07B">True</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">sar</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">sar</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<details class="question">
+<summary>Why use Vapoursynth?</summary>
+<p>Image editors are not capable of
+properly ensuring the active area
+gets stretched and cropped correctly,
+so we need to use a tool
+that can do this.</p>
+<p>The <code>vskernels</code> <code>Kernel</code> classes
+are all capable of
+handling the scaling
+and cropping correctly,
+including proper subpixel cropping
+and SAR adjustments
+that are essential
+for anamorphic content.</p>
+</details>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;dar_num&gt;</code> with the DVD's DAR numerator</li>
+<li><code>&lt;dar_den&gt;</code> with the DVD's DAR denominator</li>
+<li><code>&lt;active_width&gt;</code> with the SAR's standard active area width</li>
+<li><code>&lt;active_height&gt;</code> with the SAR's standard active area height</li>
+</ul>
+<p>Once you've determined the correct SAR values,
+you can print out the new display dimensions
+by printing the following values
+at the end of the script:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span style="color: #E06C75">new_sar</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">sar</span> <span style="color: #56B6C2">*</span> <span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">width</span> <span style="color: #56B6C2">/</span> <span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">height</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span style="color: #E5C07B">print</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">f&quot;New display width: {</span><span style="color: #E06C75">new_sar</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">numerator</span><span style="color: #98C379">}\nNew display height: {</span><span style="color: #E06C75">new_sar</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">denominator</span><span style="color: #98C379">}&quot;</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<details class="info">
+<summary>Understanding the output</summary>
+<p>The formula multiplies the SAR
+by the stored frame's width/height ratio
+to calculate the intended display ratio.</p>
+<p>For example,
+using a 720×480 NTSC DVD
+with a SAR of 2560:2133:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">2560</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">2133</span><span style="color: #ABB2BF">)</span> <span style="color: #56B6C2">*</span> <span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">720</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">480</span><span style="color: #ABB2BF">)</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">1280</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">711</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This results in a fraction
+that equals roughly 1.8,
+which matches the 16:9 DAR.
+While this could also be expressed as 853×480,
+keeping it as a reduced integer fraction
+like 1280:711 is preferable,
+since players treat these values as a ratio
+rather than actual final dimensions.
+Using larger integers in the ratio
+helps avoid rounding errors
+that could occur with smaller numbers.</p>
+</details>
+<h3 id="setting-sar-metadata">Setting SAR metadata</h3>
+<div class="admonition note">
+<p class="admonition-title">Encode metadata</p>
+<p>When encoding anamorphic content like DVDs,
+proper handling of display metadata is necessary
+to preserve the correct aspect ratio.
+The following sections explain how to do this.
+However,
+these steps only apply
+if you want to keep the video
+in its anamorphic format.
+If you plan to resample the video
+to square pixels,
+you can skip ahead,
+as the aspect ratio should be corrected
+during the resampling process.</p>
+</div>
+<p>Once we've obtained
+the correct SAR values,
+we can apply them
+to the video.
+Assuming a matroska output,
+we can use the following command:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>mkvpropedit<span style="color: #ABB2BF"> </span>&lt;input_file&gt;<span style="color: #ABB2BF"> </span>--edit<span style="color: #ABB2BF"> </span>track:v1<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-unit<span style="color: #56B6C2">=</span><span style="color: #D19A66">3</span><span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-width<span style="color: #56B6C2">=</span>&lt;display_width&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-height<span style="color: #56B6C2">=</span>&lt;display_height&gt;
+</code></pre></div></td></tr></table></div>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;input_file&gt;</code>: The path to your input file</li>
+<li><code>&lt;display_width&gt;</code>: The new display width value
+    obtained from the SAR calculation</li>
+<li><code>&lt;display_height&gt;</code>: The height of the display
+    obtained from the SAR calculation</li>
+</ul>
+<h3 id="setting-cropping-metadata">Setting cropping metadata</h3>
+<div class="admonition warning">
+<p class="admonition-title">Supported players</p>
+<p>Container-side cropping metadata
+is not widely supported!
+Most players will not respect this metadata
+and still show the faded columns.
+Support for this
+should improve
+with time,
+so you should still
+set this metadata.</p>
+<details class="info">
+<summary>Currently supported players</summary>
+<p>The following players support
+this metadata
+as of the time of writing:</p>
+<table>
+<thead>
+<tr>
+<th>Player</th>
+<th>Supports it?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mpv</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>VLC</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>MPC-HC</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+</details>
+</div>
+<p>Container-side cropping metadata defines
+which parts of the video frame
+should be cropped during playback.
+Like the SAR metadata discussed earlier,
+this information can be embedded
+into Matroska files
+using mkvpropedit:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>mkvpropedit<span style="color: #ABB2BF"> </span>&lt;input_file&gt;<span style="color: #ABB2BF"> </span>--edit<span style="color: #ABB2BF"> </span>track:v1<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-left<span style="color: #56B6C2">=</span>&lt;left&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-right<span style="color: #56B6C2">=</span>&lt;right&gt;
+</code></pre></div></td></tr></table></div>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;left&gt;</code>: Number of pixels to crop from the left edge of the frame</li>
+<li><code>&lt;right&gt;</code>: Number of pixels to crop from the right edge of the frame</li>
+</ul>
+<p>If your disc contains black bars
+at the top and/or bottom of the frame,
+you should crop those as well
+using the following command:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>mkvpropedit<span style="color: #ABB2BF"> </span>&lt;input_file&gt;<span style="color: #ABB2BF"> </span>--edit<span style="color: #ABB2BF"> </span>track:v1<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-top<span style="color: #56B6C2">=</span>&lt;top&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-bottom<span style="color: #56B6C2">=</span>&lt;bottom&gt;
+</code></pre></div></td></tr></table></div>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;top&gt;</code>: Number of pixels to crop from the top edge of the frame</li>
+<li><code>&lt;bottom&gt;</code>: Number of pixels to crop from the bottom edge of the frame</li>
+</ul>
+<p>These cropping values can be combined with the SAR metadata settings
+from the previous section into a single mkvpropedit command,
+as shown in the example below.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>mkvpropedit<span style="color: #ABB2BF"> </span>&lt;input_file&gt;<span style="color: #ABB2BF"> </span>--edit<span style="color: #ABB2BF"> </span>track:v1<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-unit<span style="color: #56B6C2">=</span><span style="color: #D19A66">3</span><span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-width<span style="color: #56B6C2">=</span>&lt;display_width&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-height<span style="color: #56B6C2">=</span>&lt;display_height&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-left<span style="color: #56B6C2">=</span>&lt;left&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-right<span style="color: #56B6C2">=</span>&lt;right&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-top<span style="color: #56B6C2">=</span>&lt;top&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-bottom<span style="color: #56B6C2">=</span>&lt;bottom&gt;
+</code></pre></div></td></tr></table></div>
 <!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
 
 <div class="footnote">
