@@ -1231,32 +1231,13 @@ will only cover MPC-HC usage.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">ISO</label><label for="__tabbed_1_2">Physical DVD</label><label for="__tabbed_1_3">Unpacked DVD</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">From MPC-HC</label><label for="__tabbed_2_2">From Explorer</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
 <ol>
+<li>Mount your DVDISO</li>
 <li>Open MPC-HC</li>
-<li>Hover over the <em>Files &gt; Open File</em> button</li>
+<li>Hover over the <em>Files &gt; Open Disc</em> button</li>
 <li>Select your DVDISO</li>
 </ol>
-<p><img alt="Opening the ISO with MPC-HC from MPC-HC" src="../img/dvd-remux/ffmpeg/open-dvd-iso-mpchc.png" /></p>
-</div>
-<div class="tabbed-block">
-<ol>
-<li>Navigate to your DVDISO</li>
-<li>Right click on it</li>
-<li>Select "Open with"</li>
-<li>Select MPC-HC<ol>
-<li>If you can't see it in the list, press "Choose an app on your PC"</li>
-<li>Find the mpc-hc.exe file</li>
-<li>Click on it.</li>
-</ol>
-</li>
-</ol>
-<p><img alt="Opening the ISO with MPC-HC from explorer" src="../img/dvd-remux/ffmpeg/open-dvd-iso-explorer.png" /></p>
-</div>
-</div>
-</div>
+<p><img alt="Opening the ISO with MPC-HC from MPC-HC" src="../img/dvd-remux/preview/mpc-open-disc.png" /></p>
 </div>
 <div class="tabbed-block">
 <ol>
@@ -1265,7 +1246,7 @@ will only cover MPC-HC usage.</p>
 <li>Hover over the <em>Files &gt; Open Disc</em> button</li>
 <li>Select your DVD drive</li>
 </ol>
-<p><img alt="MPC-HC main window" src="../img/dvd-remux/ffmpeg/open-dvd-physical.png" /></p>
+<p><img alt="Opening the physical DVD with MPC-HC" src="../img/dvd-remux/preview/mpc-open-disc.png" /></p>
 </div>
 <div class="tabbed-block">
 <ol>
@@ -1275,7 +1256,7 @@ will only cover MPC-HC usage.</p>
 <li>Click on the folder the DVD was unpacked into</li>
 <li>Click "Select folder"</li>
 </ol>
-<p><img alt="Opening the unpacked DVD with MPC-HC" src="../img/dvd-remux/ffmpeg/open-dvd-unpacked.png" /></p>
+<p><img alt="Opening the unpacked DVD with MPC-HC" src="../img/dvd-remux/preview/mpc-open-dvd-unpacked.png" /></p>
 </div>
 </div>
 </div>
@@ -1286,7 +1267,7 @@ will only cover MPC-HC usage.</p>
 <p>You can click <em>Navigate &gt; Title Menu</em> to skip the trailers/warning
 and get straight to the menu.</p>
 </div>
-<p><img alt="Example of MPC-HC opened to a DVD" src="../img/dvd-remux/ffmpeg/mpc-dvd-opened.png" /></p>
+<p><img alt="Example of MPC-HC opened to a DVD" src="../img/dvd-remux/preview/mpc-dvd-opened.png" /></p>
 <p>You will want to take note of whether there are individual titles for each episode,
 or if they're all in one big title.
 You can check this by clicking on the titles in <em>Navigate &gt; Titles</em>.
@@ -1342,7 +1323,7 @@ and see if the result
 is the same.</p>
 <div class="admonition example">
 <p class="admonition-title">Remuxing methods</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">FFmpeg</label><label for="__tabbed_3_2">PgcDemux</label><label for="__tabbed_3_3">MakeMKV</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">FFmpeg</label><label for="__tabbed_2_2">PgcDemux</label><label for="__tabbed_2_3">MakeMKV</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="admonition warning">
@@ -1363,7 +1344,7 @@ you will need to use the following command
 based on your needs:</p>
 <div class="admonition example">
 <p class="admonition-title">Demuxing with FFmpeg</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:4"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Title with chapters</label><label for="__tabbed_4_2">Title with multiple episodes</label><label for="__tabbed_4_3">Title with a different angle</label><label for="__tabbed_4_4">Menus</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Title with chapters</label><label for="__tabbed_3_2">Title with multiple episodes</label><label for="__tabbed_3_3">Title with a different angle</label><label for="__tabbed_3_4">Menus</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>ffmpeg<span style="color: #ABB2BF"> </span>-f<span style="color: #ABB2BF"> </span>dvdvideo<span style="color: #ABB2BF"> </span>-preindex<span style="color: #ABB2BF"> </span>True<span style="color: #ABB2BF"> </span>-title<span style="color: #ABB2BF"> </span>&lt;title&gt;<span style="color: #ABB2BF"> </span>-i<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;input_file&gt;&quot;</span><span style="color: #ABB2BF"> </span>-map<span style="color: #ABB2BF"> </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF"> </span>-c<span style="color: #ABB2BF"> </span>copy<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;output_file&gt;&quot;</span>
@@ -1531,7 +1512,7 @@ Once you have registered it,
 you will need to restart the program.</p>
 <div class="admonition example">
 <p class="admonition-title">Selecting titles</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">ISO</label><label for="__tabbed_5_2">Physical disc</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">ISO</label><label for="__tabbed_4_2">Physical disc</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Click the "Open File" button
@@ -1683,7 +1664,7 @@ there's a high probability
 that something is incorrect
 in your analysis.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">NTSC</label><label for="__tabbed_6_2">PAL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">NTSC</label><label for="__tabbed_5_2">PAL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>
@@ -1813,7 +1794,7 @@ as possible
 to derive the most accurate SAR values.</p>
 <div class="admonition example">
 <p class="admonition-title">SAR heuristic methods</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:4"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Faded columns</label><label for="__tabbed_7_2">Circle method</label><label for="__tabbed_7_3">Logo method</label><label for="__tabbed_7_4">Ground Truth</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:4"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Faded columns</label><label for="__tabbed_6_2">Circle method</label><label for="__tabbed_6_3">Logo method</label><label for="__tabbed_6_4">Ground Truth</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="admonition warning">
