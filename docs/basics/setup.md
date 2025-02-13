@@ -102,19 +102,18 @@ The JET python packages build on top of the existing plugin ecosystem to provide
 
 To install it, open a terminal and run:
 
-`pip install vsjet`
+`pip install vsjetpack vspreview`
 
-followed by
+To update your JET packages, you can run `pip install --upgrade vsjetpack vspreview`.
 
-`vsjet`
+??? info "Migrating from `vsjet`"
 
-To update your JET packages, you can run `vsjet` again.
-
-If you run into issues with any JET package,
-first update them to their latest git version by running `vsjet latest`.
-This will update to the absolute latest version,
-but since these can be very bleeding-edge,
-they're not normally recommended for inexperienced users.
+    If you previously used `vsjet` to install and update JET packages,
+    you can use the following commands to migrate:
+    ```
+    pip uninstall stgpytools vstools vspyplugin vskernels vsexprtools vsrgtools vsmasktools vsaa vsscale vsdenoise vsdehalo vsdeband vsdeinterlace vssource vspreview vsjet -y
+    pip install vsjetpack vspreview
+    ```
 
 Linux users may need to create a virtualenv to install the packages or try their luck with `pipx`.
 On Arch Linux, you can use the [`vapoursynth-plugin-vsjet-meta-git`](https://aur.archlinux.org/packages/vapoursynth-plugin-vsjet-meta-git) AUR package.
