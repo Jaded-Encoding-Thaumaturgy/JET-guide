@@ -95,8 +95,8 @@ Take for example:
 ```py
 src = core.bs.VideoSource("a video file.mp4")
 
-ivtc = core.vfm.VIVTC(src)
-decimate = core.vfm.VDecimate(src)
+field_matched = core.vivtc.VFM(src)
+decimate = core.vivtc.VDecimate(src)
 ```
 
 The user is passing `src`
@@ -118,8 +118,8 @@ This is how it should be called instead:
 ```py
 src = core.bs.VideoSource("a video file.mp4")
 
-ivtc = core.vfm.VIVTC(src)
-decimate = core.vfm.VDecimate(ivtc)
+field_matched = core.vivtc.VFM(src)
+decimate = core.vivtc.VDecimate(field_matched)
 ```
 
 ### Values
