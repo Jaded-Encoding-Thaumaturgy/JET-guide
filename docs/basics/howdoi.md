@@ -234,7 +234,7 @@ In particular your clip will display differently in vs-preview, even though the 
 
 === "Vanilla VS"
     ```py3
-    clip_retagged = clip.std.SetFrameProps(_Matrix=vs.MATRIX_BT601, _Range=vs.RANGE_FULL)
+    clip_retagged = clip.std.SetFrameProps(_Matrix=vs.MATRIX_BT601, _ColorRange=vs.RANGE_FULL)
     ```
 
 ### How do I convert a clip's color matrix/color range/etc?
