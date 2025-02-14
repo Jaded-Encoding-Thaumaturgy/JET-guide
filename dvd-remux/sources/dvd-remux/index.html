@@ -1264,18 +1264,29 @@ will only cover MPC-HC usage.</p>
 and get straight to the menu.</p>
 </div>
 <p><img alt="Example of MPC-HC opened to a DVD" src="../img/dvd-remux/preview/mpc-dvd-opened.png" /></p>
-<p>You will want to take note of whether there are individual titles for each episode,
+<p>You will want to take note of
+whether there are individual titles
+for each episode,
 or if they're all in one big title.
-You can check this by clicking on the titles in <em>Navigate &gt; Titles</em>.
+You can check this by clicking on the titles
+under <em>Navigate &gt; Titles</em>.
 If they're all in one big title,
 you will need to figure out how to split them.
 You can find the split points by referencing the chapters.
 These can be found on the timeline,
 or by using the <em>Navigate &gt; Chapters</em> menu.</p>
-<p>If you want to preserve the original video as closely as possible,
-you'll also want to preserve the angles.
-If there are multiple angles,
-they can be found in <em>Navigate &gt; Angles</em>.</p>
+<p>DVDs can contain multiple angles
+for certain scenes,
+though this is rare for anime releases.
+These angles can be found
+under <em>Navigate &gt; Angles</em>.
+If you want to preserve multiple angles,
+you will need to remux each angle separately.
+However,
+for most anime DVDs,
+you can ignore angles entirely
+as they typically only contain
+one viewpoint.</p>
 <h3 id="audio">Audio</h3>
 <p>You will also want to take note of the audio tracks.
 DVDs can contain multiple audio tracks in different formats:</p>
@@ -1303,12 +1314,12 @@ while ensuring proper byte order.
 Alternatively, you can convert to a lossy format
 like AAC or Opus if file size is a concern.</p>
 </details>
+<!-- TODO: Fact-check the above once my MPC-HC wants to play nice -->
 <p>You can check which audio tracks are available
 and their formats in MPC-HC
 under <em>Navigate &gt; Audio Menu</em>
-and pressing <code>Ctrl + 3</code>,</p>
-<!-- TODO: Fact-check the above once my MPC-HC wants to play nice -->
-<p>by using FFprobe,
+and pressing <code>Ctrl + 3</code>,
+by using FFprobe,
 or by using <a href="https://mediaarea.net/en/MediaInfo/Download">MediaInfo</a>.</p>
 <h2 id="remuxing-methods">Remuxing Methods</h2>
 <p>Below are multiple methods to remux your DVDISO.
@@ -1414,7 +1425,7 @@ you want to convert.</p>
 <p class="admonition-title">Binaries</p>
 <p>The GUI for PgcDemux is only available as a Windows binary.
 If you are on Arch Linux,
-the AUR has a cpgcdemux package
+the AUR has a <code>cpgcdemux</code> package
 for CLI functionality.
 PgcDemux reportedly works with Wine,
 but no guarantees are made
@@ -1548,6 +1559,55 @@ for the ISO method</a>.</p>
 </div>
 </div>
 </div>
+<details class="example">
+<summary>Multiple Angles</summary>
+<p>As mentioned above,
+DVDs can contain multiple angles
+for certain scenes,
+though this is rare for anime releases.
+Should your DVD contain multiple angles,
+you may want to preserve them.
+There are two ways to do this:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Split into multiple files</label><label for="__tabbed_5_2">Editions</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Supported methods</p>
+<p>This method is supported
+by the FFmpeg and PgcDemux methods.
+MakeMKV does <em>not</em> support this feature!</p>
+</div>
+<p>This is the most straightforward method,
+but will result in a larger release.</p>
+<p>To remux each angle separately,
+refer to the individual method's
+instructions on extracting specific angles.</p>
+</div>
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Player support</p>
+<p>This feature is not supported
+by all players,
+so the safer option
+is to remux each angle separately.</p>
+</div>
+<p>It's possible to keep all angles
+in one container
+by making use of <a href="https://www.matroska.org/technical/chapters.html#EditionEntry">editions</a>.
+This allows viewers to switch between angles
+by selecting the desired edition
+in their player.</p>
+<div class="admonition warning">
+<p class="admonition-title">This table is incomplete!</p>
+<p>This table is a stub
+and still very incomplete!
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</details>
 <h2 id="setting-the-correct-aspect-ratio">Setting the correct aspect ratio</h2>
 <p>DVDs (and later SD Blu-rays)
 are stored in a format known as "anamorphic video".
@@ -1622,24 +1682,20 @@ we need to understand three key components:</p>
 </ol>
 <p>TODO: Let arch write the rest</p>
 </details>
-<p>At the start of the digital age,
-DVD authors accounted for this
-by keeping important content
-within a smaller <a href="https://en.wikipedia.org/wiki/Overscan#Overscan_amounts">active area</a>.
-When played on a CRT,
-the television's natural stretching and cropping
-would result in the active area
-being displayed
-at the correct final aspect ratio,
-while the edges of the full frame
-would be cropped.
-Modern displays,
-however,
-lack both overscan
-and the automatic stretching of CRTs.
-As a result,
-DVDs will display incorrectly
-if we don't correct for this
+<p>During the DVD era,
+content was typically confined
+to a smaller <a href="https://en.wikipedia.org/wiki/Overscan#Overscan_amounts">active area</a>
+within the full frame.
+When played on CRT televisions,
+the combination of overscan and stretching
+would display this active area
+at the intended aspect ratio
+while cropping the frame edges.
+Modern displays
+lack these characteristics,
+so DVDs will display incorrectly
+unless you account for the active area
+and apply appropriate corrections
 during the remux process.</p>
 <p>Due to the above,
 any DVD remux
@@ -1666,7 +1722,7 @@ there's a high probability
 that something is incorrect
 in your analysis.</p>
 </div>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">NTSC</label><label for="__tabbed_5_2">PAL</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">NTSC</label><label for="__tabbed_6_2">PAL</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>
@@ -1796,24 +1852,31 @@ as possible
 to derive the most accurate SAR values.</p>
 <div class="admonition example">
 <p class="admonition-title">SAR heuristic methods</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:4"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Faded columns</label><label for="__tabbed_6_2">Circle method</label><label for="__tabbed_6_3">Logo method</label><label for="__tabbed_6_4">Ground Truth</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:4"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Faded columns</label><label for="__tabbed_7_2">Circle method</label><label for="__tabbed_7_3">Logo method</label><label for="__tabbed_7_4">Ground Truth</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="admonition warning">
 <p class="admonition-title">NTSC Active Area Standards</p>
-<p>NTSC has two common active area standards that are very similar:</p>
+<p>NTSC has two common active area standards
+that are very similar:</p>
 <ul>
 <li>710.85×486 (typically from analog transfers)</li>
 <li>704×480 (more common in digital sources)</li>
 </ul>
-<p>While the faded columns method below can help identify the active area,
-additional analysis may be needed to definitively determine which standard is being used.</p>
+<p>While the faded columns method below
+can help identify the active area,
+additional analysis may be needed
+to definitively determine
+which standard is being used.</p>
 </div>
-<p>One way to determine the active area
+<p>One way to determine
+the active area
 is by looking for faded columns
 on the edges of the frame.
-These faded borders are intentionally added
-to mark the boundaries of the active picture area.</p>
+These faded borders
+are intentionally added
+to mark the boundaries
+of the active picture area.</p>
 <p><img alt="Example frame from Nurse Witch Komugi Magikarte" src="../img/dvd-remux/sar/faded-columns-method.png" /></p>
 <p>To calculate the active area width:</p>
 <ol>
@@ -1885,7 +1948,7 @@ using just the faded column method.</p>
 </div>
 <div class="tabbed-block">
 <div class="admonition warning">
-<p class="admonition-title">SD upscales do not qualify</p>
+<p class="admonition-title">Upscales are not valid references</p>
 <p>Note that SD upscales do not qualify
 as valid reference sources,
 as they are not native square pixel sources.
@@ -1919,7 +1982,7 @@ such as DVD-only OVAs.</p>
 should be the height
 taken into account
 for this calculation.</p>
-<p>!TODO: Further explain what to do here.</p>
+<!-- TODO: Further explain what to do here. -->
 </details>
 <p>These checks can all be performed
 using the following Vapoursynth code snippet:</p>
