@@ -829,28 +829,6 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://thewiki.moe/tutorials/dvdremux/#correcting-sarpar" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Correcting SAR/PAR 🡕
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
           </ul>
         </nav>
       
@@ -1591,9 +1569,14 @@ we need to understand three key components:</p>
 <ul>
 <li>This represents
   the actual visible picture area
-  intended for display.
-  This value is <em>not</em>
-  explicitly stored
+  for which the DAR is defined,
+  intended for display
+  on traditional CRT TVs.
+  This area may exclude
+  some valid picture data
+  due to production inconsistencies.
+  The active area dimensions
+  are <em>not</em> explicitly stored
   as metadata,
   and must be <a href="#heuristics">derived through heuristics</a>.</li>
 </ul>
@@ -1607,14 +1590,15 @@ we need to understand three key components:</p>
     when displayed.</p>
 <ul>
 <li>Widescreen (DAR = 16:9):
-  Samples are stretched horizontally</li>
+  Each sample is displayed wider
+  than it is high
+  (e.g., by stretching horizontally
+  or condensing vertically)</li>
 <li>Fullscreen (DAR = 4:3):
-  Samples are typically stretched vertically
-  to reduce information loss,
-  except when the height
-  is constrained to 480px
-  (such as for most streaming services),
-  in which case horizontal stretching is used.</li>
+  Each sample is displayed higher
+  than it is wide
+  (e.g., by stretching vertically
+  or condensing horizontally)</li>
 </ul>
 </li>
 </ol>
@@ -1917,7 +1901,7 @@ such as DVD-only OVAs.</p>
 should be the height
 taken into account
 for this calculation.</p>
-<p>!TOOD: Further explain what to do here.</p>
+<p>!TODO: Further explain what to do here.</p>
 </details>
 <p>These checks can all be performed
 using the following Vapoursynth code snippet:</p>
@@ -1983,7 +1967,7 @@ at the end of the script:</p>
 <a id="__codelineno-6-2" name="__codelineno-6-2"></a><span style="color: #E5C07B">print</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">f&quot;New display width: {</span><span style="color: #E06C75">new_sar</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">numerator</span><span style="color: #98C379">}\nNew display height: {</span><span style="color: #E06C75">new_sar</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">denominator</span><span style="color: #98C379">}&quot;</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
 <details class="info">
-<summary>Understanding the output</summary>
+<summary>Understanding SAR calculations and display dimensions</summary>
 <p>The formula multiplies the SAR
 by the stored frame's width/height ratio
 to calculate the intended display ratio.</p>
@@ -2025,7 +2009,7 @@ during the resampling process.</p>
 the correct SAR values,
 we can apply them
 to the video.
-Assuming a matroska output,
+Assuming a Matroska output,
 we can use the following command:</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a>mkvpropedit<span style="color: #ABB2BF"> </span>&lt;input_file&gt;<span style="color: #ABB2BF"> </span>--edit<span style="color: #ABB2BF"> </span>track:v1<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-unit<span style="color: #56B6C2">=</span><span style="color: #D19A66">3</span><span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-width<span style="color: #56B6C2">=</span>&lt;display_width&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-height<span style="color: #56B6C2">=</span>&lt;display_height&gt;
 </code></pre></div></td></tr></table></div>
@@ -2059,23 +2043,69 @@ as of the time of writing:</p>
 <tr>
 <th>Player</th>
 <th>Supports it?</th>
+<th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>mpv</td>
 <td>✅</td>
+<td>Subtitle display may vary based on user settings</td>
+</tr>
+<tr>
+<td>FFmpeg</td>
+<td>✅</td>
+<td>Interprets crop flags differently from mpv, following Matroska spec</td>
 </tr>
 <tr>
 <td>VLC</td>
 <td>❌</td>
+<td></td>
 </tr>
 <tr>
 <td>MPC-HC</td>
 <td>❌</td>
+<td></td>
 </tr>
 </tbody>
 </table>
+<details class="question">
+<summary>mpv and <code>blend-subtitles</code></summary>
+<p>As of the time of writing,
+when subtitles are blended
+onto the video
+differs depending on the <code>blend-subtitles</code> parameter.
+When <code>blend-subtitles=no</code>,
+the subtitles get rendered
+<em>after</em> cropping.
+With <code>blend-subtitles=yes</code>,
+the subtitles get rendered
+<em>before</em> cropping.
+This means that to render subtitles correctly,
+you must target <code>blend-subtitles=yes</code>
+when authoring
+(as this will ensure
+the subtitles are placed
+at the same location
+as in other players
+that do not support cropping).</p>
+<p>When remuxing from a source
+with 1:1 SAR subtitles,
+you will need to adjust
+the subtitle positions
+to account for the new SAR.
+For example,
+if your source has subtitles
+authored for 704x480 1:1 SAR,
+but your video is 853x480 with 16:9 SAR,
+you will need to scale
+the subtitle positions horizontally
+by a factor of 853/704.
+This ensures the subtitles
+appear in the correct location
+relative to the video content.</p>
+<p>!TODO: Get this math checked</p>
+</details>
 </details>
 </div>
 <p>Container-side cropping metadata defines
