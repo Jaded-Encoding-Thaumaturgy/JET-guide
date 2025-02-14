@@ -898,14 +898,30 @@ print(f"New display width: {new_sar.numerator}\nNew display height: {new_sar.den
     helps avoid rounding errors
     that could occur with smaller numbers.
 
+## Making use of SAR values
+
+Now that you've determined
+the correct SAR values,
+you can apply them
+to the video.
+This can be done
+by adding these values
+as metadata
+to the video container,
+such as a Matroska file.
+
 ### Setting SAR metadata
 
 !!! note "Encode metadata"
 
-    When encoding anamorphic content like DVDs,
-    proper handling of display metadata is necessary
+    When encoding anamorphic content
+    like DVDs,
+    proper handling of display metadata
+    is still necessary
     to preserve the correct aspect ratio.
-    The following sections explain how to do this.
+    The following sections
+    explain how to do this.
+
     However,
     these steps only apply
     if you want to keep the video
@@ -913,7 +929,8 @@ print(f"New display width: {new_sar.numerator}\nNew display height: {new_sar.den
     If you plan to resample the video
     to square pixels,
     you can skip ahead,
-    as the aspect ratio should be corrected
+    as the aspect ratio
+    should be corrected
     during the resampling process.
 
 Once we've obtained
