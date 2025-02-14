@@ -30,7 +30,6 @@ nav:
     - Baby's first script: basics/babys-first-script.md
   - Source Processing:
     - Remuxing DVDs: sources/dvd-remux.md
-    - Direct DVD processing: sources/dvd-process.md
   - Filtering:
     - Order of Filtering Operations: filtering/order.md
     - Descaling:
