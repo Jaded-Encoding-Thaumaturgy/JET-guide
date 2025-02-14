@@ -1024,22 +1024,4 @@ mkvpropedit <input_file> --edit track:v1 --set display-unit=3 --set display-widt
 
 <!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
 
-## Subtitles
-
-!TODO: Write this section, better splits, get math checked (arch/chortos pls? <3)
-
-When remuxing from a source
-with 1:1 SAR subtitles,
-you will need to adjust
-the subtitle positions
-to account for the new SAR.
-For example,
-if your source has subtitles
-authored for 704x480 1:1 SAR,
-but your video is 853x480 with 16:9 SAR,
-you will need to scale
-the subtitle positions horizontally
-by a factor of 853/704.
-This ensures the subtitles
-appear in the correct location
-relative to the video content.
+<!-- TODO: Add a section on handling subtitles, including VOBSUB, PGS (SD BD), and ASS (fansubs). -->
