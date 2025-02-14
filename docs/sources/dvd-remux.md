@@ -10,7 +10,7 @@ This guide will cover different methods to accomplish this,
 as well as cover some additional information
 that's useful if you want to release a DVD remux.
 
-## Understanding DVD Structure
+## DVD Structure
 
 There are multiple ways to remux a DVDISO.
 However, it's also important
@@ -44,9 +44,10 @@ you might want to capture all available angles as well.
     [the DVD-Video Format Specification](http://www.mpucoder.com/DVD/),
     and [the Inside DVD-Video Wikibook](https://en.wikibooks.org/wiki/Inside_DVD-Video/MPEG_Format#VOBU,_Cell,_Program,_PGC).
 
-## Analyzing Your DVD's Content
+## Analyzing DVD Content
 
-You will ideally want all of the above,
+You will ideally want to know
+all of the above,
 and the most straight-forward way to find them
 is by using [MPC-HC](https://github.com/clsid2/mpc-hc)
 (note that VLC and mpv
@@ -74,7 +75,7 @@ as of the time of writing).
     this guide
     will only cover MPC-HC usage.
 
-### Video
+### Checking video
 
 !!! example "How to view your DVD"
 
@@ -140,7 +141,7 @@ you can ignore angles entirely
 as they typically only contain
 one viewpoint.
 
-### Audio
+### Checking audio
 
 You will also want to take note of the audio tracks.
 DVDs can contain multiple audio tracks in different formats:
@@ -494,7 +495,7 @@ is the same.
             You can help us
             by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
 
-## Setting the correct aspect ratio
+## Correcting the Aspect Ratio
 
 DVDs (and later SD Blu-rays)
 are stored in a format known as "anamorphic video".
@@ -561,7 +562,7 @@ which allowed the image to reach its intended [Display Aspect Ratio (DAR)](https
           (e.g., by stretching vertically
           or condensing horizontally)
 
-    TODO: Let arch write the rest
+    <!-- TODO: Let arch write the rest -->
 
 During the DVD era,
 content was typically confined
@@ -584,7 +585,7 @@ any DVD remux
 that does not properly account for SAR/DAR
 should be considered **_broken_**.
 
-### Heuristics and reference table
+### Heuristics
 
 SAR values have evolved
 through multiple standards over time,
@@ -593,10 +594,15 @@ the exact standard used for any given disc.
 To help narrow down the correct values,
 a reference table of common SAR values
 and their corresponding active areas
-is provided below[^sar-source]:
+is provided below[^sar-source].
 
 [^sar-source]: A number of SAR values were derived from
     [A Quick Guide to Digital Video Resolution and Aspect Ratio Conversions](https://web.archive.org/web/20140218044518/http://lipas.uwasa.fi/~f76998/video/conversion/#conversion_table).
+
+#### Reference Table
+
+<!-- TODO: Add all the display dimensions -->
+<!-- TODO: Add the formal names and references if possible -->
 
 !!! info "Common DVD anamorphic resolution standards"
 
@@ -898,7 +904,7 @@ print(f"New display width: {new_sar.numerator}\nNew display height: {new_sar.den
     helps avoid rounding errors
     that could occur with smaller numbers.
 
-## Making use of SAR values
+## Setting container metadata
 
 Now that you've determined
 the correct SAR values,
@@ -910,7 +916,7 @@ as metadata
 to the video container,
 such as a Matroska file.
 
-### Setting SAR metadata
+### SAR metadata
 
 !!! note "Encode metadata"
 
@@ -952,7 +958,7 @@ Replace the following keys:
 - `<display_height>`: The height of the display
     obtained from the SAR calculation
 
-### Setting cropping metadata
+### Cropping metadata
 
 !!! warning "Supported players"
 
