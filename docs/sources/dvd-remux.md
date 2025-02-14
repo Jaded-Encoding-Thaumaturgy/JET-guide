@@ -109,24 +109,36 @@ as of the time of writing).
 You should now be able to see the DVD content.
 
 !!! info "Skipping to the menu"
+
     You can click _Navigate > Title Menu_ to skip the trailers/warning
     and get straight to the menu.
 
 ![Example of MPC-HC opened to a DVD](./img/dvd-remux/preview/mpc-dvd-opened.png)
 
-You will want to take note of whether there are individual titles for each episode,
+You will want to take note of
+whether there are individual titles
+for each episode,
 or if they're all in one big title.
-You can check this by clicking on the titles in _Navigate > Titles_.
+You can check this by clicking on the titles
+under _Navigate > Titles_.
 If they're all in one big title,
 you will need to figure out how to split them.
 You can find the split points by referencing the chapters.
 These can be found on the timeline,
 or by using the _Navigate > Chapters_ menu.
 
-If you want to preserve the original video as closely as possible,
-you'll also want to preserve the angles.
-If there are multiple angles,
-they can be found in _Navigate > Angles_.
+DVDs can contain multiple angles
+for certain scenes,
+though this is rare for anime releases.
+These angles can be found
+under _Navigate > Angles_.
+If you want to preserve multiple angles,
+you will need to remux each angle separately.
+However,
+for most anime DVDs,
+you can ignore angles entirely
+as they typically only contain
+one viewpoint.
 
 ### Audio
 
@@ -158,11 +170,11 @@ such as FFmpeg remuxing.
     Alternatively, you can convert to a lossy format
     like AAC or Opus if file size is a concern.
 
+<!-- TODO: Fact-check the above once my MPC-HC wants to play nice -->
 You can check which audio tracks are available
 and their formats in MPC-HC
 under _Navigate > Audio Menu_
 and pressing `Ctrl + 3`,
-<!-- TODO: Fact-check the above once my MPC-HC wants to play nice -->
 by using FFprobe,
 or by using [MediaInfo](https://mediaarea.net/en/MediaInfo/Download).
 
@@ -180,12 +192,14 @@ is the same.
     === "FFmpeg"
 
         !!! warning "Version"
+
             This method requires BtbN nightly FFmpeg build!
             If you are using an older version,
             you will need to upgrade.
             You can find the latest BtbN nightly builds [here](https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-win64-gpl-7.1.zip).
 
         !!! info "Documentation"
+
             For more information on the command line arguments,
             see the [FFmpeg documentation](https://ffmpeg.org/ffmpeg-formats.html#dvdvideo).
 
@@ -249,6 +263,7 @@ is the same.
                 - `<output_file>`: The path to the output file
 
             !!! warning "PCM audio"
+
                 If your DVDISO has PCM audio,
                 you **must** to convert it to FLAC,
                 as FFmpeg does not
@@ -273,9 +288,10 @@ is the same.
     === "PgcDemux"
 
         !!! warning "Binaries"
+
             The GUI for PgcDemux is only available as a Windows binary.
             If you are on Arch Linux,
-            the AUR has a cpgcdemux package
+            the AUR has a `cpgcdemux` package
             for CLI functionality.
             PgcDemux reportedly works with Wine,
             but no guarantees are made
@@ -360,6 +376,7 @@ is the same.
     === "MakeMKV"
 
         !!! danger "MakeMKV"
+
             MakeMKV is perhaps the easiest method
             to remux a DVDISO,
             but it's been known
@@ -368,6 +385,7 @@ is the same.
             at your own risk!
 
         !!! warning "Input file"
+
             MakeMKV requires a DVDISO
             or physical disc
             to work.
@@ -427,6 +445,54 @@ is the same.
                 Once it's done,
                 [follow the instructions
                 for the ISO method](#__tabbed_5_1).
+
+??? example "Multiple Angles"
+
+    As mentioned above,
+    DVDs can contain multiple angles
+    for certain scenes,
+    though this is rare for anime releases.
+    Should your DVD contain multiple angles,
+    you may want to preserve them.
+    There are two ways to do this:
+
+    === "Split into multiple files"
+
+        !!! warning "Supported methods"
+
+            This method is supported
+            by the FFmpeg and PgcDemux methods.
+            MakeMKV does _not_ support this feature!
+
+        This is the most straightforward method,
+        but will result in a larger release.
+
+        To remux each angle separately,
+        refer to the individual method's
+        instructions on extracting specific angles.
+
+    === "Editions"
+
+        !!! warning "Player support"
+
+            This feature is not supported
+            by all players,
+            so the safer option
+            is to remux each angle separately.
+
+        It's possible to keep all angles
+        in one container
+        by making use of [editions](https://www.matroska.org/technical/chapters.html#EditionEntry).
+        This allows viewers to switch between angles
+        by selecting the desired edition
+        in their player.
+
+        !!! warning "This table is incomplete!"
+
+            This table is a stub
+            and still very incomplete!
+            You can help us
+            by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
 
 ## Setting the correct aspect ratio
 
@@ -497,24 +563,20 @@ which allowed the image to reach its intended [Display Aspect Ratio (DAR)](https
 
     TODO: Let arch write the rest
 
-At the start of the digital age,
-DVD authors accounted for this
-by keeping important content
-within a smaller [active area](https://en.wikipedia.org/wiki/Overscan#Overscan_amounts).
-When played on a CRT,
-the television's natural stretching and cropping
-would result in the active area
-being displayed
-at the correct final aspect ratio,
-while the edges of the full frame
-would be cropped.
-Modern displays,
-however,
-lack both overscan
-and the automatic stretching of CRTs.
-As a result,
-DVDs will display incorrectly
-if we don't correct for this
+During the DVD era,
+content was typically confined
+to a smaller [active area](https://en.wikipedia.org/wiki/Overscan#Overscan_amounts)
+within the full frame.
+When played on CRT televisions,
+the combination of overscan and stretching
+would display this active area
+at the intended aspect ratio
+while cropping the frame edges.
+Modern displays
+lack these characteristics,
+so DVDs will display incorrectly
+unless you account for the active area
+and apply appropriate corrections
 during the remux process.
 
 Due to the above,
@@ -539,6 +601,7 @@ is provided below[^sar-source]:
 !!! info "Common DVD anamorphic resolution standards"
 
     !!! warning "Other standards"
+
         While other standards exist,
         they are extremely uncommon.
         If your DVD's aspect ratio values
@@ -567,6 +630,7 @@ is provided below[^sar-source]:
         |                      | 1132:1035                              | 690×566     |                    |
 
 !!! warning "NTSC to PAL conversions"
+
     When working with DVDs that have been converted between NTSC and PAL formats,
     the standard aspect ratio values may not apply.
 
@@ -581,6 +645,7 @@ is provided below[^sar-source]:
 ### Determining accurate SAR values
 
 !!! warning "Square pixels"
+
     These methods will only work
     if you are using a frame server
     or are otherwise viewing
@@ -613,19 +678,27 @@ to derive the most accurate SAR values.
     === "Faded columns"
 
         !!! warning "NTSC Active Area Standards"
-            NTSC has two common active area standards that are very similar:
+
+            NTSC has two common active area standards
+            that are very similar:
 
             - 710.85×486 (typically from analog transfers)
             - 704×480 (more common in digital sources)
 
-            While the faded columns method below can help identify the active area,
-            additional analysis may be needed to definitively determine which standard is being used.
+            While the faded columns method below
+            can help identify the active area,
+            additional analysis may be needed
+            to definitively determine
+            which standard is being used.
 
-        One way to determine the active area
+        One way to determine
+        the active area
         is by looking for faded columns
         on the edges of the frame.
-        These faded borders are intentionally added
-        to mark the boundaries of the active picture area.
+        These faded borders
+        are intentionally added
+        to mark the boundaries
+        of the active picture area.
 
         ![Example frame from Nurse Witch Komugi Magikarte](./img/dvd-remux/sar/faded-columns-method.png)
 
@@ -708,7 +781,8 @@ to derive the most accurate SAR values.
 
     === "Ground Truth"
 
-        !!! warning "SD upscales do not qualify"
+        !!! warning "Upscales are not valid references"
+
             Note that SD upscales do not qualify
             as valid reference sources,
             as they are not native square pixel sources.
@@ -741,7 +815,7 @@ to derive the most accurate SAR values.
     taken into account
     for this calculation.
 
-    !TODO: Further explain what to do here.
+    <!-- TODO: Further explain what to do here. -->
 
 These checks can all be performed
 using the following Vapoursynth code snippet:
@@ -864,6 +938,7 @@ Replace the following keys:
 ### Setting cropping metadata
 
 !!! warning "Supported players"
+
     Container-side cropping metadata
     is not widely supported!
     Most players will not respect this metadata
@@ -875,16 +950,17 @@ Replace the following keys:
     set this metadata.
 
     ??? info "Currently supported players"
+
         The following players support
         this metadata
         as of the time of writing:
 
-        | Player        | Supports it? | Notes |
-        | ------------- | ------------ | ----- |
-        | mpv           | ✅           | Subtitle display may vary based on user settings |
+        | Player        | Supports it? | Notes                                                               |
+        | ------------- | ------------ | ------------------------------------------------------------------- |
+        | mpv           | ✅           | Subtitle display may vary based on user settings                    |
         | FFmpeg        | ✅           | Interprets crop flags differently from mpv, following Matroska spec |
-        | VLC           | ❌           | |
-        | MPC-HC        | ❌           | |
+        | VLC           | ❌           |                                                                     |
+        | MPC-HC        | ❌           |                                                                     |
 
         ??? question "mpv and `blend-subtitles`"
 
