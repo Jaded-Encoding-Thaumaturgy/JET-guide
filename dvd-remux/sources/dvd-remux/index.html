@@ -18,7 +18,7 @@
         <link rel="prev" href="../../basics/babys-first-script/">
       
       
-        <link rel="next" href="../dvd-process/">
+        <link rel="next" href="../../filtering/order/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -597,6 +597,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#subtitles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subtitles
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -613,7 +622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dvd-process/" class="md-nav__link">
+      <a href="../dvd-process.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1117,6 +1126,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subtitles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Subtitles
+    </span>
+  </a>
   
 </li>
       
@@ -2089,22 +2107,6 @@ the subtitles are placed
 at the same location
 as in other players
 that do not support cropping).</p>
-<p>When remuxing from a source
-with 1:1 SAR subtitles,
-you will need to adjust
-the subtitle positions
-to account for the new SAR.
-For example,
-if your source has subtitles
-authored for 704x480 1:1 SAR,
-but your video is 853x480 with 16:9 SAR,
-you will need to scale
-the subtitle positions horizontally
-by a factor of 853/704.
-This ensures the subtitles
-appear in the correct location
-relative to the video content.</p>
-<p>!TODO: Get this math checked</p>
 </details>
 </details>
 </div>
@@ -2140,6 +2142,23 @@ as shown in the example below.</p>
 </code></pre></div></td></tr></table></div>
 <!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
 
+<h2 id="subtitles">Subtitles</h2>
+<p>!TODO: Write this section, better splits, get math checked (arch/chortos pls? &lt;3)</p>
+<p>When remuxing from a source
+with 1:1 SAR subtitles,
+you will need to adjust
+the subtitle positions
+to account for the new SAR.
+For example,
+if your source has subtitles
+authored for 704x480 1:1 SAR,
+but your video is 853x480 with 16:9 SAR,
+you will need to scale
+the subtitle positions horizontally
+by a factor of 853/704.
+This ensures the subtitles
+appear in the correct location
+relative to the video content.</p>
 <div class="footnote">
 <hr />
 <ol>
