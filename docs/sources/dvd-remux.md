@@ -708,10 +708,36 @@ to derive the most accurate SAR values.
 
         ![Example frame from Nurse Witch Komugi Magikarte](./img/dvd-remux/sar/faded-columns-method.png)
 
-        To calculate the active area width:
+        To get the active area width:
 
         1. Identify the fade width on the left and right sides (ignoring the top and bottom)
         2. Subtract both fades from the total frame width
+
+        The easiest way
+        to get the fade width
+        is to use vspreview
+        to display the frame.
+        You can immediately load a video
+        using the following terminal command:
+
+        ```bash
+        vspreview <video_file>
+        ```
+
+        This will open the video
+        in the vspreview window.
+        You can then navigate
+        to the right side
+        of the window
+        and click on "Misc".
+        This will open a toolbar
+        where you can crop
+        the frame on each side.
+        Crop the left and right sides
+        until the faded columns
+        are no longer visible.
+
+        ![vspreview cropping toolbar](./img/dvd-remux/sar/vspreview-crop.png)
 
         For example, if you have:
 
