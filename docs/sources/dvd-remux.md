@@ -466,9 +466,14 @@ which allowed the image to reach its intended [Display Aspect Ratio (DAR)](https
     2. The **active area** of the frame.
         - This represents
           the actual visible picture area
-          intended for display.
-          This value is _not_
-          explicitly stored
+          for which the DAR is defined,
+          intended for display
+          on traditional CRT TVs.
+          This area may exclude
+          some valid picture data
+          due to production inconsistencies.
+          The active area dimensions
+          are _not_ explicitly stored
           as metadata,
           and must be [derived through heuristics](#heuristics).
 
@@ -480,14 +485,15 @@ which allowed the image to reach its intended [Display Aspect Ratio (DAR)](https
         when displayed.
 
         - Widescreen (DAR = 16:9):
-          Samples are stretched horizontally
+          Each sample is displayed wider
+          than it is high
+          (e.g., by stretching horizontally
+          or condensing vertically)
         - Fullscreen (DAR = 4:3):
-          Samples are typically stretched vertically
-          to reduce information loss,
-          except when the height
-          is constrained to 480px
-          (such as for most streaming services),
-          in which case horizontal stretching is used.
+          Each sample is displayed higher
+          than it is wide
+          (e.g., by stretching vertically
+          or condensing horizontally)
 
     TODO: Let arch write the rest
 
@@ -735,7 +741,7 @@ to derive the most accurate SAR values.
     taken into account
     for this calculation.
 
-    !TOOD: Further explain what to do here.
+    !TODO: Further explain what to do here.
 
 These checks can all be performed
 using the following Vapoursynth code snippet:
@@ -792,7 +798,7 @@ new_sar = sar * clip.width / clip.height
 print(f"New display width: {new_sar.numerator}\nNew display height: {new_sar.denominator}")
 ```
 
-??? info "Understanding the output"
+??? info "Understanding SAR calculations and display dimensions"
 
     The formula multiplies the SAR
     by the stored frame's width/height ratio
@@ -840,7 +846,7 @@ Once we've obtained
 the correct SAR values,
 we can apply them
 to the video.
-Assuming a matroska output,
+Assuming a Matroska output,
 we can use the following command:
 
 ```bash
@@ -873,11 +879,33 @@ Replace the following keys:
         this metadata
         as of the time of writing:
 
-        | Player        | Supports it? |
-        | ------------- | ------------ |
-        | mpv           | ✅           |
-        | VLC           | ❌           |
-        | MPC-HC        | ❌           |
+        | Player        | Supports it? | Notes |
+        | ------------- | ------------ | ----- |
+        | mpv           | ✅           | Subtitle display may vary based on user settings |
+        | FFmpeg        | ✅           | Interprets crop flags differently from mpv, following Matroska spec |
+        | VLC           | ❌           | |
+        | MPC-HC        | ❌           | |
+
+        ??? question "mpv and `blend-subtitles`"
+
+            As of the time of writing,
+            when subtitles are blended
+            onto the video
+            differs depending on the `blend-subtitles` parameter.
+            When `blend-subtitles=no`,
+            the subtitles get rendered
+            *after* cropping.
+            With `blend-subtitles=yes`,
+            the subtitles get rendered
+            *before* cropping.
+            This means that to render subtitles correctly,
+            you must target `blend-subtitles=yes`
+            when authoring
+            (as this will ensure
+            the subtitles are placed
+            at the same location
+            as in other players
+            that do not support cropping).
 
 Container-side cropping metadata defines
 which parts of the video frame
@@ -919,3 +947,23 @@ mkvpropedit <input_file> --edit track:v1 --set display-unit=3 --set display-widt
 ```
 
 <!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
+
+## Subtitles
+
+!TODO: Write this section, better splits, get math checked (arch/chortos pls? <3)
+
+When remuxing from a source
+with 1:1 SAR subtitles,
+you will need to adjust
+the subtitle positions
+to account for the new SAR.
+For example,
+if your source has subtitles
+authored for 704x480 1:1 SAR,
+but your video is 853x480 with 16:9 SAR,
+you will need to scale
+the subtitle positions horizontally
+by a factor of 853/704.
+This ensures the subtitles
+appear in the correct location
+relative to the video content.

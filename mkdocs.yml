@@ -38,7 +38,6 @@ nav:
       - Known Native Resolutions: filtering/descaling/known-resolutions.md
     - Dehardsubbing: filtering/dehardsubbing.md
     - Wobbly 🡕: https://wobbly.encode.moe
-    - Correcting SAR/PAR 🡕: https://thewiki.moe/tutorials/dvdremux/#correcting-sarpar
   - Encoding:
     - x264 Parameters: encoding/x264params.md
     - x265 Parameters: encoding/x265params.md
