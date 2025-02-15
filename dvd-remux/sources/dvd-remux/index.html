@@ -1606,6 +1606,18 @@ instructions on extracting specific angles.</p>
 </div>
 <div class="tabbed-block">
 <div class="admonition warning">
+<p class="admonition-title">This explanation is incomplete!</p>
+<p>This explanation is a stub!
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Explain how to create editions in mkvtoolnix (preferred) or ffmpeg</li>
+</ul>
+</details>
+</div>
+<div class="admonition warning">
 <p class="admonition-title">Player support</p>
 <p>This feature is not supported
 by all players,
@@ -1618,13 +1630,6 @@ by making use of <a href="https://www.matroska.org/technical/chapters.html#Editi
 This allows viewers to switch between angles
 by selecting the desired edition
 in their player.</p>
-<div class="admonition warning">
-<p class="admonition-title">This table is incomplete!</p>
-<p>This table is a stub
-and still very incomplete!
-You can help us
-by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
-</div>
 </div>
 </div>
 </div>
@@ -1649,6 +1654,19 @@ the edges of the image,
 which allowed the image to reach its intended <a href="https://en.wikipedia.org/wiki/Display_aspect_ratio">Display Aspect Ratio (DAR)</a>.</p>
 <details class="info">
 <summary>Understanding Aspect Ratio Math</summary>
+<div class="admonition warning">
+<p class="admonition-title">This explanation is incomplete!</p>
+<p>This explanation is a stub!
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Write proper equations</li>
+<li>Explain the math in-depth</li>
+</ul>
+</details>
+</div>
 <p>To properly handle DVD aspect ratios,
 we need to understand three key components:</p>
 <ol>
@@ -1701,7 +1719,7 @@ we need to understand three key components:</p>
 </ul>
 </li>
 </ol>
-<!-- TODO: Let arch write the rest -->
+<!-- TODO: Let arch write the rest? -->
 </details>
 <p>During the DVD era,
 content was typically confined
@@ -1738,6 +1756,20 @@ is provided below<sup id="fnref:sar-source"><a class="footnote-ref" href="#fn:sa
 <div class="admonition info">
 <p class="admonition-title">Common DVD anamorphic resolution standards</p>
 <div class="admonition warning">
+<p class="admonition-title">This explanation is incomplete!</p>
+<p>This explanation is a stub!
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Write the missing display dimensions</li>
+<li>Write formal names for the standards where possible</li>
+<li>Link to papers or other sources for the standards of each value</li>
+</ul>
+</details>
+</div>
+<div class="admonition warning">
 <p class="admonition-title">Other standards</p>
 <p>While other standards exist,
 they are extremely uncommon.
@@ -1756,7 +1788,7 @@ in your analysis.</p>
 <th>Display Aspect Ratio</th>
 <th>Sample Aspect Ratio/Pixel Aspect Ratio</th>
 <th>Active Area</th>
-<th>Display Resolution</th>
+<th>Display Dimensions</th>
 </tr>
 </thead>
 <tbody>
@@ -1812,7 +1844,7 @@ in your analysis.</p>
 <th>Display Aspect Ratio</th>
 <th>Sample Aspect Ratio/Pixel Aspect Ratio</th>
 <th>Active Area</th>
-<th>Display Resolution</th>
+<th>Display Dimensions</th>
 </tr>
 </thead>
 <tbody>
@@ -2024,6 +2056,18 @@ such as DVD-only OVAs.</p>
 </div>
 <details class="question">
 <summary>I have black bars at the top/bottom! Do I need to change the height?</summary>
+<div class="admonition warning">
+<p class="admonition-title">This explanation is incomplete!</p>
+<p>This explanation is a stub!
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Properly explain what to do with the extra black bars</li>
+</ul>
+</details>
+</div>
 <p>The SAR's standard active area height
 should be the height
 taken into account
@@ -2264,8 +2308,6 @@ as shown in the example below.</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>mkvpropedit<span style="color: #ABB2BF"> </span>&lt;input_file&gt;<span style="color: #ABB2BF"> </span>--edit<span style="color: #ABB2BF"> </span>track:v1<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-unit<span style="color: #56B6C2">=</span><span style="color: #D19A66">3</span><span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-width<span style="color: #56B6C2">=</span>&lt;display_width&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-height<span style="color: #56B6C2">=</span>&lt;display_height&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-left<span style="color: #56B6C2">=</span>&lt;left&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-right<span style="color: #56B6C2">=</span>&lt;right&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-top<span style="color: #56B6C2">=</span>&lt;top&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-bottom<span style="color: #56B6C2">=</span>&lt;bottom&gt;
 </code></pre></div></td></tr></table></div>
 <!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
-
-<!-- TODO: Add a section on handling subtitles, including VOBSUB, PGS (SD BD), and ASS (fansubs). -->
 
 <div class="footnote">
 <hr />
