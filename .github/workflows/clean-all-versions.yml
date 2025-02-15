@@ -1,7 +1,7 @@
 name: Prune all and only deploy master
 on:
   workflow_dispatch:
-    
+
 permissions:
   contents: write
 jobs:

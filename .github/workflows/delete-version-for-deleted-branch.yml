@@ -21,6 +21,6 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install pip deps
-        run: python -m pip install --user mkdocs-material mkdocstrings[python] pymdown-extensions mike
+        run: python -m pip install --user -r requirements.txt -r requirements-dev.txt
       - name: Delete version for branch
         run: mike delete -p ${{ github.event.ref }}
