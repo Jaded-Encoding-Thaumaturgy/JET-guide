@@ -1,0 +1,2380 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Various guides on encoding by JET">
+      
+      
+        <meta name="author" content="Jaded Encoding Thaumaturgy">
+      
+      
+        <link rel="canonical" href="https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/sources/dvd-remux/">
+      
+      
+        <link rel="prev" href="../../basics/babys-first-script/">
+      
+      
+        <link rel="next" href="../../filtering/order/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
+    
+    
+      
+        <title>Remuxing DVDs - JET Encoding Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#remuxing-dvds" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="JET Encoding Guide" class="md-header__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JET Encoding Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Remuxing DVDs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="JET Encoding Guide" class="md-nav__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    JET Encoding Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Encoding Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Basics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup and First Steps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/python-primer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A Primer on Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/howdoi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How do I ...?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/babys-first-script/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Baby's first script
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Source Processing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Source Processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Remuxing DVDs
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Remuxing DVDs
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dvd-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      DVD Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyzing-dvd-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analyzing DVD Content
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analyzing DVD Content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking video
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking audio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remuxing-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remuxing Methods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correcting-the-aspect-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correcting the Aspect Ratio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Correcting the Aspect Ratio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#heuristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heuristics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Heuristics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#determining-accurate-sar-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Determining accurate SAR values
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-container-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting container metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting container metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sar-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      SAR metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cropping-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cropping metadata
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Filtering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/order/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Order of Filtering Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Descaling
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Descaling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/descaling/descaling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Descaling Theory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/descaling/known-resolutions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Known Native Resolutions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/dehardsubbing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dehardsubbing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://wobbly.encode.moe" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wobbly 🡕
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Encoding
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Encoding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encoding/x264params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x264 Parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encoding/x265params/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    x265 Parameters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comparison
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dvd-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      DVD Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analyzing-dvd-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analyzing DVD Content
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Analyzing DVD Content">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#checking-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking video
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checking-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checking audio
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remuxing-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remuxing Methods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#correcting-the-aspect-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correcting the Aspect Ratio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Correcting the Aspect Ratio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#heuristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heuristics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Heuristics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#determining-accurate-sar-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Determining accurate SAR values
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-container-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting container metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting container metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sar-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      SAR metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cropping-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cropping metadata
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="remuxing-dvds">Remuxing DVDs</h1>
+<p>When working on DVDs,
+it helps a lot to have a clean mux
+of each episode ready.
+To do this,
+you will need to remux the DVDISO,
+and somehow split the remux into individual episodes.
+This guide will cover different methods to accomplish this,
+as well as cover some additional information
+that's useful if you want to release a DVD remux.</p>
+<h2 id="dvd-structure">DVD Structure</h2>
+<p>There are multiple ways to remux a DVDISO.
+However, it's also important
+to understand <em>what</em> you are remuxing.
+DVDISOs are made up of the following:</p>
+<ul>
+<li><strong>Titles</strong>: The main content units on a DVD. Each title typically contains one episode, movie, or bonus feature. These may also contain multiple episodes in one big title.</li>
+<li><strong>Angles</strong>: Alternative video streams within a title, often used for different versions of the same content (such as theatrical and director's cut versions).</li>
+<li><strong>Chapters</strong>: Markers within a title that allow skipping to specific points, like scene transitions or commercial break points.</li>
+</ul>
+<p>Each of these elements can be important
+depending on what you're trying to preserve.
+For a basic episode remux,
+you'll typically want to focus on the main title and chapters.
+However, for a complete preservation,
+you might want to capture all available angles as well.</p>
+<details class="question">
+<summary>What are PGCs?</summary>
+<p>PGCs (Program Chains) are part of the DVD video structure hierarchy.
+At the lowest level, multiple VOBUs (Video Object Units) form a cell.
+One or more cells make up a program,
+and one or more programs form a PGC.
+Programs can be identified as PTTs (Parts of Title),
+also commonly known as chapters.
+A title on a DVD consists of one or more PGCs,
+while a menu is made up of a single PGC<sup id="fnref:pgc-references"><a class="footnote-ref" href="#fn:pgc-references">1</a></sup>.</p>
+</details>
+<h2 id="analyzing-dvd-content">Analyzing DVD Content</h2>
+<p>You will ideally want to know
+all of the above,
+and the most straight-forward way to find them
+is by using <a href="https://github.com/clsid2/mpc-hc">MPC-HC</a>
+(note that VLC and mpv
+do not support all the functionality
+covered in this guide
+as of the time of writing).</p>
+<details class="question">
+<summary>What <em>do</em> VLC and mpv support?</summary>
+<p>On Linux,
+mpv has okay-ish libdvdnav support,
+meaning you can use scripts
+such as <a href="https://github.com/CogentRedTester/mpv-dvd-browser">mpv-dvd-browser</a>
+to navigate to different titles.
+Angles are still only accessible via the command line,
+and menus are unsupported.
+VLC also supports most functionalities,
+but has no support for different angles.</p>
+<p>If you don't need angle/menu support,
+and <em>really</em> don't want to use MPC-HC,
+either of the above options
+may work for you.
+Nonetheless,
+this guide
+will only cover MPC-HC usage.</p>
+</details>
+<h3 id="checking-video">Checking video</h3>
+<div class="admonition example">
+<p class="admonition-title">How to view your DVD</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">ISO</label><label for="__tabbed_1_2">Physical DVD</label><label for="__tabbed_1_3">Unpacked DVD</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Mount your DVDISO</li>
+<li>Open MPC-HC</li>
+<li>Hover over the <em>Files &gt; Open Disc</em> button</li>
+<li>Select your DVDISO</li>
+</ol>
+<p><img alt="Opening the ISO with MPC-HC from MPC-HC" src="../img/dvd-remux/preview/mpc-open-disc.png" /></p>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Insert your DVD into your DVD drive</li>
+<li>Open MPC-HC</li>
+<li>Hover over the <em>Files &gt; Open Disc</em> button</li>
+<li>Select your DVD drive</li>
+</ol>
+<p><img alt="Opening the physical DVD with MPC-HC" src="../img/dvd-remux/preview/mpc-open-disc.png" /></p>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Open MPC-HC</li>
+<li>Hover over the <em>Files &gt; Open DVD/BD button</em></li>
+<li>Navigate to the directory containing your unpacked DVDISO</li>
+<li>Click on the folder the DVD was unpacked into</li>
+<li>Click "Select folder"</li>
+</ol>
+<p><img alt="Opening the unpacked DVD with MPC-HC" src="../img/dvd-remux/preview/mpc-open-dvd-unpacked.png" /></p>
+</div>
+</div>
+</div>
+</div>
+<p>You should now be able to see the DVD content.</p>
+<div class="admonition info">
+<p class="admonition-title">Skipping to the menu</p>
+<p>You can click <em>Navigate &gt; Title Menu</em> to skip the trailers/warning
+and get straight to the menu.</p>
+</div>
+<p><img alt="Example of MPC-HC opened to a DVD" src="../img/dvd-remux/preview/mpc-dvd-opened.png" /></p>
+<p>You will want to take note of
+whether there are individual titles
+for each episode,
+or if they're all in one big title.
+You can check this by clicking on the titles
+under <em>Navigate &gt; Titles</em>.
+If they're all in one big title,
+you will need to figure out how to split them.
+You can find the split points by referencing the chapters.
+These can be found on the timeline,
+or by using the <em>Navigate &gt; Chapters</em> menu.</p>
+<p>DVDs can contain multiple angles
+for certain scenes,
+though this is rare for anime releases.
+These angles can be found
+under <em>Navigate &gt; Angles</em>.
+If you want to preserve multiple angles,
+you will need to remux each angle separately.
+However,
+for most anime DVDs,
+you can ignore angles entirely
+as they typically only contain
+one viewpoint.</p>
+<h3 id="checking-audio">Checking audio</h3>
+<p>You will also want to take note of the audio tracks.
+DVDs can contain multiple audio tracks in different formats:</p>
+<ul>
+<li>PCM (uncompressed)</li>
+<li>AC3 (Dolby Digital)</li>
+</ul>
+<p>The remuxing methods mentioned further below
+will allow you to split these audio tracks
+alongside the video.
+However, special care needs to be taken with PCM tracks
+for certain methods,
+such as FFmpeg remuxing.</p>
+<details class="question">
+<summary>Why do PCM tracks need special handling?</summary>
+<p>DVD PCM audio uses big-endian byte order,
+while most computer audio uses little-endian.
+FFmpeg does not automatically handle this conversion,
+so PCM tracks need to be manually converted
+during the remuxing process.</p>
+<p>Since PCM is already uncompressed,
+it's recommended to convert it to FLAC
+to maintain the quality
+while ensuring proper byte order.
+Alternatively, you can convert to a lossy format
+like AAC or Opus if file size is a concern.</p>
+</details>
+<!-- TODO: Fact-check the above once my MPC-HC wants to play nice -->
+<p>You can check which audio tracks are available
+and their formats in MPC-HC
+under <em>Navigate &gt; Audio Menu</em>
+and pressing <code>Ctrl + 3</code>,
+by using FFprobe,
+or by using <a href="https://mediaarea.net/en/MediaInfo/Download">MediaInfo</a>.</p>
+<h2 id="remuxing-methods">Remuxing Methods</h2>
+<p>Below are multiple methods to remux your DVDISO.
+If you are unsure if one method
+produced the correct result,
+try another method
+and see if the result
+is the same.</p>
+<div class="admonition example">
+<p class="admonition-title">Remuxing methods</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">FFmpeg</label><label for="__tabbed_2_2">PgcDemux</label><label for="__tabbed_2_3">MakeMKV</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Version</p>
+<p>This method requires BtbN nightly FFmpeg build!
+If you are using an older version,
+you will need to upgrade.
+You can find the latest BtbN nightly builds <a href="https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-win64-gpl-7.1.zip">here</a>.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Documentation</p>
+<p>For more information on the command line arguments,
+see the <a href="https://ffmpeg.org/ffmpeg-formats.html#dvdvideo">FFmpeg documentation</a>.</p>
+</div>
+<p>FFmpeg can be used to help split a DVDISO by Title, Angle, or Chapters.</p>
+<p>To remux the DVDISO,
+you will need to use the following command
+based on your needs:</p>
+<div class="admonition example">
+<p class="admonition-title">Demuxing with FFmpeg</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Title with chapters</label><label for="__tabbed_3_2">Title with multiple episodes</label><label for="__tabbed_3_3">Title with a different angle</label><label for="__tabbed_3_4">Menus</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>ffmpeg<span style="color: #ABB2BF"> </span>-f<span style="color: #ABB2BF"> </span>dvdvideo<span style="color: #ABB2BF"> </span>-preindex<span style="color: #ABB2BF"> </span>True<span style="color: #ABB2BF"> </span>-title<span style="color: #ABB2BF"> </span>&lt;title&gt;<span style="color: #ABB2BF"> </span>-i<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;input_file&gt;&quot;</span><span style="color: #ABB2BF"> </span>-map<span style="color: #ABB2BF"> </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF"> </span>-c<span style="color: #ABB2BF"> </span>copy<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;output_file&gt;&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;input_file&gt;</code>: The path to your DVDISO</li>
+<li><code>&lt;title&gt;</code>: The number of the title you want to remux (integer between 1 and 99)</li>
+<li><code>&lt;output_file&gt;</code>: The path to the output file</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>ffmpeg<span style="color: #ABB2BF"> </span>-f<span style="color: #ABB2BF"> </span>dvdvideo<span style="color: #ABB2BF"> </span>-preindex<span style="color: #ABB2BF"> </span>True<span style="color: #ABB2BF"> </span>-title<span style="color: #ABB2BF"> </span>&lt;title&gt;<span style="color: #ABB2BF"> </span>-chapter_start<span style="color: #ABB2BF"> </span>&lt;chapter_start&gt;<span style="color: #ABB2BF"> </span>-chapter_end<span style="color: #ABB2BF"> </span>&lt;chapter_end&gt;<span style="color: #ABB2BF"> </span>-i<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;input_file&gt;&quot;</span><span style="color: #ABB2BF"> </span>-map<span style="color: #ABB2BF"> </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF"> </span>-c<span style="color: #ABB2BF"> </span>copy<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;output_file&gt;&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;input_file&gt;</code>: The path to your DVDISO</li>
+<li><code>&lt;title&gt;</code>: The number of the title you want to remux (integer between 1 and 99)</li>
+<li><code>&lt;chapter_start&gt;</code>: The number of the chapter to start at (inclusive)</li>
+<li><code>&lt;chapter_end&gt;</code>: The number of the chapter to end at (inclusive)</li>
+<li><code>&lt;output_file&gt;</code>: The path to the output file</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>ffmpeg<span style="color: #ABB2BF"> </span>-f<span style="color: #ABB2BF"> </span>dvdvideo<span style="color: #ABB2BF"> </span>-preindex<span style="color: #ABB2BF"> </span>True<span style="color: #ABB2BF"> </span>-title<span style="color: #ABB2BF"> </span>&lt;title&gt;<span style="color: #ABB2BF"> </span>-angle<span style="color: #ABB2BF"> </span>&lt;angle&gt;<span style="color: #ABB2BF"> </span>-i<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;input_file&gt;&quot;</span><span style="color: #ABB2BF"> </span>-map<span style="color: #ABB2BF"> </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF"> </span>-c<span style="color: #ABB2BF"> </span>copy<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;output_file&gt;&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;input_file&gt;</code>: The path to your DVDISO</li>
+<li><code>&lt;title&gt;</code>: The number of the title you want to remux (integer between 1 and 99)</li>
+<li><code>&lt;angle&gt;</code>: The number of the angle you want to remux (integer between 1 and 9)</li>
+<li><code>&lt;output_file&gt;</code>: The path to the output file</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>ffmpeg<span style="color: #ABB2BF"> </span>-f<span style="color: #ABB2BF"> </span>dvdvideo<span style="color: #ABB2BF"> </span>-menu<span style="color: #ABB2BF"> </span>True<span style="color: #ABB2BF"> </span>-pgc<span style="color: #ABB2BF"> </span>&lt;pgc&gt;<span style="color: #ABB2BF"> </span>-i<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;input_file&gt;&quot;</span><span style="color: #ABB2BF"> </span>-map<span style="color: #ABB2BF"> </span><span style="color: #D19A66">0</span><span style="color: #ABB2BF"> </span>-c<span style="color: #ABB2BF"> </span>copy<span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;&lt;output_file&gt;&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;input_file&gt;</code>: The path to your DVDISO</li>
+<li><code>&lt;pgc&gt;</code>: The number of the PGC you want to remux (integer between 1 and 99)</li>
+<li><code>&lt;output_file&gt;</code>: The path to the output file</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">PCM audio</p>
+<p>If your DVDISO has PCM audio,
+you <strong>must</strong> to convert it to FLAC,
+as FFmpeg does not
+automatically handle this conversion.
+You can do that
+by adding the following parameter
+after <code>-c copy</code>:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>-c:a<span style="color: #ABB2BF"> </span>flac<span style="color: #ABB2BF"> </span>-compression_level:a<span style="color: #ABB2BF"> </span><span style="color: #D19A66">8</span>
+</code></pre></div></td></tr></table></div>
+<p>If you have any tracks that are not PCM,
+you can prevent them from being converted
+by replacing <code>-c:a</code> with <code>-codec:&lt;stream_id&gt;</code>,
+where <code>&lt;stream_id&gt;</code> is the ID of the track
+you want to convert.
+You will need to add one of these
+for each track
+you want to convert.</p>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Binaries</p>
+<p>The GUI for PgcDemux is only available as a Windows binary.
+If you are on Arch Linux,
+the AUR has a <code>cpgcdemux</code> package
+for CLI functionality.
+PgcDemux reportedly works with Wine,
+but no guarantees are made
+that it will work
+as expected.</p>
+</div>
+<p>PgcDemux is a tool
+that allows you to demux a DVDISO
+into individual titles and menus,
+as well as select angles.</p>
+<p>The download link can be found here:</p>
+<ul>
+<li><a href="https://download.videohelp.com/jsoto/dvdtools.htm">Jsoto's Vob/Ifo tools</a></li>
+</ul>
+<p>In order to use this program,
+you will need to have an unpacked DVDISO.
+Some downloads will come unpacked,
+but if you have a compressed ISO,
+you will need to unpack it first.
+This can be done with either WinRAR or 7-Zip.</p>
+<p><img alt="Unpacking a DVDISO with 7-Zip" src="../img/dvd-remux/pgcdemux/unpack-context-menu.png" /></p>
+<p>Once you have an unpacked DVDISO,
+you can open PgcDemux
+and drag the <code>VTS_XX_0.IFO</code> file,
+where "XX" can be any two digits,
+into the "Input IFO" box.
+Make sure to also set an output directory.</p>
+<p>Do take note of the path name!
+PgcDemux does not work
+if there are unicode characters
+in the path,
+such as Japanese characters.</p>
+<p><img alt="Error when path contains unicode characters" src="../img/dvd-remux/pgcdemux/name-error.png" /></p>
+<p>Once you have dragged the file into the program,
+you will see a window like the following:</p>
+<p><img alt="PgcDemux main window" src="../img/dvd-remux/pgcdemux/main-window.png" /></p>
+<p>There are three modes
+to choose from.
+For our purposes,
+we will be using the "By PGC" mode.</p>
+<p>You can select different PGCs in the "PGC Selection" box.
+Under the dropdown menu, you can find invididual titles:</p>
+<p><img alt="PGC selection dropdown" src="../img/dvd-remux/pgcdemux/selection-dropdown.png" /></p>
+<p>In most cases, these will be split into individual episodes.
+If that's not the case,
+like here,
+you may need to split them manually later.</p>
+<p>Once you have selected the PGC,
+look at the box to the left.
+You will see a list of demuxing options.
+Set these to the following:</p>
+<p><img alt="PgcDemux options window, with &quot;Create a PGC VOB&quot; and &quot;One file per VID&quot; option ticked, and everything else unticked" src="../img/dvd-remux/pgcdemux/options-window.png" /></p>
+<p>Once you have set the options,
+you can click the "Process!" button
+to begin the demuxing process.
+This will output the files into your output directory.</p>
+<p><img alt="Output directory" src="../img/dvd-remux/pgcdemux/output.png" /></p>
+<p>If the episodes are not split into individual files,
+you will need to split them manually.
+This can be done by remuxing the DVDISO
+using <a href="https://mkvtoolnix.download/">mkvtoolnix</a>
+and splitting by time under the "Output" tab.</p>
+<p><img alt="mkvtoolnix splitting menu" src="../img/dvd-remux/pgcdemux/mkvtoolnix-split.png" /></p>
+</div>
+<div class="tabbed-block">
+<div class="admonition danger">
+<p class="admonition-title">MakeMKV</p>
+<p>MakeMKV is perhaps the easiest method
+to remux a DVDISO,
+but it's been known
+to create broken remuxes from time to time.
+Use this method
+at your own risk!</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Input file</p>
+<p>MakeMKV requires a DVDISO
+or physical disc
+to work.
+If you only have an unpacked DVDISO,
+you will need to use a different method.</p>
+</div>
+<p>MakeMKV can be downloaded from the following link:</p>
+<ul>
+<li><a href="https://www.makemkv.com/">MakeMKV</a></li>
+</ul>
+<p>Once you have downloaded and installed MakeMKV,
+you will need to register it.
+A free key can be found <a href="https://forum.makemkv.com/forum/viewtopic.php?t=1053">here</a>.
+Once you have registered it,
+you will need to restart the program.</p>
+<div class="admonition example">
+<p class="admonition-title">Selecting titles</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">ISO</label><label for="__tabbed_4_2">Physical disc</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Click the "Open File" button
+and select your DVDISO.
+It will start processing the file,
+and then show you this window:</p>
+<p><img alt="MakeMKV main window" src="../img/dvd-remux/makemkv/main-window.png" /></p>
+<p>Select the titles you want to remux,
+give it an output folder and name,
+and click the button underneath "Make MKV".</p>
+<p><img alt="MakeMKV Progress window" src="../img/dvd-remux/makemkv/progress-window.png" /></p>
+<p>Once it's done,
+the files will be in the output folder.</p>
+<p><img alt="MakeMKV output folder" src="../img/dvd-remux/makemkv/output.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>Insert your physical disc.
+MakeMKV will automatically detect it,
+and then show you this window:</p>
+<p><img alt="MakeMKV main window" src="../img/dvd-remux/makemkv/inserted-disc-window.png" /></p>
+<p>Click the "Backup" button,
+select "Decrypt video files"
+(if possible),
+pick an output directory,
+and press "OK".
+It will now start creating
+a back-up of your disc.</p>
+<p><img alt="MakeMKV backup window" src="../img/dvd-remux/makemkv/copy-dvd-window.png" /></p>
+<p>Once it's done,
+<a href="#__tabbed_5_1">follow the instructions
+for the ISO method</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<details class="example">
+<summary>Multiple Angles</summary>
+<p>As mentioned above,
+DVDs can contain multiple angles
+for certain scenes,
+though this is rare for anime releases.
+Should your DVD contain multiple angles,
+you may want to preserve them.
+There are two ways to do this:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Split into multiple files</label><label for="__tabbed_5_2">Editions</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Supported methods</p>
+<p>This method is supported
+by the FFmpeg and PgcDemux methods.
+MakeMKV does <em>not</em> support this feature!</p>
+</div>
+<p>This is the most straightforward method,
+but will result in a larger release.</p>
+<p>To remux each angle separately,
+refer to the individual method's
+instructions on extracting specific angles.</p>
+</div>
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">This explanation is incomplete!</p>
+<p>This explanation is a stub!
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Explain how to create editions in mkvtoolnix (preferred) or ffmpeg</li>
+</ul>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Player support</p>
+<p>This feature is not supported
+by all players,
+so the safer option
+is to remux each angle separately.</p>
+</div>
+<p>It's possible to keep all angles
+in one container
+by making use of <a href="https://www.matroska.org/technical/chapters.html#EditionEntry">editions</a>.
+This allows viewers to switch between angles
+by selecting the desired edition
+in their player.</p>
+</div>
+</div>
+</div>
+</details>
+<h2 id="correcting-the-aspect-ratio">Correcting the Aspect Ratio</h2>
+<p>DVDs (and later SD Blu-rays)
+are stored in a format known as "anamorphic video".
+This means that the stored video dimensions
+differ from the intended display dimensions.
+A typical NTSC DVD stores video at 720×480 pixels
+(a 3:2 aspect ratio),
+but displays it at either widescreen (16:9)
+or standard definition (4:3) aspect ratios.</p>
+<p>To achieve the correct display size,
+DVDs make use of a <a href="https://en.wikipedia.org/wiki/Sample_aspect_ratio">Sample Aspect Ratio (SAR)</a>,
+also known as a <a href="https://en.wikipedia.org/wiki/Pixel_aspect_ratio">Pixel Aspect Ratio (PAR)</a>.
+This value tells the player how much to stretch each pixel.
+The system was designed for CRT televisions,
+which had <a href="https://en.wikipedia.org/wiki/Overscan">overscan</a>,
+meaning they would stretch and slightly crop
+the edges of the image,
+which allowed the image to reach its intended <a href="https://en.wikipedia.org/wiki/Display_aspect_ratio">Display Aspect Ratio (DAR)</a>.</p>
+<details class="info">
+<summary>Understanding Aspect Ratio Math</summary>
+<div class="admonition warning">
+<p class="admonition-title">This explanation is incomplete!</p>
+<p>This explanation is a stub!
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Write proper equations</li>
+<li>Explain the math in-depth</li>
+</ul>
+</details>
+</div>
+<p>To properly handle DVD aspect ratios,
+we need to understand three key components:</p>
+<ol>
+<li>
+<p><strong>Display Aspect Ratio (DAR)</strong>:
+    The final width-to-height ratio
+    of the displayed picture.</p>
+<ul>
+<li>Widescreen content:
+  DAR = 16:9 (~1.778:1)</li>
+<li>Fullscreen content:
+  DAR = 4:3 (~1.333:1)</li>
+</ul>
+</li>
+<li>
+<p>The <strong>active area</strong> of the frame.</p>
+<ul>
+<li>This represents
+  the actual visible picture area
+  for which the DAR is defined,
+  intended for display
+  on traditional CRT TVs.
+  This area may exclude
+  some valid picture data
+  due to production inconsistencies.
+  The active area dimensions
+  are <em>not</em> explicitly stored
+  as metadata,
+  and must be <a href="#heuristics">derived through heuristics</a>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Sample Aspect Ratio (SAR)</strong>:
+    The ratio that defines
+    how rectangular each sample
+    (aka pixel)
+    should be
+    when displayed.</p>
+<ul>
+<li>Widescreen (DAR = 16:9):
+  Each sample is displayed wider
+  than it is high
+  (e.g., by stretching horizontally
+  or condensing vertically)</li>
+<li>Fullscreen (DAR = 4:3):
+  Each sample is displayed higher
+  than it is wide
+  (e.g., by stretching vertically
+  or condensing horizontally)</li>
+</ul>
+</li>
+</ol>
+<!-- TODO: Let arch write the rest? -->
+</details>
+<p>During the DVD era,
+content was typically confined
+to a smaller <a href="https://en.wikipedia.org/wiki/Overscan#Overscan_amounts">active area</a>
+within the full frame.
+When played on CRT televisions,
+the combination of overscan and stretching
+would display this active area
+at the intended aspect ratio
+while cropping the frame edges.
+Modern displays
+lack these characteristics,
+so DVDs will display incorrectly
+unless you account for the active area
+and apply appropriate corrections
+during the remux process.</p>
+<p>Due to the above,
+any DVD remux
+that does not properly account for SAR/DAR
+should be considered <strong><em>broken</em></strong>.</p>
+<h3 id="heuristics">Heuristics</h3>
+<p>SAR values have evolved
+through multiple standards over time,
+making it challenging to identify
+the exact standard used for any given disc.
+To help narrow down the correct values,
+a reference table of common SAR values
+and their corresponding active areas
+is provided below<sup id="fnref:sar-source"><a class="footnote-ref" href="#fn:sar-source">2</a></sup>.</p>
+<h4 id="reference-table">Reference Table</h4>
+<!-- TODO: Add all the display dimensions -->
+<!-- TODO: Add the formal names and references if possible -->
+
+<div class="admonition info">
+<p class="admonition-title">Common DVD anamorphic resolution standards</p>
+<div class="admonition warning">
+<p class="admonition-title">This explanation is incomplete!</p>
+<p>This explanation is a stub!
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Write the missing display dimensions</li>
+<li>Write formal names for the standards where possible</li>
+<li>Link to papers or other sources for the standards of each value</li>
+</ul>
+</details>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Other standards</p>
+<p>While other standards exist,
+they are extremely uncommon.
+If your DVD's aspect ratio values
+don't match any listed here,
+there's a high probability
+that something is incorrect
+in your analysis.</p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">NTSC</label><label for="__tabbed_6_2">PAL</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Display Aspect Ratio</th>
+<th>Sample Aspect Ratio/Pixel Aspect Ratio</th>
+<th>Active Area</th>
+<th>Display Dimensions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4:3</td>
+<td>4320:4739</td>
+<td>710.85×486</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>640:711</td>
+<td>711×480</td>
+<td>711×533</td>
+</tr>
+<tr>
+<td></td>
+<td>160:177</td>
+<td>708×480</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>10:11</td>
+<td>704×480</td>
+<td>704×528</td>
+</tr>
+<tr>
+<td>16:9</td>
+<td>2560:2133</td>
+<td>711×480</td>
+<td>853×480</td>
+</tr>
+<tr>
+<td></td>
+<td>640:531</td>
+<td>708×480</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>40:33</td>
+<td>704×480</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Display Aspect Ratio</th>
+<th>Sample Aspect Ratio/Pixel Aspect Ratio</th>
+<th>Active Area</th>
+<th>Display Dimensions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4:3</td>
+<td>128:117</td>
+<td>702×576</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>1132:1035</td>
+<td>690×566</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">NTSC to PAL conversions</p>
+<p>When working with DVDs that have been converted between NTSC and PAL formats,
+the standard aspect ratio values may not apply.</p>
+<p>For these cases:</p>
+<ol>
+<li>First determine and correct the SAR values of the original format</li>
+<li>Analyze how the conversion process transformed the video</li>
+<li>Adjust your settings to match the original content's intended display</li>
+</ol>
+</div>
+<!-- TODO: Maybe mention dvdunauthor? I only see Linux builds for this, but it may be useful for troubleshooting? -->
+
+<h3 id="determining-accurate-sar-values">Determining accurate SAR values</h3>
+<div class="admonition warning">
+<p class="admonition-title">Square pixels</p>
+<p>These methods will only work
+if you are using a frame server
+or are otherwise viewing
+the direct output
+of a DVD decoder.
+This is because the frames
+will be displayed
+as its storage
+as square pixels
+(720×480, SAR 1:1).</p>
+<p>All the frames
+given as examples
+are shown as square pixels,
+and the end result
+should look like
+the video would be displayed
+on a CRT monitor.</p>
+</div>
+<p>The following methods can be used
+to help determine the correct SAR values.
+Ideally,
+you should cross-reference the results
+of as many of these methods
+as possible
+to derive the most accurate SAR values.</p>
+<div class="admonition example">
+<p class="admonition-title">SAR heuristic methods</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:4"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Faded columns</label><label for="__tabbed_7_2">Circle method</label><label for="__tabbed_7_3">Logo method</label><label for="__tabbed_7_4">Ground Truth</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">NTSC Active Area Standards</p>
+<p>NTSC has two common active area standards
+that are very similar:</p>
+<ul>
+<li>710.85×486 (typically from analog transfers)</li>
+<li>704×480 (more common in digital sources)</li>
+</ul>
+<p>While the faded columns method below
+can help identify the active area,
+additional analysis may be needed
+to definitively determine
+which standard is being used.</p>
+</div>
+<p>One way to determine
+the active area
+is by looking for faded columns
+on the edges of the frame.
+These faded borders
+are intentionally added
+to mark the boundaries
+of the active picture area.</p>
+<p><img alt="Example frame from Nurse Witch Komugi Magikarte" src="../img/dvd-remux/sar/faded-columns-method.png" /></p>
+<p>To get the active area width:</p>
+<ol>
+<li>Identify the fade width on the left and right sides (ignoring the top and bottom)</li>
+<li>Subtract both fades from the total frame width</li>
+</ol>
+<p>The easiest way
+to get the fade width
+is to use vspreview
+to display the frame.
+You can immediately load a video
+using the following terminal command:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>vspreview<span style="color: #ABB2BF"> </span>&lt;video_file&gt;
+</code></pre></div></td></tr></table></div>
+<p>This will open the video
+in the vspreview window.
+You can then navigate
+to the right side
+of the window
+and click on "Misc".
+This will open a toolbar
+where you can crop
+the frame on each side.
+Crop the left and right sides
+until the faded columns
+are no longer visible.</p>
+<p><img alt="vspreview cropping toolbar" src="../img/dvd-remux/sar/vspreview-crop.png" /></p>
+<p>For example, if you have:</p>
+<ul>
+<li>Total frame width: 720 pixels</li>
+<li>Left fade: 9 pixels</li>
+<li>Right fade: 7 pixels</li>
+</ul>
+<p>The active area width would be:
+<code>720 - 9 - 7 = 704 pixels</code></p>
+<p>Once you know the active area
+and display aspect ratio (DAR),
+you can determine the correct SAR
+using the reference table above.</p>
+<p>In this example frame:</p>
+<ul>
+<li>Active area: 704×480 (crop 9px left, 7px right)</li>
+<li>DAR: 4:3</li>
+<li>Therefore SAR: 10:11</li>
+<li>Final display resolution: 704×528</li>
+</ul>
+<p><img alt="Example frame from Nurse Witch Komugi Magikarte with all the relevant information" src="../img/dvd-remux/sar/faded-columns-stretched.png" /></p>
+</div>
+<div class="tabbed-block">
+<p>Another method to determine the correct SAR
+is by finding objects in the frame
+that should be perfectly circular,
+like clocks, wheels, or logos.</p>
+<p>The process is straightforward:</p>
+<ol>
+<li>Find a frame with an object that should be a perfect circle</li>
+<li>In an image editor, overlay a perfect circle on top of the object</li>
+<li>Test different standard SAR values until the object matches the overlay</li>
+</ol>
+<p><img alt="Perfect circle overlaid onto a frame, example from Kaleido Star" src="../img/dvd-remux/sar/circle-method.png" /></p>
+<p>The image above demonstrates a perfect match
+using a SAR of 2560:2133,
+which corresponds to a 711×480 active area.
+When the overlay aligns perfectly with the object,
+you've found the correct SAR.</p>
+</div>
+<div class="tabbed-block">
+<p>Another approach is to compare text
+or studio logos
+against reference images.
+Many studio logos can be found online
+in their original square pixel form,
+which makes them useful reference points.</p>
+<p>The process is similar to the circle method,
+but uses a studio logo or text
+as the reference
+instead of a circle.
+You overlay the reference logo
+on top of the frame
+and adjust the SAR
+until they match perfectly.</p>
+<p><img alt="Logo from Google overlaid onto the OP credits" src="../img/dvd-remux/sar/logo-method.png" /></p>
+<p>In this example,
+matching the logo
+gave us a SAR of 4320:4739
+(equivalent to a 710.85×486 active area).
+This level of precision
+would be difficult to achieve
+using just the faded column method.</p>
+</div>
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">Upscales are not valid references</p>
+<p>Note that SD upscales do not qualify
+as valid reference sources,
+as they are not native square pixel sources.
+They had to go through the same process
+as you are doing now,
+and it's very likely
+that they were handled incorrectly!</p>
+</div>
+<p>If you have access to a natively square pixel source
+(such as a Blu-ray release),
+you can use it as a reference
+to determine the correct SAR.</p>
+<p>This method is particularly useful
+for episodes that were only released on DVD
+when Blu-rays exist for other episodes,
+such as DVD-only OVAs.</p>
+<p>The process works as follows:</p>
+<ol>
+<li>Downscale the Blu-ray to 864×486</li>
+<li>Crop the image to 864×480 (matching the DVD master's crop)</li>
+<li>Test different SAR standards
+   until the DVD matches the Blu-ray perfectly</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<details class="question">
+<summary>I have black bars at the top/bottom! Do I need to change the height?</summary>
+<div class="admonition warning">
+<p class="admonition-title">This explanation is incomplete!</p>
+<p>This explanation is a stub!
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Properly explain what to do with the extra black bars</li>
+</ul>
+</details>
+</div>
+<p>The SAR's standard active area height
+should be the height
+taken into account
+for this calculation.</p>
+<!-- TODO: Further explain what to do here. -->
+</details>
+<p>These checks can all be performed
+using the following Vapoursynth code snippet:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-1"> 1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-2"> 2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-3"> 3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-4"> 4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-5"> 5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-6"> 6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-7"> 7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-8"> 8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-9"> 9</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-10">10</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-11">11</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-12">12</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-13">13</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-14">14</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-15">15</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">Sar</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">mod4</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vskernels</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">Bicubic</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span style="color: #E06C75">sar</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">Sar</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">from_ar</span><span style="color: #ABB2BF">(</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>    <span style="color: #56B6C2">&lt;</span><span style="color: #E06C75">dar_num</span><span style="color: #56B6C2">&gt;</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">&lt;</span><span style="color: #E06C75">dar_den</span><span style="color: #56B6C2">&gt;</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">&lt;</span><span style="color: #E06C75">active_width</span><span style="color: #56B6C2">&gt;</span><span style="color: #ABB2BF">,</span> <span style="color: #56B6C2">&lt;</span><span style="color: #E06C75">active_height</span><span style="color: #56B6C2">&gt;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span style="color: #C678DD">if</span> <span style="color: #E06C75">sar</span> <span style="color: #56B6C2">&gt;</span> <span style="color: #D19A66">1</span><span style="color: #ABB2BF">:</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>    <span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">height</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">mod4</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">width</span> <span style="color: #56B6C2">*</span> <span style="color: #E5C07B">float</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">sar</span><span style="color: #ABB2BF">)),</span> <span style="color: #E06C75">mod4</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">height</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span style="color: #C678DD">else</span><span style="color: #ABB2BF">:</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a>    <span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">height</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">mod4</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">width</span><span style="color: #ABB2BF">),</span> <span style="color: #E06C75">mod4</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">height</span> <span style="color: #56B6C2">/</span> <span style="color: #E5C07B">float</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">sar</span><span style="color: #ABB2BF">))</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span style="color: #E06C75">clip_resized</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">Bicubic</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">scale</span><span style="color: #ABB2BF">(</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a>    <span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">width</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">height</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">keep_ar</span><span style="color: #56B6C2">=</span><span style="color: #E5C07B">True</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">sar</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">sar</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<details class="question">
+<summary>Why use Vapoursynth?</summary>
+<p>Image editors are not capable of
+properly ensuring the active area
+gets stretched and cropped correctly,
+so we need to use a tool
+that can do this.</p>
+<p>The <code>vskernels</code> <code>Kernel</code> classes
+are all capable of
+handling the scaling
+and cropping correctly,
+including proper subpixel cropping
+and SAR adjustments
+that are essential
+for anamorphic content.</p>
+</details>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;dar_num&gt;</code> with the DVD's DAR numerator</li>
+<li><code>&lt;dar_den&gt;</code> with the DVD's DAR denominator</li>
+<li><code>&lt;active_width&gt;</code> with the SAR's standard active area width</li>
+<li><code>&lt;active_height&gt;</code> with the SAR's standard active area height</li>
+</ul>
+<p>Once you've determined the correct SAR values,
+you can print out the new display dimensions
+by printing the following values
+at the end of the script:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span style="color: #E06C75">new_sar</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">sar</span> <span style="color: #56B6C2">*</span> <span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">width</span> <span style="color: #56B6C2">/</span> <span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">height</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span style="color: #E5C07B">print</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">f&quot;New display width: {</span><span style="color: #E06C75">new_sar</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">numerator</span><span style="color: #98C379">}\nNew display height: {</span><span style="color: #E06C75">new_sar</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">denominator</span><span style="color: #98C379">}&quot;</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<details class="info">
+<summary>Understanding SAR calculations and display dimensions</summary>
+<p>The formula multiplies the SAR
+by the stored frame's width/height ratio
+to calculate the intended display ratio.</p>
+<p>For example,
+using a 720×480 NTSC DVD
+with a SAR of 2560:2133:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">2560</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">2133</span><span style="color: #ABB2BF">)</span> <span style="color: #56B6C2">*</span> <span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">720</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">480</span><span style="color: #ABB2BF">)</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">1280</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">711</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This results in a fraction
+that equals roughly 1.8,
+which matches the 16:9 DAR.
+While this could also be expressed as 853×480,
+keeping it as a reduced integer fraction
+like 1280:711 is preferable,
+since players treat these values as a ratio
+rather than actual final dimensions.
+Using larger integers in the ratio
+helps avoid rounding errors
+that could occur with smaller numbers.</p>
+</details>
+<h2 id="setting-container-metadata">Setting container metadata</h2>
+<p>Now that you've determined
+the correct SAR values,
+you can apply them
+to the video.
+This can be done
+by adding these values
+as metadata
+to the video container,
+such as a Matroska file.</p>
+<h3 id="sar-metadata">SAR metadata</h3>
+<div class="admonition note">
+<p class="admonition-title">Encode metadata</p>
+<p>When encoding anamorphic content
+like DVDs,
+proper handling of display metadata
+is still necessary
+to preserve the correct aspect ratio.
+The following sections
+explain how to do this.</p>
+<p>However,
+these steps only apply
+if you want to keep the video
+in its anamorphic format.
+If you plan to resample the video
+to square pixels,
+you can skip ahead,
+as the aspect ratio
+should be corrected
+during the resampling process.</p>
+</div>
+<p>Once we've obtained
+the correct SAR values,
+we can apply them
+to the video.
+Assuming a Matroska output,
+we can use the following command:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>mkvpropedit<span style="color: #ABB2BF"> </span>&lt;input_file&gt;<span style="color: #ABB2BF"> </span>--edit<span style="color: #ABB2BF"> </span>track:v1<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-unit<span style="color: #56B6C2">=</span><span style="color: #D19A66">3</span><span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-width<span style="color: #56B6C2">=</span>&lt;display_width&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-height<span style="color: #56B6C2">=</span>&lt;display_height&gt;
+</code></pre></div></td></tr></table></div>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;input_file&gt;</code>: The path to your input file</li>
+<li><code>&lt;display_width&gt;</code>: The new display width value
+    obtained from the SAR calculation</li>
+<li><code>&lt;display_height&gt;</code>: The height of the display
+    obtained from the SAR calculation</li>
+</ul>
+<h3 id="cropping-metadata">Cropping metadata</h3>
+<div class="admonition warning">
+<p class="admonition-title">Supported players</p>
+<p>Container-side cropping metadata
+is not widely supported!
+Most players will not respect this metadata
+and still show the faded columns.
+Support for this
+should improve
+with time,
+so you should still
+set this metadata.</p>
+<details class="info">
+<summary>Currently supported players</summary>
+<p>The following players support
+this metadata
+as of the time of writing:</p>
+<table>
+<thead>
+<tr>
+<th>Player</th>
+<th>Supports it?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mpv</td>
+<td>✅</td>
+<td>Subtitle display may vary based on user settings</td>
+</tr>
+<tr>
+<td>FFmpeg</td>
+<td>✅</td>
+<td>Interprets crop flags differently from mpv, following Matroska spec</td>
+</tr>
+<tr>
+<td>VLC</td>
+<td>❌</td>
+<td></td>
+</tr>
+<tr>
+<td>MPC-HC</td>
+<td>❌</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="question">
+<summary>mpv and <code>blend-subtitles</code></summary>
+<p>As of the time of writing,
+when subtitles are blended
+onto the video
+differs depending on the <code>blend-subtitles</code> parameter.
+When <code>blend-subtitles=no</code>,
+the subtitles get rendered
+<em>after</em> cropping.
+With <code>blend-subtitles=yes</code>,
+the subtitles get rendered
+<em>before</em> cropping.
+This means that to render subtitles correctly,
+you must target <code>blend-subtitles=yes</code>
+when authoring
+(as this will ensure
+the subtitles are placed
+at the same location
+as in other players
+that do not support cropping).</p>
+</details>
+</details>
+</div>
+<p>Container-side cropping metadata defines
+which parts of the video frame
+should be cropped during playback.
+Like the SAR metadata discussed earlier,
+this information can be embedded
+into Matroska files
+using mkvpropedit:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>mkvpropedit<span style="color: #ABB2BF"> </span>&lt;input_file&gt;<span style="color: #ABB2BF"> </span>--edit<span style="color: #ABB2BF"> </span>track:v1<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-left<span style="color: #56B6C2">=</span>&lt;left&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-right<span style="color: #56B6C2">=</span>&lt;right&gt;
+</code></pre></div></td></tr></table></div>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;left&gt;</code>: Number of pixels to crop from the left edge of the frame</li>
+<li><code>&lt;right&gt;</code>: Number of pixels to crop from the right edge of the frame</li>
+</ul>
+<p>If your disc contains black bars
+at the top and/or bottom of the frame,
+you should crop those as well
+using the following command:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>mkvpropedit<span style="color: #ABB2BF"> </span>&lt;input_file&gt;<span style="color: #ABB2BF"> </span>--edit<span style="color: #ABB2BF"> </span>track:v1<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-top<span style="color: #56B6C2">=</span>&lt;top&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-bottom<span style="color: #56B6C2">=</span>&lt;bottom&gt;
+</code></pre></div></td></tr></table></div>
+<p>Replace the following keys:</p>
+<ul>
+<li><code>&lt;top&gt;</code>: Number of pixels to crop from the top edge of the frame</li>
+<li><code>&lt;bottom&gt;</code>: Number of pixels to crop from the bottom edge of the frame</li>
+</ul>
+<p>These cropping values can be combined with the SAR metadata settings
+from the previous section into a single mkvpropedit command,
+as shown in the example below.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>mkvpropedit<span style="color: #ABB2BF"> </span>&lt;input_file&gt;<span style="color: #ABB2BF"> </span>--edit<span style="color: #ABB2BF"> </span>track:v1<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-unit<span style="color: #56B6C2">=</span><span style="color: #D19A66">3</span><span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-width<span style="color: #56B6C2">=</span>&lt;display_width&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>display-height<span style="color: #56B6C2">=</span>&lt;display_height&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-left<span style="color: #56B6C2">=</span>&lt;left&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-right<span style="color: #56B6C2">=</span>&lt;right&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-top<span style="color: #56B6C2">=</span>&lt;top&gt;<span style="color: #ABB2BF"> </span>--set<span style="color: #ABB2BF"> </span>pixel-crop-bottom<span style="color: #56B6C2">=</span>&lt;bottom&gt;
+</code></pre></div></td></tr></table></div>
+<!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
+
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:pgc-references">
+<p>For more information,
+see <a href="https://dvd.sourceforge.net/dvdinfo/pgc.html">the DVD-Video Program Chain structure information page</a>,
+<a href="http://www.mpucoder.com/DVD/">the DVD-Video Format Specification</a>,
+and <a href="https://en.wikibooks.org/wiki/Inside_DVD-Video/MPEG_Format#VOBU,_Cell,_Program,_PGC">the Inside DVD-Video Wikibook</a>.&#160;<a class="footnote-backref" href="#fnref:pgc-references" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:sar-source">
+<p>A number of SAR values were derived from
+<a href="https://web.archive.org/web/20140218044518/http://lipas.uwasa.fi/~f76998/video/conversion/#conversion_table">A Quick Guide to Digital Video Resolution and Aspect Ratio Conversions</a>.&#160;<a class="footnote-backref" href="#fnref:sar-source" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+    
+  </body>
+</html>
