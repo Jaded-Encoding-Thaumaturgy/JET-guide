@@ -621,6 +621,14 @@ and covers all the use-cases
 the standard library does
 and more.</p>
 <h2 id="postfix-and-infix-notation">Postfix and Infix Notation</h2>
+<div class="admonition info">
+<p class="admonition-title">Reverse Polish Notation</p>
+<p>Postfix notation is also known as
+<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish Notation</a> (RPN),
+and that's what a lot of documentation
+and encoders use
+when speaking on the topic.</p>
+</div>
 <h3 id="basic-syntax">Basic Syntax</h3>
 <p>If you've studied any algebra,
 you've probably seen expressions
@@ -763,7 +771,8 @@ and backtrack for the right subtree.
 However, with postfix notation,
 all required values are already calculated,
 allowing immediate evaluation
-without storing state.</p>
+with only a single stack
+as state.</p>
 </details>
 <h3 id="reading-postfix-expressions">Reading Postfix Expressions</h3>
 <p>If you have trouble reading
@@ -789,11 +798,148 @@ you can use the <code>akarin.Expr</code> plugin.
 The <code>std.Expr</code> function
 can also be used,
 but it has fewer features.</p>
+<h3 id="clips">Clips</h3>
+<p>The plugins accept a list of <code>VideoNode</code>s,
+and will apply the expression to each pixel
+of the first given clip.
+Note that the plugins
+always return a single <code>VideoNode</code>
+that is the result of applying the expression
+to the first input clip,
+regardless of how many input clips are provided.</p>
+<p>In standard Vapoursynth expressions,
+each <code>VideoNode</code>
+is represented by a single character.
+This starts from <span class="arithmatex">\(x\)</span> and goes through the alphabet up to <span class="arithmatex">\(u\)</span>.</p>
+<pre class="mermaid"><code>%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#b257e6',
+      'primaryTextColor': '#ffffff',
+      'primaryBorderColor': '#9333ea',
+      'lineColor': '#a0aec0',
+      'secondaryColor': '#2d3748',
+      'tertiaryColor': '#4a2d5d'
+    },
+    'flowchart': {
+      'curve': 'basis',
+      'padding': 8,
+      'nodeSpacing': 4,
+      'rankSpacing': 20
+    }
+  }
+}%%
+
+graph TD
+    classDef node fill:#b257e6,stroke:#9333ea,color:#ffffff,stroke-width:1px;
+    classDef char fill:#4a2d5d,stroke:#b257e6,color:#ffffff,stroke-width:1px;
+    classDef skip fill:none,stroke:none;
+
+    N1["N1"]:::node
+    N2["N2"]:::node
+    N3["N3"]:::node
+    N4["N4"]:::node
+    N5["N5"]:::node
+    N6["N6"]:::node
+    skip1["⟶"]:::skip
+    N24["N24"]:::node
+    N25["N25"]:::node
+    N26["N26"]:::node
+
+    C1["x"]:::char
+    C2["y"]:::char
+    C3["z"]:::char
+    C4["a"]:::char
+    C5["b"]:::char
+    C6["c"]:::char
+    C24["w"]:::char
+    C25["v"]:::char
+    C26["u"]:::char
+
+    N1 --&gt; C1
+    N2 --&gt; C2
+    N3 --&gt; C3
+    N4 --&gt; C4
+    N5 --&gt; C5
+    N6 --&gt; C6
+    N24 --&gt; C24
+    N25 --&gt; C25
+    N26 --&gt; C26
+</code></pre>
+<p><code>akarin.Expr</code> extends the standard Vapoursynth expression syntax
+by adding an additional operator
+that makes these values more human-readable,
+while also allowing you to pass
+a theoretically arbitrary number
+of clips.
+This operator is <code>srcN</code>,
+where <code>N</code> is the index value.</p>
+<pre class="mermaid"><code>%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#b257e6',
+      'primaryTextColor': '#ffffff',
+      'primaryBorderColor': '#9333ea',
+      'lineColor': '#a0aec0',
+      'secondaryColor': '#2d3748',
+      'tertiaryColor': '#4a2d5d'
+    },
+    'flowchart': {
+      'curve': 'basis',
+      'padding': 8,
+      'nodeSpacing': 4,
+      'rankSpacing': 20
+    }
+  }
+}%%
+
+graph TD
+    classDef node fill:#b257e6,stroke:#9333ea,color:#ffffff,stroke-width:1px;
+    classDef char fill:#4a2d5d,stroke:#b257e6,color:#ffffff,stroke-width:1px;
+    classDef skip fill:none,stroke:none;
+
+    N1["N1"]:::node
+    N2["N2"]:::node
+    N3["N3"]:::node
+    N4["N4"]:::node
+    N5["N5"]:::node
+    skip1["⟶"]:::skip
+    N253["N253"]:::node
+    N254["N254"]:::node
+    N255["N255"]:::node
+
+    C1["src0"]:::char
+    C2["src1"]:::char
+    C3["src2"]:::char
+    C4["src3"]:::char
+    C5["src4"]:::char
+    C253["src252"]:::char
+    C254["src253"]:::char
+    C255["src254"]:::char
+
+    N1 --&gt; C1
+    N2 --&gt; C2
+    N3 --&gt; C3
+    N4 --&gt; C4
+    N5 --&gt; C5
+    N253 --&gt; C253
+    N254 --&gt; C254
+    N255 --&gt; C255
+</code></pre>
+<h3 id="expressions">Expressions</h3>
+<p>Expressions are the core of these plugins.
+It makes use of operators
+to manipulate pixel values.
+Below is a list of operators,
+small descriptions
+on what they do,
+which plugins support which,
+and how many values
+they take from the stack.</p>
 <details class="info">
-<summary>Differences between <code>std.Expr</code> and <code>akarin.Expr</code></summary>
-<p>The following table
-  shows the differences
-  between the two implementations:</p>
+<summary>Operator table</summary>
 <table>
 <thead>
 <tr>
@@ -1130,137 +1276,6 @@ but it has fewer features.</p>
 </tbody>
 </table>
 </details>
-<h3 id="clips">Clips</h3>
-<p>The plugins accept a list of <code>VideoNode</code>s,
-and will apply the expression to each pixel
-of the first given clip.
-Note that the plugins
-always return a single <code>VideoNode</code>
-that is the result of applying the expression
-to the first input clip,
-regardless of how many input clips are provided.</p>
-<p>In standard Vapoursynth expressions,
-each <code>VideoNode</code>
-is represented by a single character.
-This starts from <span class="arithmatex">\(x\)</span> and goes through the alphabet up to <span class="arithmatex">\(u\)</span>.</p>
-<pre class="mermaid"><code>%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#b257e6',
-      'primaryTextColor': '#ffffff',
-      'primaryBorderColor': '#9333ea',
-      'lineColor': '#a0aec0',
-      'secondaryColor': '#2d3748',
-      'tertiaryColor': '#4a2d5d'
-    },
-    'flowchart': {
-      'curve': 'basis',
-      'padding': 8,
-      'nodeSpacing': 4,
-      'rankSpacing': 20
-    }
-  }
-}%%
-
-graph TD
-    classDef node fill:#b257e6,stroke:#9333ea,color:#ffffff,stroke-width:1px;
-    classDef char fill:#4a2d5d,stroke:#b257e6,color:#ffffff,stroke-width:1px;
-    classDef skip fill:none,stroke:none;
-
-    N1["N1"]:::node
-    N2["N2"]:::node
-    N3["N3"]:::node
-    N4["N4"]:::node
-    N5["N5"]:::node
-    N6["N6"]:::node
-    skip1["⟶"]:::skip
-    N24["N24"]:::node
-    N25["N25"]:::node
-    N26["N26"]:::node
-
-    C1["x"]:::char
-    C2["y"]:::char
-    C3["z"]:::char
-    C4["a"]:::char
-    C5["b"]:::char
-    C6["c"]:::char
-    C24["w"]:::char
-    C25["v"]:::char
-    C26["u"]:::char
-
-    N1 --&gt; C1
-    N2 --&gt; C2
-    N3 --&gt; C3
-    N4 --&gt; C4
-    N5 --&gt; C5
-    N6 --&gt; C6
-    N24 --&gt; C24
-    N25 --&gt; C25
-    N26 --&gt; C26
-</code></pre>
-<p><code>akarin.Expr</code> extends the standard Vapoursynth expression syntax
-by adding an additional operator
-that makes these values more human-readable,
-while also allowing you to pass
-a theoretically arbitrary number
-of clips.
-This operator is <code>srcN</code>,
-where <code>N</code> is the index value.</p>
-<pre class="mermaid"><code>%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#b257e6',
-      'primaryTextColor': '#ffffff',
-      'primaryBorderColor': '#9333ea',
-      'lineColor': '#a0aec0',
-      'secondaryColor': '#2d3748',
-      'tertiaryColor': '#4a2d5d'
-    },
-    'flowchart': {
-      'curve': 'basis',
-      'padding': 8,
-      'nodeSpacing': 4,
-      'rankSpacing': 20
-    }
-  }
-}%%
-
-graph TD
-    classDef node fill:#b257e6,stroke:#9333ea,color:#ffffff,stroke-width:1px;
-    classDef char fill:#4a2d5d,stroke:#b257e6,color:#ffffff,stroke-width:1px;
-    classDef skip fill:none,stroke:none;
-
-    N1["N1"]:::node
-    N2["N2"]:::node
-    N3["N3"]:::node
-    N4["N4"]:::node
-    N5["N5"]:::node
-    skip1["⟶"]:::skip
-    N253["N253"]:::node
-    N254["N254"]:::node
-    N255["N255"]:::node
-
-    C1["src0"]:::char
-    C2["src1"]:::char
-    C3["src2"]:::char
-    C4["src3"]:::char
-    C5["src4"]:::char
-    C253["src252"]:::char
-    C254["src253"]:::char
-    C255["src254"]:::char
-
-    N1 --&gt; C1
-    N2 --&gt; C2
-    N3 --&gt; C3
-    N4 --&gt; C4
-    N5 --&gt; C5
-    N253 --&gt; C253
-    N254 --&gt; C254
-    N255 --&gt; C255
-</code></pre>
-<h3 id="expressions">Expressions</h3>
 <p>Both expression plugins
 accept either a single string
 or a list of strings
@@ -1283,7 +1298,7 @@ that expression will be applied to all planes.</p>
 </code></pre></div></td></tr></table></div>
 <p>This will apply the expression <code>x 1 +</code>
 to every plane of the first input clip.
-It can be read as the following:</p>
+This is equivalent to the following:</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">akarin</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Expr</span><span style="color: #ABB2BF">([</span><span style="color: #E06C75">clip1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip2</span><span style="color: #ABB2BF">],</span> <span style="color: #ABB2BF">[</span><span style="color: #98C379">"x 1 +"</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">"x 1 +"</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">"x 1 +"</span><span style="color: #ABB2BF">])</span>
 </code></pre></div></td></tr></table></div>
 <p>If we want to only apply an expression
