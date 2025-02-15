@@ -387,55 +387,53 @@ they take from the stack.
 
 ??? info "Operator table"
 
-     | Operator | Description                           | `std.Expr` | `akarin.Expr` | Values |
-     | -------- | ------------------------------------- | ---------- | ------------- | ------ |
-     | `+`      | Addition                              | ✅         | ✅            | 2      |
-     | `-`      | Subtraction                           | ✅         | ✅            | 2      |
-     | `*`      | Multiplication                        | ✅         | ✅            | 2      |
-     | `/`      | Division                              | ✅         | ✅            | 2      |
-     | `%`      | Modulo                                | ❌         | ✅            | 2      |
-     | `<`      | Less than                             | ✅         | ✅            | 2      |
-     | `>`      | Greater than                          | ✅         | ✅            | 2      |
-     | `=`      | Equal to                              | ✅         | ✅            | 2      |
-     | `>=`     | Greater than or equal                 | ✅         | ✅            | 2      |
-     | `<=`     | Less than or equal                    | ✅         | ✅            | 2      |
-     | `and`    | Logical AND                           | ✅         | ✅            | 2      |
-     | `or`     | Logical OR                            | ✅         | ✅            | 2      |
-     | `xor`    | Logical XOR                           | ✅         | ✅            | 2      |
-     | `not`    | Logical NOT                           | ✅         | ✅            | 1      |
-     | `exp`    | Exponential                           | ✅         | ✅            | 1      |
-     | `log`    | Natural logarithm                     | ✅         | ✅            | 1      |
-     | `sqrt`   | Square root                           | ✅         | ✅            | 1      |
-     | `pow`    | Power                                 | ✅         | ✅            | 2      |
-     | `abs`    | Absolute value                        | ✅         | ✅            | 1      |
-     | `sin`    | Sine                                  | ✅         | ✅            | 1      |
-     | `cos`    | Cosine                                | ✅         | ✅            | 1      |
-     | `min`    | Minimum                               | ✅         | ✅            | 2      |
-     | `max`    | Maximum                               | ✅         | ✅            | 2      |
-     | `floor`  | Round down                            | ❌         | ✅            | 1      |
-     | `ceil`   | Round up                              | ❌         | ✅            | 1      |
-     | `round`  | Round to nearest                      | ❌         | ✅            | 1      |
-     | `trunc`  | Truncate decimal                      | ❌         | ✅            | 1      |
-     | `clip`   | Clip to range                         | ❌         | ✅            | 3      |
-     | `clamp`  | Clip to custom range                  | ❌         | ✅            | 3      |
-     | `?`      | Ternary operator                      | ✅         | ✅            | 3      |
-     | `dup`    | Duplicate top stack value             | ✅         | ✅            | 1      |
-     | `swap`   | Swap top two stack values             | ✅         | ✅            | 2      |
-     | `x[r,r]` | Static relative pixel access          | ❌         | ✅            | 0      |
-     | `x[]`    | Dynamic absolute pixel access         | ❌         | ✅            | 2      |
-     | `srcN`   | [Access Nth input clip (N≥0)](#clips) | ❌         | ✅            | 0      |
-     | `N`      | Current frame number                  | ❌         | ✅            | 0      |
-     | `X`      | Current column position               | ❌         | ✅            | 0      |
-     | `Y`      | Current row position                  | ❌         | ✅            | 0      |
-     | `width`  | Frame width                           | ❌         | ✅            | 0      |
-     | `height` | Frame height                          | ❌         | ✅            | 0      |
-     | `var!`   | Store to variable                     | ❌         | ✅            | 1      |
-     | `var@`   | Read from variable                    | ❌         | ✅            | 0      |
-     | `dropN`  | Drop N items from stack               | ❌         | ✅            | N      |
-     | `sortN`  | Sort top N items on stack             | ❌         | ✅            | N      |
-     | `0x123`  | Hexadecimal constants                 | ❌         | ✅            | 0      |
-     | `023`    | Octal constants                       | ❌         | ✅            | 0      |
-
+    | Operator       | Description                                       | `std.Expr` | `akarin.Expr` | Values |
+    | -------------- | ------------------------------------------------- | ---------- | ------------- | ------ |
+    | `+`            | Addition                                          | ✅         | ✅            | 2      |
+    | `-`            | Subtraction                                       | ✅         | ✅            | 2      |
+    | `*`            | Multiplication                                    | ✅         | ✅            | 2      |
+    | `/`            | Division                                          | ✅         | ✅            | 2      |
+    | `%`            | Modulo                                            | ❌         | ✅            | 2      |
+    | `<`            | Less than                                         | ✅         | ✅            | 2      |
+    | `>`            | Greater than                                      | ✅         | ✅            | 2      |
+    | `=`            | Equal to                                          | ✅         | ✅            | 2      |
+    | `>=`           | Greater than or equal                             | ✅         | ✅            | 2      |
+    | `<=`           | Less than or equal                                | ✅         | ✅            | 2      |
+    | `and`          | Logical AND                                       | ✅         | ✅            | 2      |
+    | `or`           | Logical OR                                        | ✅         | ✅            | 2      |
+    | `xor`          | Logical XOR                                       | ✅         | ✅            | 2      |
+    | `not`          | Logical NOT                                       | ✅         | ✅            | 1      |
+    | `exp`          | Exponential                                       | ✅         | ✅            | 1      |
+    | `log`          | Natural logarithm                                 | ✅         | ✅            | 1      |
+    | `sqrt`         | Square root                                       | ✅         | ✅            | 1      |
+    | `pow`          | Power                                             | ✅         | ✅            | 2      |
+    | `abs`          | Absolute value                                    | ✅         | ✅            | 1      |
+    | `sin`          | Sine                                              | ✅         | ✅            | 1      |
+    | `cos`          | Cosine                                            | ✅         | ✅            | 1      |
+    | `min`          | Minimum                                           | ✅         | ✅            | 2      |
+    | `max`          | Maximum                                           | ✅         | ✅            | 2      |
+    | `floor`        | Round down                                        | ❌         | ✅            | 1      |
+    | `ceil`         | Round up                                          | ❌         | ✅            | 1      |
+    | `round`        | Round to nearest                                  | ❌         | ✅            | 1      |
+    | `trunc`        | Truncate decimal                                  | ❌         | ✅            | 1      |
+    | `clamp`/`clip` | Clamp values to custom range (i.e. limited range) | ❌         | ✅            | 3      |
+    | `?`            | Ternary operator                                  | ✅         | ✅            | 3      |
+    | `dup`          | Duplicate top stack value                         | ✅         | ✅            | 1      |
+    | `swap`         | Swap top two stack values                         | ✅         | ✅            | 2      |
+    | `x[r,r]`       | Static relative pixel access                      | ❌         | ✅            | 0      |
+    | `x[]`          | Dynamic absolute pixel access                     | ❌         | ✅            | 2      |
+    | `srcN`         | [Access Nth input clip (N≥0)](#clips)             | ❌         | ✅            | 0      |
+    | `N`            | Current frame number                              | ❌         | ✅            | 0      |
+    | `X`            | Current column position                           | ❌         | ✅            | 0      |
+    | `Y`            | Current row position                              | ❌         | ✅            | 0      |
+    | `width`        | Frame width                                       | ❌         | ✅            | 0      |
+    | `height`       | Frame height                                      | ❌         | ✅            | 0      |
+    | `var!`         | Store to variable                                 | ❌         | ✅            | 1      |
+    | `var@`         | Read from variable                                | ❌         | ✅            | 0      |
+    | `dropN`        | Drop N items from stack                           | ❌         | ✅            | N      |
+    | `sortN`        | Sort top N items on stack                         | ❌         | ✅            | N      |
+    | `0x123`        | Hexadecimal constants                             | ❌         | ✅            | 0      |
+    | `023`          | Octal constants                                   | ❌         | ✅            | 0      |
 
 Both expression plugins
 accept either a single string
