@@ -4,7 +4,7 @@ This guide can be accessed [here](https://jaded-encoding-thaumaturgy.github.io/J
 
 ## How to run
 
-`pip install mkdocs-material mkdocstrings[python] pymdown-extensions`<br>
+`pip install mkdocs-material mkdocstrings[python] pymdown-extensions mkdocs-mermaid2-plugin`<br>
 `mkdocs serve` to host it locally with hot-reload
 
 ## How to configure

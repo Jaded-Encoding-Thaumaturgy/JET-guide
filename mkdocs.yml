@@ -33,6 +33,7 @@ nav:
     - Descaling:
       - Descaling Theory: filtering/descaling/descaling.md
       - Known Native Resolutions: filtering/descaling/known-resolutions.md
+    - Expressions: filtering/expr.md
     - Dehardsubbing: filtering/dehardsubbing.md
     - Wobbly 🡕: https://wobbly.encode.moe
     - Correcting SAR/PAR 🡕: https://thewiki.moe/tutorials/dvdremux/#correcting-sarpar
@@ -53,6 +54,7 @@ plugins:
           docstring_style: "sphinx"
           show_symbol_type_heading: true
           show_symbol_type_toc: true
+- mermaid2
 
 markdown_extensions:
   - admonition
@@ -68,4 +70,18 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
