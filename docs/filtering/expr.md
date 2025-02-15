@@ -355,11 +355,14 @@ graph TD
     N26 --> C26
 ```
 
-`akarin.Expr` uses a slightly modified syntax
-to make these values more human-readable,
+`akarin.Expr` extends the standard Vapoursynth expression syntax
+by adding an additional operator
+that makes these values more human-readable,
 while also allowing you to pass
 a theoretically arbitrary number
 of clips.
+This operator is `srcN`,
+where `N` is the index value.
 
 ```mermaid
 %%{
@@ -393,6 +396,7 @@ graph TD
     N4["N4"]:::node
     N5["N5"]:::node
     skip1["⟶"]:::skip
+    N253["N253"]:::node
     N254["N254"]:::node
     N255["N255"]:::node
 
