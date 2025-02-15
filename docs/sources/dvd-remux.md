@@ -474,6 +474,16 @@ is the same.
 
     === "Editions"
 
+        !!! warning "This explanation is incomplete!"
+
+            This explanation is a stub!
+            You can help us
+            by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+
+            ??? question "How can I help?"
+
+                - Explain how to create editions in mkvtoolnix (preferred) or ffmpeg
+
         !!! warning "Player support"
 
             This feature is not supported
@@ -487,13 +497,6 @@ is the same.
         This allows viewers to switch between angles
         by selecting the desired edition
         in their player.
-
-        !!! warning "This table is incomplete!"
-
-            This table is a stub
-            and still very incomplete!
-            You can help us
-            by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
 
 ## Correcting the Aspect Ratio
 
@@ -517,6 +520,17 @@ the edges of the image,
 which allowed the image to reach its intended [Display Aspect Ratio (DAR)](https://en.wikipedia.org/wiki/Display_aspect_ratio).
 
 ??? info "Understanding Aspect Ratio Math"
+
+    !!! warning "This explanation is incomplete!"
+
+        This explanation is a stub!
+        You can help us
+        by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+
+        ??? question "How can I help?"
+
+            - Write proper equations
+            - Explain the math in-depth
 
     To properly handle DVD aspect ratios,
     we need to understand three key components:
@@ -562,7 +576,7 @@ which allowed the image to reach its intended [Display Aspect Ratio (DAR)](https
           (e.g., by stretching vertically
           or condensing horizontally)
 
-    <!-- TODO: Let arch write the rest -->
+    <!-- TODO: Let arch write the rest? -->
 
 During the DVD era,
 content was typically confined
@@ -606,6 +620,18 @@ is provided below[^sar-source].
 
 !!! info "Common DVD anamorphic resolution standards"
 
+    !!! warning "This explanation is incomplete!"
+
+        This explanation is a stub!
+        You can help us
+        by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+
+        ??? question "How can I help?"
+
+            - Write the missing display dimensions
+            - Write formal names for the standards where possible
+            - Link to papers or other sources for the standards of each value
+
     !!! warning "Other standards"
 
         While other standards exist,
@@ -618,7 +644,7 @@ is provided below[^sar-source].
 
     === "NTSC"
 
-        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area | Display Resolution |
+        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area | Display Dimensions |
         |----------------------|----------------------------------------|-------------|--------------------|
         | 4:3                  | 4320:4739                              | 710.85×486  |                    |
         |                      | 640:711                                | 711×480     | 711×533            |
@@ -630,7 +656,7 @@ is provided below[^sar-source].
 
     === "PAL"
 
-        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area | Display Resolution |
+        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area | Display Dimensions |
         |----------------------|----------------------------------------|-------------|--------------------|
         | 4:3                  | 128:117                                | 702×576     |                    |
         |                      | 1132:1035                              | 690×566     |                    |
@@ -841,6 +867,16 @@ to derive the most accurate SAR values.
            until the DVD matches the Blu-ray perfectly
 
 ??? question "I have black bars at the top/bottom! Do I need to change the height?"
+
+    !!! warning "This explanation is incomplete!"
+
+        This explanation is a stub!
+        You can help us
+        by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+
+        ??? question "How can I help?"
+
+            - Properly explain what to do with the extra black bars
 
     The SAR's standard active area height
     should be the height
@@ -1072,5 +1108,3 @@ mkvpropedit <input_file> --edit track:v1 --set display-unit=3 --set display-widt
 ```
 
 <!-- TODO: Add more sources. Ideally actual documentation and papers from relevant authorities. -->
-
-<!-- TODO: Add a section on handling subtitles, including VOBSUB, PGS (SD BD), and ASS (fansubs). -->
