@@ -57,6 +57,14 @@ and more.
 
 ## Postfix and Infix Notation
 
+!!! info "Reverse Polish Notation"
+
+    Postfix notation is also known as
+    [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation) (RPN),
+    and that's what a lot of documentation
+    and encoders use
+    when speaking on the topic.
+
 ### Basic Syntax
 
 If you've studied any algebra,
@@ -194,7 +202,8 @@ graph TD
     However, with postfix notation,
     all required values are already calculated,
     allowing immediate evaluation
-    without storing state.
+    with only a single stack
+    as state.
 
 ### Reading Postfix Expressions
 
@@ -225,61 +234,6 @@ you can use the `akarin.Expr` plugin.
 The `std.Expr` function
 can also be used,
 but it has fewer features.
-
-??? info "Differences between `std.Expr` and `akarin.Expr`"
-
-      The following table
-      shows the differences
-      between the two implementations:
-
-     | Operator | Description                           | `std.Expr` | `akarin.Expr` | Values |
-     | -------- | ------------------------------------- | ---------- | ------------- | ------ |
-     | `+`      | Addition                              | ✅         | ✅            | 2      |
-     | `-`      | Subtraction                           | ✅         | ✅            | 2      |
-     | `*`      | Multiplication                        | ✅         | ✅            | 2      |
-     | `/`      | Division                              | ✅         | ✅            | 2      |
-     | `%`      | Modulo                                | ❌         | ✅            | 2      |
-     | `<`      | Less than                             | ✅         | ✅            | 2      |
-     | `>`      | Greater than                          | ✅         | ✅            | 2      |
-     | `=`      | Equal to                              | ✅         | ✅            | 2      |
-     | `>=`     | Greater than or equal                 | ✅         | ✅            | 2      |
-     | `<=`     | Less than or equal                    | ✅         | ✅            | 2      |
-     | `and`    | Logical AND                           | ✅         | ✅            | 2      |
-     | `or`     | Logical OR                            | ✅         | ✅            | 2      |
-     | `xor`    | Logical XOR                           | ✅         | ✅            | 2      |
-     | `not`    | Logical NOT                           | ✅         | ✅            | 1      |
-     | `exp`    | Exponential                           | ✅         | ✅            | 1      |
-     | `log`    | Natural logarithm                     | ✅         | ✅            | 1      |
-     | `sqrt`   | Square root                           | ✅         | ✅            | 1      |
-     | `pow`    | Power                                 | ✅         | ✅            | 2      |
-     | `abs`    | Absolute value                        | ✅         | ✅            | 1      |
-     | `sin`    | Sine                                  | ✅         | ✅            | 1      |
-     | `cos`    | Cosine                                | ✅         | ✅            | 1      |
-     | `min`    | Minimum                               | ✅         | ✅            | 2      |
-     | `max`    | Maximum                               | ✅         | ✅            | 2      |
-     | `floor`  | Round down                            | ❌         | ✅            | 1      |
-     | `ceil`   | Round up                              | ❌         | ✅            | 1      |
-     | `round`  | Round to nearest                      | ❌         | ✅            | 1      |
-     | `trunc`  | Truncate decimal                      | ❌         | ✅            | 1      |
-     | `clip`   | Clip to range                         | ❌         | ✅            | 3      |
-     | `clamp`  | Clip to custom range                  | ❌         | ✅            | 3      |
-     | `?`      | Ternary operator                      | ✅         | ✅            | 3      |
-     | `dup`    | Duplicate top stack value             | ✅         | ✅            | 1      |
-     | `swap`   | Swap top two stack values             | ✅         | ✅            | 2      |
-     | `x[r,r]` | Static relative pixel access          | ❌         | ✅            | 0      |
-     | `x[]`    | Dynamic absolute pixel access         | ❌         | ✅            | 2      |
-     | `srcN`   | [Access Nth input clip (N≥0)](#clips) | ❌         | ✅            | 0      |
-     | `N`      | Current frame number                  | ❌         | ✅            | 0      |
-     | `X`      | Current column position               | ❌         | ✅            | 0      |
-     | `Y`      | Current row position                  | ❌         | ✅            | 0      |
-     | `width`  | Frame width                           | ❌         | ✅            | 0      |
-     | `height` | Frame height                          | ❌         | ✅            | 0      |
-     | `var!`   | Store to variable                     | ❌         | ✅            | 1      |
-     | `var@`   | Read from variable                    | ❌         | ✅            | 0      |
-     | `dropN`  | Drop N items from stack               | ❌         | ✅            | N      |
-     | `sortN`  | Sort top N items on stack             | ❌         | ✅            | N      |
-     | `0x123`  | Hexadecimal constants                 | ❌         | ✅            | 0      |
-     | `023`    | Octal constants                       | ❌         | ✅            | 0      |
 
 ### Clips
 
@@ -421,6 +375,68 @@ graph TD
 
 ### Expressions
 
+Expressions are the core of these plugins.
+It makes use of operators
+to manipulate pixel values.
+Below is a list of operators,
+small descriptions
+on what they do,
+which plugins support which,
+and how many values
+they take from the stack.
+
+??? info "Operator table"
+
+     | Operator | Description                           | `std.Expr` | `akarin.Expr` | Values |
+     | -------- | ------------------------------------- | ---------- | ------------- | ------ |
+     | `+`      | Addition                              | ✅         | ✅            | 2      |
+     | `-`      | Subtraction                           | ✅         | ✅            | 2      |
+     | `*`      | Multiplication                        | ✅         | ✅            | 2      |
+     | `/`      | Division                              | ✅         | ✅            | 2      |
+     | `%`      | Modulo                                | ❌         | ✅            | 2      |
+     | `<`      | Less than                             | ✅         | ✅            | 2      |
+     | `>`      | Greater than                          | ✅         | ✅            | 2      |
+     | `=`      | Equal to                              | ✅         | ✅            | 2      |
+     | `>=`     | Greater than or equal                 | ✅         | ✅            | 2      |
+     | `<=`     | Less than or equal                    | ✅         | ✅            | 2      |
+     | `and`    | Logical AND                           | ✅         | ✅            | 2      |
+     | `or`     | Logical OR                            | ✅         | ✅            | 2      |
+     | `xor`    | Logical XOR                           | ✅         | ✅            | 2      |
+     | `not`    | Logical NOT                           | ✅         | ✅            | 1      |
+     | `exp`    | Exponential                           | ✅         | ✅            | 1      |
+     | `log`    | Natural logarithm                     | ✅         | ✅            | 1      |
+     | `sqrt`   | Square root                           | ✅         | ✅            | 1      |
+     | `pow`    | Power                                 | ✅         | ✅            | 2      |
+     | `abs`    | Absolute value                        | ✅         | ✅            | 1      |
+     | `sin`    | Sine                                  | ✅         | ✅            | 1      |
+     | `cos`    | Cosine                                | ✅         | ✅            | 1      |
+     | `min`    | Minimum                               | ✅         | ✅            | 2      |
+     | `max`    | Maximum                               | ✅         | ✅            | 2      |
+     | `floor`  | Round down                            | ❌         | ✅            | 1      |
+     | `ceil`   | Round up                              | ❌         | ✅            | 1      |
+     | `round`  | Round to nearest                      | ❌         | ✅            | 1      |
+     | `trunc`  | Truncate decimal                      | ❌         | ✅            | 1      |
+     | `clip`   | Clip to range                         | ❌         | ✅            | 3      |
+     | `clamp`  | Clip to custom range                  | ❌         | ✅            | 3      |
+     | `?`      | Ternary operator                      | ✅         | ✅            | 3      |
+     | `dup`    | Duplicate top stack value             | ✅         | ✅            | 1      |
+     | `swap`   | Swap top two stack values             | ✅         | ✅            | 2      |
+     | `x[r,r]` | Static relative pixel access          | ❌         | ✅            | 0      |
+     | `x[]`    | Dynamic absolute pixel access         | ❌         | ✅            | 2      |
+     | `srcN`   | [Access Nth input clip (N≥0)](#clips) | ❌         | ✅            | 0      |
+     | `N`      | Current frame number                  | ❌         | ✅            | 0      |
+     | `X`      | Current column position               | ❌         | ✅            | 0      |
+     | `Y`      | Current row position                  | ❌         | ✅            | 0      |
+     | `width`  | Frame width                           | ❌         | ✅            | 0      |
+     | `height` | Frame height                          | ❌         | ✅            | 0      |
+     | `var!`   | Store to variable                     | ❌         | ✅            | 1      |
+     | `var@`   | Read from variable                    | ❌         | ✅            | 0      |
+     | `dropN`  | Drop N items from stack               | ❌         | ✅            | N      |
+     | `sortN`  | Sort top N items on stack             | ❌         | ✅            | N      |
+     | `0x123`  | Hexadecimal constants                 | ❌         | ✅            | 0      |
+     | `023`    | Octal constants                       | ❌         | ✅            | 0      |
+
+
 Both expression plugins
 accept either a single string
 or a list of strings
@@ -447,7 +463,7 @@ clip = akarin.Expr([clip1, clip2], "x 1 +")
 
 This will apply the expression `x 1 +`
 to every plane of the first input clip.
-It can be read as the following:
+This is equivalent to the following:
 
 ```py
 clip = akarin.Expr([clip1, clip2], ["x 1 +", "x 1 +", "x 1 +"])
