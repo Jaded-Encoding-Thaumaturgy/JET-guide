@@ -28,6 +28,8 @@ nav:
     - A Primer on Python: basics/python-primer.md
     - How do I ...?: basics/howdoi.md
     - Baby's first script: basics/babys-first-script.md
+  - Source Processing:
+    - Remuxing DVDs: sources/dvd-remux.md
   - Filtering:
     - Order of Filtering Operations: filtering/order.md
     - Descaling:
@@ -35,7 +37,6 @@ nav:
       - Known Native Resolutions: filtering/descaling/known-resolutions.md
     - Dehardsubbing: filtering/dehardsubbing.md
     - Wobbly 🡕: https://wobbly.encode.moe
-    - Correcting SAR/PAR 🡕: https://thewiki.moe/tutorials/dvdremux/#correcting-sarpar
   - Encoding:
     - x264 Parameters: encoding/x264params.md
     - x265 Parameters: encoding/x265params.md
