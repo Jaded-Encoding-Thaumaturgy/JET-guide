@@ -385,14 +385,6 @@ is the same.
             Use this method
             at your own risk!
 
-        !!! warning "Input file"
-
-            MakeMKV requires a DVDISO
-            or physical disc
-            to work.
-            If you only have an unpacked DVDISO,
-            you will need to use a different method.
-
         MakeMKV can be downloaded from the following link:
 
         - [MakeMKV](https://www.makemkv.com/)
@@ -446,6 +438,33 @@ is the same.
                 Once it's done,
                 [follow the instructions
                 for the ISO method](#__tabbed_5_1).
+
+            === "Unpacked DVDISO"
+
+                Open MakeMKV,
+                click the "Open files" button,
+                and navigate to your unpacked DVDISO.
+
+                ![MakeMKV open files window](./img/dvd-remux/makemkv/ifo-file.png)
+
+                You should see a `VIDEO_TS.ifo` file.
+                Select it,
+                and click the "Open" button.
+                It should start processing the file,
+                and then show you this window:
+
+                ![MakeMKV main window](./img/dvd-remux/makemkv/main-window.png)
+
+                Select the titles you want to remux,
+                give it an output folder and name,
+                and click the button underneath "Make MKV".
+
+                ![MakeMKV Progress window](./img/dvd-remux/makemkv/progress-window.png)
+
+                Once it's done,
+                the files will be in the output folder.
+
+                ![MakeMKV output folder](./img/dvd-remux/makemkv/output.png)
 
 ??? example "Multiple Angles"
 
