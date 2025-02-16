@@ -1521,14 +1521,6 @@ to create broken remuxes from time to time.
 Use this method
 at your own risk!</p>
 </div>
-<div class="admonition warning">
-<p class="admonition-title">Input file</p>
-<p>MakeMKV requires a DVDISO
-or physical disc
-to work.
-If you only have an unpacked DVDISO,
-you will need to use a different method.</p>
-</div>
 <p>MakeMKV can be downloaded from the following link:</p>
 <ul>
 <li><a href="https://www.makemkv.com/">MakeMKV</a></li>
@@ -1540,7 +1532,7 @@ Once you have registered it,
 you will need to restart the program.</p>
 <div class="admonition example">
 <p class="admonition-title">Selecting titles</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">ISO</label><label for="__tabbed_4_2">Physical disc</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">ISO</label><label for="__tabbed_4_2">Physical disc</label><label for="__tabbed_4_3">Unpacked DVDISO</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Click the "Open File" button
@@ -1572,6 +1564,25 @@ a back-up of your disc.</p>
 <p>Once it's done,
 <a href="#__tabbed_5_1">follow the instructions
 for the ISO method</a>.</p>
+</div>
+<div class="tabbed-block">
+<p>Open MakeMKV,
+click the "Open files" button,
+and navigate to your unpacked DVDISO.</p>
+<p><img alt="MakeMKV open files window" src="../img/dvd-remux/makemkv/ifo-file.png" /></p>
+<p>You should see a <code>VIDEO_TS.ifo</code> file.
+Select it,
+and click the "Open" button.
+It should start processing the file,
+and then show you this window:</p>
+<p><img alt="MakeMKV main window" src="../img/dvd-remux/makemkv/main-window.png" /></p>
+<p>Select the titles you want to remux,
+give it an output folder and name,
+and click the button underneath "Make MKV".</p>
+<p><img alt="MakeMKV Progress window" src="../img/dvd-remux/makemkv/progress-window.png" /></p>
+<p>Once it's done,
+the files will be in the output folder.</p>
+<p><img alt="MakeMKV output folder" src="../img/dvd-remux/makemkv/output.png" /></p>
 </div>
 </div>
 </div>
