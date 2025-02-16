@@ -2,10 +2,10 @@ name: Build & serve master
 on:
   push:
     branches:
-      - master 
+      - master
       - main
   workflow_dispatch:
-    
+
 permissions:
   contents: write
 jobs:
@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install pip deps
-        run: python -m pip install --user mkdocs-material mkdocstrings[python] pymdown-extensions mike
+        run: python -m pip install --user -r requirements.txt -r requirements-dev.txt
       - name: Build and deploy master
         run: mike deploy -p -u master
       - name: Set default

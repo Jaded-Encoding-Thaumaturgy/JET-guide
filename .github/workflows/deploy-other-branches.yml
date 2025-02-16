@@ -2,10 +2,10 @@ name: Build & serve other branches
 on:
   push:
     branches-ignore:
-      - master 
+      - master
       - main
       - gh-pages
-    
+
 permissions:
   contents: write
 jobs:
@@ -28,6 +28,6 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install pip deps
-        run: python -m pip install --user mkdocs-material mkdocstrings[python] pymdown-extensions mike
+        run: python -m pip install --user -r requirements.txt -r requirements-dev.txt
       - name: Build and deploy branch
         run: mike deploy -p -u ${{ steps.extract_branch.outputs.branch }}

@@ -4,8 +4,17 @@ This guide can be accessed [here](https://jaded-encoding-thaumaturgy.github.io/J
 
 ## How to run
 
-`pip install mkdocs-material mkdocstrings[python] pymdown-extensions`<br>
-`mkdocs serve` to host it locally with hot-reload
+1. Run the following command:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+2. Run the following command to host it locally with hot-reload.
+
+    ```bash
+    mkdocs serve
+    ```
 
 ## How to configure
 
