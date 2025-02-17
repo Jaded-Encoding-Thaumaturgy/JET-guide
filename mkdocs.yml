@@ -24,49 +24,44 @@ extra:
 nav:
   - Home: index.md
   - Basics:
-    - Installation: basics/installation.md
-    - Python Primer: basics/python-primer.md
-    - Getting Started: basics/getting-started.md
-    - How do I...?: basics/how-do-i.md
-  - Source Preparation:
-    - DVDs:
-      - Remuxing: sources/dvd/remuxing.md
-      - Wobbly:
-        - Getting Started: sources/dvd/wobbly/setup.md
-        # - Basic Usage: sources/dvd/wobbly/basic-usage.md
-        # - Advanced Usage: sources/dvd/wobbly/advanced-usage.md
-      # - Wobbly 🡕: https://wobbly.encode.moe
+      - Setup and First Steps: basics/setup.md
+      - A Primer on Python: basics/python-primer.md
+      - Recognizing Artifacts: basics/recognizing-artifacts.md
+      - How do I ...?: basics/howdoi.md
+      - Baby's first script: basics/babys-first-script.md
+  - Source Processing:
+      - Remuxing DVDs: sources/dvd-remux.md
   - Filtering:
-    - General Techniques:
-      - Order of Operations: filtering/general/order.md
-      - Expressions: filtering/general/expressions.md
-    - Common Filtering:
-      - Descaling:
-        - Theory: filtering/common/descaling/theory.md
-        - Known Resolutions: filtering/common/descaling/known-resolutions.md
-    - Situational Filtering:
-      - Dehardsubbing: filtering/situational/dehardsubbing.md
-      - Field-Based Video: filtering/situational/fieldbased.md
+      - General Techniques:
+          - Order of Operations: filtering/general/order.md
+          - Expressions: filtering/general/expressions.md
+      - Common Filtering:
+          - Descaling:
+              - Theory: filtering/common/descaling/theory.md
+              - Known Resolutions: filtering/common/descaling/known-resolutions.md
+      - Situational Filtering:
+          - Dehardsubbing: filtering/situational/dehardsubbing.md
+          - Field-Based Video: filtering/situational/fieldbased.md
   - Encoding:
-    - x264: encoding/x264.md
-    - x265: encoding/x265.md
-    - SVT-AV1: encoding/svtav1.md
+      - x264: encoding/x264.md
+      - x265: encoding/x265.md
+      - SVT-AV1: encoding/svtav1.md
   - Misc:
-    - Comparison: misc/comparison.md
+      - Comparison: misc/comparison.md
   - Additional Resources: resources.md
 
 plugins:
-- search
-- mkdocstrings:
-    handlers:
-      python:
-        inventories:
-          - https://docs.python.org/3/objects.inv
-        options:
-          docstring_style: "sphinx"
-          show_symbol_type_heading: true
-          show_symbol_type_toc: true
-- mermaid2
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          inventories:
+            - https://docs.python.org/3/objects.inv
+          options:
+            docstring_style: "sphinx"
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+  - mermaid2
 
 markdown_extensions:
   - admonition
