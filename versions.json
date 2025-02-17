@@ -10,6 +10,11 @@
     "aliases": []
   },
   {
+    "version": "spotting-artifacting",
+    "title": "spotting-artifacting",
+    "aliases": []
+  },
+  {
     "version": "master",
     "title": "master",
     "aliases": []
