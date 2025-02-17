@@ -26,6 +26,7 @@ nav:
   - Basics:
     - Setup and First Steps: basics/setup.md
     - A Primer on Python: basics/python-primer.md
+    - Recognizing Artifacts: basics/recognizing-artifacts.md
     - How do I ...?: basics/howdoi.md
     - Baby's first script: basics/babys-first-script.md
   - Source Processing:
