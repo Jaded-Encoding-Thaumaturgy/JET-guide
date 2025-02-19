@@ -341,11 +341,11 @@ to some extent,
 which is also rather expensive
 in terms of processing power.
 
-## Common Artifacts
+## Artifacts
 
 !!! warning "Not Exhaustive"
 
-    This list covers the most common artifacts
+    This list covers artifacts
     you are likely to encounter,
     but is **_not_** exhaustive.
     Many artifacts
@@ -553,6 +553,8 @@ through anti-aliasing.
 
 ### Ringing
 
+#### Lowpass filters
+
 ### Noise
 
 #### DCT noise
@@ -589,6 +591,12 @@ through anti-aliasing.
 
 ### Dotcrawl
 
+#### Double composite
 
+### IRE units
 
+### Scanning defects
 
+<!-- TODO: Use that example from ToHeart2's Nozomi or ADV edit -->
+
+### Cel degradation
