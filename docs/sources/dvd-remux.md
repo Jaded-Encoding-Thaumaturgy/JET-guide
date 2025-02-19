@@ -148,6 +148,7 @@ DVDs can contain multiple audio tracks in different formats:
 
 - PCM (uncompressed)
 - AC3 (Dolby Digital)
+- DTS (Digital Theater Systems)
 
 The remuxing methods mentioned further below
 will allow you to split these audio tracks
