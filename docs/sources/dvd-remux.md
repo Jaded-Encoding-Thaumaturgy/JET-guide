@@ -307,7 +307,7 @@ is the same.
 
         The download link can be found here:
 
-        - [Jsoto's Vob/Ifo tools](https://download.videohelp.com/jsoto/dvdtools.htm)
+        - [VideoHelp PgcDemux](https://www.videohelp.com/software/PgcDemux)
 
         In order to use this program,
         you will need to have an unpacked DVDISO.
