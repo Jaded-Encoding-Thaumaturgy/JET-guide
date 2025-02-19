@@ -902,6 +902,9 @@ to derive the most accurate SAR values.
     should be the height
     taken into account
     for this calculation.
+    This means the new height
+    after cropping away the black bars
+    have no impact on the calculated SAR.
 
     <!-- TODO: Further explain what to do here. -->
 
