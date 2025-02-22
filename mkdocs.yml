@@ -31,6 +31,7 @@ nav:
   - Source Processing:
     - Remuxing DVDs: sources/dvd-remux.md
   - Filtering:
+    - Recognizing Artifacts: filtering/recognizing-artifacts.md
     - Order of Filtering Operations: filtering/order.md
     - Descaling:
       - Descaling Theory: filtering/descaling/descaling.md
@@ -69,6 +70,7 @@ markdown_extensions:
       noclasses: true
       linenums: true
       anchor_linenums: true
+  - pymdownx.details
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences:
