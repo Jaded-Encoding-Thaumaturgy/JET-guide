@@ -6,7 +6,6 @@ is understanding which order to run filters in.
 
 ## Inverse filters
 
-
 If you're running any filter
 that does the inverse of a process
 applied by the studio or authoring company,
@@ -66,15 +65,29 @@ the other is trying to resolve.
 
 ## Generic filtering
 
+!!! warning "This is a general guideline"
+
+    The filtering order presented here
+    is a suggestion based on common practices
+    and general rules of thumb.
+    Some projects may require
+    a different order of operations
+    depending on the source material,
+    artifacts present,
+    and specific filtering goals.
+
 For most modern titles,
 there's a generally accepted order
 for applying filters in a filterchain:
 
-![Prepare clip -> (Descaling ->) Denoising -> (Anti-alias ->) (Dehaloing ->) Deband -> Regrain -> Finalize clip](../static/img/basics/standard-filterchain.png)
+!!! example "Typical order of operations"
+
+    ![Prepare clip -> (Descaling ->) Denoising -> (Anti-alias ->) (Dehaloing ->) Deband -> Regrain -> Finalize clip](../../static/img/basics/standard-filterchain.png)
 
 ### Descaling
 
 !!! danger "Attention"
+
     **NEVER** descale a video unless you're *absolutely certain* your descale is correct.
 
 Descaling and similar inverse operations
@@ -97,6 +110,7 @@ certain filterchains.
 ### Anti-aliasing
 
 !!! danger "Attention"
+
     A proper rescale will often deal with aliasing, ringing, and haloing artifacting.
     **NEVER** perform any of those three steps unless you're *absolutely* certain you must.
 

@@ -222,8 +222,8 @@ Hovering over the `*`
 and `-` operators
 shows affected values:
 
-![Hovering over the `*` operators](./img/expr/expr101-op2.png)<br>
-![Hovering over the `-` operators](./img/expr/expr101-op1.png)
+![Hovering over the `*` operators](../../static/img/filtering/expr/expr101-op2.png)<br>
+![Hovering over the `-` operators](../../static/img/filtering/expr/expr101-op1.png)
 
 <!-- TODO: Improve upon this section -->
 
@@ -557,19 +557,19 @@ just like the `std.MakeDiff/MergeDiff` functions.
 
     === "NCOP1v3"
 
-        ![Angel Beats! - NCOP1v3](./img/expr/ab-src1.png)
+        ![Angel Beats! - NCOP1v3](../../static/img/filtering/expr/ab-src1.png)
 
     === "NCOP1v4"
 
-        ![Angel Beats! - NCOP1v4](./img/expr/ab-src2.png)
+        ![Angel Beats! - NCOP1v4](../../static/img/filtering/expr/ab-src2.png)
 
     === "Difference"
 
-        ![Diff between NCOP1v3 and NCOP1v4](./img/expr/ab-diff1-yuv.png)
+        ![Diff between NCOP1v3 and NCOP1v4](../../static/img/filtering/expr/ab-diff1-yuv.png)
 
     === "Luma of the difference"
 
-        ![Luma of the difference](./img/expr/ab-diff1-gray.png)
+        ![Luma of the difference](../../static/img/filtering/expr/ab-diff1-gray.png)
 
 The current expression
 catches a lot of noise
@@ -596,19 +596,19 @@ we can make the following changes:
 
     === "NCOP1v3"
 
-        ![Angel Beats! - NCOP1v3](./img/expr/ab-src1.png)
+        ![Angel Beats! - NCOP1v3](../../static/img/filtering/expr/ab-src1.png)
 
     === "NCOP1v4"
 
-        ![Angel Beats! - NCOP1v4](./img/expr/ab-src2.png)
+        ![Angel Beats! - NCOP1v4](../../static/img/filtering/expr/ab-src2.png)
 
     === "Thresholded Difference"
 
-        ![Diff between NCOP1v3 and NCOP1v4, this time with a threshold](./img/expr/ab-diff2-yuv.png)
+        ![Diff between NCOP1v3 and NCOP1v4, this time with a threshold](../../static/img/filtering/expr/ab-diff2-yuv.png)
 
     === "Luma of the difference"
 
-        ![Luma of the difference](./img/expr/ab-diff2-gray.png)
+        ![Luma of the difference](../../static/img/filtering/expr/ab-diff2-gray.png)
 
 <!-- TODO: Add more examples -->
 
@@ -705,11 +705,11 @@ using expressions.
 
     === "Range Compressed"
 
-        ![Kyousougiga - NCOP1 (range compressed)](./img/expr/kyousougiga-compressed.png)
+        ![Kyousougiga - NCOP1 (range compressed)](../../static/img/filtering/expr/kyousougiga-compressed.png)
 
     === "Decompressed"
 
-        ![Kyousougiga - NCOP1 (decompressed)](./img/expr/kyousougiga-decompressed.png)
+        ![Kyousougiga - NCOP1 (decompressed)](../../static/img/filtering/expr/kyousougiga-decompressed.png)
 
 The inverse of this can be done
 by swapping the `peak` and `lowest` values,
@@ -728,10 +728,10 @@ as well as swapping `full` and `limited` in the formula.
 
     === "Range Expanded"
 
-        ![Fate/stay night [Realta Nua] - OP2 (range expanded)](./img/expr/fsnrn-expanded.png)
+        ![Fate/stay night [Realta Nua] - OP2 (range expanded)](../../static/img/filtering/expr/fsnrn-expanded.png)
 
     === "Range Compressed"
 
-        ![Fate/stay night [Realta Nua] - OP2 (range compressed)](./img/expr/fsnrn-compressed.png)
+        ![Fate/stay night [Realta Nua] - OP2 (range compressed)](../../static/img/filtering/expr/fsnrn-compressed.png)
 
 <!-- TODO: Add more examples -->

@@ -7,11 +7,11 @@ This guide goes through the process of setting up and effectively utilizing [VSP
 !!! warning
     The goal of this guide is to ensure the video is represented as accurately as possible. Do **NOT** use this guide as a reference for making encodes where the goal is to make the video look **better**.
 
-### VSPreview
+## VSPreview
 
 VSPreview is a previewer application for scripts created in VapourSynth. It features a simple graphical interface to allow you to use VapourSynth's features (and create comparisons) with ease. This should already be installed in your environment if you followed the [setup](../basics/setup.md).
 
-#### Dependencies
+### Dependencies
 
 === "General Setup"
 
@@ -41,7 +41,6 @@ VSPreview is a previewer application for scripts created in VapourSynth. It feat
     ```powershell
     vsrepo.py install dovi_library
     ```
-
 
 ## Usage
 
@@ -124,7 +123,6 @@ clip1 = core.vivtc.VDecimate(clip1)
 !!! note
     You need [`vivtc`](https://github.com/vapoursynth/vivtc) installed for the above snippet to work. You can install it with `vsrepo.py install vivtc`.
 
-
 #### Cropping
 
 Crops the source video by *n* pixels from the selected side. For example, `left=20` will remove 20 horizontal pixels starting from the left side. *This should be used on sources that use letterboxing or other form of borders.*
@@ -187,7 +185,6 @@ clip3 = clip3[0:]
 
 !!! note
     For more advanced trimming such as chaining, splicing, and looping, see [Vapoursynth's docs](https://www.vapoursynth.com/doc/pythonreference.html#slicing-and-other-syntactic-sugar).
-
 
 #### Depth
 
@@ -296,7 +293,6 @@ clip1 = core.resize.Point(clip1, range_in=0, range=1, dither_type="error_diffusi
 clip1 = core.std.SetFrameProp(clip1, prop="_ColorRange", intval=1)
 ```
 
-
 ### Running
 
 To run your comparison script, launch a terminal window in your working directory and run the following:
@@ -304,7 +300,6 @@ To run your comparison script, launch a terminal window in your working director
 ```powershell
 vspreview comp.py
 ```
-
 
 ### Tips
 
@@ -331,8 +326,6 @@ VSPreview offers three methods for creating comparisons:
 
     Automatic comparisons are created completely without any additional user input. VSPreview will automatically select, capture, and upload frames for you. *This is the fastest method for creating comparisons.*
 
-    #### Capturing
-
     1. In VSPreview, click the *Plugins* button in the bottom right corner and
        then click the *SlowPics Comps* tab
 
@@ -351,33 +344,29 @@ VSPreview offers three methods for creating comparisons:
 
     Semi-automatic comparisons are created with minor user input. VSPreview will automatically capture and upload frame manually marked by the user. *This is the recommended method for creating comparisons.*
 
-    #### Setup
-
     1. Locate the frame(s) you want to compare
         - Use `Left arrow` to go the previous frame and `Right arrow` to go to the next frame.
         - Use `Shift + Left arrow` and `Shift + Right arrow` to navigate `N` number of frames on either side.
 
     2. Once you land on a frame you like, mark it with `Ctrl` + `Space`.
 
-    #### Capturing
+    <hr>
 
-    1. In VSPreview, click the *Plugins* button in the bottom right corner and
+    3. In VSPreview, click the *Plugins* button in the bottom right corner and
        then click the *SlowPics Comps* tab
 
-    2. Fill out these fields:
+    4. Fill out these fields:
 
         Key              | Description
         -----------------|-----------------------------------------------------------------------------------------------------
         Collection name  | The title of your comparison/show
         TMDB ID          | The [TMDB ID](https://www.themoviedb.org) for the show
 
-    3. Hit the *Start Upload* button to begin creating your comparison
+    5. Hit the *Start Upload* button to begin creating your comparison
 
 === "Manual"
 
     Manual comparisons are created completely by the user. VSPreview displays and handles frame capture, while the main actions are performed by the user through the previewer.
-
-    #### Capturing
 
     1. Locate the frame(s) you want to compare
         - Use `Left arrow` to go the previous frame and `Right arrow` to go to the next frame.
@@ -393,7 +382,6 @@ VSPreview offers three methods for creating comparisons:
     !!! note
         If you want to use automatic Slowpoke Pics sorting, make sure your file naming scheme is set to `{frame}_{index}_{Name}`.
         By default, all frames are stored within your working directory unless manually changed to a different destination.
-
 
 ### Slowpoke Pics
 

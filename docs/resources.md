@@ -1,4 +1,6 @@
+
 # List of Encoding Resources
+
 This page was originally the [Encoding Resources gist](https://gist.github.com/arch1t3cht/ef5ec3fe0e2e8ae58fcbae903f32cfe5) on my (arch1t3cht's) GitHub.
 At the moment, this page is just a full copy-paste of that guide.
 In the future, when this guide website grows and more topics get their own pages, some of this page's content can be moved there.
@@ -16,11 +18,13 @@ Some sections contain some longer rants about stuff, most others don't. This is 
 I also give no guarantees of accuracy for any of the linked sites. I left out most links that are outdated or plain wrong, but I also did not audit every single page in detail. This is mostly just my bookmarks folder written up in markdown.
 
 ## Basics
+
 - Most video files you'll come across are stored in a YCbCr colorspace with 4:2:0 subsampled chroma and limited color range.
 - [Wikipedia article on YCbCr](https://en.wikipedia.org/wiki/YCbCr) (More info is in the colorspaces section further below)
 - [Wikipedia article on chroma subsampling](https://en.wikipedia.org/wiki/Chroma_subsampling)
 
 ### Math
+
 Encoding is hard and technical. If you want to really understand what you're doing, you'll need a bit of math background. Some relevant topics are:
 
 - Some basic linear algebra
@@ -28,9 +32,11 @@ Encoding is hard and technical. If you want to really understand what you're doi
 - Understanding Fourier transforms and, more generally, the concept of thinking in frequency space ([Imagemagick docs on Fourier transforms](https://www.imagemagick.org/Usage/fourier/))
 
 ### How to Learn
+
 Whatever you're trying to learn (this is not even specific to encoding), it cannot be stressed enough that you should **try things out** and **use your resources**. That's the entire reason why this document exists. Sure, there might be people to ask for help on simpler topics, but some day you'll reach a point where there's no one who can answer your question and you'll need to figure it out yourself. And even before that, people will be much more willing to help you if you've shown some effort of solving your problem yourself.
 
 ## Colorspaces
+
 - For the theory, read the [Wikipedia article on the CIE RGB Colorspace](https://en.wikipedia.org/wiki/CIE_1931_color_space)
 - Zoomers that don't want to read can watch [this video](https://youtu.be/fv-wlo8yVhk?t=409) as an introduction (or at least the part that explains color spaces)
 - For RGB-based colorspaces, the conversion chain is: CIE RGB -> RGB (using primaries and white point), RGB -> R'G'B' (using transfer function), R'G'B' -> Y'CbCr (using color matrix)
@@ -43,6 +49,7 @@ Whatever you're trying to learn (this is not even specific to encoding), it cann
 - [The QuickTime Gamma Bug](https://vitrolite.wordpress.com/2010/12/31/quicktime_gamma_bug/)
 
 ### HDR
+
 The terminology related to HDR is a huge mess, but conceptually HDR consists of two aspects
 
 - New transfer functions (HLG and PQ) that allow for a much higher dynamic range in colors
@@ -58,6 +65,7 @@ A few resources:
 - [vs-nlq](https://github.com/quietvoid/vs-nlq): VapourSynth plugin to map DV enhancement layers. The BL needs to be 16 bit, the EL needs to be 10 bit and point-upscaled to the BL's size.
 
 ## VapourSynth
+
 Understanding how exactly the VapourSynth ecosystem works and which parts play what roles is crucial when working with it. Otherwise, you will not be able to find the documentation you need or pinpoint where exactly your errors are coming from.
 
 VapourSynth (at least the parts relevant for us) itself can be seen as consisting of three components:
@@ -65,7 +73,7 @@ VapourSynth (at least the parts relevant for us) itself can be seen as consistin
 - The core of VapourSynth is a *frame server*. It's able to chain together various functions, where each function (well, most functions) can take a sequence of video frames (or multiple sequences) together with some parameters, modify those frames in some way, and output the resulting sequence of frames (or other values).
   Such sequences of frames are called *video nodes*, and they are computed lazily: Frames are only computed when requested, and they are only requested when they're required in other functions. This allows VapourSynth to process a video frame by frame without having to store the entire clip in memory.
   Video nodes also contain *frame props*, which are pieces of data (key-value pairs) associated with each frame that functions can use and change as they please.
-  
+
   VapourSynth offers a C/C++ api to call functions on video nodes and can load third-party *plugins* which provide functions.
   It supports common video pixel formats, but apart from that the core of VapourSynth knows next to nothing about how a video actually looks.
 - On top of this architecture, VapourSynth then provides a small set of *standard* functions to perform various simple operations on video nodes.
@@ -109,6 +117,7 @@ As for the various filter plugins and wrappers, there's too many of those to lis
 Again, remember that Python wrappers really are just wrappers. They're very helpful if you want to *write* VapourSynth scripts without too much boilerplate, but for *learning* how certain filters work it can be very helpful to play around with the raw plugins a bit. Understanding how the plugins work will help you understand what the wrappers do.
 
 ## Filtering
+
 This is a huge umbrella topic and the general advice still remains "Find out what filters exist for a given use case and try them out."
 
 Keep in mind that there is no magical way to recover information, so any filter *will* be destructive to some degree. Don't use a filter if your source does not have the problem the filter is supposed to fix, or if the filter causes more issues than it fixes. Use your eyes to check for issues and do not blindly rely on automated metrics.
@@ -125,6 +134,7 @@ After giving these lists of artifacts it should be stressed *again* that you sho
 Finally, if your source doesn't *have* any significant artifacts, that doesn't mean that you should throw filters at it to somehow still improve how it looks. It just means that maybe you don't even need to encode it.
 
 ## Resampling
+
 - [Avisynth docs on resampling](http://avisynth.nl/index.php/Resampling)
 - [Imagemagick docs on resampling](https://imagemagick.org/Usage/filter/)
 - [guide.encode.moe's page on resampling](https://guide.encode.moe/encoding/resampling.html)
@@ -137,6 +147,7 @@ It is extremely important to realize that upsampling and downsampling are two *f
 Conventional resampling (no matter if upsampling or downsampling) is linear (except for value clipping or when implicitly padding with a non-zero brightness value). This means that any horizontal resampling operation will commute with any vertical resampling operation and vice-versa.
 
 ### Upsampling
+
 Conceptually, upsampling is divided into two steps
 
 - Reconstruction: Convolve with the resampling kernel to obtain a continuous[^continuous] function. This step only depends on the kernel used
@@ -155,11 +166,13 @@ Here's some more resources on upsampling in particular
 - [Plots of some common resampling kernels](https://amusementclub.github.io/ResampleHQ/kernels.html) Note that the Blurring/Sharpness/Ringing graphs on the bottom aren't really reliable.
 
 ### Downsampling
+
 Downsampling is an entirely different process from upsampling. Applying the process used for upsampling to downsampling will result in massive aliasing no matter what reconstruction kernel is used. Thus, instead of asking how to best reconstruct a continuous function out of the samples like with upsampling, the main question when downsampling is how to prevent aliasing. This is done by applying a lowpass filter to reduce the high frequences that would cause aliasing. This is also indirectly covered in the Mitchell-Netravali paper.
 
 With this in mind, good downsampling kernels are kernels that result in good lowpass filters like Gaussian kernels, or faster approximations to them like Hermite. In situations where you're worried about Moiré patterns, Mitchell is also a good candidate. But as a rule of thumb, kernels with strong negative lobes will not make good downsampling kernels, even if they're fantastic upsampling kernels.
 
 ## Descaling
+
 The goal of a descale is to mathematically invert an upscale. *Never* descale a video unless you're absolutely sure that it was upscaled with those exact parameters, and that no additional post-processing was done afterwards.
 
 Once you know what parameters your clip was upscaled with, the signature of the descale function should tell you everything you need to call the plugin. A descale call with given `kernel` and `src_width`, `src_height`, `src_left`, `src_top` parameters will invert a `core.resize` call with the exact same values. With a fractional descale, the parity of the width/height you're descaling to makes an important difference (and changing the parity amounts to a shift by `0.5`), but apart from the parity the width/height does not matter.
@@ -177,22 +190,26 @@ Like (tensor) resampling, descaling is done in separate steps per axis. Furtherm
 Do not descale subsampled chroma. This should be clear from the previous points but experience shows that it needs to be spelled out explicitly. Similarly, do not (horizontally) descale footage that went through the HDCAM format (and same for any other formats with subsampled luma).
 
 ## Formats and Encoders
+
 - [Overview of the High Efficiency Video Coding (HEVC) Standard](https://ieeexplore.ieee.org/document/6316136) for a brief overview of how modern coding formats work
 - For more detailed information, pick up a textbook like [High Efficiency Video Coding - Coding Tools and Specification](https://link.springer.com/book/10.1007/978-3-662-44276-0)
 - The actual standards ([H.264](https://www.itu.int/rec/T-REC-H.264) and [H.265](https://www.itu.int/rec/T-REC-H.265)) probably won't help you unless you have extremely specific questions
 
 ### x264
+
 - [Overview of x264's rate control modes (without `mbtree`)](https://code.videolan.org/videolan/x264/-/blob/master/doc/ratecontrol.txt)
 - [MeGUI's x264 settings list](https://en.wikibooks.org/wiki/MeGUI/x264_Settings)
 - [MeWiki's x264 settings list](http://www.chaneru.com/Roku/HLS/X264_Settings.htm)
 - Use the [silentaperture guide](https://silentaperture.gitlab.io/mdbook-guide/encoding/x264.html) for decent starter settings
 
 ### x265
+
 - x265 is based on x264 so many of the general concepts can be carried over
 - [x265 docs](https://x265.readthedocs.io/en/master/cli.html)
 - Use the [silentaperture guide](https://silentaperture.gitlab.io/mdbook-guide/encoding/x265.html) for decent starter settings
 
 ## IVTC
+
 IVTC is *completely* different from deinterlacing. NEVER try to "IVTC" by calling QTGMC or anything like that. Also, never use AnimeIVTC.
 
 - Understanding 3:2 Pulldown: [Wikipedia Page](https://en.wikipedia.org/wiki/Three-two_pull_down), [Wobbly Guide's Page on Telecining](https://wobbly.encode.moe/gettingstarted/primer.html)
@@ -202,7 +219,7 @@ IVTC is *completely* different from deinterlacing. NEVER try to "IVTC" by callin
     Conceptually, IVTC is split into two steps, called fieldmatching and decimation. (Sometimes, it also needs additional post-processing steps like interpolating orphans, freezeframing, fixing fades, etc.)
     Fieldmatching rearranges the video's fields to try and match every field with its original counterpart. This results in a clip that ideally no longer has any combing (in practice this may not be the case due to complications like orphans, fades, etc), but will still be 30fps since it still contains duplicate frames.
     The decimation step then drops those duplicate frames to obtain a 24p clip.
-    
+
     The Decomb docs ([here](https://www.rationalqm.us/decomb/DecombTutorial.html) and [here](https://www.rationalqm.us/decomb/DecombReferenceManual.html)) also illustrate this process pretty well.
 
 - Understanding fieldmatching: Read the [Background and Overview](http://avisynth.nl/index.php/TIVTC/TFM#Background_and_overview:) section of the TIVTC docs
@@ -212,6 +229,7 @@ IVTC is *completely* different from deinterlacing. NEVER try to "IVTC" by callin
 - [The Yatta Manifesto](https://web.archive.org/web/20160610134353/warpsharp.info/yatta.txt)
 
 ## Other SD Era Sadness (NTSC/PAL, DVDs, and all that)
+
 - [Lurker's Guide](https://lurkertech.com/lg/) Collection of various guides on video. Includes guides like "Programmer's Guide to Video Systems" and "All about Video Fields"
 - [SMPTE RP 187-1995](https://pub.smpte.org/doc/rp187/19951206-pub/)
 - [A Quick Guide to Digital Video Resolution and Aspect Ratio Conversions](https://web.archive.org/web/20140218044518/http://lipas.uwasa.fi/~f76998/video/conversion/) Reference for DVD aspect ratios
@@ -221,6 +239,7 @@ IVTC is *completely* different from deinterlacing. NEVER try to "IVTC" by callin
 - [The DVD FAQ](https://dvddemystified.com/dvdfaq.html)
 
 ## Miscellaneous Stuff (mostly blogs)
+
 - [torchlight's blog](https://mechaweaponsvidya.wordpress.com/)
 - [Diary Of An x264 Developer](https://web.archive.org/web/20150419065724/http://x264dev.multimedia.cx/)
 - [Falsehoods programmers believe about [video stuff]](https://haasn.dev/posts/2016-12-25-falsehoods-programmers-believe-about-[video-stuff].html)

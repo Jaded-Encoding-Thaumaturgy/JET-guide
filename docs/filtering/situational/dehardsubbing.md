@@ -28,10 +28,12 @@ Here is an example of a hardsub that one might want to dehardsub, because it
 doesn't look particularly good and a typesetter could redo it via softsubs:
 
 === "Hardsubbed"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-simple-hardsub.png)
+
+    ![Hardsubbed video with burned-in subtitles](../../static/img/filtering/dehardsubbing/dehardsubbing-simple-hardsub.png)
 
 === "Reference"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-simple-ref.png)
+
+    ![Clean reference video without subtitles](../../static/img/filtering/dehardsubbing/dehardsubbing-simple-ref.png)
 
 Since a video without hardsubs (the reference clip here) is available, one
 solution is to simply replace this hardsubbed scene with its counterpart:
@@ -67,10 +69,12 @@ same frame range as before, and apply a mask that replaces just the hardsubbed
 region of `hardsub` with the respective region from `ref`.
 
 === "Hardsubbed"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-simple-hardsub.png)
+
+    ![Hardsubbed video with burned-in subtitles](../../static/img/filtering/dehardsubbing/dehardsubbing-simple-hardsub.png)
 
 === "Hardsub mask"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-simple-mask.png)
+
+    ![Mask showing the detected hardsub region](../../static/img/filtering/dehardsubbing/dehardsubbing-simple-mask.png)
 
 ## Bounding
 
@@ -82,13 +86,16 @@ if they're important. If one tries to use `HardsubSign` like before on this, it
 will mask everything.
 
 === "Hardsubbed"
-    ![](../static/img/filtering/dehardsubbing//dehardsubbing-bound-hardsub.png)
+
+    ![Hardsubbed video showing both news overlay and Arial signs](../../static/img/filtering/dehardsubbing//dehardsubbing-bound-hardsub.png)
 
 === "Reference"
-    ![](../static/img/filtering/dehardsubbing//dehardsubbing-bound-ref.png)
+
+    ![Clean reference video without any overlays or signs](../../static/img/filtering/dehardsubbing//dehardsubbing-bound-ref.png)
 
 === "Hardsub mask"
-    ![](../static/img/filtering/dehardsubbing//dehardsubbing-bound-mask.png)
+
+    ![Mask showing all detected hardsub regions before bounding](../../static/img/filtering/dehardsubbing//dehardsubbing-bound-mask.png)
 
 Since the bad hardsubs are all contained to a single region for the whole scene,
 the mask can be bounded by a `BoundingBox`. Think of this as masking the mask.
@@ -106,16 +113,20 @@ The bound is drawn from coordinate (0, 0) (the top-left corner) to a size of
 1230x880, which is enough to cover only the Arial signs.
 
 === "Hardsubbed"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-bound-hardsub.png)
+
+    ![Hardsubbed video showing both news overlay and Arial signs](../../static/img/filtering/dehardsubbing/dehardsubbing-bound-hardsub.png)
 
 === "Hardsub mask"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-bound-mask.png)
+
+    ![Mask showing all detected hardsub regions before bounding](../../static/img/filtering/dehardsubbing/dehardsubbing-bound-mask.png)
 
 === "Bounded hardsub mask"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-bound-bounded-mask.png)
+
+    ![Mask showing only the Arial signs after applying bounding box](../../static/img/filtering/dehardsubbing/dehardsubbing-bound-bounded-mask.png)
 
 === "Dehardsubbed"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-bound-dehardsub.png)
+
+    ![Final result with only the Arial signs removed](../../static/img/filtering/dehardsubbing/dehardsubbing-bound-dehardsub.png)
 
 ## Fades
 
@@ -136,16 +147,20 @@ dehardsub = replace_ranges(hardsub, dehardsub, (1462, 1524))
 ```
 
 === "Hardsubbed"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-fade.png)
+
+    ![Hardsubbed video showing fading text](../../static/img/filtering/dehardsubbing/dehardsubbing-fade.png)
 
 === "Reference"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-fade-ref.png)
+
+    ![Clean reference video without any fading text](../../static/img/filtering/dehardsubbing/dehardsubbing-fade-ref.png)
 
 === "Hardsub mask"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-fade-hardsubmask.png)
+
+    ![Basic hardsub mask showing detected text regions](../../static/img/filtering/dehardsubbing/dehardsubbing-fade-hardsubmask.png)
 
 === "Hardsub fade mask"
-    ![](../static/img/filtering/dehardsubbing/dehardsubbing-fade-hardsubsignfades.png)
+
+    ![Enhanced hardsub mask showing better detection of fading text](../../static/img/filtering/dehardsubbing/dehardsubbing-fade-hardsubsignfades.png)
 
 Notice how just with default parameters, `HardsubSignFades` is able to catch
 more of the hardsubs than plain `HardsubSign` can. This snippet also

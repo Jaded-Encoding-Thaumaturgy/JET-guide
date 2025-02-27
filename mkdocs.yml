@@ -22,27 +22,31 @@ extra:
 
 nav:
   - Home: index.md
-  - Encoding Resources: resources.md
   - Basics:
-    - Setup and First Steps: basics/setup.md
-    - A Primer on Python: basics/python-primer.md
-    - How do I ...?: basics/howdoi.md
-    - Baby's first script: basics/babys-first-script.md
-  - Source Processing:
-    - Remuxing DVDs: sources/dvd-remux.md
+    - Installation: basics/installation.md
+    - Python Primer: basics/python-primer.md
+    - Getting Started: basics/getting-started.md
+    - How do I...?: basics/how-do-i.md
+  - Source Preparation:
+    - DVDs:
+      - Remuxing: sources/dvd/remuxing.md
+      - Wobbly 🡕: https://wobbly.encode.moe
   - Filtering:
-    - Order of Filtering Operations: filtering/order.md
-    - Descaling:
-      - Descaling Theory: filtering/descaling/descaling.md
-      - Known Native Resolutions: filtering/descaling/known-resolutions.md
-    - Expressions: filtering/expr.md
-    - Dehardsubbing: filtering/dehardsubbing.md
-    - Wobbly 🡕: https://wobbly.encode.moe
+    - General Techniques:
+      - Order of Operations: filtering/general/order.md
+      - Expressions: filtering/general/expressions.md
+    - Common Filtering:
+      - Descaling:
+        - Theory: filtering/common/descaling/theory.md
+        - Known Resolutions: filtering/common/descaling/known-resolutions.md
+    - Situational Filtering:
+      - Dehardsubbing: filtering/situational/dehardsubbing.md
   - Encoding:
-    - x264 Parameters: encoding/x264params.md
-    - x265 Parameters: encoding/x265params.md
+    - x264: encoding/x264.md
+    - x265: encoding/x265.md
   - Misc:
     - Comparison: misc/comparison.md
+  - Additional Resources: resources.md
 
 plugins:
 - search
