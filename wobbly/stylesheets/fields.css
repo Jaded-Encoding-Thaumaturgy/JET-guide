@@ -12,12 +12,12 @@
     align-items: center;
     font-size: 750%;
     font-weight: bold;
-    font-family: sans-serif;
+    font-family: 'serif';
     color: white;
     position: absolute;
     top: 0;
     left: 0;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    -webkit-text-stroke: 2.5px rgba(0, 0, 0, 0.75);
 }
 
 .frame-container {
@@ -36,16 +36,16 @@
 }
 
 /* Base colors */
-.a { background-color: #ffb3b3; }
-.b { background-color: #b3b3ff; }
-.c { background-color: #d6e9a8; }
-.d { background-color: #d8c6e8; }
-.e { background-color: #ffb3e6; }
-.f { background-color: #ffd9a8; }
-.g { background-color: #a8e9d6; }
-.h { background-color: #e6b3ff; }
-.i { background-color: #b3e6ff; }
-.j { background-color: #ffe6a8; }
+.a { background-color: #ff9999; }
+.b { background-color: #9999ff; }
+.c { background-color: #c4e680; }
+.d { background-color: #cc99e6; }
+.e { background-color: #ff99db; }
+.f { background-color: #ffbb66; }
+.g { background-color: #66e6c4; }
+.h { background-color: #db99ff; }
+.i { background-color: #99dbff; }
+.j { background-color: #ffd966; }
 
 /* Interlacing effect - using a reusable pattern */
 .top-field,
