@@ -1,0 +1,80 @@
+:root {
+    --frame-size: 120px;
+    --stripe-height: 6px;
+}
+
+.frame {
+    width: var(--frame-size);
+    height: var(--frame-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 850%;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.frame-container {
+    width: var(--frame-size);
+    height: var(--frame-size);
+    position: relative;
+    display: inline-block;
+    margin: 4px;
+}
+
+.frames-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 1em 0;
+}
+
+/* Base colors */
+.a { background-color: #ffb3b3; }
+.b { background-color: #b3b3ff; }
+.c { background-color: #d6e9a8; }
+.d { background-color: #d8c6e8; }
+.e { background-color: #ffb3e6; }
+.f { background-color: #ffd9a8; }
+.g { background-color: #a8e9d6; }
+.h { background-color: #e6b3ff; }
+.i { background-color: #b3e6ff; }
+.j { background-color: #ffe6a8; }
+
+/* Interlacing effect - using a reusable pattern */
+.top-field,
+.bottom-field {
+    clip-path: polygon(
+        0 0, 100% 0, 100% var(--stripe-height), 0 var(--stripe-height),
+        0 calc(var(--stripe-height) * 2), 100% calc(var(--stripe-height) * 2), 100% calc(var(--stripe-height) * 3), 0 calc(var(--stripe-height) * 3),
+        0 calc(var(--stripe-height) * 4), 100% calc(var(--stripe-height) * 4), 100% calc(var(--stripe-height) * 5), 0 calc(var(--stripe-height) * 5),
+        0 calc(var(--stripe-height) * 6), 100% calc(var(--stripe-height) * 6), 100% calc(var(--stripe-height) * 7), 0 calc(var(--stripe-height) * 7),
+        0 calc(var(--stripe-height) * 8), 100% calc(var(--stripe-height) * 8), 100% calc(var(--stripe-height) * 9), 0 calc(var(--stripe-height) * 9),
+        0 calc(var(--stripe-height) * 10), 100% calc(var(--stripe-height) * 10), 100% calc(var(--stripe-height) * 11), 0 calc(var(--stripe-height) * 11),
+        0 calc(var(--stripe-height) * 12), 100% calc(var(--stripe-height) * 12), 100% calc(var(--stripe-height) * 13), 0 calc(var(--stripe-height) * 13),
+        0 calc(var(--stripe-height) * 14), 100% calc(var(--stripe-height) * 14), 100% calc(var(--stripe-height) * 15), 0 calc(var(--stripe-height) * 15),
+        0 calc(var(--stripe-height) * 16), 100% calc(var(--stripe-height) * 16), 100% calc(var(--stripe-height) * 17), 0 calc(var(--stripe-height) * 17),
+        0 calc(var(--stripe-height) * 18), 100% calc(var(--stripe-height) * 18), 100% calc(var(--stripe-height) * 19), 0 calc(var(--stripe-height) * 19),
+        0 calc(var(--stripe-height) * 20), 100% calc(var(--stripe-height) * 20), 100% calc(var(--stripe-height) * 21), 0 calc(var(--stripe-height) * 21)
+    );
+}
+
+.bottom-field {
+    clip-path: polygon(
+        0 var(--stripe-height), 100% var(--stripe-height), 100% calc(var(--stripe-height) * 2), 0 calc(var(--stripe-height) * 2),
+        0 calc(var(--stripe-height) * 3), 100% calc(var(--stripe-height) * 3), 100% calc(var(--stripe-height) * 4), 0 calc(var(--stripe-height) * 4),
+        0 calc(var(--stripe-height) * 5), 100% calc(var(--stripe-height) * 5), 100% calc(var(--stripe-height) * 6), 0 calc(var(--stripe-height) * 6),
+        0 calc(var(--stripe-height) * 7), 100% calc(var(--stripe-height) * 7), 100% calc(var(--stripe-height) * 8), 0 calc(var(--stripe-height) * 8),
+        0 calc(var(--stripe-height) * 9), 100% calc(var(--stripe-height) * 9), 100% calc(var(--stripe-height) * 10), 0 calc(var(--stripe-height) * 10),
+        0 calc(var(--stripe-height) * 11), 100% calc(var(--stripe-height) * 11), 100% calc(var(--stripe-height) * 12), 0 calc(var(--stripe-height) * 12),
+        0 calc(var(--stripe-height) * 13), 100% calc(var(--stripe-height) * 13), 100% calc(var(--stripe-height) * 14), 0 calc(var(--stripe-height) * 14),
+        0 calc(var(--stripe-height) * 15), 100% calc(var(--stripe-height) * 15), 100% calc(var(--stripe-height) * 16), 0 calc(var(--stripe-height) * 16),
+        0 calc(var(--stripe-height) * 17), 100% calc(var(--stripe-height) * 17), 100% calc(var(--stripe-height) * 18), 0 calc(var(--stripe-height) * 18),
+        0 calc(var(--stripe-height) * 19), 100% calc(var(--stripe-height) * 19), 100% calc(var(--stripe-height) * 20), 0 calc(var(--stripe-height) * 20)
+    );
+}
