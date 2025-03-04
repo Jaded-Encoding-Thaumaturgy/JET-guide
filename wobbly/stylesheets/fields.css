@@ -17,7 +17,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    -webkit-text-stroke: 2.5px rgba(0, 0, 0, 0.75);
+    -webkit-text-stroke: 1.75px rgba(0, 0, 0, 0.75);
 }
 
 .frame-container {
