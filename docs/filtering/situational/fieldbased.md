@@ -535,7 +535,9 @@ that can lead to improper handling:
 
 MediaInfo and similar tools can only detect
 if content is _stored_ in a field-based format,
-not whether it's truly interlaced or telecined.
+not whether it's truly interlaced or telecined
+(or even progressive
+improperly tagged as interlaced).
 You _must_ manually inspect the video
 to determine this.
 
@@ -570,4 +572,4 @@ the following guides will walk you through
 the appropriate filtering techniques
 for each scenario:
 
-- [Inverse Telecine with Wobbly](../../sources/dvd/wobbly/installation)
+- [Inverse Telecine with Wobbly](../../sources/dvd/wobbly/installation.md)
