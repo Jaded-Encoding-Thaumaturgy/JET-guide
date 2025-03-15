@@ -116,10 +116,7 @@ To update your JET packages, you can run `pip install --upgrade vsjetpack vsprev
     ```
 
 Linux users may need to create a virtualenv to install the packages or try their luck with `pipx`.
-On Arch Linux, you can use the [`vapoursynth-plugin-vsjet-meta-git`](https://aur.archlinux.org/packages/vapoursynth-plugin-vsjet-meta-git) AUR package.
-Note that reinstalling the meta package is not enough to update all vsjet packages, you need to reinstall all of its dependencies.
-Either try your luck with an option like `--rebuild tree` in your AUR helper (I couldn't get `--rebuildtree` working for this in `yay`, but maybe I was just too dumb),
-or just copy-paste the dependency list and reinstall all of the listed packages.
+On Arch Linux, you can use the [`vapoursynth-plugin-vsjetpack`](https://aur.archlinux.org/packages/vapoursynth-plugin-vsjetpack) and [`vapoursynth-preview`](https://aur.archlinux.org/packages/vapoursynth-preview) AUR packages.
 
 ## Installing your Code Editor
 
