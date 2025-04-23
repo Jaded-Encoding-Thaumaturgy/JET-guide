@@ -39,7 +39,8 @@ you might want to capture all available angles as well.
     A title on a DVD consists of one or more PGCs,
     while a menu is made up of a single PGC[^pgc-references].
 
-[^pgc-references]: For more information,
+[^pgc-references]:
+    For more information,
     see [the DVD-Video Program Chain structure information page](https://dvd.sourceforge.net/dvdinfo/pgc.html),
     [the DVD-Video Format Specification](http://www.mpucoder.com/DVD/),
     and [the Inside DVD-Video Wikibook](https://en.wikibooks.org/wiki/Inside_DVD-Video/MPEG_Format#VOBU,_Cell,_Program,_PGC).
@@ -173,6 +174,7 @@ such as FFmpeg remuxing.
     like AAC or Opus if file size is a concern.
 
 <!-- TODO: Fact-check the above once my MPC-HC wants to play nice -->
+
 You can check which audio tracks are available
 and their formats in MPC-HC
 under _Navigate > Audio Menu_
@@ -630,7 +632,8 @@ a reference table of common SAR values
 and their corresponding active areas
 is provided below[^sar-source].
 
-[^sar-source]: A number of SAR values were derived from
+[^sar-source]:
+    A number of SAR values were derived from
     [A Quick Guide to Digital Video Resolution and Aspect Ratio Conversions](https://web.archive.org/web/20140218044518/http://lipas.uwasa.fi/~f76998/video/conversion/#conversion_table).
 
 #### Reference Table
@@ -664,22 +667,22 @@ is provided below[^sar-source].
 
     === "NTSC"
 
-        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area | Display Dimensions |
-        |----------------------|----------------------------------------|-------------|--------------------|
-        | 4:3                  | 4320:4739                              | 710.85×486  |                    |
-        |                      | 640:711                                | 711×480     | 711×533            |
-        |                      | 160:177                                | 708×480     |                    |
-        |                      | 10:11                                  | 704×480     | 704×528            |
-        | 16:9                 | 2560:2133                              | 711×480     | 853×480            |
-        |                      | 640:531                                | 708×480     |                    |
-        |                      | 40:33                                  | 704×480     |                    |
+        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area                      |
+        |----------------------|----------------------------------------|----------------------------------|
+        | 4:3                  | 4320:4739                              | 710.85×486                       |
+        |                      | 640:711                                | 711×480                          |
+        |                      | 160:177                                | 708×480                          |
+        |                      | 10:11                                  | 704×480                          |
+        | 16:9                 | 6:5                                    | 720×486 (or very nearly 711×480) |
+        |                      | 640:531                                | 708×480                          |
+        |                      | 40:33                                  | 704×480                          |
 
     === "PAL"
 
-        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area | Display Dimensions |
-        |----------------------|----------------------------------------|-------------|--------------------|
-        | 4:3                  | 128:117                                | 702×576     |                    |
-        |                      | 1132:1035                              | 690×566     |                    |
+        | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area |
+        |----------------------|----------------------------------------|-------------|
+        | 4:3                  | 128:117                                | 702×576     |
+        |                      | 1132:1035                              | 690×566     |
 
 !!! warning "NTSC to PAL conversions"
 
@@ -1039,9 +1042,9 @@ Replace the following keys:
 
 - `<input_file>`: The path to your input file
 - `<display_width>`: The new display width value
-    obtained from the SAR calculation
+  obtained from the SAR calculation
 - `<display_height>`: The height of the display
-    obtained from the SAR calculation
+  obtained from the SAR calculation
 
 ### Cropping metadata
 
