@@ -670,10 +670,10 @@ is provided below[^sar-source].
         | Display Aspect Ratio | Sample Aspect Ratio/Pixel Aspect Ratio | Active Area                      |
         |----------------------|----------------------------------------|----------------------------------|
         | 4:3                  | 4320:4739                              | 710.85×486                       |
-        |                      | 9:10                                   | 720×486 (or very nearly 711×480) |
+        |                      | 9:10                                   | 720×486                          |
         |                      | 160:177                                | 708×480                          |
         |                      | 10:11                                  | 704×480                          |
-        | 16:9                 | 6:5                                    | 720×486 (or very nearly 711×480) |
+        | 16:9                 | 6:5                                    | 720×486                          |
         |                      | 640:531                                | 708×480                          |
         |                      | 40:33                                  | 704×480                          |
 
@@ -827,8 +827,8 @@ to derive the most accurate SAR values.
         ![Perfect circle overlaid onto a frame, example from Kaleido Star](../../../static/img/sources/dvd-remux/sar/circle-method.png)
 
         The image above demonstrates a perfect match
-        using a SAR of 2560:2133,
-        which corresponds to a 711×480 active area.
+        using a SAR of 6:5,
+        which corresponds to a 720×486 active area.
         When the overlay aligns perfectly with the object,
         you've found the correct SAR.
 
@@ -973,18 +973,15 @@ print(f"New display width: {new_sar.numerator}\nNew display height: {new_sar.den
 
     For example,
     using a 720×480 NTSC DVD
-    with a SAR of 2560:2133:
+    with a SAR of 4320:4739:
 
     ```py
-    Fraction(2560, 2133) * Fraction(720, 480) = Fraction(1280, 711)
+    Fraction(4320, 4739) * Fraction(720, 480) = Fraction(6480, 4739)
     ```
 
-    This results in a fraction
-    that equals roughly 1.8,
-    which matches the 16:9 DAR.
-    While this could also be expressed as 853×480,
+    While this could also be expressed as ~790x480,
     keeping it as a reduced integer fraction
-    like 1280:711 is preferable,
+    like 6480:4739 is preferable,
     since players treat these values as a ratio
     rather than actual final dimensions.
     Using larger integers in the ratio
