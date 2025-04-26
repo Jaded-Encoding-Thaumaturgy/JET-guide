@@ -915,12 +915,11 @@ These checks can all be performed
 using the following Vapoursynth code snippet:
 
 ```py
-from vstools import Sar, mod4
+from vstools import Dar, Sar, mod4
 from vskernels import Bicubic
 
-sar = Sar.from_ar(
-    <dar_num>, <dar_den>, <active_width>, <active_height>
-)
+dar = Dar(dar_num>, <dar_den)
+sar = Sar.from_ar(<active_width>, <active_height>, dar)
 
 if sar > 1:
     width, height = mod4(clip.width * float(sar)), mod4(clip.height)
@@ -928,7 +927,7 @@ else:
     width, height = mod4(clip.width), mod4(clip.height / float(sar))
 
 clip_resized = Bicubic.scale(
-    clip, width, height, keep_ar=True, sar=sar
+    clip, width, height, keep_ar=True, sar=sar, dar=dar
 )
 ```
 
@@ -951,10 +950,10 @@ clip_resized = Bicubic.scale(
 
 Replace the following keys:
 
-- `<dar_num>` with the DVD's DAR numerator
-- `<dar_den>` with the DVD's DAR denominator
-- `<active_width>` with the SAR's standard active area width
-- `<active_height>` with the SAR's standard active area height
+- `<dar_num>` with the DVD's DAR numerator (for example, `16` or `4`)
+- `<dar_den>` with the DVD's DAR denominator (for example, `9` or `3`)
+- `<active_width>` with the active area width (for example, `708`)
+- `<active_height>` with the active area height (for example, `480`)
 
 Once you've determined the correct SAR values,
 you can print out the new display dimensions
