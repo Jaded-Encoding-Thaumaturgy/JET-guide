@@ -2060,7 +2060,7 @@ in your analysis.</p>
 <tr>
 <td></td>
 <td>9:10</td>
-<td>720×486 (or very nearly 711×480)</td>
+<td>720×486</td>
 </tr>
 <tr>
 <td></td>
@@ -2075,7 +2075,7 @@ in your analysis.</p>
 <tr>
 <td>16:9</td>
 <td>6:5</td>
-<td>720×486 (or very nearly 711×480)</td>
+<td>720×486</td>
 </tr>
 <tr>
 <td></td>
@@ -2245,8 +2245,8 @@ like clocks, wheels, or logos.</p>
 </ol>
 <p><img alt="Perfect circle overlaid onto a frame, example from Kaleido Star" src="../../../static/img/sources/dvd-remux/sar/circle-method.png" /></p>
 <p>The image above demonstrates a perfect match
-using a SAR of 2560:2133,
-which corresponds to a 711×480 active area.
+using a SAR of 6:5,
+which corresponds to a 720×486 active area.
 When the overlay aligns perfectly with the object,
 you've found the correct SAR.</p>
 </div>
@@ -2395,15 +2395,12 @@ by the stored frame's width/height ratio
 to calculate the intended display ratio.</p>
 <p>For example,
 using a 720×480 NTSC DVD
-with a SAR of 2560:2133:</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">2560</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">2133</span><span style="color: #ABB2BF">)</span> <span style="color: #56B6C2">*</span> <span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">720</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">480</span><span style="color: #ABB2BF">)</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">1280</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">711</span><span style="color: #ABB2BF">)</span>
+with a SAR of 4320:4739:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">4320</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">4739</span><span style="color: #ABB2BF">)</span> <span style="color: #56B6C2">*</span> <span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">720</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">480</span><span style="color: #ABB2BF">)</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">Fraction</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">6480</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">4739</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
-<p>This results in a fraction
-that equals roughly 1.8,
-which matches the 16:9 DAR.
-While this could also be expressed as 853×480,
+<p>While this could also be expressed as ~790x480,
 keeping it as a reduced integer fraction
-like 1280:711 is preferable,
+like 6480:4739 is preferable,
 since players treat these values as a ratio
 rather than actual final dimensions.
 Using larger integers in the ratio
