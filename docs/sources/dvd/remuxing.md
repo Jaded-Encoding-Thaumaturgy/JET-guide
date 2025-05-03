@@ -87,7 +87,7 @@ as of the time of writing).
         3. Hover over the _Files > Open Disc_ button
         4. Select your DVDISO
 
-        ![Opening the ISO with MPC-HC from MPC-HC](../../../static/img/sources/dvd-remux/preview/mpc-open-disc.png)
+        ![Opening the ISO with MPC-HC from MPC-HC](../../static/img/sources/dvd-remux/preview/mpc-open-disc.png)
 
     === "Physical DVD"
 
@@ -96,7 +96,7 @@ as of the time of writing).
         3. Hover over the _Files > Open Disc_ button
         4. Select your DVD drive
 
-        ![Opening the physical DVD with MPC-HC](../../../static/img/sources/dvd-remux/preview/mpc-open-disc.png)
+        ![Opening the physical DVD with MPC-HC](../../static/img/sources/dvd-remux/preview/mpc-open-disc.png)
 
     === "Unpacked DVD"
 
@@ -106,7 +106,7 @@ as of the time of writing).
         4. Click on the folder the DVD was unpacked into
         5. Click "Select folder"
 
-        ![Opening the unpacked DVD with MPC-HC](../../../static/img/sources/dvd-remux/preview/mpc-open-dvd-unpacked.png)
+        ![Opening the unpacked DVD with MPC-HC](../../static/img/sources/dvd-remux/preview/mpc-open-dvd-unpacked.png)
 
 You should now be able to see the DVD content.
 
@@ -115,7 +115,7 @@ You should now be able to see the DVD content.
     You can click _Navigate > Title Menu_ to skip the trailers/warning
     and get straight to the menu.
 
-![Example of MPC-HC opened to a DVD](../../../static/img/sources/dvd-remux/preview/mpc-dvd-opened.png)
+![Example of MPC-HC opened to a DVD](../../static/img/sources/dvd-remux/preview/mpc-dvd-opened.png)
 
 You will want to take note of
 whether there are individual titles
@@ -318,7 +318,7 @@ is the same.
         you will need to unpack it first.
         This can be done with either WinRAR or 7-Zip.
 
-        ![Unpacking a DVDISO with 7-Zip](../../../static/img/sources/dvd-remux/pgcdemux/unpack-context-menu.png)
+        ![Unpacking a DVDISO with 7-Zip](../../static/img/sources/dvd-remux/pgcdemux/unpack-context-menu.png)
 
         Once you have an unpacked DVDISO,
         you can open PgcDemux
@@ -333,12 +333,12 @@ is the same.
         in the path,
         such as Japanese characters.
 
-        ![Error when path contains unicode characters](../../../static/img/sources/dvd-remux/pgcdemux/name-error.png)
+        ![Error when path contains unicode characters](../../static/img/sources/dvd-remux/pgcdemux/name-error.png)
 
         Once you have dragged the file into the program,
         you will see a window like the following:
 
-        ![PgcDemux main window](../../../static/img/sources/dvd-remux/pgcdemux/main-window.png)
+        ![PgcDemux main window](../../static/img/sources/dvd-remux/pgcdemux/main-window.png)
 
         There are three modes
         to choose from.
@@ -348,7 +348,7 @@ is the same.
         You can select different PGCs in the "PGC Selection" box.
         Under the dropdown menu, you can find invididual titles:
 
-        ![PGC selection dropdown](../../../static/img/sources/dvd-remux/pgcdemux/selection-dropdown.png)
+        ![PGC selection dropdown](../../static/img/sources/dvd-remux/pgcdemux/selection-dropdown.png)
 
         In most cases, these will be split into individual episodes.
         If that's not the case,
@@ -360,14 +360,14 @@ is the same.
         You will see a list of demuxing options.
         Set these to the following:
 
-        ![PgcDemux options window, with "Create a PGC VOB" and "One file per VID" option ticked, and everything else unticked](../../../static/img/sources/dvd-remux/pgcdemux/options-window.png)
+        ![PgcDemux options window, with "Create a PGC VOB" and "One file per VID" option ticked, and everything else unticked](../../static/img/sources/dvd-remux/pgcdemux/options-window.png)
 
         Once you have set the options,
         you can click the "Process!" button
         to begin the demuxing process.
         This will output the files into your output directory.
 
-        ![Output directory](../../../static/img/sources/dvd-remux/pgcdemux/output.png)
+        ![Output directory](../../static/img/sources/dvd-remux/pgcdemux/output.png)
 
         If the episodes are not split into individual files,
         you will need to split them manually.
@@ -375,7 +375,7 @@ is the same.
         using [mkvtoolnix](https://mkvtoolnix.download/)
         and splitting by time under the "Output" tab.
 
-        ![mkvtoolnix splitting menu](../../../static/img/sources/dvd-remux/pgcdemux/mkvtoolnix-split.png)
+        ![mkvtoolnix splitting menu](../../static/img/sources/dvd-remux/pgcdemux/mkvtoolnix-split.png)
 
     === "MakeMKV"
 
@@ -407,18 +407,18 @@ is the same.
                 It will start processing the file,
                 and then show you this window:
 
-                ![MakeMKV main window](../../../static/img/sources/dvd-remux/makemkv/main-window.png)
+                ![MakeMKV main window](../../static/img/sources/dvd-remux/makemkv/main-window.png)
 
                 Select the titles you want to remux,
                 give it an output folder and name,
                 and click the button underneath "Make MKV".
 
-                ![MakeMKV Progress window](../../../static/img/sources/dvd-remux/makemkv/progress-window.png)
+                ![MakeMKV Progress window](../../static/img/sources/dvd-remux/makemkv/progress-window.png)
 
                 Once it's done,
                 the files will be in the output folder.
 
-                ![MakeMKV output folder](../../../static/img/sources/dvd-remux/makemkv/output.png)
+                ![MakeMKV output folder](../../static/img/sources/dvd-remux/makemkv/output.png)
 
             === "Physical disc"
 
@@ -426,7 +426,7 @@ is the same.
                 MakeMKV will automatically detect it,
                 and then show you this window:
 
-                ![MakeMKV main window](../../../static/img/sources/dvd-remux/makemkv/inserted-disc-window.png)
+                ![MakeMKV main window](../../static/img/sources/dvd-remux/makemkv/inserted-disc-window.png)
 
                 Click the "Backup" button,
                 select "Decrypt video files"
@@ -436,7 +436,7 @@ is the same.
                 It will now start creating
                 a back-up of your disc.
 
-                ![MakeMKV backup window](../../../static/img/sources/dvd-remux/makemkv/copy-dvd-window.png)
+                ![MakeMKV backup window](../../static/img/sources/dvd-remux/makemkv/copy-dvd-window.png)
 
                 Once it's done,
                 [follow the instructions
@@ -448,7 +448,7 @@ is the same.
                 click the "Open files" button,
                 and navigate to your unpacked DVDISO.
 
-                ![MakeMKV open files window](../../../static/img/sources/dvd-remux/makemkv/ifo-file.png)
+                ![MakeMKV open files window](../../static/img/sources/dvd-remux/makemkv/ifo-file.png)
 
                 You should see a `VIDEO_TS.ifo` file.
                 Select it,
@@ -456,18 +456,18 @@ is the same.
                 It should start processing the file,
                 and then show you this window:
 
-                ![MakeMKV main window](../../../static/img/sources/dvd-remux/makemkv/main-window.png)
+                ![MakeMKV main window](../../static/img/sources/dvd-remux/makemkv/main-window.png)
 
                 Select the titles you want to remux,
                 give it an output folder and name,
                 and click the button underneath "Make MKV".
 
-                ![MakeMKV Progress window](../../../static/img/sources/dvd-remux/makemkv/progress-window.png)
+                ![MakeMKV Progress window](../../static/img/sources/dvd-remux/makemkv/progress-window.png)
 
                 Once it's done,
                 the files will be in the output folder.
 
-                ![MakeMKV output folder](../../../static/img/sources/dvd-remux/makemkv/output.png)
+                ![MakeMKV output folder](../../static/img/sources/dvd-remux/makemkv/output.png)
 
 ??? example "Multiple Angles"
 
@@ -755,7 +755,7 @@ to derive the most accurate SAR values.
         to mark the boundaries
         of the active picture area.
 
-        ![Example frame from Nurse Witch Komugi Magikarte](../../../static/img/sources/dvd-remux/sar/faded-columns-method.png)
+        ![Example frame from Nurse Witch Komugi Magikarte](../../static/img/sources/dvd-remux/sar/faded-columns-method.png)
 
         To get the active area width:
 
@@ -786,7 +786,7 @@ to derive the most accurate SAR values.
         until the faded columns
         are no longer visible.
 
-        ![vspreview cropping toolbar](../../../static/img/sources/dvd-remux/sar/vspreview-crop.png)
+        ![vspreview cropping toolbar](../../static/img/sources/dvd-remux/sar/vspreview-crop.png)
 
         For example, if you have:
 
@@ -809,7 +809,7 @@ to derive the most accurate SAR values.
         - Therefore SAR: 10:11
         - Final display resolution: 704×528
 
-        ![Example frame from Nurse Witch Komugi Magikarte with all the relevant information](../../../static/img/sources/dvd-remux/sar/faded-columns-stretched.png)
+        ![Example frame from Nurse Witch Komugi Magikarte with all the relevant information](../../static/img/sources/dvd-remux/sar/faded-columns-stretched.png)
 
     === "Circle method"
 
@@ -824,7 +824,7 @@ to derive the most accurate SAR values.
         2. In an image editor, overlay a perfect circle on top of the object
         3. Test different standard SAR values until the object matches the overlay
 
-        ![Perfect circle overlaid onto a frame, example from Kaleido Star](../../../static/img/sources/dvd-remux/sar/circle-method.png)
+        ![Perfect circle overlaid onto a frame, example from Kaleido Star](../../static/img/sources/dvd-remux/sar/circle-method.png)
 
         The image above demonstrates a perfect match
         using a SAR of 6:5,
@@ -850,7 +850,7 @@ to derive the most accurate SAR values.
         and adjust the SAR
         until they match perfectly.
 
-        ![Logo from Google overlaid onto the OP credits](../../../static/img/sources/dvd-remux/sar/logo-method.png)
+        ![Logo from Google overlaid onto the OP credits](../../static/img/sources/dvd-remux/sar/logo-method.png)
 
         In this example,
         matching the logo
