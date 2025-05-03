@@ -237,4 +237,4 @@ from vsmasktools import bounded_dehardsub
 dehardsub = bounded_dehardsub(hardsub, ref, [regular_dehardsub, fading_dehardsub])
 ```
 
-[vs-masktools]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-masktools
+[vs-masktools]: https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack/tree/main/vsmasktools
