@@ -243,7 +243,7 @@ you'll need to install them
 using pip,
 Python’s package installer.
 For detailed steps,
-refer to the [setup guide](./setup.md#installing-the-jet-packages).
+refer to the [setup guide](./installation.md#installing-the-jet-packages).
 
 Once installed,
 you can import packages
