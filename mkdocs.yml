@@ -37,6 +37,8 @@ nav:
       - Order of Operations: filtering/general/order.md
       - Expressions: filtering/general/expressions.md
     - Common Filtering:
+      - Denoising:
+        - MVTools: filtering/common/denoising/mvtools.md
       - Descaling:
         - Theory: filtering/common/descaling/theory.md
         - Known Resolutions: filtering/common/descaling/known-resolutions.md
