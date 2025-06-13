@@ -1,0 +1,1807 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Various guides on encoding by JET">
+      
+      
+        <meta name="author" content="Jaded Encoding Thaumaturgy">
+      
+      
+        <link rel="canonical" href="https://jaded-encoding-thaumaturgy.github.io/JET-guide/mvtools/filtering/common/denoising/mvtools/">
+      
+      
+        <link rel="prev" href="../../../general/expressions/">
+      
+      
+        <link rel="next" href="../../descaling/theory/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>MVTools - JET Encoding Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#motion-vector-tools" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="JET Encoding Guide" class="md-header__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JET Encoding Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MVTools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="JET Encoding Guide" class="md-nav__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    JET Encoding Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Basics
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Basics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../basics/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../basics/python-primer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python Primer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../basics/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../basics/how-do-i/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How do I...?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Source Preparation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Source Preparation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DVDs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DVDs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../sources/dvd/remuxing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remuxing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://wobbly.encode.moe" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wobbly 🡕
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Filtering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    General Techniques
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            General Techniques
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../general/order/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Order of Operations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../general/expressions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Expressions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Common Filtering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Common Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Denoising
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Denoising
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    MVTools
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    MVTools
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mvtools-class-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVTools Class and Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MVTools Class and Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#super" class="md-nav__link">
+    <span class="md-ellipsis">
+      super
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze" class="md-nav__link">
+    <span class="md-ellipsis">
+      analyze
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recalculate" class="md-nav__link">
+    <span class="md-ellipsis">
+      recalculate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compensate" class="md-nav__link">
+    <span class="md-ellipsis">
+      compensate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#degrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      degrain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motion-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Interpolation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#denoising" class="md-nav__link">
+    <span class="md-ellipsis">
+      Denoising
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Descaling
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Descaling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../descaling/theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Theory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../descaling/known-resolutions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Known Resolutions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Situational Filtering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Situational Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../situational/dehardsubbing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dehardsubbing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Encoding
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Encoding
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../encoding/x264/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    x264
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../encoding/x265/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    x265
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Misc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Misc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../misc/comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Comparison
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Additional Resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mvtools-class-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      MVTools Class and Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MVTools Class and Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#super" class="md-nav__link">
+    <span class="md-ellipsis">
+      super
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analyze" class="md-nav__link">
+    <span class="md-ellipsis">
+      analyze
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recalculate" class="md-nav__link">
+    <span class="md-ellipsis">
+      recalculate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compensate" class="md-nav__link">
+    <span class="md-ellipsis">
+      compensate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#degrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      degrain
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motion-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion Interpolation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#denoising" class="md-nav__link">
+    <span class="md-ellipsis">
+      Denoising
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="motion-vector-tools">Motion Vector Tools</h1>
+<div class="admonition warning">
+<p class="admonition-title">This page is incomplete!</p>
+<p>This list is a stub
+and still very incomplete!
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Show different examples of sources and MVTools application</li>
+</ul>
+</details>
+</div>
+<p>Motion Vector Tools, or MVTools, is a cornerstone
+of many video processing tools.
+It works by analyzing the motion between concurrent frames,
+and return motion vectors that can be leveraged for many purposes.</p>
+<h2 id="mvtools-class-and-methods">MVTools Class and Methods</h2>
+<p>Vapoursynth's MVTools can be imported from the <code>vsdenoise</code> Python library.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vsdenoise</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">MVTools</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span style="color: #E06C75">mv</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MVTools</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This class accepts a number of arguments:</p>
+<ul>
+<li><code>clip</code></li>
+</ul>
+<p>The clip to process.
+This is the clip that methods that make use of the analyze results
+will operate on, such as <code>degrain</code>.</p>
+<ul>
+<li><code>search_clip</code></li>
+</ul>
+<p>The clip to use for motion vector search.
+By default, this will be the same as <code>clip</code>.
+If specified, this clip will be used for motion estimation
+while keeping the original clip for compensation.</p>
+<p>If your source is very noisy or otherwise difficult to analyze,
+you can prefilter it and pass the prefiltered clip to <code>search_clip</code>
+to improve the quality of the motion estimation.
+Common examples include pre-denoising
+using a spatial filter such as <code>vsdenoise.DFTTest</code>,
+or increasing the levels of the clip using <code>vsdenoise.prefilter_to_full_range</code>.</p>
+<ul>
+<li><code>vectors</code></li>
+</ul>
+<p>Pre-calculated motion vectors to use.
+If None (default), the class will calculate its own vectors.</p>
+<ul>
+<li><code>pad</code></li>
+</ul>
+<p>How much padding to add to the source frame.
+Small padding is added to help with motion estimation near frame borders.</p>
+<ul>
+<li><code>pel</code></li>
+</ul>
+<p>Subpixel precision for motion estimation.
+1 means pixel precision, 2 means half-pixel, 4 means quarter-pixel.
+Higher precision can give better results but increases processing time.
+Default is 1.</p>
+<ul>
+<li><code>planes</code></li>
+</ul>
+<p>Which planes to process.
+Default is None (all planes).</p>
+<ul>
+<li>Various <code>*_args</code> parameters</li>
+</ul>
+<p>Arguments that will be passed to their respective MVTools functions.
+Args are accepted here so MVTools presets can be used.</p>
+<ul>
+<li><code>super_args</code>: Arguments for the <code>super</code> function</li>
+<li><code>analyze_args</code>: Arguments for the <code>analyze</code> function</li>
+<li><code>recalculate_args</code>: Arguments for the <code>recalculate</code> function</li>
+<li><code>compensate_args</code>: Arguments for the <code>compensate</code> function</li>
+<li><code>degrain_args</code>: Arguments for the <code>degrain</code> function</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Reference clip</p>
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 633)" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_633_src.png" /></p>
+</div>
+<h3 id="super">super</h3>
+<div class="admonition info">
+<p class="admonition-title">Required method</p>
+<p>This method is required for all other methods to work,
+and must always be called.</p>
+</div>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">super</span><span style="color: #ABB2BF">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Creates a clip suitable for motion vector analysis.
+This is done by creating a pyramid of frames at different scales,
+The resulting clip contains the original frames
+along with additional data used by subsequent MVTools functions.
+This clip should not be adjusted by the user.</p>
+<details class="example">
+<summary>Super clip</summary>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Default parameters</label><label for="__tabbed_1_2">With pel=2</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span style="color: #E06C75">mv</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MVTools</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">super</span><span style="color: #ABB2BF">()</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 633) - Super" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_633_super.jpg" /></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span style="color: #E06C75">mv</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MVTools</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">pel</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">2</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">super</span><span style="color: #ABB2BF">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Notice how there's fewer "big" frames.</p>
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 633) - Super (pel=2)" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_633_super_pel2.jpg" /></p>
+</div>
+</div>
+</div>
+</details>
+<h3 id="analyze">analyze</h3>
+<div class="admonition info">
+<p class="admonition-title">Required method</p>
+<p>This method is required for all other methods to work,
+and must always be called.</p>
+</div>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">analyze</span><span style="color: #ABB2BF">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Analyzes motion between frames to generate motion vectors.
+This function estimates how objects and details move
+between consecutive frames in the video
+based on block matching frames
+using the <code>super</code> clip.</p>
+<p>Analyze is performed using
+a Sum of Absolute Differences (SAD) prediction,
+which compares blocks between frames
+by adding up the absolute differences
+between corresponding pixels.</p>
+<h3 id="recalculate">recalculate</h3>
+<div class="admonition warning">
+<p class="admonition-title">This section is incomplete!</p>
+<p>This section is a stub.
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Explain why recalculate is useful</li>
+<li>Show examples where recalculate proves an easily-visible improvement</li>
+</ul>
+</details>
+</div>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">recalculate</span><span style="color: #ABB2BF">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Refines existing motion vectors for improved accuracy.
+This function performs additional analysis
+to reduce errors and improve the quality of motion estimation.</p>
+<h3 id="compensate">compensate</h3>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">compensate</span><span style="color: #ABB2BF">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Uses motion vectors to create motion-compensated frames.
+This function shifts pixels according to the calculated motion,
+which helps align details between frames
+for temporal processing operations.</p>
+<div class="admonition warning">
+<p class="admonition-title">Overlap</p>
+<p>The <code>compensate</code> method requires you
+to have set <code>blksize</code> and <code>overlap</code>
+in the <code>analyze</code> method,
+as well as <code>recalculate</code>
+if that method was called.</p>
+</div>
+<details class="example">
+<summary>Compensate clip</summary>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-6">6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-7">7</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span style="color: #E06C75">mv</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MVTools</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">super</span><span style="color: #ABB2BF">()</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">analyze</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blksize</span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">32</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">32</span><span style="color: #ABB2BF">),</span> <span style="color: #E06C75">overlap</span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">16</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">16</span><span style="color: #ABB2BF">))</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">recalculate</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blksize</span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">32</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">32</span><span style="color: #ABB2BF">),</span> <span style="color: #E06C75">overlap</span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">16</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">16</span><span style="color: #ABB2BF">))</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span style="color: #E06C75">compensated_clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">frame_offsets</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">compensate</span><span style="color: #ABB2BF">()</span>
+</code></pre></div></td></tr></table></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Original frame</label><label for="__tabbed_2_2">Compensated Frame A</label><label for="__tabbed_2_3">Compensated Frame B</label><label for="__tabbed_2_4">Compensated Frame C</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 633)" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_633_src.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 633) - Compensated Frame A" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_633_compensate_A.jpg" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 633) - Compensated Frame B" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_633_compensate_B.jpg" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 633) - Compensated Frame C" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_633_compensate_C.jpg" /></p>
+</div>
+</div>
+</div>
+</details>
+<p>This method returns a tuple containing:</p>
+<ul>
+<li><code>compensated_clip</code>: The interleaved motion-compensated frames</li>
+<li><code>frame_offsets</code>: A tuple containing:<ul>
+<li><code>total_frames</code>: Total number of frames in the compensated clip</li>
+<li><code>center_offset</code>: Frame offset to the center frame</li>
+</ul>
+</li>
+</ul>
+<p>This method is mostly useful for very simple motion interpolation,
+or to be used as a reference for more advanced motion interpolation functions
+(such as for example <code>QTempGaussMC</code>).</p>
+<h3 id="degrain">degrain</h3>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">degrain</span><span style="color: #ABB2BF">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Performs temporal denoising using motion compensation.
+This function combines information from multiple frames
+while accounting for motion to reduce noise
+while preserving moving details.</p>
+<p>This method is a rather simple denoising method,
+and is not recommended to be used alone.
+It is mostly useful as a reference for more advanced denoising methods,
+such as through <code>BM3D</code>.</p>
+<div class="admonition example">
+<p class="admonition-title">Degrained clip</p>
+<p><a href="https://slow.pics/c/Z4M9eCfv">Comparison of MVTools degrain with different thsad values.</a></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Original frame</label><label for="__tabbed_3_2">Degrained frame (thsad=100)</label><label for="__tabbed_3_3">Degrained frame (thsad=250)</label><label for="__tabbed_3_4">Degrained frame (thsad=500)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 1481)" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_1481_src.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 1481) - Degrained frame (thsad=100)" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_1481_degrain_thsad100.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 1481) - Degrained frame (thsad=250)" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_1481_degrain_thsad250.png" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Tantei Opera Milky Holmes Season 2 - NCOP1 (frame 1481) - Degrained frame (thsad=500)" src="../../../../static/img/filtering/denoising/mvtools/milkyholmes_1481_degrain_thsad500.png" /></p>
+</div>
+</div>
+</div>
+</div>
+<h2 id="motion-interpolation">Motion Interpolation</h2>
+<div class="admonition warning">
+<p class="admonition-title">This section is incomplete!</p>
+<p>This section is a stub.
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Write about motion interpolation</li>
+<li>Write about use-cases to improve interpolation using MVTools-compensated clip</li>
+</ul>
+</details>
+</div>
+<h2 id="denoising">Denoising</h2>
+<p>The most common use of MVTools is for temporal denoising.
+By analyzing motion between frames,
+MVTools can track how objects and details move over time.
+This information allows us to distinguish
+between consistent details that follow expected motion patterns,
+and random noise that appears independently between frames.
+This allows us to apply more aggressive noise reduction
+while reducing the risk of introducing ghosting or smearing.</p>
+<div class="admonition warning">
+<p class="admonition-title">Static noise</p>
+<p>MVTools can only effectively reduce noise that changes between frames.
+If noise patterns remain static across multiple frames,
+MVTools will treat them as legitimate image detail
+since they don't exhibit any motion.
+This means static noise, including some types of dithering and grain,
+will be preserved rather than removed.
+This limitation can be circumvented
+by combining MVTools with spatial filtering.</p>
+</div>
+<p>Denoising with MVTools is done through two steps:</p>
+<ol>
+<li>Motion Estimation</li>
+</ol>
+<p>First, we need to create a motion vector search clip.
+This is a clip that contains the original frames,
+and the frames that have been shifted by the motion vectors.
+This is done by using the <code>super</code> method,
+which creates a new clip with the original frames,
+and the frames that have been shifted by the motion vectors.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-1"> 1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-2"> 2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-3"> 3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-4"> 4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-5"> 5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-6"> 6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-7"> 7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-8"> 8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-9"> 9</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-10">10</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-11">11</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-12">12</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-13">13</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vsdenoise</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">MVTools</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span style="color: #7F848E"># Create MVTools object for motion estimation</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span style="color: #E06C75">mv</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MVTools</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span style="color: #7F848E"># Create motion vector search clip</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">super</span><span style="color: #ABB2BF">()</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span style="color: #7F848E"># Analyze motion vectors between frames</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">analyze</span><span style="color: #ABB2BF">()</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span style="color: #7F848E"># Refine motion vectors for increased accuracy</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">recalculate</span><span style="color: #ABB2BF">()</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Denoising</li>
+</ol>
+<p>Denoising can be performed using the <code>degrain</code> method.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span style="color: #E06C75">mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">degrain</span><span style="color: #ABB2BF">()</span>
+</code></pre></div></td></tr></table></div>
+<p>However, it's not recommended to use this method alone.
+Instead, it's recommended to use this as a reference clip
+for more complex denoising functions,
+such as <code>BM3D</code>.</p>
+<details class="example">
+<summary>Using MVTools as a basic clip for BM3D</summary>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-6">6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-7">7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-8">8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-9">9</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span style="color: #E06C75">pre_mv</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">MVTools</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">pref</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span style="color: #E06C75">pre_mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">super</span><span style="color: #ABB2BF">()</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span style="color: #E06C75">pre_mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">analyze</span><span style="color: #ABB2BF">()</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span style="color: #E06C75">pre_mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">recalculate</span><span style="color: #ABB2BF">()</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span style="color: #E06C75">pre_mv_final</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">pre_mv</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">degrain</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">thsad</span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">100</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">50</span><span style="color: #ABB2BF">))</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span style="color: #E06C75">den</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">BM3D</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">denoise</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">sigma</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">ref</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">pre_mv_final</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">planes</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<p>When degraining using MVTools,
+try to lower the <code>thsad</code> value as much as possible.
+Higher values will create more smearing and ghosting.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
