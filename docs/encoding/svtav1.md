@@ -52,9 +52,58 @@ see the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/m
     and ensure you're in compliance
     with your company's requirements.
 
+## General AV1 Knowledge
+
+...
+<!-- TODO -->
+
 ## General Parameters
 
 The following parameters
 are the type of parameters
 you'll usually always set,
 and rarely touch again.
+
+### Preset
+
+Use `--preset 2` or `4`.
+
+Unlike x26x encoders, SVT-AV1 presets set
+internal parameters that are not accessible
+to the user. Therefore, there is no real concern
+of overriding anything crucial by setting them.
+
+??? question "How do I choose one over the other? Why not use `--preset 3`?"
+     `--preset 2` is the slowest preset that showcase good efficiency 
+     improvements for little speed losses. Going lower is considered
+     entering placebo territory, plus there are concerns of blurrier
+     visuals at slower presets.
+     `--preset 4` is noticeably faster and has been reported
+     to give higher fidelity results compared to `2`, it is usually
+     considered a better efficiency-to-speed trade-off.
+     The best course of action is to try both on your usual content,
+     ideally on small test samples, and determine which one you prefer.
+
+     `--preset 3` falls into an awkward middle ground between `2` and `4`,
+     offering little compelling reason to choose it over either alternative.
+     By the way, presets `5` and above are more suited for realtime usecases
+     and are therefore not considered here.
+
+
+## Source-Specific Parameters
+
+The following parameters
+should be adjusted
+based on your specific video,
+and likely will require tweaking
+on a case-by-case basis.
+
+### Constant Rate Factor
+
+...
+<!-- TODO -->
+
+### Film Grain Synthesis
+
+...
+<!-- TODO -->
