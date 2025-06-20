@@ -89,6 +89,67 @@ of overriding anything crucial by setting them.
      By the way, presets `5` and above are more suited for realtime usecases
      and are therefore not considered here.
 
+### Tune
+
+...
+<!-- TODO -->
+
+### Variance Boost
+
+Usually enabled by default in SVT-AV1 forks, *varboost* is however disabled
+in mainline SVT-AV1.
+
+You can control its on or off state with `--enable-variance-boost`.
+
+In a nutshell, *varboost* allocates more bits to low-contrast areas in a frame.
+A complete rundown is available in the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-Variance-Boost.md).
+
+You can control its behavior by changing its `--variance-boost-strength` from the default `2` or its `--variance-octile` from the default `6`.
+Basically, the strength controls how much areas are to be boosted,
+while octile controls how much of the area needs to be deemed low-contrast before being boosted.
+
+Historically, metrics have shown this strength-octile combination to be the most efficient on a wide variety of content types,
+therefore it is usually not recommended to stray away from the defaults.
+
+### Constrained Directional Enhancement Filter
+
+...
+<!-- TODO -->
+
+### Restoration Filter
+
+...
+<!-- TODO -->
+
+### Temporal Filtering
+
+...
+<!-- TODO: including tf-strength -->
+
+### Quantisation Matrices
+
+...
+<!-- TODO -->
+
+### Luma Bias
+
+...
+<!-- TODO -->
+
+### Sharpness
+
+...
+<!-- TODO -->
+
+### Tiles
+
+...
+<!-- TODO -->
+
+### Fast Decode
+
+...
+<!-- TODO -->
 
 ## Source-Specific Parameters
 
