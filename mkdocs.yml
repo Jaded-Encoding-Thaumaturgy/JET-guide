@@ -45,6 +45,7 @@ nav:
   - Encoding:
     - x264: encoding/x264.md
     - x265: encoding/x265.md
+    - SVT-AV1: encoding/svtav1.md
   - Misc:
     - Comparison: misc/comparison.md
   - Additional Resources: resources.md
