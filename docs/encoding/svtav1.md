@@ -54,6 +54,8 @@ see the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/m
 
 ## General AV1 Knowledge
 
+AV1 is generally less well-known than its H.26x competitors.
+
 ...
 <!-- TODO -->
 
@@ -90,6 +92,20 @@ of overriding anything crucial by setting them.
      and are therefore not considered here.
 
 ### Tune
+
+There exists three main tunes in the original SVT-AV1 implementation:
+`--tune 0` (VQ, for Visual Quality),
+`--tune 1` (PSNR, for Peak Signal-to-Noise Ratio) and
+`--tune 2` (SSIM, for Structural Similarity Index Measure).
+
+A *SVT-AV1-PSY(EX)*-exclusive `--tune 3`, with psychovisual intents, builds on `2` while borrowing features from `0`.
+
+!!! warning
+    Not to be confused with *SVT-AV1-HDR*'s `--tune 3`
+    which is effectively a `tune grain` equivalent.
+    It disables certain features like CDEF, restoration,
+    temporal filtering and sets agressive psy-rd strengths.
+    It is most effective on noisy live-action content.
 
 ...
 <!-- TODO -->
@@ -160,6 +176,28 @@ and likely will require tweaking
 on a case-by-case basis.
 
 ### Constant Rate Factor
+
+For an optimal usage of the encoder, set a Constant Rate Factor (CRF) value between 20 and 30
+
+CRF is a rate control mode that aims to achieve a consistent quality level across the entire video.
+Lower values result in higher quality and larger file sizes,
+while higher values lead to lower quality and smaller file sizes.
+
+We recommend using CRF values between 20 and 30
+to achieve high-efficiency, appealing encodes.
+This range typically provides the best balance
+between visual appeal and file size for most content.
+
+!!! warning "Lower resolution encodes may require a lower CRF value"
+     Lower resolution encodes may require a lower CRF value
+     to achieve the same level of quality as higher resolution encodes.
+     This is due to the fact that lower resolution encodes
+     will be upscaled during playback,
+     which makes quantization artifacts more noticeable.
+     For SD content,
+     you may need to use a CRF value of 20 or lower.
+
+
 
 ...
 <!-- TODO -->
