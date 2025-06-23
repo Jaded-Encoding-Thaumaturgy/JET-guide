@@ -54,7 +54,8 @@ see the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/m
 
 ## General AV1 Knowledge
 
-AV1 is generally less well-known than its H.26x competitors.
+AV1 is generally less well-known than its H.26x competitors,
+justifying such a section.
 
 ...
 <!-- TODO -->
@@ -98,7 +99,8 @@ There exists three main tunes in the original SVT-AV1 implementation:
 `--tune 1` (PSNR, for Peak Signal-to-Noise Ratio) and
 `--tune 2` (SSIM, for Structural Similarity Index Measure).
 
-A *SVT-AV1-PSY(EX)*-exclusive `--tune 3`, with psychovisual intents, builds on `2` while borrowing features from `0`.
+A *SVT-AV1-PSY(EX)*-exclusive `--tune 3`, with psychovisual intents,
+builds on `2` while borrowing features from `0`.
 
 !!! warning
     Not to be confused with *SVT-AV1-HDR*'s `--tune 3`
@@ -120,27 +122,77 @@ You can control its on or off state with `--enable-variance-boost`.
 In a nutshell, *varboost* allocates more bits to low-contrast areas in a frame.
 A complete rundown is available in the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-Variance-Boost.md).
 
-You can control its behavior by changing its `--variance-boost-strength` from the default `2` or its `--variance-octile` from the default `6`.
+You can control its behavior by changing its `--variance-boost-strength`
+from the default `2` or its `--variance-octile` from the default `6`.
 Basically, the strength controls how much areas are to be boosted,
-while octile controls how much of the area needs to be deemed low-contrast before being boosted.
+while octile controls how much of the area needs to be deemed low-contrast
+before being boosted.
 
-Historically, metrics have shown this strength-octile combination to be the most efficient on a wide variety of content types,
+Historically, metrics have shown this strength-octile combination to be
+the most efficient on a wide variety of content types,
 therefore it is usually not recommended to stray away from the defaults.
 
 ### Constrained Directional Enhancement Filter
 
-...
-<!-- TODO -->
+According to the [official documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-CDEF.md),
+"The constrained directional enhancement filter (CDEF) [...]
+aims at improving the reconstructed picture by
+addressing ringing artifacts."
+
+The closest equivalent to this feature would be SAO in x265,
+except it is not prone to the same level of detail loss.
+
+`--enable-cdef` tends to limit edge artefacts effectively
+without introducing severe additional line fading,
+thus improving visual appeal.
+
+Therefore, it is recommended to leave it on.
+
+??? info "Specific SVT-AV1-HDR usage"
+
+     The SVT-AV1-HDR fork disables CDEF in tune 3 to hopefully increase
+     grain retention consistency across the whole picture, but it is effectively
+     a bruteforcing method and cannot be generalized to a more general usecase.
 
 ### Restoration Filter
 
-...
-<!-- TODO -->
+According to the [official documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-Restoration-Filter.md),
+"The restoration filter [...] aims at improving the reconstructed picture by
+recovering some of the information lost during the compression process.
+
+In effect, `--enable-restoration` tends to increase efficiency
+slightly and doesn't have any documented drawbacks, 
+so it can safely be left on at all times.
+
+??? info "Specific SVT-AV1-HDR usage"
+
+     The SVT-AV1-HDR fork disables restoration in tune 3 to hopefully increase
+     grain retention consistency across the whole picture, but it is effectively
+     a bruteforcing method and cannot be generalized to a more general usecase.
 
 ### Temporal Filtering
 
-...
-<!-- TODO: including tf-strength -->
+Temporal filtering in SVT-AV1 combines information from multiple nearby
+video frames to create cleaner reference pictures with reduced noise, 
+which helps improve compression quality especially for noisy source material.
+
+The feature was often considered too strong and often created unavoidable
+blocking on keyframes, so we historically disabled temporal filtering.
+However SVT-AV1-PSY introduced a strength parameter
+which has allowed to tame its effects.
+
+It is recommended to leave `--enable-tf` on for the efficiency benefits
+it provides, but to reduce `--tf-strength` from its default `3` to `1`,
+or below, to completely eliminate the tf blocking issue.
+
+??? info "Specific SVT-AV1-PSY forks usage"
+
+     The SVT-AV1-PSY(EX) and -HDR forks include an additional
+     `--kf-tf-strength` which decouples tf strength on
+     keyframes, and allows the user to concurrently 
+     fix the blocking issue and use a stronger 
+     tf strength on all other frames
+     if you wishes so. 
 
 ### Quantisation Matrices
 
@@ -187,6 +239,9 @@ We recommend using CRF values between 20 and 30
 to achieve high-efficiency, appealing encodes.
 This range typically provides the best balance
 between visual appeal and file size for most content.
+
+If you need to go below 20, you may achieve better results
+with encoders better suited for high-fidelity like x265.
 
 !!! warning "Lower resolution encodes may require a lower CRF value"
      Lower resolution encodes may require a lower CRF value
