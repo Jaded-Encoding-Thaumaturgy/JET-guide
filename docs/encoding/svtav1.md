@@ -87,6 +87,29 @@ this guide will focus on the main encoder. Readers are
 encouraged to research and experiment with SVT-AV1 forks if
 they wish to explore further.
 
+SVT-AV1 can be found in most popular encoding software nowadays.
+
+??? question "Where do I find standalone SVT-AV1 binaries?"
+     It is possible to get official builds from the SVT-AV1 repository directly
+     by going in the *Pipeline/Tags* tab ([direct link](https://gitlab.com/AOMediaCodec/SVT-AV1/-/pipelines?scope=tags)),
+     clicking on the download button in the appropriate row for the latest version,
+     and selecting the *"[Release]"* build that matches your Operating System.
+
+     However, these builds lack any sort of compile optimizations to ensure broad
+     compatibility with most systems.
+
+     Therefore, you can alternatively get unofficial Windows binaries from this [repository](https://github.com/Patman86/SVT-AV1-Mod-by-Patman/releases),
+     including *SVT-AV1-PSYEX* and *SVT-AV1-HDR* ones. Prefer Clang binaries,
+     then GCC and lastly MSVC.
+
+     Compiling SVT-AV1 is fairly easy on any platform thanks to the built-in
+     build.bat / build.sh helper script. For instance, this command on a 
+     Linux distro will provide an almost perfectly optimized binary for your system:
+     `build.sh cc=clang cxx=clang++ jobs=$(nproc) release enable-lto native static`.
+     One can try to leverage PGO or BOLT to chase the maximum possible encoding speeds.
+     Such compiling optimizations are better documented on the *AV1 weeb edition*
+     discord server, as well as further details on the overall process.
+
 ...
 <!-- TODO -->
 
