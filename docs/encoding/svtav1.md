@@ -16,7 +16,6 @@ so expect some visible quality loss
 even in high-bitrate encodes.
 
 ??? info "Transparency"
-
      "Transparency" refers to the degree to which
      the encoded output matches the source.
      A more transparent encode will look closer to the original source,
@@ -37,7 +36,7 @@ For a more complete look at these parameters,
 see the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Parameters.md).
 
 !!! warning
-    These parameters are primarily aimed at encoding *anime*,
+    The recommendations are primarily aimed at encoding *anime*,
     and may not be suitable for other types of content.
     We will try to give alternative options
     for live-action content where possible,
@@ -54,6 +53,39 @@ see the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/m
 
 AV1 is generally less well-known than its H.26x competitors,
 justifying such a section.
+
+Let's begin with the encoder situation.
+AV1 has three publicly-available software encoders:
+*aomenc*, *SVT-AV1* and *rav1e*.
+The former is the reference encoder, is very slow,
+and doesn't hold the efficiency crown nowadays.
+The latter is coded in rust and had an interesting
+psychovisual design from the ground up, however 
+development stopped years ago after funding was cut.
+SVT-AV1, as its full name implies, is the most scalable
+encoder of the bunch, be it in performance, or in its
+various usecases. We will therefore focus on that
+encoder implementation.
+
+The SVT-AV1 code base is good, with enormous potential for 
+psychovisual development. This led to many advances since 
+early 2024, when the SVT-AV1-PSY fork, commonly maintained
+by members of the community, was introduced. Many features
+that either brought QoL improvements, increased efficiency
+or visual quality were upstreamed to mainline SVT-AV1,
+until development of the fork stopped in early 2025.
+Two new forks emerged from its remnants, *SVT-AV1-PSYEX*
+and *SVT-AV1-HDR*, the former with the goal of being the
+direct continuation of the *-PSY* project, and the latter
+concentrating on improving perceptual fidelity on specific
+grainy and HDR scenarios.
+
+This situation isn't ideal, as it tends to split the userbase.
+Fortunately, most development efforts have been merged into 
+mainline SVT-AV1, so for simplicity, the recommendations in
+this guide will focus on the main encoder. Readers are
+encouraged to research and experiment with SVT-AV1 forks if
+they wish to explore further.
 
 ...
 <!-- TODO -->
@@ -78,7 +110,7 @@ of overriding anything crucial by setting them.
      entering placebo territory, plus there are concerns of blurrier
      visuals at slower presets.
      `--preset 4` is noticeably faster and has been reported
-     to give higher fidelity results compared to `2`, it is usually
+     to give higher fidelity results compared to `2`. It is usually
      considered a better efficiency-to-speed trade-off.
      The best course of action is to try both on your usual content,
      ideally on small test samples, and determine which one you prefer.
@@ -95,25 +127,34 @@ There exists three main tunes in the original SVT-AV1 implementation:
 `--tune 1` (PSNR, for Peak Signal-to-Noise Ratio) and
 `--tune 2` (SSIM, for Structural Similarity Index Measure).
 
-A *SVT-AV1-PSY(EX)*-exclusive `--tune 3`, with psychovisual intents,
-builds on `2` while borrowing features from `0`.
+`--tune 1` is the default in mainline SVT-AV1 and consistently wins
+the efficiency crown on psychovisual metrics like SSIMULACRA2 or 
+Butteraugli in the latest encoder version.
+
+One can try to experiment with `--tune 0` which enables sharper decision
+modes for many internal features of the encoder. That tune can reduce
+blurring by increasing visual energy, at the expensive of additional
+artifacting. It is up to the user to determine if the trade-offs are
+worth it, however for the purpose of this guide and the recommended
+AV1 usecase, staying on the default is considered preferable.
+
+??? info "`--tune 3`"
+     A *SVT-AV1-PSY(EX)*-exclusive `--tune 3`, with psychovisual intents,
+     builds on `2` (the former efficiency champion)
+     while borrowing features from `0`.
 
 !!! warning
-    Not to be confused with *SVT-AV1-HDR*'s `--tune 3`
-    which is effectively a `tune grain` equivalent.
-    It disables certain features like CDEF, restoration,
-    temporal filtering and sets agressive psy-rd strengths.
-    It is most effective on noisy live-action content.
-
-...
-<!-- TODO -->
+     Not to be confused with *SVT-AV1-HDR*'s `--tune 3`
+     which is effectively a `tune grain` equivalent.
+     It disables certain features like CDEF, restoration,
+     temporal filtering and sets agressive psy-rd strengths.
+     It is most effective on noisy live-action content.
 
 ### Variance Boost
 
 Usually enabled by default in SVT-AV1 forks, *varboost* is
 however disabled in mainline SVT-AV1.
-
-You can control its on or off state with `--enable-variance-boost`.
+You can control its *on* or *off* state with `--enable-variance-boost`.
 
 In a nutshell, *varboost* allocates more bits to low-contrast areas in a frame.
 A complete rundown is available in the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-Variance-Boost.md).
@@ -171,7 +212,7 @@ which helps improve compression quality especially for noisy source material.
 
 The feature was often considered too strong and often created unavoidable
 blocking on keyframes, so we historically disabled temporal filtering.
-However SVT-AV1-PSY introduced a strength parameter
+However *SVT-AV1-PSY* introduced a strength parameter
 which has allowed to tame its effects.
 
 It is recommended to leave `--enable-tf` on for the efficiency benefits
@@ -185,12 +226,16 @@ or below, to completely eliminate the tf blocking issue.
      keyframes, and allows the user to concurrently 
      fix the blocking issue and use a stronger 
      tf strength on all other frames
-     if you wishes so. 
+     if one wishes so. 
 
 ### Sharpness
 
-...
-<!-- TODO -->
+The `--sharpness` parameter impacts the deblocking filter sharpness.
+
+Increasing its value to `1` or `2` is a conservative way of improving
+efficiency slightly, as well as perceptual quality. Higher values can
+at times provide additional perceptual benefits, but they also tend to 
+decrease efficiency to an extent, so it is recommended to proceed with caution.
 
 ### Tiles
 
@@ -199,8 +244,8 @@ independent tiles of equal size to hopefully increase encoding and decoding
 thread-ability. In SVT-AV1, tiles don't increase encoding speeds but they can
 help devices (especially low-powered ones) to software decode AV1 more easily.
 
-The following recommendation minimizes efficiency losses and provide decent
-benefits in decoding performance:
+The following recommendation minimizes efficiency losses and provide
+non-negligible benefits in decoding performance:
 
 - `--tile-columns 1 --tile-rows 0`: at 1080p and above. 
 - `--tile-columns 2 --tile-rows 1`: at 4K and above.
@@ -223,11 +268,9 @@ that the output can be more prone to macro-blocking, so proceed with caution.
 
 ## Source-Specific Parameters
 
-The following parameters
-should be adjusted
-based on your specific video,
-and likely will require tweaking
-on a case-by-case basis.
+The following parameters should be adjusted
+based on your specific video, and likely will
+require tweaking on a case-by-case basis.
 
 ### Constant Rate Factor
 
