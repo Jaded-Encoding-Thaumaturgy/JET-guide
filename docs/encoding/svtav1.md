@@ -107,7 +107,8 @@ SVT-AV1 can be found in most popular encoding software nowadays.
      Linux distro will provide an almost perfectly optimized binary for your system:
      `build.sh cc=clang cxx=clang++ jobs=$(nproc) release enable-lto native static`.
      One can try to leverage PGO or BOLT to chase the maximum possible encoding speeds.
-     Such compiling optimizations are better documented on the *AV1 weeb edition*
+     A basic compiling guide can be found in the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Build-Guide.md),
+     but such compiling optimizations are better documented on the *AV1 weeb edition*
      discord server, as well as further details on the overall process.
 
 ...
@@ -301,7 +302,7 @@ require tweaking on a case-by-case basis.
 
 ### Constant Rate Factor
 
-For an optimal usage of the encoder, **set a Constant Rate Factor (CRF) value between 20 and 30.**
+For an optimal usage of the encoder, **set a Constant Rate Factor (`--crf`) value between 20 and 30.**
 
 CRF is a rate control mode that aims to achieve a consistent quality level across the entire video.
 Lower values result in higher quality and larger file sizes,
@@ -324,15 +325,45 @@ with encoders better suited for high-fidelity like x265.
      For SD content,
      you may need to use a CRF value of 20 or lower.
 
-
-
-...
-<!-- TODO -->
-
 ### Film Grain Synthesis
 
-...
-<!-- TODO -->
+Film Grain Synthesis (FGS) is a key AV1 feature that takes the form
+of additional metadata in the bitstream. Its intended goal is to help 
+reconstruct grain using fewer bits than would otherwise be needed to 
+preserve such grain in the actual encode. It is declined in two 
+versions that produce similarly structured metadata:
+
+- **Photon noise tables**: A single grain type applied uniformly
+across the entire AV1 bitstream. This approach better matches
+digital grain and has minimal impact on file size.
+These static tables can be generated using tools like Av1an or
+grav1synth. A comprehensive database of such tables is available
+in this [repository](https://github.com/nekotrix/AV1-Photon-Noise-Tables).
+You can use a photon noise table by providing its file path to the
+`--fgs-table` parameter. Noise tables have no impact on encoding speeds.
+- Actual **grain synthesis**: SVT-AV1 includes its own built-in FGS
+implementation that dynamically adjusts grain appearance based on source
+characteristics. This usually better matches the source's energy,
+assuming you select an appropriate strength value for the given source.
+It tends to more closely resemble analog grain. Note that due to its 
+variable nature, the grain metadata can consume up to a few megabytes per 
+10 minutes of encoded video, which is typically negligible for most use cases.
+You can enable internal grain synthesis by setting any `--film-grain`
+value between `1-50`, with higher values meaning stronger grain. An integrated
+denoiser step exists (`--film-grain-denoise`) but it is terrible, so it's best
+left disabled (the default behavior). Film-grain's impact on encoding speed
+increases the slower your CPU is or the faster the preset in use.
+
+Just like CRF, this process requires manual adjustment depending on
+your source material.
+
+Even in cases where grain retention is not a concern, for example with 
+relatively clean sources, using FGS is still highly recommended for its
+forced dithering benefits. You're probably familiar with x26x encoders'
+tendency to produce poor gradients at high CRF values. You can prevent
+this issue to some extent in AV1 encodes by using a photon noise ISO of
+400 or higher, or a film-grain strength of 4 or higher. Lower values 
+don't consistently resolve these dithering problems.
 
 ### Quantisation Matrices
 
@@ -353,8 +384,7 @@ especially when paired with a lower `--qm-min` than
 the default `8`, so feel free to experiment with this. 
 
 ??? info "Specific SVT-AV1-PSY forks usage"
-
-     The SVT-AV1-PSY(EX) and -HDR forks include additional
+     The *SVT-AV1-PSY(EX)* and *-HDR* forks include additional
      `--chroma-qm-min` & `--chroma-qm-max` parameters
      which decouple QMs for luma and chroma, allowing
      more control over quantization, as the chroma subsampling
@@ -374,12 +404,58 @@ The higher the value, the stronger the effect is.
 This implementation has one advantage and one weakness: it gives the user
 simple control over the bitrate balancing between bright and dark frames, 
 however if only parts of the frame are dark and the rest is fairly bright, 
-it may not fix cases of localized detail loss or blurring.
+it may not fix cases of localized bitrate starving.
 
 Still, due to how much SVT-AV1 starves dark content,
-luma bias usually provides slight efficiency benefits,
-though that may not always be the case if extreme values
+luma bias usually provides slight efficiency benefits.
+Though that may not always be the case if extreme values
 (> 70) are selected.
 
 To better balance out bitrate allocation between bright and dark frames,
 it is recommended to up `--luminance-qp-bias` and `--crf` at the same time.
+
+## Sane Base SVT-AV1 Parameters List
+
+Assuming a clean-ish 1080p source:
+
+```bash
+--preset 4 --enable-variance-boost 1 --tf-strength 1 --sharpness 1 --tile-columns 1 --crf 25 --film-grain 4 --luminance-qp-bias 50
+```
+
+## Fork-Specific Parameters
+
+The following parameters have not made their way into mainline
+SVT-AV1 (yet). They are mostly mentioned for reference purposes.
+
+### QP Scale Compress Strength
+
+This feature still exclusive to SVT-AV1 forks compresses QP values across
+all temporal layers, resulting in less quality variations across frames 
+in a mini-gop.
+
+A `--qp-scale-compress-strength` value of `1` and above increases video 
+quality temporal consistency.
+
+QP scale compress strength closest equivalent in x26x encoders is a 
+combination of the ipratio & pbratio settings.
+
+### PSY-RD & SPY-RD
+
+Psy-rd configures the rate distortion strength to improve perceived quality 
+by attempting to preserve the visual energy distribution of high-frequency
+details and textures, at the possible expense of increased artefacting.
+The implementation is very x264-inspired at the moment.
+The default `--psy-rd` is 0.5, with the highest allowed value being 6.0. 
+
+Spy-rd configures psychovisually-oriented pathways that bias towards sharpness
+and detail retention, at the possible expense of increased blocking and banding.
+The default `--spy-rd` is 0, with 1 being the most aggressive and 2 being less
+aggressive.
+
+Neither features are planned for mainline merging any time soon.
+
+### Complex HVS
+
+`--complex-hvs 1` activates a higher quality psy-rd mode with a slightly higher
+computational cost based on PSNR-HVS that is otherwise locked behind the placebo
+*preset -1*.
