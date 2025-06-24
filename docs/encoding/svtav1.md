@@ -120,7 +120,7 @@ you'll usually always set, and rarely touch again.
 
 ### Preset
 
-Use `--preset 2` or `4`.
+**Use `--preset 2` or `4`.**
 
 Unlike x26x encoders, SVT-AV1 presets set
 internal parameters that are not accessible
@@ -159,7 +159,7 @@ modes for many internal features of the encoder. That tune can reduce
 blurring by increasing visual energy, at the expensive of additional
 artifacting. It is up to the user to determine if the trade-offs are
 worth it, however for the purpose of this guide and the recommended
-AV1 usecase, staying on the default is considered preferable.
+AV1 usecase, **staying on the default `1` is preferable.**
 
 ??? info "`--tune 3`"
      A *SVT-AV1-PSY(EX)*-exclusive `--tune 3`, with psychovisual intents,
@@ -177,7 +177,8 @@ AV1 usecase, staying on the default is considered preferable.
 
 Usually enabled by default in SVT-AV1 forks, *varboost* is
 however disabled in mainline SVT-AV1.
-You can control its *on* or *off* state with `--enable-variance-boost`.
+
+**Enable it with `--enable-variance-boost 1`.**
 
 In a nutshell, *varboost* allocates more bits to low-contrast areas in a frame.
 A complete rundown is available in the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-Variance-Boost.md).
@@ -204,7 +205,7 @@ except it is not prone to the same level of detail loss.
 without introducing severe *additional* line fading,
 thus improving visual appeal.
 
-Therefore, it is recommended to leave it on.
+Therefore, it is **recommended to leave it on.**
 
 ??? info "Specific SVT-AV1-HDR usage"
 
@@ -219,7 +220,7 @@ According to the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1
 
 In effect, `--enable-restoration` tends to increase efficiency
 slightly and doesn't have any documented drawbacks, 
-so it can safely be left on at all times.
+so it **can safely be left on** at all times.
 
 ??? info "Specific SVT-AV1-HDR usage"
 
@@ -238,8 +239,8 @@ blocking on keyframes, so we historically disabled temporal filtering.
 However *SVT-AV1-PSY* introduced a strength parameter
 which has allowed to tame its effects.
 
-It is recommended to leave `--enable-tf` on for the efficiency benefits
-it provides, but to reduce `--tf-strength` from its default `3` to `1`,
+It is recommended to **leave `--enable-tf` on** for the efficiency benefits
+it provides, but to **reduce `--tf-strength`** from its default `3` **to `1`**,
 or below, to completely eliminate the tf blocking issue.
 
 ??? info "Specific SVT-AV1-PSY forks usage"
@@ -250,6 +251,9 @@ or below, to completely eliminate the tf blocking issue.
      fix the blocking issue and use a stronger 
      tf strength on all other frames
      if one wishes so. 
+
+For the rest of this section from this point on, it is less clear
+what can be considered *better*, so more generic guidelines are given.
 
 ### Sharpness
 
@@ -297,7 +301,7 @@ require tweaking on a case-by-case basis.
 
 ### Constant Rate Factor
 
-For an optimal usage of the encoder, set a Constant Rate Factor (CRF) value between 20 and 30
+For an optimal usage of the encoder, **set a Constant Rate Factor (CRF) value between 20 and 30.**
 
 CRF is a rate control mode that aims to achieve a consistent quality level across the entire video.
 Lower values result in higher quality and larger file sizes,
@@ -373,8 +377,9 @@ however if only parts of the frame are dark and the rest is fairly bright,
 it may not fix cases of localized detail loss or blurring.
 
 Still, due to how much SVT-AV1 starves dark content,
-luma bias usually provides efficiency benefits,
-though that may not always be the case if extreme values are selected.
+luma bias usually provides slight efficiency benefits,
+though that may not always be the case if extreme values
+(> 70) are selected.
 
 To better balance out bitrate allocation between bright and dark frames,
 it is recommended to up `--luminance-qp-bias` and `--crf` at the same time.
