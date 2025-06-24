@@ -1,17 +1,15 @@
 # SVT-AV1 Parameters
 
-This page is a very high-level overview
-of relevant SVT-AV1 information and parameters
-you should know about
-to make informed encoding decisions.
-Explanations behind certain parameters
-are included,
-but the primary focus is to provide
-a list of go-to parameters
-we recommend to make the most out of the AV1 format.
+This page is a high-level overview of relevant
+SVT-AV1 information and parameters you should
+know about to make informed encoding decisions.
+Explanations behind certain parameters are
+included, but the primary focus is to provide
+a list of go-to parameters we recommend to make
+the most out of the AV1 format.
 
-These parameters are aimed at high-efficiency video encoding,
-with a focus on visual appeal.
+These parameters are aimed at high-efficiency
+video encoding, with a focus on visual appeal.
 Transparency remains an area where SVT-AV1 has 
 room for improvement at this point in time,
 so expect some visible quality loss
@@ -62,10 +60,8 @@ justifying such a section.
 
 ## General Parameters
 
-The following parameters
-are the type of parameters
-you'll usually always set,
-and rarely touch again.
+The following parameters are the type of parameters
+you'll usually always set, and rarely touch again.
 
 ### Preset
 
@@ -114,8 +110,8 @@ builds on `2` while borrowing features from `0`.
 
 ### Variance Boost
 
-Usually enabled by default in SVT-AV1 forks, *varboost* is however disabled
-in mainline SVT-AV1.
+Usually enabled by default in SVT-AV1 forks, *varboost* is
+however disabled in mainline SVT-AV1.
 
 You can control its on or off state with `--enable-variance-boost`.
 
@@ -134,31 +130,28 @@ therefore it is usually not recommended to stray away from the defaults.
 
 ### Constrained Directional Enhancement Filter
 
-According to the [official documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-CDEF.md),
-"The constrained directional enhancement filter (CDEF) [...]
-aims at improving the reconstructed picture by
-addressing ringing artifacts."
+According to the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-CDEF.md),
+*"The constrained directional enhancement filter (CDEF) [...] aims at improving the reconstructed picture by addressing ringing artifacts."*
 
 The closest equivalent to this feature would be SAO in x265,
 except it is not prone to the same level of detail loss.
 
 `--enable-cdef` tends to limit edge artefacts effectively
-without introducing severe additional line fading,
+without introducing severe *additional* line fading,
 thus improving visual appeal.
 
 Therefore, it is recommended to leave it on.
 
 ??? info "Specific SVT-AV1-HDR usage"
 
-     The SVT-AV1-HDR fork disables CDEF in tune 3 to hopefully increase
+     The *SVT-AV1-HDR* fork disables CDEF in *tune 3* to hopefully increase
      grain retention consistency across the whole picture, but it is effectively
      a bruteforcing method and cannot be generalized to a more general usecase.
 
 ### Restoration Filter
 
-According to the [official documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-Restoration-Filter.md),
-"The restoration filter [...] aims at improving the reconstructed picture by
-recovering some of the information lost during the compression process.
+According to the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-Restoration-Filter.md),
+*"The restoration filter [...] aims at improving the reconstructed picture by recovering some of the information lost during the compression process."*
 
 In effect, `--enable-restoration` tends to increase efficiency
 slightly and doesn't have any documented drawbacks, 
@@ -166,7 +159,7 @@ so it can safely be left on at all times.
 
 ??? info "Specific SVT-AV1-HDR usage"
 
-     The SVT-AV1-HDR fork disables restoration in tune 3 to hopefully increase
+     The *SVT-AV1-HDR* fork disables restoration in *tune 3* to hopefully increase
      grain retention consistency across the whole picture, but it is effectively
      a bruteforcing method and cannot be generalized to a more general usecase.
 
@@ -187,12 +180,89 @@ or below, to completely eliminate the tf blocking issue.
 
 ??? info "Specific SVT-AV1-PSY forks usage"
 
-     The SVT-AV1-PSY(EX) and -HDR forks include an additional
+     The *SVT-AV1-PSY(EX)* and *-HDR* forks include an additional
      `--kf-tf-strength` which decouples tf strength on
      keyframes, and allows the user to concurrently 
      fix the blocking issue and use a stronger 
      tf strength on all other frames
      if you wishes so. 
+
+### Sharpness
+
+...
+<!-- TODO -->
+
+### Tiles
+
+AV1 tiles are a straightforward method of splitting the video frame into 
+independent tiles of equal size to hopefully increase encoding and decoding
+thread-ability. In SVT-AV1, tiles don't increase encoding speeds but they can
+help devices (especially low-powered ones) to software decode AV1 more easily.
+
+The following recommendation minimizes efficiency losses and provide decent
+benefits in decoding performance:
+
+- `--tile-columns 1 --tile-rows 0`: at 1080p and above. 
+- `--tile-columns 2 --tile-rows 1`: at 4K and above.
+
+You can leave tiles to their default `--tile-columns 0 --tile-rows 0` if 
+you don't care in the slightest about decoding speeds.
+
+### Fast Decode
+
+SVT-AV1 ships with its own built-in method for reducing decoding bottlenecks
+by smartly tuning down or disabling specific internal tools that trade off some
+efficiency for decoding performance.
+
+The encoder offers two `--fast-decode` levels, with `2` being more aggressive.
+The default is `0`.
+
+You can combine fast decode and tiles to decrease decoding complexity further.
+Fast decode can even speed up your encoding instances, however it has been observed
+that the output can be more prone to macro-blocking, so proceed with caution.
+
+## Source-Specific Parameters
+
+The following parameters
+should be adjusted
+based on your specific video,
+and likely will require tweaking
+on a case-by-case basis.
+
+### Constant Rate Factor
+
+For an optimal usage of the encoder, set a Constant Rate Factor (CRF) value between 20 and 30
+
+CRF is a rate control mode that aims to achieve a consistent quality level across the entire video.
+Lower values result in higher quality and larger file sizes,
+while higher values lead to lower quality and smaller file sizes.
+
+We recommend using CRF values between 20 and 30
+to achieve high-efficiency, appealing encodes.
+This range typically provides the best balance
+between visual appeal and file size for most content.
+
+If you need to go below 20, you may achieve better results
+with encoders better suited for high-fidelity like x265.
+
+!!! warning "Lower resolution encodes may require a lower CRF value"
+     Lower resolution encodes may require a lower CRF value
+     to achieve the same level of quality as higher resolution encodes.
+     This is due to the fact that lower resolution encodes
+     will be upscaled during playback,
+     which makes quantization artifacts more noticeable.
+     For SD content,
+     you may need to use a CRF value of 20 or lower.
+
+
+
+...
+<!-- TODO -->
+
+### Film Grain Synthesis
+
+...
+<!-- TODO -->
 
 ### Quantisation Matrices
 
@@ -242,61 +312,3 @@ though that may not always be the case if extreme values are selected.
 
 To better balance out bitrate allocation between bright and dark frames,
 it is recommended to up `--luminance-qp-bias` and `--crf` at the same time.
-
-### Sharpness
-
-...
-<!-- TODO -->
-
-### Tiles
-
-...
-<!-- TODO -->
-
-### Fast Decode
-
-...
-<!-- TODO -->
-
-## Source-Specific Parameters
-
-The following parameters
-should be adjusted
-based on your specific video,
-and likely will require tweaking
-on a case-by-case basis.
-
-### Constant Rate Factor
-
-For an optimal usage of the encoder, set a Constant Rate Factor (CRF) value between 20 and 30
-
-CRF is a rate control mode that aims to achieve a consistent quality level across the entire video.
-Lower values result in higher quality and larger file sizes,
-while higher values lead to lower quality and smaller file sizes.
-
-We recommend using CRF values between 20 and 30
-to achieve high-efficiency, appealing encodes.
-This range typically provides the best balance
-between visual appeal and file size for most content.
-
-If you need to go below 20, you may achieve better results
-with encoders better suited for high-fidelity like x265.
-
-!!! warning "Lower resolution encodes may require a lower CRF value"
-     Lower resolution encodes may require a lower CRF value
-     to achieve the same level of quality as higher resolution encodes.
-     This is due to the fact that lower resolution encodes
-     will be upscaled during playback,
-     which makes quantization artifacts more noticeable.
-     For SD content,
-     you may need to use a CRF value of 20 or lower.
-
-
-
-...
-<!-- TODO -->
-
-### Film Grain Synthesis
-
-...
-<!-- TODO -->
