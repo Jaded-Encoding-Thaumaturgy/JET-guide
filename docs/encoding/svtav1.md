@@ -196,13 +196,52 @@ or below, to completely eliminate the tf blocking issue.
 
 ### Quantisation Matrices
 
-...
-<!-- TODO -->
+QMs control the relative quantization of lower frequencies
+and higher frequencies. You set a *min* and *max* allowed value
+and the encoder is supposed to automatically select the most
+appropriate one for the content, however the implementation
+in AV1 is pretty barebone and despite efforts to improve the
+feature, there is no real consensus on what QM combination
+is best. Parts of the reason is that it is highly content
+and CRF dependent.
+
+Specifically, the frame QM is selected on linear interpolation
+between set *min* and *max* QMs based on the frame *qindex* (qp).
+
+`--enable-qm` still tends to improve efficiency,
+especially when paired with a lower `--qm-min` than
+the default `8`, so feel free to experiment with this. 
+
+??? info "Specific SVT-AV1-PSY forks usage"
+
+     The SVT-AV1-PSY(EX) and -HDR forks include additional
+     `--chroma-qm-min` & `--chroma-qm-max` parameters
+     which decouple QMs for luma and chroma, allowing
+     more control over quantization, as the chroma subsampling
+     tends to make the default chroma QMs too aggressive.
+
+     It is thus recommended to keep a higher `--chroma-qm-min`
+     relative to `--qm-min`.
 
 ### Luma Bias
 
-...
-<!-- TODO -->
+`--luminance-qp-bias`, often abbreviated as luma bias, effectively
+applies a simple qp offset to frames of lower overall brightness.
+
+The range of accepted values is `0-100`.
+The higher the value, the stronger the effect is.
+
+This implementation has one advantage and one weakness: it gives the user
+simple control over the bitrate balancing between bright and dark frames, 
+however if only parts of the frame are dark and the rest is fairly bright, 
+it may not fix cases of localized detail loss or blurring.
+
+Still, due to how much SVT-AV1 starves dark content,
+luma bias usually provides efficiency benefits,
+though that may not always be the case if extreme values are selected.
+
+To better balance out bitrate allocation between bright and dark frames,
+it is recommended to up `--luminance-qp-bias` and `--crf` at the same time.
 
 ### Sharpness
 
