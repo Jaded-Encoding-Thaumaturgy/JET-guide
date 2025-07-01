@@ -35,7 +35,7 @@ even in high-bitrate scenarios.
 For a more complete look at these parameters,
 see the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Parameters.md).
 
-Parts of this guide have been writen based off the work done in
+Parts of this guide have been written based off the work done in
 the "Deep Dive" [blog post](https://wiki.x266.mov/blog) series on the codec wiki.
 Look them up if you like benchmarks, tables and graphs!
 
