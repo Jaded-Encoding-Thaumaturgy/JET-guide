@@ -8,12 +8,12 @@ included, but the primary focus is to provide
 a list of go-to parameters we recommend to make
 the most out of the AV1 format.
 
-These parameters are aimed at high-efficiency
+These parameters are aimed at high-*efficiency*
 video encoding, with a focus on visual appeal.
 Transparency remains an area where SVT-AV1 has 
 room for improvement at this point in time,
 so expect some visible quality loss
-even in high-bitrate encodes.
+even in high-bitrate scenarios.
 
 ??? info "Transparency"
      "Transparency" refers to the degree to which
@@ -34,6 +34,10 @@ even in high-bitrate encodes.
 
 For a more complete look at these parameters,
 see the [SVT-AV1 documentation](https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Parameters.md).
+
+Parts of this guide have been writen based off the work done in
+the "Deep Dive" [blog post](https://wiki.x266.mov/blog) series on the codec wiki.
+Look them up if you like benchmarks, tables and graphs!
 
 !!! warning
     The recommendations are primarily aimed at encoding *anime*,
@@ -65,17 +69,17 @@ development stopped years ago after funding was cut.
 SVT-AV1, as its full name implies, is the most scalable
 encoder of the bunch, be it in performance, or in its
 various usecases. We will therefore focus on that
-encoder implementation.
+encoder implementation that still receives frequent updates.
 
 The SVT-AV1 code base is good, with enormous potential for 
 psychovisual development. This led to many advances since 
-early 2024, when the SVT-AV1-PSY fork, commonly maintained
+early 2024, when the [*SVT-AV1-PSY*](github.com/psy-ex/svt-av1-psy) fork, commonly maintained
 by members of the community, was introduced. Many features
 that either brought QoL improvements, increased efficiency
 or visual quality were upstreamed to mainline SVT-AV1,
 until development of the fork stopped in early 2025.
-Two new forks emerged from its remnants, *SVT-AV1-PSYEX*
-and *SVT-AV1-HDR*, the former with the goal of being the
+Two new forks emerged from its remnants, [*SVT-AV1-PSYEX*](https://github.com/BlueSwordM/svt-av1-psyex/)
+and [*SVT-AV1-HDR*](https://github.com/juliobbv-p/svt-av1-hdr), the former with the goal of being the
 direct continuation of the *-PSY* project, and the latter
 concentrating on improving perceptual fidelity on specific
 grainy and HDR scenarios.
@@ -111,8 +115,7 @@ SVT-AV1 can be found in most popular encoding software nowadays.
      but such compiling optimizations are better documented on the *AV1 weeb edition*
      discord server, as well as further details on the overall process.
 
-...
-<!-- TODO -->
+<!-- MORE? -->
 
 ## General Parameters
 
@@ -167,7 +170,6 @@ AV1 usecase, **staying on the default `1` is preferable.**
      builds on `2` (the former efficiency champion)
      while borrowing features from `0`.
 
-!!! warning
      Not to be confused with *SVT-AV1-HDR*'s `--tune 3`
      which is effectively a `tune grain` equivalent.
      It disables certain features like CDEF, restoration,
@@ -238,7 +240,8 @@ which helps improve compression quality especially for noisy source material.
 The feature was often considered too strong and often created unavoidable
 blocking on keyframes, so we historically disabled temporal filtering.
 However *SVT-AV1-PSY* introduced a strength parameter
-which has allowed to tame its effects.
+which has allowed to tame its effects. `--tf-strength` was backported
+into mainline SVT-AV1, so it is widely available.
 
 It is recommended to **leave `--enable-tf` on** for the efficiency benefits
 it provides, but to **reduce `--tf-strength`** from its default `3` **to `1`**,
@@ -288,7 +291,8 @@ by smartly tuning down or disabling specific internal tools that trade off some
 efficiency for decoding performance.
 
 The encoder offers two `--fast-decode` levels, with `2` being more aggressive.
-The default is `0`.
+The default is `0`. A small amount of tiles should be preferred to minimize
+efficiency losses.
 
 You can combine fast decode and tiles to decrease decoding complexity further.
 Fast decode can even speed up your encoding instances, however it has been observed
@@ -358,8 +362,8 @@ Just like CRF, this process requires manual adjustment depending on
 your source material.
 
 Even in cases where grain retention is not a concern, for example with 
-relatively clean sources, using FGS is still highly recommended for its
-forced dithering benefits. You're probably familiar with x26x encoders'
+relatively clean sources, using **FGS is still highly recommended for its**
+**forced dithering benefits**. You're probably familiar with x26x encoders'
 tendency to produce poor gradients at high CRF values. You can prevent
 this issue to some extent in AV1 encodes by using a photon noise ISO of
 400 or higher, or a film-grain strength of 4 or higher. Lower values 
@@ -407,9 +411,9 @@ however if only parts of the frame are dark and the rest is fairly bright,
 it may not fix cases of localized bitrate starving.
 
 Still, due to how much SVT-AV1 starves dark content,
-luma bias usually provides slight efficiency benefits.
-Though that may not always be the case if extreme values
-(> 70) are selected.
+luma bias usually provides slight efficiency benefits at low strengths.
+That may not always be the case if higher values
+(> 50) are selected.
 
 To better balance out bitrate allocation between bright and dark frames,
 it is recommended to up `--luminance-qp-bias` and `--crf` at the same time.
@@ -419,7 +423,7 @@ it is recommended to up `--luminance-qp-bias` and `--crf` at the same time.
 Assuming a clean-ish 1080p source:
 
 ```bash
---preset 4 --enable-variance-boost 1 --tf-strength 1 --sharpness 1 --tile-columns 1 --crf 25 --film-grain 4 --luminance-qp-bias 50
+--preset 4 --enable-variance-boost 1 --tf-strength 1 --sharpness 1 --tile-columns 1 --crf 25 --film-grain 4 --luminance-qp-bias 25
 ```
 
 ## Fork-Specific Parameters
