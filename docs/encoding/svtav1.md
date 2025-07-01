@@ -256,8 +256,10 @@ or below, to completely eliminate the tf blocking issue.
      tf strength on all other frames
      if one wishes so. 
 
-For the rest of this section from this point on, it is less clear
-what can be considered *better*, so more generic guidelines are given.
+---
+!!! warning
+     For the rest of this section, it is less clear what can safely
+     be considered *better*, so more generic guidelines are given.
 
 ### Sharpness
 
