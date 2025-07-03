@@ -188,12 +188,13 @@ A complete rundown is available in the [SVT-AV1 documentation](https://gitlab.co
 
 You can control its behavior by changing its `--variance-boost-strength`
 from the default `2` or its `--variance-octile` from the default `6`.
-Basically, the strength controls how much areas are to be boosted,
-while octile controls how much of the area needs to be deemed low-contrast
+Basically, the *strength* controls how much areas are to be boosted,
+while *octile* controls how much of the area needs to be deemed low-contrast
 before being boosted.
 
-Historically, metrics have shown this strength-octile combination to be
-the most efficient on a wide variety of content types,
+You can use a slightly more agressive *strength* and *octile* value for higher
+quality targets, but historically, metrics have shown this *strength-octile* 
+combination to be the most efficient on a wide variety of content types,
 therefore it is usually not recommended to stray away from the defaults.
 
 ### Constrained Directional Enhancement Filter
@@ -256,35 +257,22 @@ or below, to completely eliminate the tf blocking issue.
      tf strength on all other frames
      if one wishes so. 
 
----
-!!! warning
-     For the rest of this section, it is less clear what can safely
-     be considered *better*, so more generic guidelines are given.
-
-### Sharpness
-
-The `--sharpness` parameter impacts the deblocking filter sharpness.
-
-Increasing its value to `1` or `2` is a conservative way of improving
-efficiency slightly, as well as perceptual quality. Higher values can
-at times provide additional perceptual benefits, but they also tend to 
-decrease efficiency to an extent, so it is recommended to proceed with caution.
-
 ### Tiles
 
 AV1 tiles are a straightforward method of splitting the video frame into 
 independent tiles of equal size to hopefully increase encoding and decoding
 thread-ability. In SVT-AV1, tiles don't increase encoding speeds but they can
-help devices (especially low-powered ones) to software decode AV1 more easily.
+very effectively help devices (especially low-powered ones) to software decode 
+AV1 files faster.
 
-The following recommendation minimizes efficiency losses and provide
+The following recommendations minimize efficiency losses and provide
 non-negligible benefits in decoding performance:
 
 - `--tile-columns 1 --tile-rows 0`: at 1080p and above. 
-- `--tile-columns 2 --tile-rows 1`: at 4K and above.
+- `--tile-columns 2 --tile-rows 0`: at 4K and above.
 
-You can leave tiles to their default `--tile-columns 0 --tile-rows 0` if 
-you don't care in the slightest about decoding speeds.
+Leave tiles to their default `--tile-columns 0 --tile-rows 0` if 
+you are trying to maximize efficiency at all costs for some reason.
 
 ### Fast Decode
 
@@ -298,7 +286,7 @@ efficiency losses.
 
 You can combine fast decode and tiles to decrease decoding complexity further.
 Fast decode can even speed up your encoding instances, however it has been observed
-that the output can be more prone to macro-blocking, so proceed with caution.
+that the output can be more prone to macro-blocking, so experiment and proceed with caution.
 
 ## Source-Specific Parameters
 
@@ -310,11 +298,11 @@ require tweaking on a case-by-case basis.
 
 For an optimal usage of the encoder, **set a Constant Rate Factor (`--crf`) value between 20 and 30.**
 
-CRF is a rate control mode that aims to achieve a consistent quality level across the entire video.
+*CRF* is a rate control mode that aims to achieve a consistent quality level across the entire video.
 Lower values result in higher quality and larger file sizes,
 while higher values lead to lower quality and smaller file sizes.
 
-We recommend using CRF values between 20 and 30
+We recommend using *CRF* values between 20 and 30
 to achieve high-efficiency, appealing encodes.
 This range typically provides the best balance
 between visual appeal and file size for most content.
@@ -322,18 +310,18 @@ between visual appeal and file size for most content.
 If you need to go below 20, you may achieve better results
 with encoders better suited for high-fidelity like x265.
 
-!!! warning "Lower resolution encodes may require a lower CRF value"
-     Lower resolution encodes may require a lower CRF value
+!!! warning "Lower resolution encodes may require a lower *CRF* value"
+     Lower resolution encodes may require a lower *CRF* value
      to achieve the same level of quality as higher resolution encodes.
      This is due to the fact that lower resolution encodes
      will be upscaled during playback,
      which makes quantization artifacts more noticeable.
      For SD content,
-     you may need to use a CRF value of 20 or lower.
+     you may need to use a *CRF* value of 20 or lower.
 
 ### Film Grain Synthesis
 
-Film Grain Synthesis (FGS) is a key AV1 feature that takes the form
+Film Grain Synthesis (*FGS*) is a key AV1 feature that takes the form
 of additional metadata in the bitstream. Its intended goal is to help 
 reconstruct grain using fewer bits than would otherwise be needed to 
 preserve such grain in the actual encode. It is declined in two 
@@ -347,7 +335,7 @@ grav1synth. A comprehensive database of such tables is available
 in this [repository](https://github.com/nekotrix/AV1-Photon-Noise-Tables).
 You can use a photon noise table by providing its file path to the
 `--fgs-table` parameter. Noise tables have no impact on encoding speeds.
-- Actual **grain synthesis**: SVT-AV1 includes its own built-in FGS
+- Actual **grain synthesis**: SVT-AV1 includes its own built-in *FGS*
 implementation that dynamically adjusts grain appearance based on source
 characteristics. This usually better matches the source's energy,
 assuming you select an appropriate strength value for the given source.
@@ -364,9 +352,9 @@ Just like CRF, this process requires manual adjustment depending on
 your source material.
 
 Even in cases where grain retention is not a concern, for example with 
-relatively clean sources, using **FGS is still highly recommended for its**
+relatively clean sources, using **_FGS_ is still highly recommended for its**
 **forced dithering benefits**. You're probably familiar with x26x encoders'
-tendency to produce poor gradients at high CRF values. You can prevent
+tendency to produce poor gradients at high *CRF* values. You can prevent
 this issue to some extent in AV1 encodes by using a photon noise ISO of
 400 or higher, or a film-grain strength of 4 or higher. Lower values 
 don't consistently resolve these dithering problems.
@@ -380,7 +368,7 @@ appropriate one for the content, however the implementation
 in AV1 is pretty barebone and despite efforts to improve the
 feature, there is no real consensus on what QM combination
 is best. Parts of the reason is that it is highly content
-and CRF dependent.
+and *CRF* dependent.
 
 Specifically, the frame QM is selected on linear interpolation
 between set *min* and *max* QMs based on the frame *qindex* (qp).
@@ -401,7 +389,7 @@ the default `8`, so feel free to experiment with this.
 
 ### Luma Bias
 
-`--luminance-qp-bias`, often abbreviated as luma bias, effectively
+`--luminance-qp-bias`, often abbreviated as *luma-bias*, effectively
 applies a simple qp offset to frames of lower overall brightness.
 
 The range of accepted values is `0-100`.
@@ -413,12 +401,28 @@ however if only parts of the frame are dark and the rest is fairly bright,
 it may not fix cases of localized bitrate starving.
 
 Still, due to how much SVT-AV1 starves dark content,
-luma bias usually provides slight efficiency benefits at low strengths.
+*luma-bias* usually provides slight efficiency benefits at low strengths.
 That may not always be the case if higher values
 (> 50) are selected.
 
 To better balance out bitrate allocation between bright and dark frames,
 it is recommended to up `--luminance-qp-bias` and `--crf` at the same time.
+
+!!! warning "Not suited for certain HDR sources"
+     The author of the feature discourages to use of *luma-bias* on content
+     with a PQ transfer (present in most UHD blu-rays).
+     Use *luma-bias* exclusively on SDR and HDR HLG videos.
+
+### Sharpness
+
+The `--sharpness` parameter impacts the deblocking filter sharpness.
+
+Increasing its value to `1` or `2` is a conservative way of improving
+efficiency slightly, as well as perceptual quality. 
+
+Higher values can at times provide additional perceptual benefits,
+but they also tend to decrease efficiency to an extent, 
+so it is recommended to proceed with caution and test on your content.
 
 ## Sane Base SVT-AV1 Parameters List
 
@@ -427,6 +431,8 @@ Assuming a clean-ish 1080p source:
 ```bash
 --preset 4 --enable-variance-boost 1 --tf-strength 1 --sharpness 1 --tile-columns 1 --crf 25 --film-grain 4 --luminance-qp-bias 25
 ```
+
+Again, remember to drop `--luminance-qp-bias 25` if your source has a PQ transfer.
 
 ## Fork-Specific Parameters
 
