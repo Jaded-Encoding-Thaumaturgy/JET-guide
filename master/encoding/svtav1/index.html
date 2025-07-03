@@ -1105,15 +1105,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sharpness" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sharpness
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#tiles" class="md-nav__link">
     <span class="md-ellipsis">
       Tiles
@@ -1177,6 +1168,15 @@
   <a href="#luma-bias" class="md-nav__link">
     <span class="md-ellipsis">
       Luma Bias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharpness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sharpness
     </span>
   </a>
   
@@ -1446,15 +1446,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sharpness" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sharpness
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#tiles" class="md-nav__link">
     <span class="md-ellipsis">
       Tiles
@@ -1518,6 +1509,15 @@
   <a href="#luma-bias" class="md-nav__link">
     <span class="md-ellipsis">
       Luma Bias
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharpness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sharpness
     </span>
   </a>
   
@@ -1761,11 +1761,12 @@ however disabled in mainline SVT-AV1.</p>
 A complete rundown is available in the <a href="https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-Variance-Boost.md">SVT-AV1 documentation</a>.</p>
 <p>You can control its behavior by changing its <code>--variance-boost-strength</code>
 from the default <code>2</code> or its <code>--variance-octile</code> from the default <code>6</code>.
-Basically, the strength controls how much areas are to be boosted,
-while octile controls how much of the area needs to be deemed low-contrast
+Basically, the <em>strength</em> controls how much areas are to be boosted,
+while <em>octile</em> controls how much of the area needs to be deemed low-contrast
 before being boosted.</p>
-<p>Historically, metrics have shown this strength-octile combination to be
-the most efficient on a wide variety of content types,
+<p>You can use a slightly more agressive <em>strength</em> and <em>octile</em> value for higher
+quality targets, but historically, metrics have shown this <em>strength-octile</em> 
+combination to be the most efficient on a wide variety of content types,
 therefore it is usually not recommended to stray away from the defaults.</p>
 <h3 id="constrained-directional-enhancement-filter">Constrained Directional Enhancement Filter</h3>
 <p>According to the <a href="https://gitlab.com/AOMediaCodec/SVT-AV1/-/blob/master/Docs/Appendix-CDEF.md">SVT-AV1 documentation</a>,
@@ -1815,31 +1816,20 @@ or below, to completely eliminate the tf blocking issue.</p>
  tf strength on all other frames
  if one wishes so. </p>
 </details>
-<hr />
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>For the rest of this section, it is less clear what can safely
- be considered <em>better</em>, so more generic guidelines are given.</p>
-</div>
-<h3 id="sharpness">Sharpness</h3>
-<p>The <code>--sharpness</code> parameter impacts the deblocking filter sharpness.</p>
-<p>Increasing its value to <code>1</code> or <code>2</code> is a conservative way of improving
-efficiency slightly, as well as perceptual quality. Higher values can
-at times provide additional perceptual benefits, but they also tend to 
-decrease efficiency to an extent, so it is recommended to proceed with caution.</p>
 <h3 id="tiles">Tiles</h3>
 <p>AV1 tiles are a straightforward method of splitting the video frame into 
 independent tiles of equal size to hopefully increase encoding and decoding
 thread-ability. In SVT-AV1, tiles don't increase encoding speeds but they can
-help devices (especially low-powered ones) to software decode AV1 more easily.</p>
-<p>The following recommendation minimizes efficiency losses and provide
+very effectively help devices (especially low-powered ones) to software decode 
+AV1 files faster.</p>
+<p>The following recommendations minimize efficiency losses and provide
 non-negligible benefits in decoding performance:</p>
 <ul>
 <li><code>--tile-columns 1 --tile-rows 0</code>: at 1080p and above. </li>
-<li><code>--tile-columns 2 --tile-rows 1</code>: at 4K and above.</li>
+<li><code>--tile-columns 2 --tile-rows 0</code>: at 4K and above.</li>
 </ul>
-<p>You can leave tiles to their default <code>--tile-columns 0 --tile-rows 0</code> if 
-you don't care in the slightest about decoding speeds.</p>
+<p>Leave tiles to their default <code>--tile-columns 0 --tile-rows 0</code> if 
+you are trying to maximize efficiency at all costs for some reason.</p>
 <h3 id="fast-decode">Fast Decode</h3>
 <p>SVT-AV1 ships with its own built-in method for reducing decoding bottlenecks
 by smartly tuning down or disabling specific internal tools that trade off some
@@ -1849,34 +1839,34 @@ The default is <code>0</code>. A small amount of tiles should be preferred to mi
 efficiency losses.</p>
 <p>You can combine fast decode and tiles to decrease decoding complexity further.
 Fast decode can even speed up your encoding instances, however it has been observed
-that the output can be more prone to macro-blocking, so proceed with caution.</p>
+that the output can be more prone to macro-blocking, so experiment and proceed with caution.</p>
 <h2 id="source-specific-parameters">Source-Specific Parameters</h2>
 <p>The following parameters should be adjusted
 based on your specific video, and likely will
 require tweaking on a case-by-case basis.</p>
 <h3 id="constant-rate-factor">Constant Rate Factor</h3>
 <p>For an optimal usage of the encoder, <strong>set a Constant Rate Factor (<code>--crf</code>) value between 20 and 30.</strong></p>
-<p>CRF is a rate control mode that aims to achieve a consistent quality level across the entire video.
+<p><em>CRF</em> is a rate control mode that aims to achieve a consistent quality level across the entire video.
 Lower values result in higher quality and larger file sizes,
 while higher values lead to lower quality and smaller file sizes.</p>
-<p>We recommend using CRF values between 20 and 30
+<p>We recommend using <em>CRF</em> values between 20 and 30
 to achieve high-efficiency, appealing encodes.
 This range typically provides the best balance
 between visual appeal and file size for most content.</p>
 <p>If you need to go below 20, you may achieve better results
 with encoders better suited for high-fidelity like x265.</p>
 <div class="admonition warning">
-<p class="admonition-title">Lower resolution encodes may require a lower CRF value</p>
-<p>Lower resolution encodes may require a lower CRF value
+<p class="admonition-title">Lower resolution encodes may require a lower <em>CRF</em> value</p>
+<p>Lower resolution encodes may require a lower <em>CRF</em> value
  to achieve the same level of quality as higher resolution encodes.
  This is due to the fact that lower resolution encodes
  will be upscaled during playback,
  which makes quantization artifacts more noticeable.
  For SD content,
- you may need to use a CRF value of 20 or lower.</p>
+ you may need to use a <em>CRF</em> value of 20 or lower.</p>
 </div>
 <h3 id="film-grain-synthesis">Film Grain Synthesis</h3>
-<p>Film Grain Synthesis (FGS) is a key AV1 feature that takes the form
+<p>Film Grain Synthesis (<em>FGS</em>) is a key AV1 feature that takes the form
 of additional metadata in the bitstream. Its intended goal is to help 
 reconstruct grain using fewer bits than would otherwise be needed to 
 preserve such grain in the actual encode. It is declined in two 
@@ -1890,7 +1880,7 @@ grav1synth. A comprehensive database of such tables is available
 in this <a href="https://github.com/nekotrix/AV1-Photon-Noise-Tables">repository</a>.
 You can use a photon noise table by providing its file path to the
 <code>--fgs-table</code> parameter. Noise tables have no impact on encoding speeds.</li>
-<li>Actual <strong>grain synthesis</strong>: SVT-AV1 includes its own built-in FGS
+<li>Actual <strong>grain synthesis</strong>: SVT-AV1 includes its own built-in <em>FGS</em>
 implementation that dynamically adjusts grain appearance based on source
 characteristics. This usually better matches the source's energy,
 assuming you select an appropriate strength value for the given source.
@@ -1906,9 +1896,9 @@ increases the slower your CPU is or the faster the preset in use.</li>
 <p>Just like CRF, this process requires manual adjustment depending on
 your source material.</p>
 <p>Even in cases where grain retention is not a concern, for example with 
-relatively clean sources, using <strong>FGS is still highly recommended for its</strong>
+relatively clean sources, using <strong><em>FGS</em> is still highly recommended for its</strong>
 <strong>forced dithering benefits</strong>. You're probably familiar with x26x encoders'
-tendency to produce poor gradients at high CRF values. You can prevent
+tendency to produce poor gradients at high <em>CRF</em> values. You can prevent
 this issue to some extent in AV1 encodes by using a photon noise ISO of
 400 or higher, or a film-grain strength of 4 or higher. Lower values 
 don't consistently resolve these dithering problems.</p>
@@ -1920,7 +1910,7 @@ appropriate one for the content, however the implementation
 in AV1 is pretty barebone and despite efforts to improve the
 feature, there is no real consensus on what QM combination
 is best. Parts of the reason is that it is highly content
-and CRF dependent.</p>
+and <em>CRF</em> dependent.</p>
 <p>Specifically, the frame QM is selected on linear interpolation
 between set <em>min</em> and <em>max</em> QMs based on the frame <em>qindex</em> (qp).</p>
 <p><code>--enable-qm</code> still tends to improve efficiency,
@@ -1937,7 +1927,7 @@ the default <code>8</code>, so feel free to experiment with this. </p>
  relative to <code>--qm-min</code>.</p>
 </details>
 <h3 id="luma-bias">Luma Bias</h3>
-<p><code>--luminance-qp-bias</code>, often abbreviated as luma bias, effectively
+<p><code>--luminance-qp-bias</code>, often abbreviated as <em>luma-bias</em>, effectively
 applies a simple qp offset to frames of lower overall brightness.</p>
 <p>The range of accepted values is <code>0-100</code>.
 The higher the value, the stronger the effect is.</p>
@@ -1946,15 +1936,29 @@ simple control over the bitrate balancing between bright and dark frames,
 however if only parts of the frame are dark and the rest is fairly bright, 
 it may not fix cases of localized bitrate starving.</p>
 <p>Still, due to how much SVT-AV1 starves dark content,
-luma bias usually provides slight efficiency benefits at low strengths.
+<em>luma-bias</em> usually provides slight efficiency benefits at low strengths.
 That may not always be the case if higher values
 (&gt; 50) are selected.</p>
 <p>To better balance out bitrate allocation between bright and dark frames,
 it is recommended to up <code>--luminance-qp-bias</code> and <code>--crf</code> at the same time.</p>
+<div class="admonition warning">
+<p class="admonition-title">Not suited for certain HDR sources</p>
+<p>The author of the feature discourages to use of <em>luma-bias</em> on content
+ with a PQ transfer (present in most UHD blu-rays).
+ Use <em>luma-bias</em> exclusively on SDR and HDR HLG videos.</p>
+</div>
+<h3 id="sharpness">Sharpness</h3>
+<p>The <code>--sharpness</code> parameter impacts the deblocking filter sharpness.</p>
+<p>Increasing its value to <code>1</code> or <code>2</code> is a conservative way of improving
+efficiency slightly, as well as perceptual quality. </p>
+<p>Higher values can at times provide additional perceptual benefits,
+but they also tend to decrease efficiency to an extent, 
+so it is recommended to proceed with caution and test on your content.</p>
 <h2 id="sane-base-svt-av1-parameters-list">Sane Base SVT-AV1 Parameters List</h2>
 <p>Assuming a clean-ish 1080p source:</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>--preset<span style="color: #ABB2BF"> </span><span style="color: #D19A66">4</span><span style="color: #ABB2BF"> </span>--enable-variance-boost<span style="color: #ABB2BF"> </span><span style="color: #D19A66">1</span><span style="color: #ABB2BF"> </span>--tf-strength<span style="color: #ABB2BF"> </span><span style="color: #D19A66">1</span><span style="color: #ABB2BF"> </span>--sharpness<span style="color: #ABB2BF"> </span><span style="color: #D19A66">1</span><span style="color: #ABB2BF"> </span>--tile-columns<span style="color: #ABB2BF"> </span><span style="color: #D19A66">1</span><span style="color: #ABB2BF"> </span>--crf<span style="color: #ABB2BF"> </span><span style="color: #D19A66">25</span><span style="color: #ABB2BF"> </span>--film-grain<span style="color: #ABB2BF"> </span><span style="color: #D19A66">4</span><span style="color: #ABB2BF"> </span>--luminance-qp-bias<span style="color: #ABB2BF"> </span><span style="color: #D19A66">25</span>
 </code></pre></div></td></tr></table></div>
+<p>Again, remember to drop <code>--luminance-qp-bias 25</code> if your source has a PQ transfer.</p>
 <h2 id="fork-specific-parameters">Fork-Specific Parameters</h2>
 <p>The following parameters have not made their way into mainline
 SVT-AV1 (yet). They are mostly mentioned for reference purposes.</p>
