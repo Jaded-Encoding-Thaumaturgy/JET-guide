@@ -102,7 +102,10 @@ decimate = core.vivtc.VDecimate(src)
 The user is passing `src`
 to `vfm.VDecimate`,
 when what they likely intended to do
-was to pass `ivtc` to it instead.
+was to pass
+the `field_matched` variable
+instead.
+
 While it's widely considered good practice
 to use different variables
 for different filtering operations
