@@ -128,6 +128,29 @@ The bound is drawn from coordinate (0, 0) (the top-left corner) to a size of
 
     ![Final result with only the Arial signs removed](../../static/img/filtering/dehardsubbing/dehardsubbing-bound-dehardsub.png)
 
+This can also be extended
+to remove hardsubbed karaoke subtitles
+using a non-credit video source,
+while keeping the credits untouched.
+Take for example the following frame
+from the opening of Log Horizon:
+
+=== "Hardsubbed"
+
+    ![Hardsubbed video showing karaoke subtitles](../../static/img/filtering/dehardsubbing/dehardsubbing-loghorizon-op.png)
+
+=== "Reference"
+
+    ![Clean reference video without any karaoke subtitles (or credits)](../../static/img/filtering/dehardsubbing/dehardsubbing-loghorizon-ncop.png)
+
+=== "Bounded hardsub mask""
+
+    ![Mask showing all detected hardsub regions before bounding](../../static/img/filtering/dehardsubbing/dehardsubbing-loghorizon-op-mask.png)
+
+=== "Dehardsubbed"
+
+    ![Final result, only the karaoke subtitles removed](../../static/img/filtering/dehardsubbing/dehardsubbing-loghorizon-op-dehardsubbed.png)
+
 ## Fades
 
 Hardsubs that fade in or out may require special handling to account for when
