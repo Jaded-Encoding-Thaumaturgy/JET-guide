@@ -143,7 +143,7 @@ from the opening of Log Horizon:
 
     ![Clean reference video without any karaoke subtitles (or credits)](../../static/img/filtering/dehardsubbing/dehardsubbing-loghorizon-ncop.png)
 
-=== "Bounded hardsub mask""
+=== "Bounded hardsub mask"
 
     ![Mask showing all detected hardsub regions before bounding](../../static/img/filtering/dehardsubbing/dehardsubbing-loghorizon-op-mask.png)
 
