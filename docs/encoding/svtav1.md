@@ -73,7 +73,7 @@ encoder implementation that still receives frequent updates.
 
 The SVT-AV1 code base is good, with enormous potential for 
 psychovisual development. This led to many advances since 
-early 2024, when the [*SVT-AV1-PSY*](github.com/psy-ex/svt-av1-psy) fork, commonly maintained
+early 2024, when the [*SVT-AV1-PSY*](https://github.com/psy-ex/svt-av1-psy) fork, commonly maintained
 by members of the community, was introduced. Many features
 that either brought QoL improvements, increased efficiency
 or visual quality were upstreamed to mainline SVT-AV1,
@@ -470,4 +470,5 @@ Neither features are planned for mainline merging any time soon.
 
 `--complex-hvs 1` activates a higher quality psy-rd mode with a slightly higher
 computational cost based on PSNR-HVS that is otherwise locked behind the placebo
+
 *preset -1*.
