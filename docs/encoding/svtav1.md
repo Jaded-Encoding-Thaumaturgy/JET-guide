@@ -470,5 +470,5 @@ Neither features are planned for mainline merging any time soon.
 
 `--complex-hvs 1` activates a higher quality psy-rd mode with a slightly higher
 computational cost based on PSNR-HVS that is otherwise locked behind the placebo
-
 *preset -1*.
+
