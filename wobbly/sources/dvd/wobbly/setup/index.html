@@ -18,7 +18,7 @@
         <link rel="prev" href="../../remuxing/">
       
       
-        <link rel="next" href="../../../../filtering/general/order/">
+        <link rel="next" href="../basic-usage/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -596,6 +596,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wibbly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wibbly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wobbly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wobbly
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#limitations" class="md-nav__link">
     <span class="md-ellipsis">
       Limitations
@@ -680,11 +713,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#wibbly_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wibbly
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wibbly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#setting-up-wibbly" class="md-nav__link">
     <span class="md-ellipsis">
       Setting up Wibbly
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -713,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../basic-usage.md" class="md-nav__link">
+      <a href="../basic-usage/" class="md-nav__link">
         
   
   
@@ -736,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../advanced-usage.md" class="md-nav__link">
+      <a href="../advanced-usage/" class="md-nav__link">
         
   
   
@@ -1364,6 +1412,39 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wibbly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wibbly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wobbly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wobbly
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#limitations" class="md-nav__link">
     <span class="md-ellipsis">
       Limitations
@@ -1448,11 +1529,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#wibbly_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wibbly
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wibbly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#setting-up-wibbly" class="md-nav__link">
     <span class="md-ellipsis">
       Setting up Wibbly
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1487,6 +1583,26 @@
 <h1 id="set-up">Set-up</h1>
 <p>Wobbly is a tool used for manual inverse telecine (IVTC), the process of converting telecined content back to its original framerate.
 It's a staple in any serious DVD encoder's toolkit, and gives you precise control over how to IVTC video.</p>
+<h2 id="components">Components</h2>
+<p>Wobbly consists of two main components:</p>
+<h3 id="wibbly">Wibbly</h3>
+<p>The analysis component that examines the video and collects detailed metrics about:</p>
+<ul>
+<li>Field patterns</li>
+<li>Scene changes</li>
+<li>Interlaced fades</li>
+<li>Other relevant metrics</li>
+</ul>
+<p>These metrics are stored in a JSON file for Wobbly to use.</p>
+<h3 id="wobbly">Wobbly</h3>
+<p>The processing component that:</p>
+<ul>
+<li>Reads the JSON analysis file from Wibbly</li>
+<li>Determines the optimal IVTC pattern for each section</li>
+<li>Applies the appropriate IVTC operations
+  and other custom filtering set by the user</li>
+<li>Produces the final progressive output</li>
+</ul>
 <h2 id="limitations">Limitations</h2>
 <p>Before installing and setting up Wobbly,
 it's important to recognise its limitations.</p>
@@ -1506,20 +1622,20 @@ meaning the source must retain its original interlaced fields.
 Any video that has been deinterlaced,
 even if it follows a 3:2 pulldown pattern,
 cannot be processed correctly by Wobbly.
-This includes footage processed through:</p>
+This includes footage that has:</p>
 <ul>
-<li>YADIF or other deinterlacing filters</li>
-<li>Field blending</li>
-<li>Field matching/combining</li>
-<li>Progressive scan conversion</li>
+<li>Been deinterlaced using YADIF or other deinterlacing filters</li>
+<li>Been field blended</li>
+<li>Been field matched/combined</li>
+<li>Been converted to progressive scan</li>
 </ul>
 <div class="admonition example">
-<p class="admonition-title">Telecined video that went through field blending</p>
+<p class="admonition-title">Telecined video that was field blended</p>
 <p><img alt="Example of a telecined video that was deinterlaced through field blending from Fate/EXTELLA" src="../../../../static/img/sources/wobbly/blended_fields.png" /></p>
-<p>The OP for Fate/EXTELLA was deinterlaced using a field blending approach,
+<p>The OP for Fate/EXTELLA was field blended,
 which combines the fields into single progressive frames.
 While this preserves the 3:2 pulldown pattern,
-the loss of distinct fields makes proper IVTC impossible.
+the loss of distinct fields makes proper inverse telecine impossible.
 This type of content cannot be processed with Wobbly<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 </div>
 <h3 id="true-vfr">"True" VFR</h3>
@@ -1579,7 +1695,7 @@ one of Wobbly's supported framerates.</p>
 <h2 id="installation">Installation</h2>
 <p>We recommend installing the <a href="https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/releases">JET fork of Wobbly</a>.
 This fork contains various improvements and bugfixes over the original.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Latest Stable</label><label for="__tabbed_1_2">Development</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Stable</label><label for="__tabbed_1_2">Nightly</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <ol>
@@ -1614,21 +1730,36 @@ In this case, use the latest stable release instead.</p>
 </div>
 <h3 id="dependencies">Dependencies</h3>
 <p>Wobbly requires several VapourSynth plugins to function properly:</p>
-<p>Required plugins:</p>
-<ul>
-<li><a href="https://github.com/vapoursynth/dmetrics">DMetrics</a></li>
-<li><a href="https://github.com/dubhater/vapoursynth-fieldhint">FieldHint</a></li>
-<li><a href="https://github.com/dubhater/vapoursynth-scxvid">SCXVID</a></li>
-<li><a href="https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod">TDeintMod</a></li>
-<li><a href="https://github.com/vapoursynth/vivtc">vivtc</a></li>
-</ul>
-<p>Optional plugins (depending on input format):</p>
-<ul>
-<li><a href="https://github.com/vapoursynth/bestsource">bestsource</a> - General file support</li>
-<li><a href="https://github.com/AkarinVS/L-SMASH-Works">L-SMASH-Works</a> - General file support</li>
-<li><a href="https://github.com/dwbuiten/d2vsource">d2vsource</a> - D2V index file support</li>
-<li><a href="https://www.rationalqm.us/dgdecnv/dgdecnv.html">DGDecNV</a> - DGIndex/DGDecNV support</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Required</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vapoursynth/dmetrics">DMetrics</a></td>
+<td><a href="https://github.com/vapoursynth/bestsource">bestsource</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/dubhater/vapoursynth-fieldhint">FieldHint</a></td>
+<td><a href="https://github.com/AkarinVS/L-SMASH-Works">L-SMASH-Works</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/dubhater/vapoursynth-scxvid">SCXVID</a></td>
+<td><a href="https://github.com/dwbuiten/d2vsource">d2vsource</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod">TDeintMod</a></td>
+<td><a href="https://www.rationalqm.us/dgdecnv/dgdecnv.html">DGDecNV</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vapoursynth/vivtc">vivtc</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <details class="question">
 <summary>Verifying plugin installation</summary>
 <p>To check if Wobbly can find all required plugins:</p>
@@ -1642,32 +1773,8 @@ In this case, use the latest stable release instead.</p>
 <p><img alt="Screenshot showing Wobbly's plugin dependency checker" src="../../../../static/img/sources/wobbly/installed_plugins.png" /></p>
 </div>
 </details>
-<p>Wobbly consists of two main components:</p>
-<ul>
-<li>
-<p>Wibbly: The analysis component that examines the video and collects detailed metrics about:</p>
-</li>
-<li>
-<p>Field patterns</p>
-</li>
-<li>Scene changes</li>
-<li>Interlaced fades</li>
-<li>Other relevant metrics</li>
-</ul>
-<p>These metrics are stored in a JSON file for later processing.</p>
-<ul>
-<li>
-<p>Wobbly: The processing component that:</p>
-</li>
-<li>
-<p>Reads the JSON analysis file from Wibbly</p>
-</li>
-<li>Determines the optimal IVTC method for each section</li>
-<li>Applies the appropriate IVTC operations
-    and other custom filtering set by the user</li>
-<li>Produces the final progressive output</li>
-</ul>
-<h2 id="setting-up-wibbly">Setting up Wibbly</h2>
+<h2 id="wibbly_1">Wibbly</h2>
+<h3 id="setting-up-wibbly">Setting up Wibbly</h3>
 <div class="admonition warning">
 <p class="admonition-title">This section is incomplete!</p>
 <p>This section is a stub.
@@ -1689,7 +1796,19 @@ There are two implementations.</p>
 <p>...</p>
 </div>
 <div class="tabbed-block">
-<p>...</p>
+<div class="admonition warning">
+<p class="admonition-title">This section is incomplete!</p>
+<p>This section is a stub.
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Writing the actual wibbly python module</li>
+<li>Documenting basic usage here</li>
+</ul>
+</details>
+</div>
 </div>
 </div>
 </div>
@@ -1716,7 +1835,7 @@ by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-o
 <li id="fn:2">
 <p>While Wobbly is not designed to fix field blending issues directly,
 it can be used to identify and scenefilter sections of field-blended content
-through its <a href="../advanced-usage.md">custom list functionality</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+through its <a href="../advanced-usage/">custom list functionality</a>.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
