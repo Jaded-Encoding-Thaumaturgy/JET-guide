@@ -572,4 +572,4 @@ the following guides will walk you through
 the appropriate filtering techniques
 for each scenario:
 
-- [Inverse Telecine with Wobbly](../../sources/dvd/wobbly/installation.md)
+- [Getting started with Wobbly](../../sources/dvd/wobbly/setup.md)

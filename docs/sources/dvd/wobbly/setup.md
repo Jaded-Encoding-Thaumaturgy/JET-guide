@@ -3,6 +3,31 @@
 Wobbly is a tool used for manual inverse telecine (IVTC), the process of converting telecined content back to its original framerate.
 It's a staple in any serious DVD encoder's toolkit, and gives you precise control over how to IVTC video.
 
+## Components
+
+Wobbly consists of two main components:
+
+### Wibbly
+
+The analysis component that examines the video and collects detailed metrics about:
+
+- Field patterns
+- Scene changes
+- Interlaced fades
+- Other relevant metrics
+
+These metrics are stored in a JSON file for Wobbly to use.
+
+### Wobbly
+
+The processing component that:
+
+- Reads the JSON analysis file from Wibbly
+- Determines the optimal IVTC pattern for each section
+- Applies the appropriate IVTC operations
+  and other custom filtering set by the user
+- Produces the final progressive output
+
 ## Limitations
 
 Before installing and setting up Wobbly,
@@ -29,27 +54,27 @@ meaning the source must retain its original interlaced fields.
 Any video that has been deinterlaced,
 even if it follows a 3:2 pulldown pattern,
 cannot be processed correctly by Wobbly.
-This includes footage processed through:
+This includes footage that has:
 
-- YADIF or other deinterlacing filters
-- Field blending
-- Field matching/combining
-- Progressive scan conversion
+- Been deinterlaced using YADIF or other deinterlacing filters
+- Been field blended
+- Been field matched/combined
+- Been converted to progressive scan
 
-!!! example "Telecined video that went through field blending"
+!!! example "Telecined video that was field blended"
 
     ![Example of a telecined video that was deinterlaced through field blending from Fate/EXTELLA](../../../static/img/sources/wobbly/blended_fields.png)
 
-    The OP for Fate/EXTELLA was deinterlaced using a field blending approach,
+    The OP for Fate/EXTELLA was field blended,
     which combines the fields into single progressive frames.
     While this preserves the 3:2 pulldown pattern,
-    the loss of distinct fields makes proper IVTC impossible.
+    the loss of distinct fields makes proper inverse telecine impossible.
     This type of content cannot be processed with Wobbly[^2].
 
-
-[^2]: While Wobbly is not designed to fix field blending issues directly,
+[^2]:
+    While Wobbly is not designed to fix field blending issues directly,
     it can be used to identify and scenefilter sections of field-blended content
-    through its [custom list functionality](../advanced-usage.md).
+    through its [custom list functionality](./advanced-usage.md).
 
 ### "True" VFR
 
@@ -118,13 +143,13 @@ one of Wobbly's supported framerates.
 We recommend installing the [JET fork of Wobbly](https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/releases).
 This fork contains various improvements and bugfixes over the original.
 
-=== "Latest Stable"
+=== "Stable"
 
       1. Download the latest `Wobbly-win64.zip` from the [releases page](https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/releases)
       2. Extract the ZIP file to a location of your choice
       3. The executable can be run directly without any additional setup
 
-=== "Development"
+=== "Nightly"
 
     !!! warning "Artifact Expiry"
 
@@ -150,20 +175,13 @@ This fork contains various improvements and bugfixes over the original.
 
 Wobbly requires several VapourSynth plugins to function properly:
 
-Required plugins:
-
-- [DMetrics](https://github.com/vapoursynth/dmetrics)
-- [FieldHint](https://github.com/dubhater/vapoursynth-fieldhint)
-- [SCXVID](https://github.com/dubhater/vapoursynth-scxvid)
-- [TDeintMod](https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod)
-- [vivtc](https://github.com/vapoursynth/vivtc)
-
-Optional plugins (depending on input format):
-
-- [bestsource](https://github.com/vapoursynth/bestsource) - General file support
-- [L-SMASH-Works](https://github.com/AkarinVS/L-SMASH-Works) - General file support
-- [d2vsource](https://github.com/dwbuiten/d2vsource) - D2V index file support
-- [DGDecNV](https://www.rationalqm.us/dgdecnv/dgdecnv.html) - DGIndex/DGDecNV support
+| Required                                                                         | Optional                                                   |
+| -------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| [DMetrics](https://github.com/vapoursynth/dmetrics)                              | [bestsource](https://github.com/vapoursynth/bestsource)    |
+| [FieldHint](https://github.com/dubhater/vapoursynth-fieldhint)                   | [L-SMASH-Works](https://github.com/AkarinVS/L-SMASH-Works) |
+| [SCXVID](https://github.com/dubhater/vapoursynth-scxvid)                         | [d2vsource](https://github.com/dwbuiten/d2vsource)         |
+| [TDeintMod](https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod) | [DGDecNV](https://www.rationalqm.us/dgdecnv/dgdecnv.html)  |
+| [vivtc](https://github.com/vapoursynth/vivtc)                                    |                                                            |
 
 ??? question "Verifying plugin installation"
 
@@ -177,28 +195,12 @@ Optional plugins (depending on input format):
 
         ![Screenshot showing Wobbly's plugin dependency checker](../../../static/img/sources/wobbly/installed_plugins.png)
 
-Wobbly consists of two main components:
+## Wibbly
 
-- Wibbly: The analysis component that examines the video and collects detailed metrics about:
-
-  - Field patterns
-  - Scene changes
-  - Interlaced fades
-  - Other relevant metrics
-
-These metrics are stored in a JSON file for later processing.
-
-- Wobbly: The processing component that:
-
-  - Reads the JSON analysis file from Wibbly
-  - Determines the optimal IVTC method for each section
-  - Applies the appropriate IVTC operations
-    and other custom filtering set by the user
-  - Produces the final progressive output
-
-## Setting up Wibbly
+### Setting up Wibbly
 
 !!! warning "This section is incomplete!"
+
     This section is a stub.
     You can help us
     by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
@@ -217,11 +219,21 @@ There are two implementations.
 
 === "Python module"
 
-    ...
+    !!! warning "This section is incomplete!"
+
+        This section is a stub.
+        You can help us
+        by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+
+        ??? question "How can I help?"
+
+            - Writing the actual wibbly python module
+            - Documenting basic usage here
 
 ## Setting up Wobbly
 
 !!! warning "This section is incomplete!"
+
     This section is a stub.
     You can help us
     by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
