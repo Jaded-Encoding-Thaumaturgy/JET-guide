@@ -289,7 +289,7 @@ Fixes washed out colors on selected sources.
 
 ```py
 ## Fix DRC: Repairs sources with very washed out colors
-clip1 = core.resize.Point(clip1, range_in=0, range=1, dither_type="error_diffusion")
+clip1 = core.resize2.Point(clip1, range_in=0, range=1, dither_type="error_diffusion")
 clip1 = core.std.SetFrameProp(clip1, prop="_ColorRange", intval=1)
 ```
 
