@@ -31,7 +31,11 @@ nav:
   - Source Preparation:
     - DVDs:
       - Remuxing: sources/dvd/remuxing.md
-      - Wobbly 🡕: https://wobbly.encode.moe
+      - Wobbly:
+        - Getting Started: sources/dvd/wobbly/setup.md
+        # - Basic Usage: sources/dvd/wobbly/basic-usage.md
+        # - Advanced Usage: sources/dvd/wobbly/advanced-usage.md
+      # - Wobbly 🡕: https://wobbly.encode.moe
   - Filtering:
     - General Techniques:
       - Order of Operations: filtering/general/order.md
@@ -42,6 +46,7 @@ nav:
         - Known Resolutions: filtering/common/descaling/known-resolutions.md
     - Situational Filtering:
       - Dehardsubbing: filtering/situational/dehardsubbing.md
+      - Field-Based Video: filtering/situational/fieldbased.md
   - Encoding:
     - x264: encoding/x264.md
     - x265: encoding/x265.md
@@ -92,3 +97,4 @@ extra_javascript:
 
 extra_css:
   - https://unpkg.com/katex@0/dist/katex.min.css
+  - stylesheets/fields.css
