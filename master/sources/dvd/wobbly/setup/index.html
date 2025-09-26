@@ -12,28 +12,28 @@
         <meta name="author" content="Jaded Encoding Thaumaturgy">
       
       
-        <link rel="canonical" href="https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/encoding/x265/">
+        <link rel="canonical" href="https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/sources/dvd/wobbly/setup/">
       
       
-        <link rel="prev" href="../x264/">
+        <link rel="prev" href="../../remuxing/">
       
       
-        <link rel="next" href="../svtav1/">
+        <link rel="next" href="../../../../filtering/general/order/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
-        <title>x265 - JET Encoding Guide</title>
+        <title>Getting Started - JET Encoding Guide</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e53b48f4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -52,13 +52,13 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
     
       <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
-      <link rel="stylesheet" href="../../stylesheets/fields.css">
+      <link rel="stylesheet" href="../../../../stylesheets/fields.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#x265-parameters" class="md-skip">
+        <a href="#set-up" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="JET Encoding Guide" class="md-header__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+    <a href="../../../.." title="JET Encoding Guide" class="md-header__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              x265
+              Getting Started
             
           </span>
         </div>
@@ -212,7 +212,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="JET Encoding Guide" class="md-nav__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
+    <a href="../../../.." title="JET Encoding Guide" class="md-nav__button md-logo" aria-label="JET Encoding Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -242,7 +242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -304,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/installation/" class="md-nav__link">
+      <a href="../../../../basics/installation/" class="md-nav__link">
         
   
   
@@ -327,7 +327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/python-primer/" class="md-nav__link">
+      <a href="../../../../basics/python-primer/" class="md-nav__link">
         
   
   
@@ -350,7 +350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/getting-started/" class="md-nav__link">
+      <a href="../../../../basics/getting-started/" class="md-nav__link">
         
   
   
@@ -373,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/how-do-i/" class="md-nav__link">
+      <a href="../../../../basics/how-do-i/" class="md-nav__link">
         
   
   
@@ -400,20 +400,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -429,7 +429,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Source Preparation
@@ -440,20 +440,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -469,7 +469,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             DVDs
@@ -483,7 +483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../sources/dvd/remuxing/" class="md-nav__link">
+      <a href="../../remuxing/" class="md-nav__link">
         
   
   
@@ -503,20 +503,20 @@
                 
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
@@ -532,7 +532,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1_2">
             <span class="md-nav__icon md-icon"></span>
             Wobbly
@@ -543,10 +543,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../sources/dvd/wobbly/setup/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -557,6 +579,176 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wibbly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wibbly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wobbly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wobbly
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Limitations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5-frame-cycle-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      5-frame cycle only
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#field-based-content-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      Field-Based content only
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#true-vfr" class="md-nav__link">
+    <span class="md-ellipsis">
+      "True" VFR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decimation-breaks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decimation breaks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interlaced-content" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interlaced content
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wibbly_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wibbly
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wibbly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-wibbly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Wibbly
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-wobbly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Wobbly
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -672,7 +864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filtering/general/order/" class="md-nav__link">
+      <a href="../../../../filtering/general/order/" class="md-nav__link">
         
   
   
@@ -695,7 +887,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filtering/general/expressions/" class="md-nav__link">
+      <a href="../../../../filtering/general/expressions/" class="md-nav__link">
         
   
   
@@ -806,7 +998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filtering/common/descaling/theory/" class="md-nav__link">
+      <a href="../../../../filtering/common/descaling/theory/" class="md-nav__link">
         
   
   
@@ -829,7 +1021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filtering/common/descaling/known-resolutions/" class="md-nav__link">
+      <a href="../../../../filtering/common/descaling/known-resolutions/" class="md-nav__link">
         
   
   
@@ -908,7 +1100,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filtering/situational/dehardsubbing/" class="md-nav__link">
+      <a href="../../../../filtering/situational/dehardsubbing/" class="md-nav__link">
         
   
   
@@ -931,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filtering/situational/fieldbased/" class="md-nav__link">
+      <a href="../../../../filtering/situational/fieldbased/" class="md-nav__link">
         
   
   
@@ -966,20 +1158,20 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -995,7 +1187,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Encoding
@@ -1009,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../x264/" class="md-nav__link">
+      <a href="../../../../encoding/x264/" class="md-nav__link">
         
   
   
@@ -1029,32 +1221,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    x265
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../encoding/x265/" class="md-nav__link">
         
   
   
@@ -1065,200 +1235,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#general-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      General Parameters
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="General Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#preset" class="md-nav__link">
-    <span class="md-ellipsis">
-      Preset
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#threads" class="md-nav__link">
-    <span class="md-ellipsis">
-      Threads
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sample-adaptive-offset" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sample Adaptive Offset
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cu-tree" class="md-nav__link">
-    <span class="md-ellipsis">
-      CU Tree
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adaptive-quantization-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adaptive Quantization Mode
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-frames" class="md-nav__link">
-    <span class="md-ellipsis">
-      B-Frames
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deblock" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deblock
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#transform-skip" class="md-nav__link">
-    <span class="md-ellipsis">
-      Transform Skip
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chroma-qp-offset" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chroma QP Offset
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#source-specific-parameters" class="md-nav__link">
-    <span class="md-ellipsis">
-      Source-Specific Parameters
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Source-Specific Parameters">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#constant-rate-factor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Constant Rate Factor
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#quantization-compression-ratio" class="md-nav__link">
-    <span class="md-ellipsis">
-      Quantization Compression Ratio
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adaptive-quantization-strength" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adaptive Quantization Strength
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#psychovisual-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      Psychovisual Optimization
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#keyframe-interval" class="md-nav__link">
-    <span class="md-ellipsis">
-      Keyframe Interval
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rate-distortion-optimization-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Rate Distortion Optimization Mode
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ippb-ratio" class="md-nav__link">
-    <span class="md-ellipsis">
-      IP/P/B Ratio
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1271,7 +1247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../svtav1/" class="md-nav__link">
+      <a href="../../../../encoding/svtav1/" class="md-nav__link">
         
   
   
@@ -1341,7 +1317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../misc/comparison/" class="md-nav__link">
+      <a href="../../../../misc/comparison/" class="md-nav__link">
         
   
   
@@ -1371,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../resources/" class="md-nav__link">
+      <a href="../../../../resources/" class="md-nav__link">
         
   
   
@@ -1413,91 +1389,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-parameters" class="md-nav__link">
+  <a href="#components" class="md-nav__link">
     <span class="md-ellipsis">
-      General Parameters
+      Components
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="General Parameters">
+    <nav class="md-nav" aria-label="Components">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#preset" class="md-nav__link">
+  <a href="#wibbly" class="md-nav__link">
     <span class="md-ellipsis">
-      Preset
+      Wibbly
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#threads" class="md-nav__link">
+  <a href="#wobbly" class="md-nav__link">
     <span class="md-ellipsis">
-      Threads
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#sample-adaptive-offset" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sample Adaptive Offset
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cu-tree" class="md-nav__link">
-    <span class="md-ellipsis">
-      CU Tree
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#adaptive-quantization-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Adaptive Quantization Mode
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b-frames" class="md-nav__link">
-    <span class="md-ellipsis">
-      B-Frames
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deblock" class="md-nav__link">
-    <span class="md-ellipsis">
-      Deblock
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#transform-skip" class="md-nav__link">
-    <span class="md-ellipsis">
-      Transform Skip
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chroma-qp-offset" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chroma QP Offset
+      Wobbly
     </span>
   </a>
   
@@ -1509,73 +1422,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#source-specific-parameters" class="md-nav__link">
+  <a href="#limitations" class="md-nav__link">
     <span class="md-ellipsis">
-      Source-Specific Parameters
+      Limitations
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Source-Specific Parameters">
+    <nav class="md-nav" aria-label="Limitations">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#constant-rate-factor" class="md-nav__link">
+  <a href="#5-frame-cycle-only" class="md-nav__link">
     <span class="md-ellipsis">
-      Constant Rate Factor
+      5-frame cycle only
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#quantization-compression-ratio" class="md-nav__link">
+  <a href="#field-based-content-only" class="md-nav__link">
     <span class="md-ellipsis">
-      Quantization Compression Ratio
+      Field-Based content only
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#adaptive-quantization-strength" class="md-nav__link">
+  <a href="#true-vfr" class="md-nav__link">
     <span class="md-ellipsis">
-      Adaptive Quantization Strength
+      "True" VFR
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#psychovisual-optimization" class="md-nav__link">
+  <a href="#decimation-breaks" class="md-nav__link">
     <span class="md-ellipsis">
-      Psychovisual Optimization
+      Decimation breaks
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#keyframe-interval" class="md-nav__link">
+  <a href="#interlaced-content" class="md-nav__link">
     <span class="md-ellipsis">
-      Keyframe Interval
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rate-distortion-optimization-mode" class="md-nav__link">
-    <span class="md-ellipsis">
-      Rate Distortion Optimization Mode
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ippb-ratio" class="md-nav__link">
-    <span class="md-ellipsis">
-      IP/P/B Ratio
+      Interlaced content
     </span>
   </a>
   
@@ -1583,6 +1478,63 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wibbly_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wibbly
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wibbly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-wibbly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Wibbly
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-wobbly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting up Wobbly
+    </span>
+  </a>
   
 </li>
       
@@ -1605,267 +1557,265 @@
   
 
 
-<h1 id="x265-parameters">x265 Parameters</h1>
-<p>This page is a very high-level overview
-of relevant x265 parameters
-you should use
-and modify as necessary.
-Explanations behind certain parameters
-are included,
-but the primary focus is to provide
-a list of go-to parameters
-we recommend for high-quality video encoding.</p>
-<p>These parameters are aimed at high-quality video encoding,
-with a focus on transparency.
-The files will naturally wind up fairly large,
-but that's preferable over them being bitstarved.</p>
-<details class="info">
-<summary>Transparency</summary>
-<p>"Transparency" refers to the degree to which
- the encoded output matches the source.
- A more transparent encode will look closer to the original source,
- while a less transparent encode will have noticeable compression artifacts
- and/or distortions.</p>
-<p>Achieving perfect transparency is borderline impossible
- (especially once you factor in random variance such as with dithering),
- but the end goal should be to have a "transparent" encode,
- a.k.a. to get as close as reasonably possible.</p>
-</details>
-<p>For a more in-depth look at these parameters,
-see the <a href="https://x265.readthedocs.io/en/stable/cli.html">x265 documentation</a>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>These parameters are primarily aimed at encoding <em>anime</em>,
-and may not be suitable for other types of content.
-We will try to give alternative options
-for live-action content where possible,
-but a lot of parameters should still be sufficient.</p>
-<p>Furthermore,
-these parameters are tailored to high quality encoding, not compatibility.
-If you're encoding for a streaming service
-or authoring company,
-you may need to change some parameters
-and ensure you're in compliance
-with your company's requirements.</p>
+<h1 id="set-up">Set-up</h1>
+<p>Wobbly is a tool used for manual inverse telecine (IVTC), the process of converting telecined content back to its original framerate.
+It's a staple in any serious DVD encoder's toolkit, and gives you precise control over how to IVTC video.</p>
+<h2 id="components">Components</h2>
+<p>Wobbly consists of two main components:</p>
+<h3 id="wibbly">Wibbly</h3>
+<p>The analysis component that examines the video and collects detailed metrics about:</p>
+<ul>
+<li>Field patterns</li>
+<li>Scene changes</li>
+<li>Interlaced fades</li>
+<li>Other relevant metrics</li>
+</ul>
+<p>These metrics are stored in a JSON file for Wobbly to use.</p>
+<h3 id="wobbly">Wobbly</h3>
+<p>The processing component that:</p>
+<ul>
+<li>Reads the JSON analysis file from Wibbly</li>
+<li>Determines the optimal IVTC pattern for each section</li>
+<li>Applies the appropriate IVTC operations
+  and other custom filtering set by the user</li>
+<li>Produces the final progressive output</li>
+</ul>
+<h2 id="limitations">Limitations</h2>
+<p>Before installing and setting up Wobbly,
+it's important to recognise its limitations.</p>
+<h3 id="5-frame-cycle-only">5-frame cycle only</h3>
+<p>Wobbly exclusively processes 5-frame telecine cycles,
+specifically the 3:2 pulldown pattern used in NTSC content.
+This means it only works with video from NTSC regions
+like Japan and North America<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>,
+and cannot handle PAL/SECAM sources.
+It cannot process variable telecine cycles
+that may occur when editing telecined footage directly.
+The software provides no support for detecting
+or handling alternative pulldown patterns.</p>
+<h3 id="field-based-content-only">Field-Based content only</h3>
+<p>Wobbly explicitly only supports field-based video,
+meaning the source must retain its original interlaced fields.
+Any video that has been deinterlaced,
+even if it follows a 3:2 pulldown pattern,
+cannot be processed correctly by Wobbly.
+This includes footage that has:</p>
+<ul>
+<li>Been deinterlaced using YADIF or other deinterlacing filters</li>
+<li>Been field blended</li>
+<li>Been field matched/combined</li>
+<li>Been converted to progressive scan</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Telecined video that was field blended</p>
+<p><img alt="Example of a telecined video that was deinterlaced through field blending from Fate/EXTELLA" src="../../../../static/img/sources/wobbly/blended_fields.png" /></p>
+<p>The OP for Fate/EXTELLA was field blended,
+which combines the fields into single progressive frames.
+While this preserves the 3:2 pulldown pattern,
+the loss of distinct fields makes proper inverse telecine impossible.
+This type of content cannot be processed with Wobbly<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup>.</p>
 </div>
-<h2 id="general-parameters">General Parameters</h2>
-<p>The following parameters
-are the type of parameters
-you'll usually always set,
-and rarely touch again.</p>
-<h3 id="preset">Preset</h3>
-<p>Use the <code>veryslow</code> or <code>slower</code> preset.</p>
-<p>These presets will still set some parameters
-that aren't useful,
-but we will override them with better values later.</p>
-<details class="question">
-<summary>Why not use <code>--tune animation</code>?</summary>
-<p><code>--tune animation</code> is a preset that is designed to work well with "animation".
- However,
- the type of animation this appears to be optimized for
- is not anime or anything with similarly complex backgrounds,
- gradients, and other details.
- Instead,
- this tune is better optimized for very "flat" animation,
- such as flash animations and things of that nature.</p>
-<p>For that reason,
- you should <strong>NOT</strong> use this tune for anime.</p>
-</details>
-<h3 id="threads">Threads</h3>
-<p>...</p>
-<!-- TODO: Add explanation -->
-
-<h3 id="sample-adaptive-offset">Sample Adaptive Offset</h3>
-<p>Disable sample adaptive offset using <code>--no-sao</code>.</p>
-<p>Sample Adaptive Offset (SAO) aims to reduce visual artifacting, particularly around edges.
-However, it's very prone to creating detail loss.
-It's best to avoid using it
-unless you're trying to encode a mini-encode.</p>
-<h3 id="cu-tree">CU Tree</h3>
-<p>Disable CU tree using <code>--no-cutree</code>.</p>
-<p>CU Tree is a rate control algorithm that allocates bits based on the complexity of each Coding Unit (CU).
-This often leads to simpler areas (such as backgrounds) being starved of bitrate,
-creating noticeable blocking artifacts.
-There's also no way to fully control its behavior (or "strength"),
-so it's best to just disable it.
-Turning it off allows for a more even distribution of bits across the frame,
-which will look closer to the original video
-and prevent "patches" of starved areas.</p>
-<h3 id="adaptive-quantization-mode">Adaptive Quantization Mode</h3>
-<p>Use <code>--aq-mode 3</code>.</p>
-<p>Adaptive Quantization (AQ) adjusts the quantization level for different parts of the frame based on their complexity.
-This helps distribute bits more efficiently across the image,
-allocating more bits to complex areas and fewer to simpler areas.</p>
-<p>Using <code>--aq-mode 3</code> enables AQ with auto-variance and a bias towards dark scenes.
-This mode is particularly effective for anime content for several reasons:</p>
+<h3 id="true-vfr">"True" VFR</h3>
+<p>Wobbly does not support true variable framerates (VFR).
+Since decimation is strictly based on the telecine cycle,
+any VFR ranges get rounded to the nearest supported framerate.
+This limitation stems from Wobbly only supporting
+a fixed set of framerates:</p>
+<ul>
+<li>5.994 (6) fps</li>
+<li>11.988 (12) fps</li>
+<li>17.982 (18) fps</li>
+<li>23.976 (24) fps</li>
+<li>29.97 (30) fps</li>
+</ul>
+<p>Additionally, Wobbly lacks native support
+for outputting 59.94 (60) fps video.</p>
+<h3 id="decimation-breaks">Decimation breaks</h3>
+<p>During the early digital era,
+video editing was commonly performed
+on already telecined footage.
+This often resulted in splices
+that introduced extra frames,
+disrupting the standard telecine pattern.</p>
+<p>When encountering these disrupted patterns,
+Wobbly will assign an incorrect framerate
+rather than attempting to fix the cycle.
+This differs from YATTA's behavior,
+which would automatically detect such issues
+and apply appropriate decimation.</p>
+<p>While we cover manual fixes
+in the "Fixing the Framerate" section,
+this represents a regression
+from YATTA's automated handling.
+Future versions of Wobbly may address
+this limitation.</p>
+<h3 id="interlaced-content">Interlaced content</h3>
+<p>As mentioned in the <a href="#true-vfr">"True" VFR section</a>,
+Wobbly does not currently support 60p output.
+This means that interlaced content requiring deinterlacing
+cannot be processed directly through Wobbly.
+However, you can work around this limitation by:</p>
 <ol>
-<li>It helps preserve detail in darker areas, which are common in anime and often prone to banding or blocking artifacts.</li>
-<li>The auto-variance feature adapts the strength of AQ based on the overall variance of the frame.</li>
-<li>The bias towards dark scenes helps maintain the integrity of shadows and prevents loss of detail in low-light areas,
-   which is crucial for maintaining the artistic intent in many anime scenes.</li>
+<li>Marking interlaced scenes as 30p
+   and setting "CCCCC" matches</li>
+<li>Deinterlacing the video in your own filterchain
+   after Wobbly processing</li>
+<li>Manually regenerating timecodes
+   to account for the doubled framerate</li>
 </ol>
-<h3 id="b-frames">B-<strong>Frames</strong></h3>
-<p>Use at least 8 B-Frames,
-and ideally 16
-using <code>--bframes 16</code>.</p>
-<p>Higher values will reduce encoding speed,
-so only use 16 if you don't mind that cost.
-If you desperately need the speed,
-you can go lower,
-but don't go below 8.</p>
-<h3 id="deblock">Deblock</h3>
-<p>Use at least <code>--deblock=-1:-1</code>
-or <code>--deblock=-2:-2</code>.
-If you're encoding live-action content,
-stick with <code>--deblock=-2:-2</code>.</p>
-<p>Deblocking will affect how much smoothing is applied.
-This can be harmful to dithering and grain,
-so you should avoid deblocking.
-However,
-setting it to its lowest value (<code>-3:-3</code>)
-may <em>create</em> noticeable blocking artifacts instead.</p>
-<h3 id="transform-skip">Transform Skip</h3>
-<p>Enable transform skip using <code>--tskip</code>
-if you're encoding anime.</p>
-<p>Transform skip enables the evaluation of skipping the transform (DCT) step for 4x4 transform units,
-while still applying quantization.
-This is useful for preserving sharp edges and fine details,
-which anime often has a lot of.</p>
-<h3 id="chroma-qp-offset">Chroma QP Offset</h3>
-<p>By default, this will be 0 for 4:2:0 and 6 for 4:4:4.</p>
-<p>Use at least <code>--cbqpoffs -2</code>,
-or <code>--cbqpoffs -3</code>
-if you don't mind the additional file size.</p>
-<p>This parameter affects the quantization parameter (QP)
-for chroma (color) components relative to the luma QP.
-A negative value reduces the chroma QP,
-allocating more bits to chroma and potentially improving color quality.</p>
-<p>Chroma often receives fewer bits than luma,
-which can lead to color quality suffering.
-This offset helps correct for that by allowing more bits for chroma,
-effectively reducing the quantization step size for color information.</p>
-<h2 id="source-specific-parameters">Source-Specific Parameters</h2>
-<p>The following parameters
-should be adjusted
-based on your specific video,
-and likely will require tweaking
-on a case-by-case basis.</p>
-<h3 id="constant-rate-factor">Constant Rate Factor</h3>
-<p>Use a Constant Rate Factor (CRF) value between 12 and 14</p>
-<p>CRF is a rate control mode that aims to achieve a consistent quality level across the entire video.
-Lower values result in higher quality and larger file sizes,
-while higher values lead to lower quality and smaller file sizes.</p>
-<p>For anime,
-we recommend using CRF values between 12 and 14
-to achieve high-quality, transparent encodes.
-This range typically provides an excellent balance
-between visual quality and file size for anime content.</p>
-<div class="admonition warning">
-<p class="admonition-title">Lower resolution encodes may require a lower CRF value</p>
-<p>Lower resolution encodes may require a lower CRF value
- to achieve the same level of quality as higher resolution encodes.
- This is due to the fact that lower resolution encodes
- will be upscaled during playback,
- which makes quantization artifacts more noticeable.
- For SD content,
- you may need to use a CRF value of 9 or lower.</p>
+<p>Alternatively,
+if you want to use Wobbly's timecodes output functionality,
+you'll need to pull down 60i content to 30p first.
+This will make sure
+the content matches
+one of Wobbly's supported framerates.</p>
+<h2 id="installation">Installation</h2>
+<p>We recommend installing the <a href="https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/releases">JET fork of Wobbly</a>.
+This fork contains various improvements and bugfixes over the original.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Stable</label><label for="__tabbed_1_2">Nightly</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Download the latest <code>Wobbly-win64.zip</code> from the <a href="https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/releases">releases page</a></li>
+<li>Extract the ZIP file to a location of your choice</li>
+<li>The executable can be run directly without any additional setup</li>
+</ol>
 </div>
-<p>If you notice that your encode is still too starved,
-or that grain and dithering are patching together,
-you may need to decrease the CRF value slightly.</p>
-<h3 id="quantization-compression-ratio">Quantization Compression Ratio</h3>
-<p>Use <code>--qcomp 0.7</code>.</p>
-<p>The Quantization Compression Ratio (qcomp) controls how the quantizer varies within a frame.</p>
-<p>A value of <code>0.7</code> is generally a good starting point for most anime content.
-However, if you're working with very grainy content,
-you may want to increase the value slightly.</p>
-<h3 id="adaptive-quantization-strength">Adaptive Quantization Strength</h3>
-<p>Use an <code>--aq-strength</code> value between 0.6 and 0.7.</p>
-<p>Adaptive Quantization (AQ) helps distribute bits more efficiently across a frame.
-For anime content,
-it's generally recommended to keep the AQ strength relatively low.
-Lower values reduce QP fluctuations,
-which can result in better-looking grain,
-especially in motion.</p>
-<p>Values between <code>0.6</code> and <code>0.7</code> typically work well for most anime,
-but when working with very grainy content,
-you may need to decrease the value slightly.
-Be cautious about setting the value too low,
-as some degree of adaptive quantization
-is still beneficial for overall picture quality.</p>
+<div class="tabbed-block">
 <div class="admonition warning">
-<p class="admonition-title">Lower <code>aq-strength</code> values increase QP</p>
-<p>Lower <code>aq-strength</code> values increase QP,
- which increases compression
- and may lead to more noticeable artifacts.
- To counteract this,
- you should reduce the <code>crf</code> value slightly
- as you decrease <code>aq-strength</code>.</p>
+<p class="admonition-title">Artifact Expiry</p>
+<p>GitHub Actions artifacts are only available
+for 90 days after creation.
+If you cannot download an artifact,
+it may have expired.
+In this case, use the latest stable release instead.</p>
 </div>
-<h3 id="psychovisual-optimization">Psychovisual Optimization</h3>
-<p>Use <code>--psy-rd 2.0</code> and <code>--psy-rdoq 1.5</code>,
-and avoid values higher than <code>2.5</code>.</p>
-<p>The <code>--psy-rd</code> parameter controls the strength of psychovisual optimization
-during the rate-distortion optimization process.
-A value of <code>2.0</code> is generally a good starting point for anime,
-as it helps preserve detail and texture without introducing too many artifacts.</p>
-<p>The <code>--psy-rdoq</code> parameter affects the psychovisual optimization during
-quantization. This should usually be set lower than <code>--psy-rd</code>, as it has
-a more pronounced effect. A value of <code>1.5</code> can be considered a suitable starting point.</p>
-<p>These parameters can be quite sensitive,
-and their effects may vary depending on the specific content.
-Higher values will try to match the source structure more aggressively,
-which can help preserve grain and detail.
-However, they may also introduce noticeable distortions if set too high.</p>
-<h3 id="keyframe-interval">Keyframe Interval</h3>
-<p>Use a keyframe interval of 240
-using <code>--keyint 240</code>
-and a minimum keyframe interval of 24
-using <code>--min-keyint 24</code>.</p>
-<p>These parameters help control where I-frames (or "keyframes") are placed.
-In most scenarios,
-you want I-frames to be as spread out as possible,
-so that you can get the maximum benefits of B-Frames
-while minimizing the bitrate cost.</p>
-<p>A good rule of thumb is to set the keyframe interval to 10 seconds of content,
-and the minimum keyframe interval to 1 second.
-This means if your content is 24 fps,
-your keyframe interval should be 240,
-and your minimum keyframe interval should be 24.
-If your content is 30 fps,
-your keyframe interval should be 300,
-and your minimum keyframe interval should be 30.</p>
-<h3 id="rate-distortion-optimization-mode">Rate Distortion Optimization Mode</h3>
-<p><code>--rd 4</code> makes RDO act more like x264,
-with more similar artifacting such as blurring and blocking.
-<code>--rd 6</code> will create more noticeable distortion patterns,
-but can also hold grain together better in certain scenarios.</p>
-<p><code>4</code> is usually the best choice for anime,
-but depending on the type of grain your content has,
-you may want to experiment with <code>6</code>.</p>
-<h3 id="ippb-ratio">IP/P/B Ratio</h3>
-<p>The IP ratio (<code>--ipratio</code>) and PB ratio (<code>--pbratio</code>)
-control the relative quality of I-frames, P-frames, and B-frames.
-These parameters can be useful for fine-tuning the balance
-between different frame types.</p>
-<p>If you notice degradation with specific frame types,
-tweaking these ratios may help:</p>
+<p>If you need the latest features or fixes not yet in a stable release:</p>
+<ol>
+<li>Visit the <a href="https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly/actions">GitHub Actions page</a>
+   (requires a GitHub account)</li>
+<li>Click on the most recent successful workflow run</li>
+<li>Download the "Wobbly-win64" artifact from the Artifacts section</li>
+<li>Extract and use like the stable release</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Finding the Artifact</p>
+<p><img alt="Screenshot showing where to find the Wobbly artifact on the Actions page" src="../../../../static/img/sources/wobbly/wobbly_artifact.png" /></p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="dependencies">Dependencies</h3>
+<p>Wobbly requires several VapourSynth plugins to function properly:</p>
+<table>
+<thead>
+<tr>
+<th>Required</th>
+<th>Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/vapoursynth/dmetrics">DMetrics</a></td>
+<td><a href="https://github.com/vapoursynth/bestsource">bestsource</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/dubhater/vapoursynth-fieldhint">FieldHint</a></td>
+<td><a href="https://github.com/AkarinVS/L-SMASH-Works">L-SMASH-Works</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/dubhater/vapoursynth-scxvid">SCXVID</a></td>
+<td><a href="https://github.com/dwbuiten/d2vsource">d2vsource</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TDeintMod">TDeintMod</a></td>
+<td><a href="https://www.rationalqm.us/dgdecnv/dgdecnv.html">DGDecNV</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/vapoursynth/vivtc">vivtc</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details class="question">
+<summary>Verifying plugin installation</summary>
+<p>To check if Wobbly can find all required plugins:</p>
+<ol>
+<li>Open Wobbly</li>
+<li>Click <em>Tools &gt; Check plugins</em></li>
+<li>A window will appear showing the status of each plugin</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Plugin status window</p>
+<p><img alt="Screenshot showing Wobbly's plugin dependency checker" src="../../../../static/img/sources/wobbly/installed_plugins.png" /></p>
+</div>
+</details>
+<h2 id="wibbly_1">Wibbly</h2>
+<h3 id="setting-up-wibbly">Setting up Wibbly</h3>
+<div class="admonition warning">
+<p class="admonition-title">This section is incomplete!</p>
+<p>This section is a stub.
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
 <ul>
-<li><code>--ipratio</code>: Controls the ratio of bits allocated to I-frames relative to P-frames.
-  A higher value allocates more bits to I-frames.</li>
-<li><code>--pbratio</code>: Controls the ratio of bits allocated to P-frames relative to B-frames.
-  A higher value allocates more bits to P-frames.</li>
+<li>Writing Wibbly preperation steps</li>
+<li>Adding the python version (via vspreview?) instructions</li>
 </ul>
-<p>Default values are often sufficient,
-but if you're experiencing issues with certain frame types,
-you might want to adjust these.
-For example:</p>
+</details>
+</div>
+<p>Wibbly is used for metrics gathering and preparing a WOB file.
+There are two implementations.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Program</label><label for="__tabbed_2_2">Python module</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>...</p>
+</div>
+<div class="tabbed-block">
+<div class="admonition warning">
+<p class="admonition-title">This section is incomplete!</p>
+<p>This section is a stub.
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
 <ul>
-<li>If I-frames look noticeably worse than other frames, try increasing <code>--ipratio</code>.</li>
-<li>If P-frames look noticeably worse than other frames, you might adjust both <code>--ipratio</code> and <code>--pbratio</code>.</li>
+<li>Writing the actual wibbly python module</li>
+<li>Documenting basic usage here</li>
 </ul>
-<p>These parameters will be mostly useful on very grainy content,
-and should probably not be touched for most regular anime content.</p>
+</details>
+</div>
+</div>
+</div>
+</div>
+<h2 id="setting-up-wobbly">Setting up Wobbly</h2>
+<div class="admonition warning">
+<p class="admonition-title">This section is incomplete!</p>
+<p>This section is a stub.
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Writing Wibbly preperation steps</li>
+<li>Adding the python version (via vspreview?) instructions</li>
+</ul>
+</details>
+</div>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>See <a href="https://en.wikipedia.org/wiki/DVD_region_code#PAL/SECAM_vs._NTSC">this wikipedia page</a> for more information.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:2">
+<p>While Wobbly is not designed to fix field blending issues directly,
+it can be used to identify and scenefilter sections of field-blended content
+through its custom list functionality.&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -1914,12 +1864,12 @@ and should probably not be touched for most regular anime content.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="../../../../javascripts/katex.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       

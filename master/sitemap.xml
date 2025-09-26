@@ -2,66 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/resources/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/basics/getting-started/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/basics/how-do-i/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/basics/installation/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/basics/python-primer/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/encoding/svtav1/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/encoding/x264/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/encoding/x265/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/filtering/common/descaling/known-resolutions/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/filtering/common/descaling/theory/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/filtering/general/expressions/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/filtering/general/order/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/filtering/situational/dehardsubbing/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
+    </url>
+    <url>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/filtering/situational/fieldbased/</loc>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/misc/comparison/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/sources/dvd/remuxing/</loc>
-         <lastmod>2025-08-21</lastmod>
+         <lastmod>2025-09-26</lastmod>
+    </url>
+    <url>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/master/sources/dvd/wobbly/setup/</loc>
+         <lastmod>2025-09-26</lastmod>
     </url>
 </urlset>
