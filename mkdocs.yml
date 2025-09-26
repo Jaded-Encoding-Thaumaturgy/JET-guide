@@ -32,8 +32,8 @@ nav:
       - Remuxing: sources/dvd/remuxing.md
       - Wobbly:
         - Getting Started: sources/dvd/wobbly/setup.md
-        - Basic Usage: sources/dvd/wobbly/basic-usage.md
-        - Advanced Usage: sources/dvd/wobbly/advanced-usage.md
+        # - Basic Usage: sources/dvd/wobbly/basic-usage.md
+        # - Advanced Usage: sources/dvd/wobbly/advanced-usage.md
       # - Wobbly 🡕: https://wobbly.encode.moe
   - Filtering:
     - General Techniques:
