@@ -74,7 +74,7 @@ This includes footage that has:
 [^2]:
     While Wobbly is not designed to fix field blending issues directly,
     it can be used to identify and scenefilter sections of field-blended content
-    through its [custom list functionality](./advanced-usage.md).
+    through its custom list functionality.
 
 ### "True" VFR
 
