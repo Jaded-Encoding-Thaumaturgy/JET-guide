@@ -1,18 +1,23 @@
-# Common errors
+# Common Errors
 
-Here is a list of common errors,
+!!! warning "This section is incomplete!"
+
+    This section is a stub.
+    You can help us
+    by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+
+Below is a list of common errors,
 their (presumed) causes,
 and how to resolve them.
 
 !!! Warning
+
     This page may prove useful for simple troubleshooting,
     but if your error is not on here
     or the given solution doesn't resolve it,
     you may be able to find a better solution by Googling
     or by posting your [stack trace or traceback][traceback]
     in the JET Discord server.
-
-[traceback]: https://realpython.com/python-traceback/
 
 <!--
 Contributors: When adding new errors to this list, please follow these guidelines:
@@ -48,26 +53,29 @@ Special errors raised by JET and its custom exceptions.
 JET errors are commonly formatted like this:
 
 !!! example
+
     ```txt
-    NameOfSomeTypeOfError: (Name of the function/method this originated from) Message explaining the error and possibly solutions (An optional more specific reason the error was thrown, such as an invalid value)
+        NameOfSomeTypeOfError: (Name of the function/method this originated from) Message explaining the error and possibly solutions (An optional more specific reason the error was thrown, such as an invalid value)
     ```
 
 For example, the following code will throw this error:
 
 !!! example
-    ```py
-    from vstools import Matrix
 
-    Matrix(-1)
+    ```py
+      from vstools import Matrix
+
+      Matrix(-1)
     ```
 
     ```txt
-    NotFoundEnumValue: (Matrix.from_param) The given value for "Matrix" argument must be a valid Matrix, not "-1"! Valid values are: [RGB (0), BT709 (1), UNKNOWN (2), FCC (4), BT470BG (5), SMPTE170M (6), SMPTE240M (7), YCGCO (8), BT2020NCL (9), BT2020CL (10), CHROMANCL (12), CHROMACL (13), ICTCP (14)]. (-1)
+       NotFoundEnumValue: (Matrix.from_param) The given value for "Matrix" argument must be a valid Matrix, not "-1"! Valid values are: [RGB (0), BT709 (1), UNKNOWN (2), FCC (4), BT470BG (5), SMPTE170M (6), SMPTE240M (7), YCGCO (8), BT2020NCL (9), BT2020CL (10), CHROMANCL (12), CHROMACL (13), ICTCP (14)]. (-1)
     ```
 
     ![The above error as shown in a terminal](./img/jet-error.png)
 
+| Error                                        | Meaning                                                                                                    |
+| -------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| FileNotExistsError: (source) [PATH/TO/VIDEO] | The given file could not be found. Check for typos and/or ensure the file exists in the provided location. |
 
-| Error                                      | Meaning                                                                                                    |
-| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| FileNotExistsError: (source) PATH\TO\VIDEO | The given file could not be found. Check for typos and/or ensure the file exists in the provided location. |
+[traceback]: https://realpython.com/python-traceback/
