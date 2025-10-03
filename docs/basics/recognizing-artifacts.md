@@ -136,7 +136,7 @@ particularly with filters
 that perform the _mathematical inverse_
 of a known operation.
 A prime example is _descaling_,
-which [reverses the upscaling process](../filtering/descaling/descaling.md)
+which [reverses the upscaling process](../filtering/common/descaling/theory.md)
 to remove artifacts
 introduced during upscaling,
 while allowing you to re-upscale the image
@@ -309,11 +309,11 @@ temporally,
 or as a combination of both:
 
 - **Spatially**
-   (static,
-   easily visible in a single frame)
+  (static,
+  easily visible in a single frame)
 - **Temporally**
-   (dynamic,
-   visible only in motion)
+  (dynamic,
+  visible only in motion)
 
 Spatial artifacts are visible
 when looking at a single frame,
@@ -342,6 +342,18 @@ which is also rather expensive
 in terms of processing power.
 
 ## Artifacts
+
+!!! warning "This section is incomplete!"
+
+    This section is a stub.
+    You can help us
+    by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+
+    ??? question "How can I help?"
+
+        - Add more examples
+        - Add more explanations
+        - Write about other artifacts
 
 !!! warning "Not Exhaustive"
 
@@ -420,7 +432,8 @@ especially in scenes
 with subtle gradients
 and darker areas of the image[^banding-video].
 
-[^banding-video]: Tom Scott's [Why dark video is a terrible mess](https://www.youtube.com/watch?v=h9j89L8eQQk)
+[^banding-video]:
+    Tom Scott's [Why dark video is a terrible mess](https://www.youtube.com/watch?v=h9j89L8eQQk)
     goes into more detail
     on why this happens.
 
