@@ -37,6 +37,7 @@ nav:
         # - Advanced Usage: sources/dvd/wobbly/advanced-usage.md
       # - Wobbly 🡕: https://wobbly.encode.moe
   - Filtering:
+    - Recognizing Artifacts: filtering/recognizing-artifacts.md
     - General Techniques:
       - Order of Operations: filtering/general/order.md
       - Expressions: filtering/general/expressions.md
