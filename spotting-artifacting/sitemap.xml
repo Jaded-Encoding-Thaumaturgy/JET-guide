@@ -2,66 +2,78 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/resources/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/basics/babys-first-script/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/basics/getting-started/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/basics/howdoi/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/basics/how-do-i/</loc>
+         <lastmod>2025-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/basics/installation/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/basics/python-primer/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/basics/recognizing-artifacts/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/encoding/svtav1/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/basics/setup/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/encoding/x264/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/encoding/x264params/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/encoding/x265/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/encoding/x265params/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/recognizing-artifacts/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/dehardsubbing/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/common/descaling/known-resolutions/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/expr/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/common/descaling/theory/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/order/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/general/expressions/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/descaling/descaling/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/general/order/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/descaling/known-resolutions/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/situational/dehardsubbing/</loc>
+         <lastmod>2025-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/filtering/situational/fieldbased/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
          <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/misc/comparison/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <lastmod>2025-10-03</lastmod>
     </url>
     <url>
-         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/sources/dvd-remux/</loc>
-         <lastmod>2025-02-19</lastmod>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/sources/dvd/remuxing/</loc>
+         <lastmod>2025-10-03</lastmod>
+    </url>
+    <url>
+         <loc>https://jaded-encoding-thaumaturgy.github.io/JET-guide/spotting-artifacting/sources/dvd/wobbly/setup/</loc>
+         <lastmod>2025-10-03</lastmod>
     </url>
 </urlset>
