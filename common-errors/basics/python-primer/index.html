@@ -15,22 +15,22 @@
         <link rel="canonical" href="https://jaded-encoding-thaumaturgy.github.io/JET-guide/common-errors/basics/python-primer/">
       
       
-        <link rel="prev" href="../setup/">
+        <link rel="prev" href="../installation/">
       
       
-        <link rel="next" href="../howdoi/">
+        <link rel="next" href="../getting-started/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
     
     
       
-        <title>A Primer on Python - JET Encoding Guide</title>
+        <title>Python Primer - JET Encoding Guide</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -53,6 +53,10 @@
     
     
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/fields.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -118,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              A Primer on Python
+              Python Primer
             
           </span>
         </div>
@@ -130,11 +134,13 @@
     
     
     
-      <label class="md-header__button md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-      </label>
-      <div class="md-search" data-md-component="search" role="dialog">
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
@@ -166,13 +172,14 @@
     </div>
   </div>
 </div>
+      
     
     
       <div class="md-header__source">
         <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -218,7 +225,7 @@
       <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -238,28 +245,10 @@
       <a href="../.." class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Home
-  </span>
-  
-
-      </a>
-    </li>
-  
-
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../resources/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Encoding Resources
   </span>
   
 
@@ -276,6 +265,7 @@
   
   
   
+    
     
     
     
@@ -284,22 +274,24 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
+  
   
   <span class="md-ellipsis">
     Basics
+    
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Basics
           </label>
@@ -312,11 +304,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../setup/" class="md-nav__link">
+      <a href="../installation/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    Setup and First Steps
+    Installation
+    
   </span>
   
 
@@ -345,8 +339,10 @@
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
+  
   <span class="md-ellipsis">
-    A Primer on Python
+    Python Primer
+    
   </span>
   
 
@@ -356,8 +352,10 @@
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
+  
   <span class="md-ellipsis">
-    A Primer on Python
+    Python Primer
+    
   </span>
   
 
@@ -469,32 +467,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../howdoi/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
-  <span class="md-ellipsis">
-    How do I ...?
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../babys-first-script/" class="md-nav__link">
-        
   
   <span class="md-ellipsis">
-    Baby's first script
+    Getting Started
+    
   </span>
   
 
@@ -514,8 +493,33 @@
       <a href="../common-errors/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Common Errors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-do-i/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    How do I...?
+    
   </span>
   
 
@@ -542,6 +546,196 @@
     
     
     
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Source Preparation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Source Preparation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    DVDs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DVDs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sources/dvd/remuxing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Remuxing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Wobbly
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Wobbly
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sources/dvd/wobbly/setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
         
@@ -554,8 +748,10 @@
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
     Filtering
+    
   </span>
   
 
@@ -576,11 +772,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filtering/order/" class="md-nav__link">
+      <a href="../../filtering/recognizing-artifacts/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    Order of Filtering Operations
+    Recognizing Artifacts
+    
   </span>
   
 
@@ -596,6 +794,7 @@
   
   
   
+    
     
     
     
@@ -612,8 +811,10 @@
           <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
-    Descaling
+    General Techniques
+    
   </span>
   
 
@@ -623,7 +824,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_2">
             <span class="md-nav__icon md-icon"></span>
-            Descaling
+            General Techniques
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -634,11 +835,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filtering/descaling/descaling/" class="md-nav__link">
+      <a href="../../filtering/general/order/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    Descaling Theory
+    Order of Operations
+    
   </span>
   
 
@@ -655,11 +858,13 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filtering/descaling/known-resolutions/" class="md-nav__link">
+      <a href="../../filtering/general/expressions/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    Known Native Resolutions
+    Expressions
+    
   </span>
   
 
@@ -683,12 +888,196 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../filtering/dehardsubbing/" class="md-nav__link">
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Common Filtering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Common Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Descaling
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Descaling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/common/descaling/theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Theory
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/common/descaling/known-resolutions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Known Resolutions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Situational Filtering
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Situational Filtering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/situational/dehardsubbing/" class="md-nav__link">
+        
+  
   
   <span class="md-ellipsis">
     Dehardsubbing
+    
   </span>
   
 
@@ -705,11 +1094,13 @@
   
   
     <li class="md-nav__item">
-      <a href="https://wobbly.encode.moe" class="md-nav__link">
+      <a href="../../filtering/situational/fieldbased/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    Wobbly 🡕
+    Field-Based Video
+    
   </span>
   
 
@@ -719,22 +1110,9 @@
 
               
             
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://thewiki.moe/tutorials/dvdremux/#correcting-sarpar" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Correcting SAR/PAR 🡕
-  </span>
-  
-
-      </a>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -753,6 +1131,7 @@
   
   
   
+    
     
     
     
@@ -769,8 +1148,10 @@
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
     Encoding
+    
   </span>
   
 
@@ -791,11 +1172,59 @@
   
   
     <li class="md-nav__item">
-      <a href="../../encoding/x264params/" class="md-nav__link">
+      <a href="../../encoding/x264/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
-    x264 Parameters
+    x264
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encoding/x265/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    x265
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../encoding/svtav1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SVT-AV1
+    
   </span>
   
 
@@ -822,6 +1251,7 @@
     
     
     
+    
     <li class="md-nav__item md-nav__item--nested">
       
         
@@ -834,8 +1264,10 @@
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
+  
   <span class="md-ellipsis">
     Misc
+    
   </span>
   
 
@@ -859,8 +1291,10 @@
       <a href="../../misc/comparison/" class="md-nav__link">
         
   
+  
   <span class="md-ellipsis">
     Comparison
+    
   </span>
   
 
@@ -873,6 +1307,28 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Additional Resources
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -992,6 +1448,7 @@
                 
                   
 
+
   
   
 
@@ -1086,14 +1543,16 @@ Take for example:</p>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-3">3</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-4">4</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span style="color: #E06C75">src</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">bs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VideoSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;a video file.mp4&quot;</span><span style="color: #ABB2BF">)</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span style="color: #E06C75">ivtc</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">vfm</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VIVTC</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span style="color: #E06C75">decimate</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">vfm</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VDecimate</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span style="color: #E06C75">field_matched</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">vivtc</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VFM</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span style="color: #E06C75">decimate</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">vivtc</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VDecimate</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
 <p>The user is passing <code>src</code>
 to <code>vfm.VDecimate</code>,
 when what they likely intended to do
-was to pass <code>ivtc</code> to it instead.
-While it's widely considered good practice
+was to pass
+the <code>field_matched</code> variable
+instead.</p>
+<p>While it's widely considered good practice
 to use different variables
 for different filtering operations
 (as it makes it easier
@@ -1108,8 +1567,8 @@ to the function you're calling.</p>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-3">3</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span style="color: #E06C75">src</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">bs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VideoSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;a video file.mp4&quot;</span><span style="color: #ABB2BF">)</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span style="color: #E06C75">ivtc</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">vfm</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VIVTC</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span style="color: #E06C75">decimate</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">vfm</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VDecimate</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">ivtc</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span style="color: #E06C75">field_matched</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">vivtc</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VFM</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span style="color: #E06C75">decimate</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">vivtc</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VDecimate</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">field_matched</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="values">Values</h3>
 <p>When using functions,
@@ -1242,7 +1701,7 @@ you'll need to install them
 using pip,
 Python’s package installer.
 For detailed steps,
-refer to the <a href="../setup/#installing-the-jet-packages">setup guide</a>.</p>
+refer to the <a href="../installation/#installing-the-jet-packages">setup guide</a>.</p>
 <p>Once installed,
 you can import packages
 into your Python script
@@ -1254,7 +1713,7 @@ the functions
 from the package.</p>
 <p>If you want to import specific functions,
 use the <code>from x import y</code> syntax:</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vstools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">get_y</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">get_y</span>
 </code></pre></div></td></tr></table></div>
 <p>This makes the <code>get_y</code> function available
 to be used directly:</p>
@@ -1262,10 +1721,10 @@ to be used directly:</p>
 </code></pre></div></td></tr></table></div>
 <p>You can import multiples functions at once
 with this syntax:</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vstools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">get_y</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">get_u</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">get_v</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">get_y</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">get_u</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">get_v</span>
 </code></pre></div></td></tr></table></div>
 <p>You can also import the entire package:</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span style="color: #C678DD">import</span> <span style="color: #E06C75">vstools</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span>
 </code></pre></div></td></tr></table></div>
 <p>When using this method,
 you need to reference the function
@@ -1279,13 +1738,13 @@ for brevity
 or clarity:</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-13-1">1</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-13-2">2</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span style="color: #C678DD">from</span> <span style="color: #E06C75">vstools</span> <span style="color: #C678DD">import</span> <span style="color: #E06C75">get_y</span> <span style="color: #C678DD">as</span> <span style="color: #E06C75">gy</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">get_y</span> <span style="color: #C678DD">as</span> <span style="color: #E06C75">gy</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2"></a>
 <a id="__codelineno-13-3" name="__codelineno-13-3"></a><span style="color: #E06C75">src_y</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">gy</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-1">1</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-2">2</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span style="color: #C678DD">import</span> <span style="color: #E06C75">vstools</span> <span style="color: #C678DD">as</span> <span style="color: #E06C75">vst</span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">as</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vst</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2"></a>
 <a id="__codelineno-14-3" name="__codelineno-14-3"></a><span style="color: #E06C75">src_y</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vst</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">get_y</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">src</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1397,10 +1856,18 @@ there are several valuable resources available.</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
       
     
   </body>
