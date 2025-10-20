@@ -2069,14 +2069,16 @@ In fact, for the specific purpose of a square mask there exists an even simpler 
 <a id="__codelineno-23-3" name="__codelineno-23-3"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">BoxBlur</span><span style="color: #ABB2BF">()</span>
 <a id="__codelineno-23-4" name="__codelineno-23-4"></a><span style="color: #E06C75">partially_blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">replace_squaremask</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">blurred</span><span style="color: #ABB2BF">,</span> <span style="color: #ABB2BF">(</span><span style="color: #D19A66">200</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">200</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">500</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">500</span><span style="color: #ABB2BF">))</span>
 </code></pre></div></td></tr></table></div>
-Other ways to build masks include:
-- Manually building a square mask using a <code>core.std.BlankClip</code> followed by <code>core.std.AddBorders</code>.
-  There's no real reason to do this except to understand how <code>squaremask</code> might work internally.
-- Manually building a mask with <code>core.akarin.Expr</code>, using an expression that computes the mask value based on the position.
-- Building a mask using certain filters (e.g. edge masks) or manual expressions based on the pixel values
-- Manually drawing a mask in an image editor and importing it from a file
-- Drawing a mask using subtitle drawings in <a href="https://aegisub.org">Aegisub</a>, and rendering the resulting
-  subtitle line using the <a href="https://github.com/vapoursynth/subtext/blob/master/docs/subtext.rst"><code>core.sub</code></a> plugin</p>
+Other ways to build masks include:</p>
+<ul>
+<li>Manually building a square mask using a <code>core.std.BlankClip</code> followed by <code>core.std.AddBorders</code>.
+  There's no real reason to do this except to understand how <code>squaremask</code> might work internally.</li>
+<li>Manually building a mask with <code>core.akarin.Expr</code>, using an expression that computes the mask value based on the position.</li>
+<li>Building a mask using certain filters (e.g. edge masks) or manual expressions based on the pixel values</li>
+<li>Manually drawing a mask in an image editor and importing it from a file</li>
+<li>Drawing a mask using subtitle drawings in <a href="https://aegisub.org">Aegisub</a>, and rendering the resulting
+  subtitle line using the <a href="https://github.com/vapoursynth/subtext/blob/master/docs/subtext.rst"><code>core.sub</code></a> plugin</li>
+</ul>
 <h3 id="how-do-i-access-or-modify-a-frames-content-in-python">How do I access or modify a frame's content in Python?</h3>
 <p>Unless you know what you're doing, chances are that you shouldn't be doing this.
 Modifying frame contents in Python is slow and not the way VapourSynth is intended to be used.
