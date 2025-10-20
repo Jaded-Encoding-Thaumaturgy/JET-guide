@@ -151,9 +151,9 @@ Downscales or upscales the video. *This should be used to match sources that hav
 from vskernels import EwaLanczos
 
 ## Upscaling: Increases the resolution of clips to match the highest resolution using EwaLanczos (equivalent scaling to mpv's high-quality profile); recommended
-clip1 = EwaLanczos.scale(clip1, 1920, 1080, sigmoid=True)
-clip2 = EwaLanczos.scale(clip2, 1920, 1080, sigmoid=True)
-clip3 = EwaLanczos.scale(clip3, 3840, 2160, sigmoid=True)
+clip1 = EwaLanczos().scale(clip1, 1920, 1080, sigmoid=True)
+clip2 = EwaLanczos().scale(clip2, 1920, 1080, sigmoid=True)
+clip3 = EwaLanczos().scale(clip3, 3840, 2160, sigmoid=True)
 ```
 
 - For downscaling (e.g. 2160p/4K -> 1080p), use `Hermite`:
@@ -162,9 +162,9 @@ clip3 = EwaLanczos.scale(clip3, 3840, 2160, sigmoid=True)
 from vskernels import Hermite
 
 ## Downscaling: Decreases the resolution of clips to match the lowest resolution using Hermite (equivalent scaling to mpv's high-quality profile); not recommended
-clip1 = Hermite.scale(clip1, 1920, 1080, linear=True)
-clip2 = Hermite.scale(clip2, 1920, 1080, linear=True)
-clip3 = Hermite.scale(clip3, 3840, 2160, linear=True)
+clip1 = Hermite().scale(clip1, 1920, 1080, linear=True)
+clip2 = Hermite().scale(clip2, 1920, 1080, linear=True)
+clip3 = Hermite().scale(clip3, 3840, 2160, linear=True)
 ```
 
 !!! warning

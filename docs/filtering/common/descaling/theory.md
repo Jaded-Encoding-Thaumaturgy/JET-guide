@@ -167,16 +167,14 @@ clip = depth(get_y(clip), 32)   # take the luma and convert to 32 bits if you ha
 
 set_output(clip)
 
-for kernel in [Bilinear, Catrom, BicubicSharp, Lanczos(3)]:
+for kernel in [Bilinear(), Catrom(), BicubicSharp(), Lanczos(3)]:
     desc = kernel.descale(clip, 1280, 720)
     resc = kernel.scale(desc, clip.width, clip.height)
     err = core.std.Expr([clip, resc], "x y - abs 10 *")
 
-    name = f"{kernel.__name__ if hasattr(kernel, '__name__') else kernel.__class__.__name__}"
-
-    set_output(desc, f"{name} Descale")
-    set_output(resc, f"{name} Rescale")
-    set_output(err, f"{name} Diff")
+    set_output(desc, f"{kernel} Descale")
+    set_output(resc, f"{kernel} Rescale")
+    set_output(err, f"{kernel} Diff")
 ```
 
 Of course, it can be freely adapted to use other kernels, another resolution

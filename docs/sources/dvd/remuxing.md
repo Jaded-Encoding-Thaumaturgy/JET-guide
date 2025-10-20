@@ -926,7 +926,7 @@ if sar > 1:
 else:
     width, height = mod4(clip.width), mod4(clip.height / float(sar))
 
-clip_resized = Bicubic.scale(
+clip_resized = Bicubic().scale(
     clip, width, height, keep_ar=True, sar=sar, dar=dar
 )
 ```
