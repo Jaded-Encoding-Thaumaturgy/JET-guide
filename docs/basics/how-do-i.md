@@ -315,23 +315,41 @@ the filter will not actually run on the frames not added to `partially_filtered`
 when you set `partially_filtered` (or another clip based on it) as an output.
 Filters are only run on frames when the frame is requested.
 
-### How do I replace some frames in my clip with another frame in my clip?
-Again, this can be done using trimming and splicing.
-Alternatively, you can use the multiplication operator to extend a single frame to the entire clip's length,
-and then use `replace_ranges` (explained above):
+### How do I replace some frames in my clip with a certain other frame?
+When the other frame comes from the same clip, you can use the built-in [FreezeFrame](https://vapoursynth.com/doc/functions/video/freezeframes.html) function.
+
+If the frame comes from elsewhere, you can still do this using the same trimming and splicing tricks as above,
+or you can use `vs-tools`'s `insert_clip` function.
+
+And, just because we can, there's also a fourth option: You can use the multiplication operator to extend a single frame to the entire clip's length,
+and then use `replace_ranges` (explained above).
+
+=== "FreezeFrames"
+    ```py3
+    # Replace frames 1240 and 1241 (each) with frame 1234
+    clip_freezeframed = clip.std.FreezeFrames(clip, first=[1240], last=[1241], replacement=[1234])
+    ```
 
 === "vs-tools"
     ```py3
-    from vstools import replace_ranges
+    from vstools import insert_clip
 
-    # Replace frames 1240 and 1241 with frame 1234
-    clip_freezeframed = replace_ranges(clip, clip[1234] * clip.num_frames, [(1240, 1241)])
+    # Replace frames 1240 and 1241 (each) with frame 1234
+    clip_freezeframed = insert_clip(clip, clip[1234] * 2, 1240)
     ```
 
 === "Vanilla VS"
     ```py3
-    # Replace frames 1240 and 1241 with frame 1234
+    # Replace frames 1240 and 1241 (each) with frame 1234
     clip_freezeframed = clip[:1240] + clip[1234] + clip[1234] + clip[1242:]
+    ```
+
+=== "replace_ranges"
+    ```py3
+    from vstools import replace_ranges
+
+    # Replace frames 1240 and 1241 (each) with frame 1234
+    clip_freezeframed = replace_ranges(clip, clip[1234] * clip.num_frames, [(1240, 1241)])
     ```
 
 ### How do I decide at runtime whether to apply a filter or not?
