@@ -5,11 +5,11 @@ as well as how to properly set up your code editor and previewer.
 If you know what you're doing, you can skip or modify any of the steps listed here,
 but if you run into issues this should be a fairly foolproof way to get things working again.
 
-If you're using Linux, it's very strongly recommended to use Arch Linux or a derivative,
-as that is the only distribution that provides sufficiently many of the required programs
-and plugins as packages or via the AUR.
-On other distributions you risk a great amount of pain compiling a ton of programs and plugins manually.
-The rest of this page will assume that Linux users use Arch Linux.
+<!-- If you're using Linux, it's very strongly recommended to use Arch Linux or a derivative, -->
+<!-- as that is the only distribution that provides sufficiently many of the required programs -->
+<!-- and plugins as packages or via the AUR. -->
+<!-- On other distributions you risk a great amount of pain compiling a ton of programs and plugins manually. -->
+<!-- The rest of this page will assume that Linux users use Arch Linux. -->
 
 ## Getting a Clean Slate
 
@@ -47,8 +47,14 @@ on Windows.
     and select "Install for this user only" when asked.
 
 === "Linux"
+    !!! warning "This section is incomplete!"
+
+        This section is a stub.
+        You can help us
+        by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+
     Install Python and VapourSynth using your package manager.
-    Also install `vsgenstubs` (`vapoursynth-tools-genstubs-git` on the AUR)
+    Also install `vsgenstubs`. <!-- (`vapoursynth-tools-genstubs-git` on the AUR) -->
 
 ## Installing VapourSynth Plugins
 
@@ -80,11 +86,17 @@ this means that you need to install the mentioned plugin, in this case `bs` (whi
         Alternatively, you can also try [VSRepoGUI](https://github.com/theChaosCoder/VSRepoGUI).
 
 === "Linux"
-    Install plugins using your package manager, e.g. `vapoursynth-plugin-bestssource` on Arch Linux.
-    A few plugins are available in the official repositories, but for most of them you'll need to use the AUR.
+    !!! warning "This section is incomplete!"
 
-    After you've installed a plugin, run `vsgenstubs4` to generate function stubs for the installed plugins,
-    which will help your language server.
+        This section is a stub.
+        You can help us
+        by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+
+    <!-- Install plugins using your package manager, e.g. `vapoursynth-plugin-bestssource` on Arch Linux. -->
+    <!-- A few plugins are available in the official repositories, but for most of them you'll need to use the AUR. -->
+
+    <!-- After you've installed a plugin, run `vsgenstubs4` to generate function stubs for the installed plugins, -->
+    <!-- which will help your language server. -->
 
 To start out, install the following plugins:
 
@@ -116,7 +128,7 @@ To update your JET packages, you can run `pip install --upgrade vsjetpack vsprev
     ```
 
 Linux users may need to create a virtualenv to install the packages or try their luck with `pipx`.
-On Arch Linux, you can use the [`vapoursynth-plugin-vsjetpack`](https://aur.archlinux.org/packages/vapoursynth-plugin-vsjetpack) and [`vapoursynth-preview`](https://aur.archlinux.org/packages/vapoursynth-preview) AUR packages.
+<!-- On Arch Linux, you can use the [`vapoursynth-plugin-vsjetpack`](https://aur.archlinux.org/packages/vapoursynth-plugin-vsjetpack) and [`vapoursynth-preview`](https://aur.archlinux.org/packages/vapoursynth-preview) AUR packages. -->
 
 ## Installing your Code Editor
 
