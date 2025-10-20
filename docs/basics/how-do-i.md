@@ -365,6 +365,7 @@ blurred = clip.std.BoxBlur()
 partially_blurred = replace_squaremask(clip, blurred, (200, 200, 500, 500))
 ```
 Other ways to build masks include:
+
 - Manually building a square mask using a `core.std.BlankClip` followed by `core.std.AddBorders`.
   There's no real reason to do this except to understand how `squaremask` might work internally.
 - Manually building a mask with `core.akarin.Expr`, using an expression that computes the mask value based on the position.
