@@ -483,9 +483,17 @@ more heavily than the luma plane.
 
 !!! example "Frame with chroma banding"
 
-    <!-- TODO: Get frame from Slow Start -->
+    ![Frame with chroma banding from Slow Start](img/artifacts/slowstart-chroma-banding.png)
 
-    ![]()
+These often manifest as visible bands
+of different colors,
+as opposed to different luminosities
+like with luma banding.
+
+This can be fixed in the same way regular banding is fixed,
+but applied to the chroma planes specifically.
+This can be destructive, however,
+as chroma is much blurrier than luma.
 
 ### Aliasing
 
@@ -605,6 +613,68 @@ on the luma plane.
 
 #### Haloing
 
+Haloing is a type of ringing
+that appears as a halo around an object.
+It is often caused by poor upscaling
+or post-sharpening.
+
+!!! example "Frame with haloing"
+
+    ![Frame with haloing from Shakugan no Shana](img/artifacts/shana-haloing.png)
+
+Not all haloing is necessarily unintended.
+In some cases, it may be deliberately applied
+by the studio during compositing
+to help create a stronger contrast between the object and the background.
+This will most often manifest as a heavily blurred glow,
+and should not be dehaloed.
+
+Common ways to fix haloing
+is by dehaloing.
+There are multiple filters for this,
+but they all do basically the same thing:
+blur the areas around lineart
+and limit damage to the lineart itself.
+
+#### Border ringing
+
+Border ringing is categorized
+as ringing that appears on the borders of the image.
+This is often caused by upsampling.
+
+!!! example "Frame with border ringing"
+
+    ![Example of border ringing from the Occultic;Nine ED](img/artifacts/o9-border-ringing.png)
+
+During upsampling,
+border pixels must be extrapolated
+beyond the original image.
+A lot of upscaling algorithms
+use black pixels to pad the image,
+which causes visible ringing artifacts.
+
+As this is most often a result of upsampling,
+[desampling](../filtering/common/descaling/theory.md)
+with the proper border handling
+is often the solution.
+Furthermore,
+the number of rings
+can aid in determining
+the kernel used for upsampling.
+
+Border ringing may also be visible
+on letterboxed content,
+as the borders are often padded
+with black pixels.
+
+!!! example "Frame with border ringing on letterboxed content"
+
+    ![Example of border ringing on letterboxed content from the Occultic;Nine ED](img/artifacts/o9-letterbox-ringing.png)
+
+This can be fixed in the same way,
+but note that the chroma may not perfectly align
+with the luma depending on how it was padded.
+
 #### Lowpass filters
 
 A common source of ringing is lowpass filtering.
@@ -612,24 +682,17 @@ Lowpassing is a technique
 used to remove high-frequency noise
 from a signal,
 often for compression or denoising purposes,
-but it can also and often does introduce ringing.
+but it can and often _does_ introduce ringing.
 
-#### HDCAM SR
+!!! example "Frame with ringing from lowpassing"
 
-!!! example "Frame with ringing from HDCAM SR"
+    ![Frame with ringing from lowpassing from the Triangle Heart OVA OP](img/artifacts/th3-lowpassing.png)
 
-    ![Frame with a horizontal lowpass applied from Little Busters! Refrain](img/artifacts/lbrefrain-lowpassing.png)
-
-Another common source of excessive ringing is horizontal-only resampling
-common with HDCAM SR masters.
-These masters are resampled from 1920x1080 -> 1440x1080 -> 1920x1080,
-often with a ringing kernel such as Lanczos,
-which not only causes a lot of damage to the image quality,
-but also introduces very strong horizontal-only ringing.
-
-!!! example "FFT spectrum of a HDCAM SR master"
-
-    ![FFT spectrum of the above frame from Little Busters! Refrain](img/artifacts/lbrefrain-lowpassing-dft.png)
+This artifact is most commonly seen on DVDs,
+where lowpass filtering is typically applied twice
+along the horizontal axis.
+This process causes pronounced horizontal ringing
+and significant blurs the lineart.
 
 A common way to determine if a source
 is affected by horizontal-only resampling
@@ -638,6 +701,49 @@ The FFT spectrum
 will show a clear absence
 of high frequency information
 on the horizontal axis.
+
+!!! example "FFT spectrum of an HDCAM SR master"
+
+    ![FFT spectrum of the above frame from the Triangle Heart OVA OP](img/artifacts/th3-lowpassing-dft.png)
+
+One way to address this
+is to make a "difference"
+between the lowpassed source
+and a clean (non-lowpassed) reference source,
+then apply this difference
+back to the lowpassed source
+to reduce the ringing
+and restore the original lineart clarity.
+
+#### HDCAM SR
+
+!!! example "Frame with ringing from HDCAM SR"
+
+    ![Frame with a horizontal lowpass applied from Little Busters! Refrain](img/artifacts/lbrefrain-hdcam.png)
+
+Another common source of excessive ringing is horizontal-only resampling
+common with HDCAM SR masters.
+These masters are resampled horizontally from 1920x1080 → 1440x1080 → 1920x1080,
+often with a ringing kernel such as Lanczos,
+which not only causes a lot of damage to the image quality,
+but also introduces very strong horizontal-only ringing.
+
+!!! example "FFT spectrum of an HDCAM SR master"
+
+    ![FFT spectrum of the above frame from Little Busters! Refrain](img/artifacts/lbrefrain-hdcam-dft.png)
+
+Much like with lowpassing,
+one way to determine if a source
+is affected by HDCAM SR
+is to check an FFT spectrum.
+The FFT spectrum
+will show a clear absence
+of high frequency information
+on the horizontal axis.
+The difference here is that
+the "lowpassing" is caused by the downsampling,
+whereas lowpassing will not affect
+the output resolution directly.
 
 Ringing caused by HDCAM SR mastering
 is often impossible to remove,
@@ -672,8 +778,8 @@ as it is for other lowpass filtering,
 
 Blocking is a type of artifact
 that appears as blocky patterns
-in the image.
-It is often caused by compression
+in the image,
+and is often caused by compression.
 
 !!! example "Frame with blocking artifacts"
 
@@ -684,8 +790,8 @@ denoising and debanding is usually enough
 to smooth out block boundaries.
 In more severe cases,
 dedicated deblocking filters
-such as those found in encoders' in-loop filters,
-or deblocking plugins
+such as those found in encoders' in-loop filters
+or deblocking plugins like [VapourSynth-Deblock](https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Deblock)
 can be used to further reduce blocking.
 
 ### Range compression/expansion
