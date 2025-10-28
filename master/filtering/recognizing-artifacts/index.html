@@ -902,9 +902,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#haloing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Haloing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#lowpass-filters" class="md-nav__link">
     <span class="md-ellipsis">
       Lowpass filters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdcam-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDCAM SR
     </span>
   </a>
   
@@ -1920,9 +1938,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#haloing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Haloing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#lowpass-filters" class="md-nav__link">
     <span class="md-ellipsis">
       Lowpass filters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hdcam-sr" class="md-nav__link">
+    <span class="md-ellipsis">
+      HDCAM SR
     </span>
   </a>
   
@@ -2234,31 +2270,33 @@ but can also be present
 in the master
 if it was poorly archived
 or transmitted.</p>
-<p>Be flexible in your understanding
-of where an artifact may have originated from,
-as the same visual artifact
-may require different solutions
-depending on its origin!</p>
 </div>
 <h3 id="mastering-defects">Mastering defects</h3>
 <p>Mastering defects are imperfections
-inherent to the master
-of video content.
+inherent to the masters.
 These typically arise from technical limitations
 in the production studio's software and equipment
-during the anime production and mastering process.
+during the mastering process.
 While many mastering defects
-are inherent to the original production,
+are inherent to the original production process,
 some may be introduced later
-through subpar remastering efforts.</p>
-<p>Common mastering defects include:</p>
-<ul>
-<li>Low-quality upscales</li>
-<li>Aliasing in computer-generated 3D content</li>
-<li>Excessive artificial sharpening</li>
-<li>Visible banding in gradients due to limited bit depth</li>
-<li>Orphan fields introduced in telecined content</li>
-</ul>
+through subpar remastering.</p>
+<p>Whether something is a mastering defect
+can be somewhat determined
+based on the kind of artifact
+and its origins.
+For example,
+for HD productions,
+most upsampling-related artifacts
+are likely to be caused by
+the studio's upscaling process,
+not the authoring process.
+Additionally,
+which artifacts are caused by the studio
+can also be determined
+by comparing multiple sources
+and seeing if the artifact is present
+in all of them.</p>
 <h3 id="authoring-defects">Authoring defects</h3>
 <p>Authoring defects are flaws
 introduced into the source material
@@ -2275,18 +2313,17 @@ As a result,
 these defects may appear
 on some releases but not others,
 even for the same shows.</p>
-<p>Common authoring defects include:</p>
-<ul>
-<li>Heavy quantization (a.k.a. compression) artifacts</li>
-<li>Improper colorspace conversion</li>
-<li>Lowpass filtering</li>
-<li>Poor deinterlacing or IVTC</li>
-</ul>
+<p>Most authoring defects
+are going to be either compression
+or metadata related.
+For older titles,
+this may also include poor deinterlacing
+and/or upscaling<sup id="fnref:deinterlacing-upscaling"><a class="footnote-ref" href="#fn:deinterlacing-upscaling">1</a></sup><sup id="fnref:poor-sd-upscaling"><a class="footnote-ref" href="#fn:poor-sd-upscaling">2</a></sup>.</p>
 <h2 id="trade-offs">Trade-offs</h2>
-<p>A common misconception
+<p>A common pitfall
 among both new encoders
 and those unfamiliar with encoding
-is that every single artifact
+is believing that every single artifact
 <em>must</em> be fixed.
 This is far from the case.
 Each filter applied to a video
@@ -2604,7 +2641,7 @@ in color precision
 often makes banding visible,
 especially in scenes
 with subtle gradients
-and darker areas of the image<sup id="fnref:banding-video"><a class="footnote-ref" href="#fn:banding-video">1</a></sup>.</p>
+and darker areas of the image<sup id="fnref:banding-video"><a class="footnote-ref" href="#fn:banding-video">3</a></sup>.</p>
 <table>
 <thead>
 <tr>
@@ -2684,7 +2721,7 @@ that poor upscaling can.
 3D rendered content especially
 is prone to aliasing
 when the rendering process
-lacks sufficient anti-aliasing.
+lacks sufficient anti-aliasing or line smoothing.
 This is particularly noticeable
 on high-contrast edges
 and fine geometric details.</p>
@@ -2729,11 +2766,81 @@ through anti-aliasing.</p>
 <p><img alt="" src="" /></p>
 </div>
 <h3 id="ringing">Ringing</h3>
+<p>Ringing refers to visible ripples or halos
+that appear next to sharp lines
+or edges in an image.</p>
+<p>Ringing is typically caused by processes
+like resampling or compression,
+and is often most noticeable
+when the image has sharp transitions
+or has been subjected to aggressive processing.</p>
+<p>This artifact can appear on all planes,
+but is often most noticeable
+on the luma plane.</p>
+<div class="admonition example">
+<p class="admonition-title">Frame with ringing artifacts on all planes (but especially the chroma planes)</p>
+<p><img alt="Frame with ringing artifacts from the Little Busters! OVA" src="../img/artifacts/lbova-ringing.png" /></p>
+</div>
+<h4 id="haloing">Haloing</h4>
 <h4 id="lowpass-filters">Lowpass filters</h4>
+<p>A common source of ringing is lowpass filtering.
+Lowpassing is a technique
+used to remove high-frequency noise
+from a signal,
+often for compression or denoising purposes,
+but it can also and often does introduce ringing.</p>
+<h4 id="hdcam-sr">HDCAM SR</h4>
+<div class="admonition example">
+<p class="admonition-title">Frame with ringing from HDCAM SR</p>
+<p><img alt="Frame with a horizontal lowpass applied from Little Busters! Refrain" src="../img/artifacts/lbrefrain-lowpassing.png" /></p>
+</div>
+<p>Another common source of excessive ringing is horizontal-only resampling
+common with HDCAM SR masters.
+These masters are resampled from 1920x1080 -&gt; 1440x1080 -&gt; 1920x1080,
+often with a ringing kernel such as Lanczos,
+which not only causes a lot of damage to the image quality,
+but also introduces very strong horizontal-only ringing.</p>
+<div class="admonition example">
+<p class="admonition-title">FFT spectrum of a HDCAM SR master</p>
+<p><img alt="FFT spectrum of the above frame from Little Busters! Refrain" src="../img/artifacts/lbrefrain-lowpassing-dft.png" /></p>
+</div>
+<p>A common way to determine if a source
+is affected by horizontal-only resampling
+is to check an FFT spectrum.
+The FFT spectrum
+will show a clear absence
+of high frequency information
+on the horizontal axis.</p>
+<p>Ringing caused by HDCAM SR mastering
+is often impossible to remove,
+as when it happens,
+that means the master is usually stored with HDCAM SR,
+not an intermediary master from the distributors.
+In some cases, clean sources may be available<sup id="fnref:toei-one-piece"><a class="footnote-ref" href="#fn:toei-one-piece">4</a></sup>,
+but this is rare.
+If such a source <em>is</em> available,
+the method to fix it is the same
+as it is for other lowpass filtering,</p>
 <h3 id="noise">Noise</h3>
 <h4 id="dct-noise">DCT noise</h4>
 <h4 id="grain">Grain</h4>
 <h3 id="blocking">Blocking</h3>
+<p>Blocking is a type of artifact
+that appears as blocky patterns
+in the image.
+It is often caused by compression</p>
+<div class="admonition example">
+<p class="admonition-title">Frame with blocking artifacts</p>
+<p><img alt="Frame with blocking artifacts from the Guild no Uketsukejou desu ga, Zangyou wa Iya nanode Boss wo Solo Toubatsu Shiyou to Omoimasu ED" src="../img/artifacts/girumasu-blocking.png" /></p>
+</div>
+<p>As this is a compression artifact,
+denoising and debanding is usually enough
+to smooth out block boundaries.
+In more severe cases,
+dedicated deblocking filters
+such as those found in encoders' in-loop filters,
+or deblocking plugins
+can be used to further reduce blocking.</p>
 <h3 id="range-compressionexpansion">Range compression/expansion</h3>
 <h4 id="luma-overflowunderflow">Luma overflow/underflow</h4>
 <h3 id="interlacing">Interlacing</h3>
@@ -2757,10 +2864,38 @@ through anti-aliasing.</p>
 <div class="footnote">
 <hr />
 <ol>
+<li id="fn:deinterlacing-upscaling">
+<p>Poor deinterlacing and upscaling
+tend to go hand-in-hand,
+as to create an HD image
+of an interlaced/telecined source,
+the authoring company
+needs to deinterlace the video
+if they do not want to deal with [cross-conversion].&#160;<a class="footnote-backref" href="#fnref:deinterlacing-upscaling" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:poor-sd-upscaling">
+<p>Most notorious for poor SD upscaling
+is the authoring company QTEC.
+If you're working with
+a QTEC SD → HD upscale,
+you will likely want to switch gears
+and look at encoding the DVDs instead.&#160;<a class="footnote-backref" href="#fnref:poor-sd-upscaling" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
 <li id="fn:banding-video">
 <p>Tom Scott's <a href="https://www.youtube.com/watch?v=h9j89L8eQQk">Why dark video is a terrible mess</a>
 goes into more detail
-on why this happens.&#160;<a class="footnote-backref" href="#fnref:banding-video" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+on why this happens.&#160;<a class="footnote-backref" href="#fnref:banding-video" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:toei-one-piece">
+<p>An example of one such case
+is the WEB source
+for One Piece's modern episodes.
+The blu-rays for this show
+use HDCAM,
+but the WEB masteres do not,
+allowing you to delowpass the BD source
+using the WEB source
+to fix the ringing.&#160;<a class="footnote-backref" href="#fnref:toei-one-piece" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
