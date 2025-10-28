@@ -58,32 +58,34 @@ yet closely related types:
     if it was poorly archived
     or transmitted.
 
-    Be flexible in your understanding
-    of where an artifact may have originated from,
-    as the same visual artifact
-    may require different solutions
-    depending on its origin!
-
 ### Mastering defects
 
 Mastering defects are imperfections
-inherent to the master
-of video content.
+inherent to the masters.
 These typically arise from technical limitations
 in the production studio's software and equipment
-during the anime production and mastering process.
+during the mastering process.
 While many mastering defects
-are inherent to the original production,
+are inherent to the original production process,
 some may be introduced later
-through subpar remastering efforts.
+through subpar remastering.
 
-Common mastering defects include:
-
-- Low-quality upscales
-- Aliasing in computer-generated 3D content
-- Excessive artificial sharpening
-- Visible banding in gradients due to limited bit depth
-- Orphan fields introduced in telecined content
+Whether something is a mastering defect
+can be somewhat determined
+based on the kind of artifact
+and its origins.
+For example,
+for HD productions,
+most upsampling-related artifacts
+are likely to be caused by
+the studio's upscaling process,
+not the authoring process.
+Additionally,
+which artifacts are caused by the studio
+can also be determined
+by comparing multiple sources
+and seeing if the artifact is present
+in all of them.
 
 ### Authoring defects
 
@@ -103,19 +105,36 @@ these defects may appear
 on some releases but not others,
 even for the same shows.
 
-Common authoring defects include:
+Most authoring defects
+are going to be either compression
+or metadata related.
+For older titles,
+this may also include poor deinterlacing
+and/or upscaling[^deinterlacing-upscaling][^poor-sd-upscaling].
 
-- Heavy quantization (a.k.a. compression) artifacts
-- Improper colorspace conversion
-- Lowpass filtering
-- Poor deinterlacing or IVTC
+[^deinterlacing-upscaling]:
+    Poor deinterlacing and upscaling
+    tend to go hand-in-hand,
+    as to create an HD image
+    of an interlaced/telecined source,
+    the authoring company
+    needs to deinterlace the video
+    if they do not want to deal with [cross-conversion].
+
+[^poor-sd-upscaling]:
+    Most notorious for poor SD upscaling
+    is the authoring company QTEC.
+    If you're working with
+    a QTEC SD → HD upscale,
+    you will likely want to switch gears
+    and look at encoding the DVDs instead.
 
 ## Trade-offs
 
-A common misconception
+A common pitfall
 among both new encoders
 and those unfamiliar with encoding
-is that every single artifact
+is believing that every single artifact
 _must_ be fixed.
 This is far from the case.
 Each filter applied to a video
@@ -510,7 +529,7 @@ that poor upscaling can.
 3D rendered content especially
 is prone to aliasing
 when the rendering process
-lacks sufficient anti-aliasing.
+lacks sufficient anti-aliasing or line smoothing.
 This is particularly noticeable
 on high-contrast edges
 and fine geometric details.
@@ -566,7 +585,82 @@ through anti-aliasing.
 
 ### Ringing
 
+Ringing refers to visible ripples or halos
+that appear next to sharp lines
+or edges in an image.
+
+Ringing is typically caused by processes
+like resampling or compression,
+and is often most noticeable
+when the image has sharp transitions
+or has been subjected to aggressive processing.
+
+This artifact can appear on all planes,
+but is often most noticeable
+on the luma plane.
+
+!!! example "Frame with ringing artifacts on all planes (but especially the chroma planes)"
+
+    ![Frame with ringing artifacts from the Little Busters! OVA](img/artifacts/lbova-ringing.png)
+
+#### Haloing
+
 #### Lowpass filters
+
+A common source of ringing is lowpass filtering.
+Lowpassing is a technique
+used to remove high-frequency noise
+from a signal,
+often for compression or denoising purposes,
+but it can also and often does introduce ringing.
+
+#### HDCAM SR
+
+!!! example "Frame with ringing from HDCAM SR"
+
+    ![Frame with a horizontal lowpass applied from Little Busters! Refrain](img/artifacts/lbrefrain-lowpassing.png)
+
+Another common source of excessive ringing is horizontal-only resampling
+common with HDCAM SR masters.
+These masters are resampled from 1920x1080 -> 1440x1080 -> 1920x1080,
+often with a ringing kernel such as Lanczos,
+which not only causes a lot of damage to the image quality,
+but also introduces very strong horizontal-only ringing.
+
+!!! example "FFT spectrum of a HDCAM SR master"
+
+    ![FFT spectrum of the above frame from Little Busters! Refrain](img/artifacts/lbrefrain-lowpassing-dft.png)
+
+A common way to determine if a source
+is affected by horizontal-only resampling
+is to check an FFT spectrum.
+The FFT spectrum
+will show a clear absence
+of high frequency information
+on the horizontal axis.
+
+Ringing caused by HDCAM SR mastering
+is often impossible to remove,
+as when it happens,
+that means the master is usually stored with HDCAM SR,
+not an intermediary master from the distributors.
+In some cases, clean sources may be available[^toei-one-piece],
+but this is rare.
+If such a source _is_ available,
+the method to fix it is the same
+as it is for other lowpass filtering,
+
+[^toei-one-piece]:
+    An example of one such case
+    is the WEB source
+    for One Piece's modern episodes.
+    The blu-rays for this show
+    use HDCAM,
+    but the WEB masteres do not,
+    allowing you to delowpass the BD source
+    using the WEB source
+    to fix the ringing.
+
 
 ### Noise
 
@@ -575,6 +669,24 @@ through anti-aliasing.
 #### Grain
 
 ### Blocking
+
+Blocking is a type of artifact
+that appears as blocky patterns
+in the image.
+It is often caused by compression
+
+!!! example "Frame with blocking artifacts"
+
+    ![Frame with blocking artifacts from the Guild no Uketsukejou desu ga, Zangyou wa Iya nanode Boss wo Solo Toubatsu Shiyou to Omoimasu ED](img/artifacts/girumasu-blocking.png)
+
+As this is a compression artifact,
+denoising and debanding is usually enough
+to smooth out block boundaries.
+In more severe cases,
+dedicated deblocking filters
+such as those found in encoders' in-loop filters,
+or deblocking plugins
+can be used to further reduce blocking.
 
 ### Range compression/expansion
 
