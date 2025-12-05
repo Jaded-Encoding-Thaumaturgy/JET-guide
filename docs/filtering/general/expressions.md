@@ -456,7 +456,7 @@ When passing just a single expression string,
 that expression will be applied to all planes.
 
 ```py
-clip = akarin.Expr([clip1, clip2], "x 1 +")
+clip = core.akarin.Expr([clip1, clip2], "x 1 +")
 ```
 
 This will apply the expression `x 1 +`
@@ -464,7 +464,7 @@ to every plane of the first input clip.
 This is equivalent to the following:
 
 ```py
-clip = akarin.Expr([clip1, clip2], ["x 1 +", "x 1 +", "x 1 +"])
+clip = core.akarin.Expr([clip1, clip2], ["x 1 +", "x 1 +", "x 1 +"])
 ```
 
 If we want to only apply an expression
@@ -476,7 +476,7 @@ to the U plane,
 we can pass the following:
 
 ```py
-clip = akarin.Expr([clip1, clip2], ["", "x 1 +", ""])
+clip = core.akarin.Expr([clip1, clip2], ["", "x 1 +", ""])
 ```
 
 When passing values in an expression,
