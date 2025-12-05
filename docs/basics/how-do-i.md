@@ -229,7 +229,7 @@ In particular your clip will display differently in vs-preview, even though the 
     ```py3
     from vstools import Matrix, ColorRange
 
-    clip_retagged = Matrix.SMPTE170M.apply(ColorRange.FULL.apply(clip))
+    clip_retagged = Matrix.ST170_M.apply(ColorRange.FULL.apply(clip))
     ```
 
 === "Vanilla VS"
@@ -248,12 +248,12 @@ even though the pixel values are different.
 ```py3
 from vstools import Matrix, ColorRange  # You can also use Vanilla VS, see above
 
-# Convert a clip from the SMPTE170M matrix to the BT709 matrix
-clip_converted = core.resize.Point(Matrix.SMPTE170M.apply(clip), matrix=Matrix.BT709)
+# Convert a clip from the ST170_M matrix to the BT709 matrix
+clip_converted = core.resize.Point(Matrix.ST170_M.apply(clip), matrix=Matrix.BT709)
 
 # Convert a clip from limited range to full range
 # Note that you have to append `.value_zimg` to the `range` argument here! Otherwise it would pass the wrong value (or just do `range=1`).
-clip_converted = core.resize.Point(ColorRange.LIMITED.apply(clip), range=ColorRange.LIMITED.value_zimg)
+clip_converted = core.resize.Point(ColorRange.LIMITED.apply(clip), range=ColorRange.FULL.value_zimg)
 ```
 Note that the resizing does not dither by default. That does not mean you *should* dither
 (usually it's better practice to do most of your filter chain with float clips, and then dither down at the end),
@@ -433,7 +433,7 @@ data = np.asarray(clip.get_frame(100)[0])
 
 To modify a frame's contents:
 ```py3
-def modify(f, n):
+def modify(n: int, f: list[vs.VideoFrame]) -> vs.VideoFrame:
     # Do the necessary imports inside of the function.
     # Doing them globally can cause issues in some scenarios,
     # since they may be dropped before the function is executed

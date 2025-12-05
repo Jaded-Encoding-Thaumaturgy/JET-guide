@@ -202,26 +202,11 @@ can be reverted with the exact same keyword parameters with `core.descale.Bicubi
 ```py
 resc = desc.descale.Bicubic(clip.width, clip.height, b=0, c=1, border_handling=1)
 ```
-Unfortunately, this is not yet supported by vs-kernels.
-If you want a lightweight similar alternative in the meantime, you can use the following code:
+Fortunately, this is supported by vs-kernels.
 ```py
-class MyKernel():
-    def __init__(self, name, **kwargs):
-        self.name = name
-        self.kwargs = kwargs
+from vskernels import BicubicSharp
 
-    def scale(self, clip, width, height, **kwargs):
-        return getattr(clip.descale, self.name)(width, height, **self.kwargs, **kwargs)
-    
-    def descale(self, clip, width, height, **kwargs):
-        return getattr(clip.descale, "De" + self.name.lower())(width, height, **self.kwargs, **kwargs)
-
-# Then, define your own kernels like this, which can mostly be used like vs-kernels kernels
-MBilinear = MyKernel("Bilinear")
-MCatrom = MyKernel("Bicubic", b=0, c=0.5)
-MFFmpeg = MyKernel("Bicubic", b=0, c=0.6)
-MLanczos2 = MyKernel("Lanczos", taps=2)
-MLanczos3 = MyKernel("Lanczos", taps=3)
-MLanczos4 = MyKernel("Lanczos", taps=4)
+kernel = BicubicSharp()
+desc = kernel.descale(clip, 1280, 720, border_handling=BorderHandling.ZERO)
+resc = kernel.scale(clip, clip.width, clip.height, border_handling=BorderHandling.ZERO)
 ```
-This method has its own limitations, though, since for example it does not support (de-)scaling in linear light with `linear=True`.

@@ -44,9 +44,9 @@ DGIndexNV is also technically something you can use, but recent versions have be
     # lsmas
     clip = LSMAS.source(R"path/to/file.mkv")
 
-    # Automatic indexer selection
-    # usually defaults to lsmas while previewing with vs-preview and bestsource when otherwise
-    clip = source(R"path/to/file.mkv")
+    # ffms2
+    clip = FFMS2.source(R"path/to/file.mkv")
+
     ```
 === "vs-muxtools"
     ```py
@@ -88,7 +88,7 @@ Most videos you download and the majority of BDs are untagged so this is often a
     clip = initialize_clip(clip, matrix=Matrix.BT709, primaries=Primaries.BT709, transfer=Transfer.BT709)
 
     # For most NTSC DVDs
-    clip = initialize_clip(clip, matrix=Matrix.SMPTE170M, primaries=Primaries.SMPTE170M, transfer=Transfer.BT601)
+    clip = initialize_clip(clip, matrix=Matrix.ST170_M, primaries=Primaries.ST170_M, transfer=Transfer.BT601)
     ```
 === "vs-muxtools"
     ```py
@@ -104,7 +104,7 @@ Most videos you download and the majority of BDs are untagged so this is often a
     clip = JPBD.init_cut(matrix=Matrix.BT709, primaries=Primaries.BT709, transfer=Transfer.BT709)
 
     # For most NTSC DVDs
-    clip = JPBD.init_cut(matrix=Matrix.SMPTE170M, primaries=Primaries.SMPTE170M, transfer=Transfer.BT601)
+    clip = JPBD.init_cut(matrix=Matrix.ST170_M, primaries=Primaries.ST170_M, transfer=Transfer.BT601)
     ```
 
 ## Output the clips

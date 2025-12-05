@@ -101,7 +101,7 @@ this means that you need to install the mentioned plugin, in this case `bs` (whi
 To start out, install the following plugins:
 
 - `bs` and `lsmas`, to load audio and video
-- `akarin` and `libp2p`, which may be needed by vs-preview.
+- `akarin`, `vszip` and `fmtc` which may be needed by vs-preview.
 
 ## Installing the JET Packages
 

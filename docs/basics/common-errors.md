@@ -65,11 +65,13 @@ For example, the following code will throw this error:
     ```py
       from vstools import Matrix
 
-      Matrix(-1)
+      Matrix.from_param(-1)
+
     ```
 
     ```txt
-       NotFoundEnumValue: (Matrix.from_param) The given value for "Matrix" argument must be a valid Matrix, not "-1"! Valid values are: [RGB (0), BT709 (1), UNKNOWN (2), FCC (4), BT470BG (5), SMPTE170M (6), SMPTE240M (7), YCGCO (8), BT2020NCL (9), BT2020CL (10), CHROMANCL (12), CHROMACL (13), ICTCP (14)]. (-1)
+       NotFoundEnumValueError: (Matrix().from_param) The given value for "<enum 'Matrix'>" argument must be a valid Matrix, not "-1"!
+       Valid values are: [RGB (0), BT709 (1), UNSPECIFIED (2), FCC (4), BT470_BG (5), ST170_M (6), ST240_M (7), YCGCO (8), BT2020_NCL (9), BT2020_CL (10), CHROMATICITY_DERIVED_NC (12), CHROMATICITY_DERIVED_CL (13), ICTCP (14)]. (-1)
     ```
 
     ![The above error as shown in a terminal](./img/jet-error.png)
