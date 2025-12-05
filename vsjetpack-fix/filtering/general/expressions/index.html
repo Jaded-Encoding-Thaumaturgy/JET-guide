@@ -1,0 +1,1985 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Various guides on encoding by JET" name="description"/>
+<meta content="Jaded Encoding Thaumaturgy" name="author"/>
+<link href="https://jaded-encoding-thaumaturgy.github.io/JET-guide/vsjetpack-fix/filtering/general/expressions/" rel="canonical"/>
+<link href="../order/" rel="prev"/>
+<link href="../../common/descaling/theory/" rel="next"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.1, mkdocs-material-9.7.0" name="generator"/>
+<title>Expressions - JET Encoding Guide</title>
+<link href="../../../assets/stylesheets/main.618322db.min.css" rel="stylesheet"/>
+<link href="../../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../../../assets/_mkdocstrings.css" rel="stylesheet"/>
+<link href="https://unpkg.com/katex@0/dist/katex.min.css" rel="stylesheet"/>
+<link href="../../../stylesheets/fields.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="purple" data-md-color-scheme="slate" dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#vapoursynth-expressions">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<div data-md-color-scheme="default" data-md-component="outdated" hidden="">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="JET Encoding Guide" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="JET Encoding Guide">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            JET Encoding Guide
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Expressions
+            
+          </span>
+</div>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="JET Encoding Guide" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="JET Encoding Guide">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+</a>
+    JET Encoding Guide
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Basics
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../basics/installation/">
+<span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../basics/python-primer/">
+<span class="md-ellipsis">
+    
+  
+    Python Primer
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../basics/getting-started/">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../basics/common-errors/">
+<span class="md-ellipsis">
+    
+  
+    Common Errors
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../basics/how-do-i/">
+<span class="md-ellipsis">
+    
+  
+    How do I...?
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Source Preparation
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Source Preparation
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    DVDs
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    DVDs
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sources/dvd/remuxing/">
+<span class="md-ellipsis">
+    
+  
+    Remuxing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_3_1_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Wobbly
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_3_1_2_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_3_1_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Wobbly
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../sources/dvd/wobbly/setup/">
+<span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Filtering
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Filtering
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../recognizing-artifacts/">
+<span class="md-ellipsis">
+    
+  
+    Recognizing Artifacts
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_4_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    General Techniques
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_4_2_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    General Techniques
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../order/">
+<span class="md-ellipsis">
+    
+  
+    Order of Operations
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    
+  
+    Expressions
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+<span class="md-ellipsis">
+    
+  
+    Expressions
+  
+
+    
+  </span>
+</a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#postfix-and-infix-notation">
+<span class="md-ellipsis">
+      
+        Postfix and Infix Notation
+      
+    </span>
+</a>
+<nav aria-label="Postfix and Infix Notation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-syntax">
+<span class="md-ellipsis">
+      
+        Basic Syntax
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stack-evaluation">
+<span class="md-ellipsis">
+      
+        Stack Evaluation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reading-postfix-expressions">
+<span class="md-ellipsis">
+      
+        Reading Postfix Expressions
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#plugin-syntax">
+<span class="md-ellipsis">
+      
+        Plugin Syntax
+      
+    </span>
+</a>
+<nav aria-label="Plugin Syntax" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clips">
+<span class="md-ellipsis">
+      
+        Clips
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expressions">
+<span class="md-ellipsis">
+      
+        Expressions
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#simple-expressions">
+<span class="md-ellipsis">
+      
+        Simple Expressions
+      
+    </span>
+</a>
+<nav aria-label="Simple Expressions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#making-diffs">
+<span class="md-ellipsis">
+      
+        Making diffs
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#complex-expressions">
+<span class="md-ellipsis">
+      
+        Complex Expressions
+      
+    </span>
+</a>
+<nav aria-label="Complex Expressions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#range-compression-and-decompression">
+<span class="md-ellipsis">
+      
+        Range Compression and Decompression
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Common Filtering
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Common Filtering
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_3_1" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Descaling
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_3_1_label" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_4_3_1">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Descaling
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../common/descaling/theory/">
+<span class="md-ellipsis">
+    
+  
+    Theory
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../common/descaling/known-resolutions/">
+<span class="md-ellipsis">
+    
+  
+    Known Resolutions
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Situational Filtering
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_4_4_label" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_4">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Situational Filtering
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../situational/dehardsubbing/">
+<span class="md-ellipsis">
+    
+  
+    Dehardsubbing
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../situational/fieldbased/">
+<span class="md-ellipsis">
+    
+  
+    Field-Based Video
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Encoding
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Encoding
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../encoding/x264/">
+<span class="md-ellipsis">
+    
+  
+    x264
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../encoding/x265/">
+<span class="md-ellipsis">
+    
+  
+    x265
+  
+
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../encoding/svtav1/">
+<span class="md-ellipsis">
+    
+  
+    SVT-AV1
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+<span class="md-ellipsis">
+    
+  
+    Misc
+  
+
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_6_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+            
+  
+    Misc
+  
+
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../misc/comparison/">
+<span class="md-ellipsis">
+    
+  
+    Comparison
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../resources/">
+<span class="md-ellipsis">
+    
+  
+    Additional Resources
+  
+
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#postfix-and-infix-notation">
+<span class="md-ellipsis">
+      
+        Postfix and Infix Notation
+      
+    </span>
+</a>
+<nav aria-label="Postfix and Infix Notation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-syntax">
+<span class="md-ellipsis">
+      
+        Basic Syntax
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#stack-evaluation">
+<span class="md-ellipsis">
+      
+        Stack Evaluation
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#reading-postfix-expressions">
+<span class="md-ellipsis">
+      
+        Reading Postfix Expressions
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#plugin-syntax">
+<span class="md-ellipsis">
+      
+        Plugin Syntax
+      
+    </span>
+</a>
+<nav aria-label="Plugin Syntax" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#clips">
+<span class="md-ellipsis">
+      
+        Clips
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expressions">
+<span class="md-ellipsis">
+      
+        Expressions
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#simple-expressions">
+<span class="md-ellipsis">
+      
+        Simple Expressions
+      
+    </span>
+</a>
+<nav aria-label="Simple Expressions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#making-diffs">
+<span class="md-ellipsis">
+      
+        Making diffs
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#complex-expressions">
+<span class="md-ellipsis">
+      
+        Complex Expressions
+      
+    </span>
+</a>
+<nav aria-label="Complex Expressions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#range-compression-and-decompression">
+<span class="md-ellipsis">
+      
+        Range Compression and Decompression
+      
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="vapoursynth-expressions">Vapoursynth Expressions</h1>
+<p>Vapoursynth expressions (expr)
+are a powerful feature
+that allows you to perform per-pixel operations
+using a simple expression syntax.
+Common use cases for expressions include:</p>
+<ul>
+<li>Arithmetic operations on pixel values
+  (addition, subtraction, multiplication, etc.)</li>
+<li>Combining multiple clips
+  through mathematical operations</li>
+<li>Creating masks
+  based on pixel values
+  or clip differences</li>
+<li>Simple color adjustments
+  and corrections</li>
+<li>Implementing basic
+  pixel-based filters</li>
+</ul>
+<p>Expressions are much more powerful
+than this,
+and can be used
+for even more complex operations,
+such as:</p>
+<ul>
+<li>Complex color space conversions
+  and transformations</li>
+<li>Creating adaptive masks
+  based on multiple conditions</li>
+<li>Noise detection
+  and filtering</li>
+<li>Edge detection
+  and enhancement</li>
+<li>Complex mathematical operations
+  for specialized filters</li>
+<li>Frame property storing
+  and comparison using single pixel clips</li>
+</ul>
+<p>There are two
+different implementations
+of expressions in Vapoursynth:</p>
+<ol>
+<li>The standard <code>std.Expr</code> function from the core library</li>
+<li>The optimized <code>akarin.Expr</code> function from the <a href="https://github.com/AkarinVS/vapoursynth-plugin#expr"><code>akarin</code> plugin</a></li>
+</ol>
+<p>Both implementations provide the same core functionality,
+but <code>akarin.Expr</code> is an optimized extension
+that offers enhanced performance and additional features
+through a slightly modified syntax.</p>
+<p>This guide will use the <code>akarin.Expr</code> implementation
+as it is more powerful
+and covers all the use-cases
+the standard library does
+and more.</p>
+<h2 id="postfix-and-infix-notation">Postfix and Infix Notation</h2>
+<div class="admonition info">
+<p class="admonition-title">Reverse Polish Notation</p>
+<p>Postfix notation is also known as
+<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">Reverse Polish Notation</a> (RPN),
+and that's what a lot of documentation
+and encoders use
+when speaking on the topic.</p>
+</div>
+<h3 id="basic-syntax">Basic Syntax</h3>
+<p>If you've studied any algebra,
+you've probably seen expressions
+written in infix notation,
+where the operator is placed between the operands:
+$$
+x * 1.5 - 10
+$$
+Infix notation is easy to understand for humans,
+but it can be more difficult for machines to parse.
+That's why expressions in Vapoursynth use postfix notation,
+where the operator is placed after the operands:
+$$
+x\ 1.5\ *\ 10\ -
+$$
+This can be a bit confusing at first,
+but it's actually quite simple once you get the hang of it.</p>
+<h3 id="stack-evaluation">Stack Evaluation</h3>
+<p>Postfix notation works by using a <em>stack</em>,
+a data structure
+where values are pushed on top
+and popped off from the top.
+We can see how this works
+with a simple example:
+$$
+5\ 10\ 3\ -\ *
+$$
+The expression is evaluated from left to right:</p>
+<ol>
+<li>
+<p>When we see a number,
+      we push it onto the stack:</p>
+<ol>
+<li>Push <span class="arithmatex">\(5\)</span>: Stack is <span class="arithmatex">\([5]\)</span></li>
+<li>Push <span class="arithmatex">\(10\)</span>: Stack is <span class="arithmatex">\([5, 10]\)</span></li>
+<li>Push <span class="arithmatex">\(3\)</span>: Stack is <span class="arithmatex">\([5, 10, 3]\)</span></li>
+</ol>
+</li>
+<li>
+<p>When we see an operator,
+      we pop the required number of values
+      off the stack,
+      apply the operator,
+      and push the result back.</p>
+<ul>
+<li>
+<p>See <code>-</code>:</p>
+<ol>
+<li>Pop <span class="arithmatex">\(3\)</span>, then <span class="arithmatex">\(10\)</span> from the stack</li>
+<li>Calculate <span class="arithmatex">\(10 - 3\)</span></li>
+<li>Push <span class="arithmatex">\(7\)</span>: Stack is <span class="arithmatex">\([5, 7]\)</span></li>
+</ol>
+</li>
+<li>
+<p>See <code>*</code>:</p>
+<ol>
+<li>Pop <span class="arithmatex">\(7\)</span>, then <span class="arithmatex">\(5\)</span> from the stack</li>
+<li>Calculate <span class="arithmatex">\(5 * 7\)</span></li>
+<li>Push <span class="arithmatex">\(35\)</span>: Stack is <span class="arithmatex">\([35]\)</span></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<p>The final value on the stack (<span class="arithmatex">\(35\)</span>)
+is our result.</p>
+<pre class="mermaid"><code>%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#b257e6',
+      'primaryTextColor': '#ffffff',
+      'primaryBorderColor': '#9333ea',
+      'lineColor': '#a0aec0',
+      'secondaryColor': '#2d3748',
+      'tertiaryColor': '#4a2d5d'
+    },
+    'flowchart': {
+      'curve': 'basis',
+      'padding': 10,
+      'rankSpacing': 30,
+    }
+  }
+}%%
+
+graph TD
+    classDef default fill:#2d3748,stroke:#4a5568,stroke-width:1px;
+    classDef operation fill:#b257e6,stroke:#9333ea,color:#ffffff,stroke-width:2px;
+    classDef stack fill:#4a2d5d,stroke:#b257e6,color:#ffffff,stroke-width:2px;
+
+    subgraph "Stack Operations"
+        A["Initial Stack"]:::operation
+        B["Push (5)"]:::operation
+        C["Push (10)"]:::operation
+        D["Push (3)"]:::operation
+        E["Subtract (10 - 3)"]:::operation
+        F["Multiply (5 * 7)"]:::operation
+    end
+
+    subgraph "Expression: 5 10 3 - *"
+        G["Stack: []"]:::stack
+        H["Stack: [5]"]:::stack
+        I["Stack: [5, 10]"]:::stack
+        J["Stack: [5, 10, 3]"]:::stack
+        K["Stack: [5, 7]"]:::stack
+        L["Stack: [35]"]:::stack
+    end
+
+    A --&gt; B
+    B --&gt; C
+    C --&gt; D
+    D --&gt; E
+    E --&gt; F
+
+    G --&gt; H
+    H --&gt; I
+    I --&gt; J
+    J --&gt; K
+    K --&gt; L
+
+    B -.-&gt; H
+    C -.-&gt; I
+    D -.-&gt; J
+    E -.-&gt; K
+    F -.-&gt; L
+</code></pre>
+<details class="question">
+<summary>Why is postfix notation preferred?</summary>
+<p>Postfix notation is easier for machines to parse
+because of how expression trees are evaluated.
+Expression trees are evaluated bottom-up,
+where child nodes must be calculated
+before parent nodes
+and values flow upward to operators.
+With infix notation,
+when reaching an operator,
+only the left subtree is complete,
+so the machine must store state
+and backtrack for the right subtree.
+However, with postfix notation,
+all required values are already calculated,
+allowing immediate evaluation
+with only a single stack
+as state.</p>
+</details>
+<h3 id="reading-postfix-expressions">Reading Postfix Expressions</h3>
+<p>If you have trouble reading
+a postfix expression,
+JET has a <a href="https://jaded-encoding-thaumaturgy.github.io/expr101/">simple website</a>
+where you can enter an expression
+and hover over operators
+to show which values
+on the stack are being operated on.
+Using our previous expression:
+$$
+5\ 10\ 3\ -\ *
+$$
+Hovering over the <code>*</code>
+and <code>-</code> operators
+shows affected values:</p>
+<p><img alt="Hovering over the * operators" src="../../../static/img/filtering/expr/expr101-op2.png"/><br/>
+<img alt="Hovering over the - operators" src="../../../static/img/filtering/expr/expr101-op1.png"/></p>
+<!-- TODO: Improve upon this section -->
+<h2 id="plugin-syntax">Plugin Syntax</h2>
+<p>To use expressions in a script,
+you can use the <code>akarin.Expr</code> plugin.
+The <code>std.Expr</code> function
+can also be used,
+but it has fewer features.</p>
+<h3 id="clips">Clips</h3>
+<p>The plugins accept a list of <code>VideoNode</code>s,
+and will apply the expression to each pixel
+of the first given clip.
+Note that the plugins
+always return a single <code>VideoNode</code>
+that is the result of applying the expression
+to the first input clip,
+regardless of how many input clips are provided.</p>
+<p>In standard Vapoursynth expressions,
+each <code>VideoNode</code>
+is represented by a single character.
+This starts from <span class="arithmatex">\(x\)</span> and goes through the alphabet up to <span class="arithmatex">\(u\)</span>.</p>
+<pre class="mermaid"><code>%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#b257e6',
+      'primaryTextColor': '#ffffff',
+      'primaryBorderColor': '#9333ea',
+      'lineColor': '#a0aec0',
+      'secondaryColor': '#2d3748',
+      'tertiaryColor': '#4a2d5d'
+    },
+    'flowchart': {
+      'curve': 'basis',
+      'padding': 8,
+      'nodeSpacing': 4,
+      'rankSpacing': 20
+    }
+  }
+}%%
+
+graph TD
+    classDef node fill:#b257e6,stroke:#9333ea,color:#ffffff,stroke-width:1px;
+    classDef char fill:#4a2d5d,stroke:#b257e6,color:#ffffff,stroke-width:1px;
+    classDef skip fill:none,stroke:none;
+
+    N1["N1"]:::node
+    N2["N2"]:::node
+    N3["N3"]:::node
+    N4["N4"]:::node
+    N5["N5"]:::node
+    N6["N6"]:::node
+    skip1["⟶"]:::skip
+    N24["N24"]:::node
+    N25["N25"]:::node
+    N26["N26"]:::node
+
+    C1["x"]:::char
+    C2["y"]:::char
+    C3["z"]:::char
+    C4["a"]:::char
+    C5["b"]:::char
+    C6["c"]:::char
+    C24["w"]:::char
+    C25["v"]:::char
+    C26["u"]:::char
+
+    N1 --&gt; C1
+    N2 --&gt; C2
+    N3 --&gt; C3
+    N4 --&gt; C4
+    N5 --&gt; C5
+    N6 --&gt; C6
+    N24 --&gt; C24
+    N25 --&gt; C25
+    N26 --&gt; C26
+</code></pre>
+<p><code>akarin.Expr</code> extends the standard Vapoursynth expression syntax
+by adding an additional operator
+that makes these values more human-readable,
+while also allowing you to pass
+a theoretically arbitrary number
+of clips.
+This operator is <code>srcN</code>,
+where <code>N</code> is the index value.</p>
+<pre class="mermaid"><code>%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#b257e6',
+      'primaryTextColor': '#ffffff',
+      'primaryBorderColor': '#9333ea',
+      'lineColor': '#a0aec0',
+      'secondaryColor': '#2d3748',
+      'tertiaryColor': '#4a2d5d'
+    },
+    'flowchart': {
+      'curve': 'basis',
+      'padding': 8,
+      'nodeSpacing': 4,
+      'rankSpacing': 20
+    }
+  }
+}%%
+
+graph TD
+    classDef node fill:#b257e6,stroke:#9333ea,color:#ffffff,stroke-width:1px;
+    classDef char fill:#4a2d5d,stroke:#b257e6,color:#ffffff,stroke-width:1px;
+    classDef skip fill:none,stroke:none;
+
+    N1["N1"]:::node
+    N2["N2"]:::node
+    N3["N3"]:::node
+    N4["N4"]:::node
+    N5["N5"]:::node
+    skip1["⟶"]:::skip
+    N253["N253"]:::node
+    N254["N254"]:::node
+    N255["N255"]:::node
+
+    C1["src0"]:::char
+    C2["src1"]:::char
+    C3["src2"]:::char
+    C4["src3"]:::char
+    C5["src4"]:::char
+    C253["src252"]:::char
+    C254["src253"]:::char
+    C255["src254"]:::char
+
+    N1 --&gt; C1
+    N2 --&gt; C2
+    N3 --&gt; C3
+    N4 --&gt; C4
+    N5 --&gt; C5
+    N253 --&gt; C253
+    N254 --&gt; C254
+    N255 --&gt; C255
+</code></pre>
+<h3 id="expressions">Expressions</h3>
+<p>Expressions are the core of these plugins.
+It makes use of operators
+to manipulate pixel values.
+Below is a list of operators,
+small descriptions
+on what they do,
+which plugins support which,
+and how many values
+they take from the stack.</p>
+<details class="info">
+<summary>Operator table</summary>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th><code>std.Expr</code></th>
+<th><code>akarin.Expr</code></th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>Addition</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Subtraction</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Multiplication</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Division</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Modulo</td>
+<td>❌</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Less than</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Greater than</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>=</code></td>
+<td>Equal to</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>Greater than or equal</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>Less than or equal</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>and</code></td>
+<td>Logical AND</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>or</code></td>
+<td>Logical OR</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>xor</code></td>
+<td>Logical XOR</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>not</code></td>
+<td>Logical NOT</td>
+<td>✅</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>exp</code></td>
+<td>Exponential</td>
+<td>✅</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td>Natural logarithm</td>
+<td>✅</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>sqrt</code></td>
+<td>Square root</td>
+<td>✅</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>pow</code></td>
+<td>Power</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>abs</code></td>
+<td>Absolute value</td>
+<td>✅</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>sin</code></td>
+<td>Sine</td>
+<td>✅</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>cos</code></td>
+<td>Cosine</td>
+<td>✅</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>min</code></td>
+<td>Minimum</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>max</code></td>
+<td>Maximum</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>floor</code></td>
+<td>Round down</td>
+<td>❌</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>ceil</code></td>
+<td>Round up</td>
+<td>❌</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>round</code></td>
+<td>Round to nearest</td>
+<td>❌</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>trunc</code></td>
+<td>Truncate decimal</td>
+<td>❌</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>clamp</code>/<code>clip</code></td>
+<td>Clamp values to custom range (i.e. limited range)</td>
+<td>❌</td>
+<td>✅</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>Ternary operator</td>
+<td>✅</td>
+<td>✅</td>
+<td>3</td>
+</tr>
+<tr>
+<td><code>dup</code></td>
+<td>Duplicate top stack value</td>
+<td>✅</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>swap</code></td>
+<td>Swap top two stack values</td>
+<td>✅</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>x[r,r]</code></td>
+<td>Static relative pixel access</td>
+<td>❌</td>
+<td>✅</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>x[]</code></td>
+<td>Dynamic absolute pixel access</td>
+<td>❌</td>
+<td>✅</td>
+<td>2</td>
+</tr>
+<tr>
+<td><code>srcN</code></td>
+<td><a href="#clips">Access Nth input clip (N≥0)</a></td>
+<td>❌</td>
+<td>✅</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>N</code></td>
+<td>Current frame number</td>
+<td>❌</td>
+<td>✅</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>Current column position</td>
+<td>❌</td>
+<td>✅</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>Y</code></td>
+<td>Current row position</td>
+<td>❌</td>
+<td>✅</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>Frame width</td>
+<td>❌</td>
+<td>✅</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>Frame height</td>
+<td>❌</td>
+<td>✅</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>var!</code></td>
+<td>Store to variable</td>
+<td>❌</td>
+<td>✅</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>var@</code></td>
+<td>Read from variable</td>
+<td>❌</td>
+<td>✅</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>dropN</code></td>
+<td>Drop N items from stack</td>
+<td>❌</td>
+<td>✅</td>
+<td>N</td>
+</tr>
+<tr>
+<td><code>sortN</code></td>
+<td>Sort top N items on stack</td>
+<td>❌</td>
+<td>✅</td>
+<td>N</td>
+</tr>
+<tr>
+<td><code>0x123</code></td>
+<td>Hexadecimal constants</td>
+<td>❌</td>
+<td>✅</td>
+<td>0</td>
+</tr>
+<tr>
+<td><code>023</code></td>
+<td>Octal constants</td>
+<td>❌</td>
+<td>✅</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</details>
+<p>Both expression plugins
+accept either a single string
+or a list of strings
+as the expression argument.
+When passing a list,
+the number of expressions can match
+the number of planes in the first clip.
+For example,
+a YUV clip would accept up to 3 expressions:
+one for the Y plane,
+one for the U plane,
+and one for the V plane.</p>
+<p>If fewer expressions are provided
+than planes,
+the last expression in the list
+will be used for any remaining planes.
+When passing just a single expression string,
+that expression will be applied to all planes.</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">akarin</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Expr</span><span style="color: #ABB2BF">([</span><span style="color: #E06C75">clip1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip2</span><span style="color: #ABB2BF">],</span> <span style="color: #98C379">"x 1 +"</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This will apply the expression <code>x 1 +</code>
+to every plane of the first input clip.
+This is equivalent to the following:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">akarin</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Expr</span><span style="color: #ABB2BF">([</span><span style="color: #E06C75">clip1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip2</span><span style="color: #ABB2BF">],</span> <span style="color: #ABB2BF">[</span><span style="color: #98C379">"x 1 +"</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">"x 1 +"</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">"x 1 +"</span><span style="color: #ABB2BF">])</span>
+</code></pre></div></td></tr></table></div>
+<p>If we want to only apply an expression
+to a single plane,
+we can pass empty strings.
+For example,
+if we only want to apply an expression
+to the U plane,
+we can pass the following:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">akarin</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Expr</span><span style="color: #ABB2BF">([</span><span style="color: #E06C75">clip1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip2</span><span style="color: #ABB2BF">],</span> <span style="color: #ABB2BF">[</span><span style="color: #98C379">""</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">"x 1 +"</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">""</span><span style="color: #ABB2BF">])</span>
+</code></pre></div></td></tr></table></div>
+<p>When passing values in an expression,
+you should be aware of
+the input and output formats.
+While integer formats automatically clamp values
+to their valid ranges,
+floating point formats do not.
+This means that for float clips,
+you must manually clamp values
+to avoid invalid results.</p>
+<table>
+<thead>
+<tr>
+<th>Bit-Depth</th>
+<th>Format</th>
+<th>Limited Range (Luma / Chroma)</th>
+<th>Full Range (Luma / Chroma)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>32-bit</td>
+<td>float</td>
+<td>[0.0, 1.0] / [-0.5, 0.5]</td>
+<td>[0.0, 1.0] / [-0.5, 0.5]</td>
+</tr>
+</tbody>
+</table>
+<p>For float clips, there are two ways to clamp values in an expression:</p>
+<ol>
+<li>Using <code>min</code> and <code>max</code> operators</li>
+<li>Using the <code>clamp</code> (or <code>clip</code>) operator (<code>akarin.Expr</code> only)</li>
+</ol>
+<p>In <code>akarin.Expr</code>,
+the following are equivalent:</p>
+<ul>
+<li><code>'x 0.0 max 1.0 min'</code></li>
+<li><code>'x 0.0 1.0 clamp'</code></li>
+</ul>
+<p>If necessary,
+you can also define
+custom clamp ranges
+for each plane.</p>
+<ul>
+<li><code>['x 0.0 max 1.0 min', 'x -0.5 max 0.5 min']</code></li>
+<li><code>['x 0.0 1.0 clamp', 'x -0.5 0.5 clamp']</code></li>
+</ul>
+<p>Similarly,
+you must be aware of the formats
+of the input clips
+when writing expressions.
+If there's an unaccounted format mismatch,
+the expression may produce garbage data.</p>
+<h2 id="simple-expressions">Simple Expressions</h2>
+<div class="admonition warning">
+<p class="admonition-title">This section is incomplete!</p>
+<p>This section is a stub.
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Add more examples</li>
+<li>Add more explanations</li>
+<li>Write about other simple uses of expressions</li>
+</ul>
+</details>
+</div>
+<p>There are a couple of simple expressions
+that are commonly used.</p>
+<h3 id="making-diffs">Making diffs</h3>
+<p>Expressions can be used
+to make a diff between clips,
+just like the <code>std.MakeDiff/MergeDiff</code> functions.</p>
+<div class="admonition example">
+<p class="admonition-title">Making a simple diff</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">akarin</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Expr</span><span style="color: #ABB2BF">([</span><span style="color: #E06C75">clip1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip2</span><span style="color: #ABB2BF">],</span> <span style="color: #98C379">"x y = 0 255 ?"</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This will check if a pixel in <code>src1</code>
+is the same as the pixel in <code>src2</code>.
+If it is,
+the clip's value will be set to 255,
+otherwise 0,
+and it will apply this
+to all planes.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">NCOP1v3</label><label for="__tabbed_1_2">NCOP1v4</label><label for="__tabbed_1_3">Difference</label><label for="__tabbed_1_4">Luma of the difference</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Angel Beats! - NCOP1v3" src="../../../static/img/filtering/expr/ab-src1.png"/></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Angel Beats! - NCOP1v4" src="../../../static/img/filtering/expr/ab-src2.png"/></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Diff between NCOP1v3 and NCOP1v4" src="../../../static/img/filtering/expr/ab-diff1-yuv.png"/></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Luma of the difference" src="../../../static/img/filtering/expr/ab-diff1-gray.png"/></p>
+</div>
+</div>
+</input></input></input></input></div>
+</div>
+<p>The current expression
+catches a lot of noise
+(due to dithering applied
+during filtering
+and encoding).
+If we want to add a threshold,
+we can make the following changes:</p>
+<ol>
+<li>First, we define a threshold value (<code>thr</code>) that determines how much difference we allow between pixels</li>
+<li>Instead of checking for exact equality between pixels, we:<ul>
+<li>Subtract one pixel value from the other (<code>x y -</code>)</li>
+<li>Take the absolute value of that difference (<code>abs</code>) to handle both positive and negative differences</li>
+</ul>
+</li>
+<li>We compare the absolute difference against our threshold (<code>&lt;= thr</code>)<ul>
+<li>If the difference is less than or equal to the threshold, the pixels are considered "similar enough"</li>
+<li>If it's greater than the threshold, the pixels are considered different</li>
+</ul>
+</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Thresholded difference</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span style="color: #E06C75">thr</span> <span style="color: #56B6C2">=</span> <span style="color: #D19A66">24</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">akarin</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Expr</span><span style="color: #ABB2BF">([</span><span style="color: #E06C75">clip1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip2</span><span style="color: #ABB2BF">],</span> <span style="color: #98C379">f"x y - abs {</span><span style="color: #E06C75">thr</span><span style="color: #98C379">} &lt;= 0 255 ?"</span><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><input id="__tabbed_2_4" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">NCOP1v3</label><label for="__tabbed_2_2">NCOP1v4</label><label for="__tabbed_2_3">Thresholded Difference</label><label for="__tabbed_2_4">Luma of the difference</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Angel Beats! - NCOP1v3" src="../../../static/img/filtering/expr/ab-src1.png"/></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Angel Beats! - NCOP1v4" src="../../../static/img/filtering/expr/ab-src2.png"/></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Diff between NCOP1v3 and NCOP1v4, this time with a threshold" src="../../../static/img/filtering/expr/ab-diff2-yuv.png"/></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Luma of the difference" src="../../../static/img/filtering/expr/ab-diff2-gray.png"/></p>
+</div>
+</div>
+</input></input></input></input></div>
+</div>
+<!-- TODO: Add more examples -->
+<h2 id="complex-expressions">Complex Expressions</h2>
+<div class="admonition warning">
+<p class="admonition-title">This section is incomplete!</p>
+<p>This section is a stub.
+You can help us
+by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
+<details class="question">
+<summary>How can I help?</summary>
+<ul>
+<li>Add more examples</li>
+<li>Add more explanations</li>
+<li>Write about other complex uses of expressions</li>
+</ul>
+</details>
+</div>
+<p>Expressions give you a lot of power
+and freedom
+to manipulate pixels
+however you want.</p>
+<h3 id="range-compression-and-decompression">Range Compression and Decompression</h3>
+<p>Expressions can be used
+to handle range compression issues
+in video clips,
+serving as an alternative
+to functions like <code>std.Levels</code>.
+Range compression occurs
+when a clip's pixel values
+are incorrectly scaled
+between limited range
+and full range.</p>
+<p>For example,
+when a limited range clip
+is incorrectly interpreted
+as full range,
+its values get compressed
+into a smaller range,
+resulting in loss of contrast.
+While <code>std.Levels</code>
+is commonly used
+to fix this,
+we can achieve the same results
+using expressions.</p>
+<details class="note">
+<summary>Alternative methods</summary>
+<p>The arguably better way
+to fix range compression
+is to use the <code>std.Levels</code> function.
+However,
+this section illustrates
+that expressions can be used
+to replace other functions
+and achieve similar results.
+In cases where you may need
+to use an expression
+and need to fix range compression
+at the same time,
+<code>akarin.Expr</code> may be more useful.
+Ultimately,
+it's up to you
+to determine
+when you should use
+which method,
+including when to combine them
+or perform operations separately.</p>
+</details>
+<div class="admonition example">
+<p class="admonition-title">Fixing range compression</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-1"> 1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-2"> 2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-3"> 3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-4"> 4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-5"> 5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-6"> 6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-7"> 7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-8"> 8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-9"> 9</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-10">10</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-11">11</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-12">12</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-13">13</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-14">14</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-15">15</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-16">16</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-17">17</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-18">18</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-19">19</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">vs</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">get_peak_values</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">get_lowest_values</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">ColorRange</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span style="color: #7F848E"># Get full range peak and lowest values for Y and UV planes</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span style="color: #E06C75">peak_full_y</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">peak_full_uv</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">_</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">get_peak_values</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">range_in</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">ColorRange</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">FULL</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span style="color: #E06C75">lowest_full_y</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">lowest_full_uv</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">_</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">get_lowest_values</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">range_in</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">ColorRange</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">FULL</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span style="color: #7F848E"># Get limited range peak and lowest values for Y and UV planes</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span style="color: #E06C75">peak_limited_y</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">peak_limited_uv</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">_</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">get_peak_values</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">range_in</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">ColorRange</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LIMITED</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span style="color: #E06C75">lowest_limited_y</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">lowest_limited_uv</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">_</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">get_lowest_values</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">range_in</span><span style="color: #56B6C2">=</span><span style="color: #E06C75">ColorRange</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LIMITED</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span style="color: #7F848E"># Apply range scaling formula to convert from limited to full range</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span style="color: #7F848E"># Formula: (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">akarin</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Expr</span><span style="color: #ABB2BF">(</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>    <span style="color: #ABB2BF">[</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a>        <span style="color: #98C379">f"x {</span><span style="color: #E06C75">lowest_limited_y</span><span style="color: #98C379">} - {</span><span style="color: #E06C75">peak_full_y</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">-</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">lowest_full_y</span><span style="color: #98C379">} * {</span><span style="color: #E06C75">peak_limited_y</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">-</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">lowest_limited_y</span><span style="color: #98C379">} / {</span><span style="color: #E06C75">lowest_full_y</span><span style="color: #98C379">} +"</span><span style="color: #ABB2BF">,</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a>        <span style="color: #98C379">f"x {</span><span style="color: #E06C75">lowest_limited_uv</span><span style="color: #98C379">} - {</span><span style="color: #E06C75">peak_full_uv</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">-</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">lowest_full_uv</span><span style="color: #98C379">} * {</span><span style="color: #E06C75">peak_limited_uv</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">-</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">lowest_limited_uv</span><span style="color: #98C379">} / {</span><span style="color: #E06C75">lowest_full_uv</span><span style="color: #98C379">} +"</span><span style="color: #ABB2BF">,</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a>    <span style="color: #ABB2BF">]</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Range Compressed</label><label for="__tabbed_3_2">Decompressed</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Kyousougiga - NCOP1 (range compressed)" src="../../../static/img/filtering/expr/kyousougiga-compressed.png"/></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Kyousougiga - NCOP1 (decompressed)" src="../../../static/img/filtering/expr/kyousougiga-decompressed.png"/></p>
+</div>
+</div>
+</input></input></div>
+</div>
+<p>The inverse of this can be done
+by swapping the <code>peak</code> and <code>lowest</code> values,
+as well as swapping <code>full</code> and <code>limited</code> in the formula.</p>
+<div class="admonition example">
+<p class="admonition-title">Fixing range expansion</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-6">6</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">akarin</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Expr</span><span style="color: #ABB2BF">(</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>    <span style="color: #ABB2BF">[</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>        <span style="color: #98C379">f"x {</span><span style="color: #E06C75">lowest_full_y</span><span style="color: #98C379">} - {</span><span style="color: #E06C75">peak_limited_y</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">-</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">lowest_limited_y</span><span style="color: #98C379">} * {</span><span style="color: #E06C75">peak_full_y</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">-</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">lowest_full_y</span><span style="color: #98C379">} / {</span><span style="color: #E06C75">lowest_limited_y</span><span style="color: #98C379">} +"</span><span style="color: #ABB2BF">,</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>        <span style="color: #98C379">f"x {</span><span style="color: #E06C75">lowest_full_uv</span><span style="color: #98C379">} - {</span><span style="color: #E06C75">peak_limited_uv</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">-</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">lowest_limited_uv</span><span style="color: #98C379">} * {</span><span style="color: #E06C75">peak_full_uv</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">-</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">lowest_full_uv</span><span style="color: #98C379">} / {</span><span style="color: #E06C75">lowest_limited_uv</span><span style="color: #98C379">} +"</span><span style="color: #ABB2BF">,</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>    <span style="color: #ABB2BF">]</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span style="color: #ABB2BF">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Range Expanded</label><label for="__tabbed_4_2">Range Compressed</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Fate/stay night [Realta Nua] - OP2 (range expanded)" src="../../../static/img/filtering/expr/fsnrn-expanded.png"/></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Fate/stay night [Realta Nua] - OP2 (range compressed)" src="../../../static/img/filtering/expr/fsnrn-compressed.png"/></p>
+</div>
+</div>
+</input></input></div>
+</div>
+<!-- TODO: Add more examples -->
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+<script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+<script src="../../../javascripts/katex.js"></script>
+<script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+<script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+window.mermaidConfig = {default: {
+    startOnLoad: false
+}};</script></body>
+</html>
