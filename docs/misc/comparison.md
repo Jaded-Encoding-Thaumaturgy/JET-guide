@@ -17,26 +17,21 @@ VSPreview is a previewer application for scripts created in VapourSynth. It feat
 
     In order to create comparisons with VSPreview, you will need to install some necessary dependencies.
 
-    - [`LibP2P`](https://github.com/DJATOM/LibP2P-Vapoursynth), [`LSMASHSource`](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works), [`Subtext`](https://github.com/vapoursynth/subtext) and [`vs-placebo`](https://github.com/sgt0/vs-placebo) can be installed using `vsrepo` from [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases). In your terminal, run the following:
+    - [`LSMASHSource`](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works)
+    - [`vs-placebo`](https://github.com/sgt0/vs-placebo)
+    - [`Subtext`](https://github.com/vapoursynth/subtext) (Optional)
+
+    On Windows they can be installed using `vsrepo`. In your terminal, run the following:
 
     ```powershell
-    vsrepo.py install libp2p lsmas sub placebo
-    ```
-
-    !!! note
-        If `vsrepo.py` command doesn't work, make sure Windows is set to open `.py` files with Python. You may also need to add it to the `PATHEXT` environment variable.
-
-    - [`awsmfunc`](https://github.com/OpusGang/awsmfunc) can be installed using `pip`:
-
-    ```powershell
-    python -m pip install git+https://github.com/OpusGang/awsmfunc.git
+    vsrepo.py install lsmas sub placebo
     ```
 
 === "Dolby Vision"
 
-    If you're working with Dolby Vision (DV) content, you will need to install additional dependencies.
+    If you're working with Dolby Vision (DV) content, you will need to install `libdovi`.
 
-    - [`libdovi`](https://github.com/quietvoid/dovi_tool) can be installed using `vsrepo` from [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases). In your terminal, run the following:
+    - [`libdovi`](https://github.com/quietvoid/dovi_tool)
 
     ```powershell
     vsrepo.py install dovi_library
@@ -54,8 +49,7 @@ Here's a simple `comp.py` script example that does nothing more than loading the
 
 ```py
 from vssource import LSMAS
-from vstools import vs, core, set_output
-from awsmfunc import FrameInfo
+from vstools import vs, core, set_output, show_frame_info
 
 # File paths: On Windows, in the File Explorer, hold shift and right-click on your file,
 # select copy as path, and paste it here
@@ -72,10 +66,11 @@ source3 = "Third source name"
 # Place any additional settings you want to use in your comp here
 # <End of additional comp settings>
 
-## Frameinfo: Displays the frame number, type, and group name in the top left corner (no modification required; add/remove lines as needed)
-clip1 = FrameInfo(clip1, source1)
-clip2 = FrameInfo(clip2, source2)
-clip3 = FrameInfo(clip3, source3)
+# Displays the frame number, type, and group name in the top left corner
+# (no modification required; add/remove lines as needed)
+clip1 = show_frame_info(clip1, source1)
+clip2 = show_frame_info(clip2, source2)
+clip3 = show_frame_info(clip3, source3)
 
 # Output: Comment/uncomment as needed depending on how many clips you're comparing
 set_output(clip1, source1)
@@ -208,6 +203,12 @@ clip3 = EwaLanczosSharp().scale(depth(clip3, 16), format=vs.YUV444P16)
 #### Tonemapping
 
 Converts the colorspace of the source (i.e. HDR/DV -> SDR).
+
+Wrappers around [`vs-placebo`](https://github.com/sgt0/vs-placebo) are available in [`awsmfunc`](https://github.com/OpusGang/awsmfunc) which can be installed using `pip`:
+
+```powershell
+pip install git+https://github.com/OpusGang/awsmfunc.git
+```
 
 - For converting HDR (washed out colors) -> SDR, set `source_colorspace=ColorSpace.HDR10`
 - For converting DV (green/purple hue) -> SDR, set `source_colorspace=ColorSpace.DOVI`
