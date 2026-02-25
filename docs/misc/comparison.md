@@ -9,7 +9,7 @@ This guide goes through the process of setting up and effectively utilizing [VSP
 
 ## VSPreview
 
-VSPreview is a previewer application for scripts created in VapourSynth. It features a simple graphical interface to allow you to use VapourSynth's features (and create comparisons) with ease. This should already be installed in your environment if you followed the [setup](../basics/installation.md).
+VSPreview is a previewer application for scripts created in VapourSynth. It features a simple graphical interface to allow you to use VapourSynth's features (and create comparisons) with ease. This should already be installed in your environment if you followed the [setup](../basics/installation.md#installing-the-jet-packages).
 
 ### Dependencies
 
@@ -17,26 +17,21 @@ VSPreview is a previewer application for scripts created in VapourSynth. It feat
 
     In order to create comparisons with VSPreview, you will need to install some necessary dependencies.
 
-    - [`LibP2P`](https://github.com/DJATOM/LibP2P-Vapoursynth), [`LSMASHSource`](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works), [`Subtext`](https://github.com/vapoursynth/subtext) and [`vs-placebo`](https://github.com/sgt0/vs-placebo) can be installed using `vsrepo` from [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases). In your terminal, run the following:
+    - [`LSMASHSource`](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works)
+    - [`vs-placebo`](https://github.com/sgt0/vs-placebo)
+    - [`Subtext`](https://github.com/vapoursynth/subtext) (Optional)
+
+    On Windows they can be installed using `vsrepo`. In your terminal, run the following:
 
     ```powershell
-    vsrepo.py install libp2p lsmas sub placebo
-    ```
-
-    !!! note
-        If `vsrepo.py` command doesn't work, make sure Windows is set to open `.py` files with Python. You may also need to add it to the `PATHEXT` environment variable.
-
-    - [`awsmfunc`](https://github.com/OpusGang/awsmfunc) can be installed using `pip`:
-
-    ```powershell
-    python -m pip install git+https://github.com/OpusGang/awsmfunc.git
+    vsrepo.py install lsmas sub placebo
     ```
 
 === "Dolby Vision"
 
-    If you're working with Dolby Vision (DV) content, you will need to install additional dependencies.
+    If you're working with Dolby Vision (DV) content, you will need to install `libdovi`.
 
-    - [`libdovi`](https://github.com/quietvoid/dovi_tool) can be installed using `vsrepo` from [VapourSynth](https://github.com/vapoursynth/vapoursynth/releases). In your terminal, run the following:
+    - [`libdovi`](https://github.com/quietvoid/dovi_tool)
 
     ```powershell
     vsrepo.py install dovi_library
@@ -46,39 +41,41 @@ VSPreview is a previewer application for scripts created in VapourSynth. It feat
 
 In order to create a comparison, you will need to create a VapourSynth script. This script outlines the parameters and files which VSPreview will use when generating your comparison.
 
-Create a file called `comp.py` and launch it in your favorite text editor.
+Create a file called `comp.py` and open it in your favorite text editor.
 
 ### Basic Script
 
 Here's a simple `comp.py` script example that does nothing more than loading the videos and previewing them.
 
 ```py
-from vstools import vs, core, set_output
-from awsmfunc import FrameInfo
+from vssource import LSMAS
+from vstools import vs, core, set_output, show_frame_info
 
-## File paths: Hold shift and right-click your file in the Windows File Explorer, select copy as path, and paste it here
-clip1 = core.lsmas.LWLibavSource(r"C:\Paste\File\Path\Here.mkv")
-clip2 = core.lsmas.LWLibavSource(r"C:\Paste\File\Path\Here.mkv")
-clip3 = core.lsmas.LWLibavSource(r"C:\Paste\File\Path\Here.mkv")
+# File paths: On Windows, in the File Explorer, hold shift and right-click on your file,
+# select copy as path, and paste it here
+clip1 = LSMAS.source(r"C:\Paste\File\Path\Here.mkv", 0)
+clip2 = LSMAS.source(r"C:\Paste\File\Path\Here.mkv", 0)
+clip3 = LSMAS.source(r"C:\Paste\File\Path\Here.mkv", 0)
 
-## Source: Name of the source
-source1 = "FirstSourceName"
-source2 = "SecondSourceName"
-source3 = "ThirdSourceName"
+# Source: Name of the source
+source1 = "First source name"
+source2 = "Second source name"
+source3 = "Third source name"
 
-## <Additional comp settings>
-## Place any additional settings you want to use in your comp here
-## <End of additional comp settings>
+# <Additional comp settings>
+# Place any additional settings you want to use in your comp here
+# <End of additional comp settings>
 
-## Frameinfo: Displays the frame number, type, and group name in the top left corner (no modification required; add/remove lines as needed)
-clip1 = FrameInfo(clip1, source1)
-clip2 = FrameInfo(clip2, source2)
-clip3 = FrameInfo(clip3, source3)
+# Displays the frame number, type, and group name in the top left corner
+# (no modification required; add/remove lines as needed)
+clip1 = show_frame_info(clip1, source1)
+clip2 = show_frame_info(clip2, source2)
+clip3 = show_frame_info(clip3, source3)
 
-## Output: Comment/uncomment as needed depending on how many clips you're comparing
-set_output(clip1, name=source1)
-set_output(clip2, name=source2)
-set_output(clip3, name=source3)
+# Output: Comment/uncomment as needed depending on how many clips you're comparing
+set_output(clip1, source1)
+set_output(clip2, source2)
+set_output(clip3, source3)
 ```
 
 ### Common issues
@@ -93,7 +90,8 @@ Sets the source frame rate (fps) based on fractional input (`fpsnum`/`fpsden`). 
     If a clip stays in sync without changing during scrubbing, you should note that the specific source has dropped or duplicate frames.
 
 ```py
-## Frame rate: Change fps to match other sources (needed for when the previewer is unable to automatically keep them in sync)
+# Frame rate: Change fps to match other sources
+# (needed for when the previewer is unable to automatically keep them in sync)
 clip1 = core.std.AssumeFPS(clip1, fpsnum=24000, fpsden=1001)
 clip2 = core.std.AssumeFPS(clip2, fpsnum=25000, fpsden=1000)
 clip3 = core.std.AssumeFPS(clip3, fpsnum=24000, fpsden=1000)
@@ -121,14 +119,15 @@ clip1 = core.vivtc.VDecimate(clip1)
 ```
 
 !!! note
-    You need [`vivtc`](https://github.com/vapoursynth/vivtc) installed for the above snippet to work. You can install it with `vsrepo.py install vivtc`.
+    You need [`vivtc`](https://github.com/vapoursynth/vivtc) installed for the above snippet to work.
+    On Windows, You can install it with `vsrepo.py install vivtc`.
 
 #### Cropping
 
 Crops the source video by *n* pixels from the selected side. For example, `left=20` will remove 20 horizontal pixels starting from the left side. *This should be used on sources that use letterboxing or other form of borders.*
 
 !!! warning
-    If you are cropping with odd numbers, you will need to convert your clip to 16-bit depth with 4:4:4 chroma subsampling.
+    If you are cropping with odd numbers, you will need to convert your clip to 4:4:4 chroma subsampling.
 
 
 ```py
@@ -145,23 +144,25 @@ clip3 = core.std.Crop(clip3, left=0, right=0, top=21, bottom=21)
 
 Downscales or upscales the video. *This should be used to match sources that have differing resolutions.*
 
-- For upscaling (e.g. 720p -> 1080p), use `EwaLanczos`:
+- For upscaling (e.g. 720p -> 1080p), use `EwaLanczosSharp`.
+  It is the default upscaler when using the `high-quality` profile on mpv:
 
 ```py
-from vskernels import EwaLanczos
+from vskernels import EwaLanczosSharp
 
-## Upscaling: Increases the resolution of clips to match the highest resolution using EwaLanczos (equivalent scaling to mpv's high-quality profile); recommended
-clip1 = EwaLanczos().scale(clip1, 1920, 1080, sigmoid=True)
-clip2 = EwaLanczos().scale(clip2, 1920, 1080, sigmoid=True)
-clip3 = EwaLanczos().scale(clip3, 3840, 2160, sigmoid=True)
+# Upscaling: Increases the resolution of clips to match the highest resolution using EwaLanczosSharp
+clip1 = EwaLanczosSharp().scale(clip1, 1920, 1080, sigmoid=True)
+clip2 = EwaLanczosSharp().scale(clip2, 1920, 1080, sigmoid=True)
+clip3 = EwaLanczosSharp().scale(clip3, 3840, 2160, sigmoid=True)
 ```
 
-- For downscaling (e.g. 2160p/4K -> 1080p), use `Hermite`:
+- For downscaling (e.g. 2160p/4K -> 1080p), use `Hermite`
+  It is the default downscaler when using the `high-quality` profile on mpv:
 
 ```py
 from vskernels import Hermite
 
-## Downscaling: Decreases the resolution of clips to match the lowest resolution using Hermite (equivalent scaling to mpv's high-quality profile); not recommended
+# Downscaling: Decreases the resolution of clips to match the lowest resolution using Hermite
 clip1 = Hermite().scale(clip1, 1920, 1080, linear=True)
 clip2 = Hermite().scale(clip2, 1920, 1080, linear=True)
 clip3 = Hermite().scale(clip3, 3840, 2160, linear=True)
@@ -177,7 +178,7 @@ Removes the first *n* frames from the source. For example, `[24:]` will skip the
 To get the frame difference, find a unique frame (e.g. scene changes) in the correct and incorrect source. Note the frame numbers each one begin at, then set the difference of the two for the incorrect source.
 
 ```py
-## Trimming: Trim frames to match clips (calculate the frame difference and enter the number here)
+# Trimming: Trim frames to match clips (calculate the frame difference and enter the number here)
 clip1 = clip1[0:]
 clip2 = clip2[24:]
 clip3 = clip3[0:]
@@ -191,15 +192,23 @@ clip3 = clip3[0:]
 Converts clips to 16-bit depth with 4:4:4 chroma subsampling. *Required for filters such as cropping (with odd numbers) or tonemapping.*
 
 ```py
+from vstools import depth
+
 ## Depth: Convert clips to 16-bit 4:4:4 [required for cropping with odd numbers or tonemapping]
-clip1 = core.resize.Lanczos(clip1, format=vs.YUV444P16)
-clip2 = core.resize.Lanczos(clip2, format=vs.YUV444P16)
-clip3 = core.resize.Lanczos(clip3, format=vs.YUV444P16)
+clip1 = EwaLanczosSharp().scale(depth(clip1, 16), format=vs.YUV444P16)
+clip2 = EwaLanczosSharp().scale(depth(clip2, 16), format=vs.YUV444P16)
+clip3 = EwaLanczosSharp().scale(depth(clip3, 16), format=vs.YUV444P16)
 ```
 
 #### Tonemapping
 
 Converts the colorspace of the source (i.e. HDR/DV -> SDR).
+
+Wrappers around [`vs-placebo`](https://github.com/sgt0/vs-placebo) are available in [`awsmfunc`](https://github.com/OpusGang/awsmfunc) which can be installed using `pip`:
+
+```powershell
+pip install git+https://github.com/OpusGang/awsmfunc.git
+```
 
 - For converting HDR (washed out colors) -> SDR, set `source_colorspace=ColorSpace.HDR10`
 - For converting DV (green/purple hue) -> SDR, set `source_colorspace=ColorSpace.DOVI`
@@ -208,17 +217,44 @@ Converts the colorspace of the source (i.e. HDR/DV -> SDR).
     If you want to tonemap, you will need to change the clip's bit depth to 16-bit (see [above](#depth)).
 
 ```py
-## Additional imports [Paste these at the very top of your script]
+# Additional imports [Paste these at the very top of your script]
 from awsmfunc.types.placebo import PlaceboColorSpace as ColorSpace
 from awsmfunc.types.placebo import PlaceboTonemapFunction as Tonemap
 from awsmfunc.types.placebo import PlaceboGamutMapping as Gamut
 from awsmfunc.types.placebo import PlaceboTonemapOpts
+from vstools import Matrix, Primaries, PropEnum, Transfer, core
 
-## Tonemapping: Converts the dynamic range of the source [16-bit required]
-## Specify the arguments based on your sources; play with different values when comparing against an SDR source to best match it
-clip1args = PlaceboTonemapOpts(source_colorspace=ColorSpace.DOVI, target_colorspace=ColorSpace.SDR, tone_map_function=Tonemap.ST2094_40, gamut_mapping=Gamut.Clip, peak_detect=True, use_dovi=True, contrast_recovery=0.3)
-clip2args = PlaceboTonemapOpts(source_colorspace=ColorSpace.HDR10, target_colorspace=ColorSpace.SDR, tone_map_function=Tonemap.ST2094_40, gamut_mapping=Gamut.Clip, peak_detect=True, use_dovi=False, contrast_recovery=0.3)
-clip3args = PlaceboTonemapOpts(source_colorspace=ColorSpace.HDR10, target_colorspace=ColorSpace.SDR, tone_map_function=Tonemap.Spline, gamut_mapping=Gamut.Darken, peak_detect=True, use_dovi=False, contrast_recovery=0.3, dst_max=120)
+# Tonemapping: Converts the dynamic range of the source [16-bit required]
+# Specify the arguments based on your sources;
+# play with different values when comparing against an SDR source to best match it
+clip1args = PlaceboTonemapOpts(
+    source_colorspace=ColorSpace.DOVI,
+    target_colorspace=ColorSpace.SDR,
+    tone_map_function=Tonemap.ST2094_40,
+    gamut_mapping=Gamut.Clip,
+    peak_detect=True,
+    use_dovi=True,
+    contrast_recovery=0.3,
+)
+clip2args = PlaceboTonemapOpts(
+    source_colorspace=ColorSpace.HDR10,
+    target_colorspace=ColorSpace.SDR,
+    tone_map_function=Tonemap.ST2094_40,
+    gamut_mapping=Gamut.Clip,
+    peak_detect=True,
+    use_dovi=False,
+    contrast_recovery=0.3,
+)
+clip3args = PlaceboTonemapOpts(
+    source_colorspace=ColorSpace.HDR10,
+    target_colorspace=ColorSpace.SDR,
+    tone_map_function=Tonemap.Spline,
+    gamut_mapping=Gamut.Darken,
+    peak_detect=True,
+    use_dovi=False,
+    contrast_recovery=0.3,
+    dst_max=120,
+)
 
 ## Apply tonemapping
 clip1 = core.placebo.Tonemap(clip1, **clip1args.vsplacebo_dict())
@@ -226,9 +262,10 @@ clip2 = core.placebo.Tonemap(clip2, **clip2args.vsplacebo_dict())
 clip3 = core.placebo.Tonemap(clip3, **clip3args.vsplacebo_dict())
 
 ## Retag video to 709 after tonemapping [required]
-clip1 = core.std.SetFrameProps(clip1, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
-clip2 = core.std.SetFrameProps(clip2, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
-clip3 = core.std.SetFrameProps(clip3, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
+clip1 = PropEnum.ensure_presences(clip1, [Matrix.BT709, Transfer.BT709, Primaries.BT709])
+clip2 = PropEnum.ensure_presences(clip2, [Matrix.BT709, Transfer.BT709, Primaries.BT709])
+clip3 = PropEnum.ensure_presences(clip3, [Matrix.BT709, Transfer.BT709, Primaries.BT709])
+
 ```
 
 !!! note
@@ -236,13 +273,16 @@ clip3 = core.std.SetFrameProps(clip3, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRAN
 
 #### Range
 
-Sets the color range of the clip as limited (`0`) or full (`1`). *This should be used on sources containing incorrect metadata or after tonemapping DV content (set it to limited).*
+Converts the color range of the clip to limited or full. *This should be used on sources containing incorrect metadata or after tonemapping DV content (set it to limited).*
 
 ```py
-## Color range: Marks the clip's range as limited (0) or full (1); DV clips will need to be set to limited (0) after tonemapping
-clip1 = core.resize.Lanczos(clip1, format=vs.YUV444P16, range=0)
-clip2 = core.resize.Lanczos(clip2, format=vs.YUV444P16, range=0)
-clip3 = core.resize.Lanczos(clip3, format=vs.YUV444P16, range=1)
+from vstools import depth
+
+# Color range: Converts the clip's range as limited or full;
+# DV clips will need to be set to limited after tonemapping
+clip1 = depth(clip1, range_out=ColorRange.LIMITED)
+clip2 = depth(clip2, range_out=ColorRange.FULL)
+clip3 = depth(clip3, range_out=ColorRange.FULL)
 ```
 
 #### Gamma
@@ -268,19 +308,22 @@ clip3 = core.std.Levels(clip3, gamma=0.88, planes=0)
 Set the correct frame properties for your sources. This is most commonly used on sources you're upscaling or 4K SDR content. *This should be used on sources with incorrect/missing metadata or colors that are off, particularly reds and greens.*
 
 ```py
-## FrameProps: Repairs sources with incorrect/missing metadata; typically used for 4K SDR and upscaled/downscaled content (colors will be off, particularly reds, greens, and blues)
+from vstools import PropEnum
+# FrameProps: Repairs sources with incorrect/missing metadata;
+# typically used for 4K SDR and upscaled/downscaled content
+# (colors will be off, particularly reds, greens, and blues)
 
 # SDR: BD/WEB (720p - 4K)
-clip1 = core.std.SetFrameProps(clip1, _Matrix=vs.MATRIX_BT709, _Transfer=vs.TRANSFER_BT709, _Primaries=vs.PRIMARIES_BT709)
+clip1 = PropEnum.ensure_presences(clip1, [Matrix.BT709, Transfer.BT709, Primaries.BT709])
 
 # SDR: PAL DVD
-clip2 = core.std.SetFrameProps(clip2, _Matrix=vs.MATRIX_BT470_BG, _Transfer=vs.TRANSFER_BT470_BG, _Primaries=vs.PRIMARIES_BT470_BG)
+clip2 = PropEnum.ensure_presences(clip2, [Matrix.BT470_BG, Transfer.BT470_BG, Primaries.BT470_BG])
 
 # SDR: NTSC DVD
-clip3 = core.std.SetFrameProps(clip3, _Matrix=vs.MATRIX_ST170_M, _Transfer=vs.TRANSFER_BT601, _Primaries=vs.PRIMARIES_ST170_M,)
+clip3 = PropEnum.ensure_presences(clip3, [Matrix.ST170_M, Transfer.BT601, Primaries.ST170_M])
 
 # HDR/DV
-clip4 = core.std.SetFrameProps(clip4, _Matrix=vs.MATRIX_BT2020_NCL, _Transfer=vs.TRANSFER_BT2020_10, _Primaries=vs.PRIMARIES_BT2020)
+clip4 = PropEnum.ensure_presences(clip4, [Matrix.BT2020_CL, Transfer.BT2020_10, Primaries.BT2020])
 ```
 
 #### Double-Range Compression (DRC)
@@ -288,9 +331,11 @@ clip4 = core.std.SetFrameProps(clip4, _Matrix=vs.MATRIX_BT2020_NCL, _Transfer=vs
 Fixes washed out colors on selected sources.
 
 ```py
+from vstools import ColorRange, depth
+
 ## Fix DRC: Repairs sources with very washed out colors
-clip1 = core.resize.Point(clip1, range_in=0, range=1, dither_type="error_diffusion")
-clip1 = core.std.SetFrameProp(clip1, prop="_ColorRange", intval=1)
+clip1 = depth(clip1, range_in=ColorRange.LIMITED, range_out=ColorRange.FULL)
+clip1 = ColorRange.LIMITED.apply(clip1)
 ```
 
 ### Running
