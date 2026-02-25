@@ -208,5 +208,5 @@ from vskernels import BicubicSharp
 
 kernel = BicubicSharp()
 desc = kernel.descale(clip, 1280, 720, border_handling=BorderHandling.ZERO)
-resc = kernel.scale(clip, clip.width, clip.height, border_handling=BorderHandling.ZERO)
+resc = kernel.scale(desc, clip.width, clip.height, border_handling=BorderHandling.ZERO)
 ```
