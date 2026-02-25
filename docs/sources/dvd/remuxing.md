@@ -915,20 +915,19 @@ These checks can all be performed
 using the following Vapoursynth code snippet:
 
 ```py
-from vstools import Dar, Sar, mod4
+from jetpytools import mod2, mod4
+from vstools import Dar, Sar
 from vskernels import Bicubic
 
 dar = Dar(dar_num>, <dar_den)
 sar = Sar.from_ar(<active_width>, <active_height>, dar)
 
 if sar > 1:
-    width, height = mod4(clip.width * float(sar)), mod4(clip.height)
+    width, height = mod2(clip.width * float(sar)), mod4(clip.height)
 else:
-    width, height = mod4(clip.width), mod4(clip.height / float(sar))
+    width, height = mod2(clip.width), mod4(clip.height / float(sar))
 
-clip_resized = Bicubic().scale(
-    clip, width, height, keep_ar=True, sar=sar, dar=dar
-)
+clip_resized = Bicubic().scale(clip, width, height, keep_ar=True, sar=sar)
 ```
 
 ??? question "Why use Vapoursynth?"
