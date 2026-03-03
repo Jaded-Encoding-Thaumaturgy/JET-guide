@@ -19,12 +19,11 @@ VSPreview is a previewer application for scripts created in VapourSynth. It feat
 
     - [`LSMASHSource`](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works)
     - [`vs-placebo`](https://github.com/sgt0/vs-placebo)
-    - [`Subtext`](https://github.com/vapoursynth/subtext) (Optional)
 
     On Windows they can be installed using `vsrepo`. In your terminal, run the following:
 
     ```powershell
-    vsrepo.py install lsmas sub placebo
+    vsrepo.py install lsmas placebo
     ```
 
 === "Dolby Vision"
