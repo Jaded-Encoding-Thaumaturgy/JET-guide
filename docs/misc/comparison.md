@@ -54,7 +54,6 @@ Here's a simple `comp.py` script example that does nothing more than loading the
 
 ```py
 from vstools import vs, core, set_output
-from awsmfunc import FrameInfo
 
 ## File paths: Hold shift and right-click your file in the Windows File Explorer, select copy as path, and paste it here
 clip1 = core.lsmas.LWLibavSource(r"C:\Paste\File\Path\Here.mkv")
@@ -69,11 +68,6 @@ source3 = "ThirdSourceName"
 ## <Additional comp settings>
 ## Place any additional settings you want to use in your comp here
 ## <End of additional comp settings>
-
-## Frameinfo: Displays the frame number, type, and group name in the top left corner (no modification required; add/remove lines as needed)
-clip1 = FrameInfo(clip1, source1)
-clip2 = FrameInfo(clip2, source2)
-clip3 = FrameInfo(clip3, source3)
 
 ## Output: Comment/uncomment as needed depending on how many clips you're comparing
 set_output(clip1, name=source1)
