@@ -25,6 +25,11 @@
     "aliases": []
   },
   {
+    "version": "comp",
+    "title": "comp",
+    "aliases": []
+  },
+  {
     "version": "common-errors",
     "title": "common-errors",
     "aliases": []
