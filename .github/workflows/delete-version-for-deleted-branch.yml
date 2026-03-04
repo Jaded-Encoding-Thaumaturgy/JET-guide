@@ -16,11 +16,9 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-      - name: Prep Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.11'
-      - name: Install pip deps
-        run: python -m pip install --user -r requirements.txt -r requirements-dev.txt
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+      - name: Install dependencies
+        run: uv sync
       - name: Delete version for branch
-        run: mike delete -p ${{ github.event.ref }}
+        run: uv run mike delete -p ${{ github.event.ref }}

@@ -15,15 +15,13 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-      - name: Prep Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.11'
-      - name: Install pip deps
-        run: python -m pip install --user mkdocs-material mkdocstrings[python] pymdown-extensions mike
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+      - name: Install dependencies
+        run: uv sync
       - name: Wipe existing versions
-        run: mike delete --all -p
+        run: uv run mike delete --all -p
       - name: Build and deploy master
-        run: mike deploy -p -u master
+        run: uv run mike deploy -p -u master
       - name: Set default
-        run: mike set-default -p master
+        run: uv run mike set-default -p master

@@ -7,13 +7,13 @@ This guide can be accessed [here](https://jaded-encoding-thaumaturgy.github.io/J
 1. Run the following command:
 
     ```bash
-    pip install -r requirements.txt
+    uv sync
     ```
 
 2. Run the following command to host it locally with hot-reload.
 
     ```bash
-    mkdocs serve
+    uv run mkdocs serve
     ```
 
 ## How to configure
