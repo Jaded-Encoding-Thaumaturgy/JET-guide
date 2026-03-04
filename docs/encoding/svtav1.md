@@ -173,7 +173,7 @@ AV1 usecase, **staying on the default `1` is preferable.**
      Not to be confused with *SVT-AV1-HDR*'s `--tune 3`
      which is effectively a `tune grain` equivalent.
      It disables certain features like CDEF, restoration,
-     temporal filtering and sets agressive psy-rd strengths.
+     temporal filtering and sets aggressive psy-rd strengths.
      It is most effective on noisy live-action content.
 
 ### Variance Boost
@@ -192,7 +192,7 @@ Basically, the *strength* controls how much areas are to be boosted,
 while *octile* controls how much of the area needs to be deemed low-contrast
 before being boosted.
 
-You can use a slightly more agressive *strength* and *octile* value for higher
+You can use a slightly more aggressive *strength* and *octile* value for higher
 quality targets, but historically, metrics have shown this *strength-octile* 
 combination to be the most efficient on a wide variety of content types,
 therefore it is usually not recommended to stray away from the defaults.
