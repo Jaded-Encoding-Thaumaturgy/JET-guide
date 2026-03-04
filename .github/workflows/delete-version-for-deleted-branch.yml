@@ -4,6 +4,9 @@ on: delete
 permissions:
   contents: write
 
+env:
+  NO_MKDOCS_2_WARNING: 1
+
 jobs:
   deploy:
     if: github.event.ref_type == 'branch'

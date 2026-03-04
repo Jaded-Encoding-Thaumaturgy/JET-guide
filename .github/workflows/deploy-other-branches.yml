@@ -8,6 +8,10 @@ on:
 
 permissions:
   contents: write
+
+env:
+  NO_MKDOCS_2_WARNING: 1
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
