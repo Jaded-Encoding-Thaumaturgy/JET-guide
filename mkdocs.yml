@@ -59,15 +59,6 @@ nav:
 
 plugins:
   - search
-  - mkdocstrings:
-      handlers:
-        python:
-          inventories:
-            - https://docs.python.org/3/objects.inv
-          options:
-            docstring_style: "sphinx"
-            show_symbol_type_heading: true
-            show_symbol_type_toc: true
   - mermaid2
 
 markdown_extensions:

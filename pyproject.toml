@@ -6,7 +6,6 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "mkdocs-material==9.7.4",
-    "mkdocstrings[python]==1.0.3",
     "pymdown-extensions==10.21",
     "mkdocs-mermaid2-plugin==1.2.3",
 ]
