@@ -5,9 +5,10 @@ description = "JET Encoding Guide"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "mkdocs==1.6.1",
     "mkdocs-material==9.7.4",
-    "pymdown-extensions==10.21",
     "mkdocs-mermaid2-plugin==1.2.3",
+    "pymdown-extensions==10.21",
 ]
 
 [dependency-groups]
