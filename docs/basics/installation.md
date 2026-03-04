@@ -28,7 +28,7 @@ on Windows.
 ## Installing Python and VapourSynth
 
 === "Windows"
-    Check the [VapourSynth documentation](http://www.vapoursynth.com/doc/installation.html)
+    Check the [VapourSynth documentation](https://www.vapoursynth.com/doc/installation.html)
     to find out the latest Python version currently supported by VapourSynth,
     and install it from the [Python website](https://www.python.org/downloads/).
     At the time of writing, that's Python 3.12.

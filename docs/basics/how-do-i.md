@@ -5,8 +5,8 @@ It's mostly about how to shuffle clips around and how to convert between formats
 not about actual filtering.
 
 Many of the things here can also be found on their respective documentation pages
-(e.g. VapourSynth's [Python Reference](http://www.vapoursynth.com/doc/pythonreference.html)
-and [Function Reference](http://www.vapoursynth.com/doc/functions.html)), so go there
+(e.g. VapourSynth's [Python Reference](https://www.vapoursynth.com/doc/pythonreference.html)
+and [Function Reference](https://www.vapoursynth.com/doc/functions.html)), so go there
 if you need more details on any function.
 The point of this page is to make the barrier to entry lower.
 
@@ -42,7 +42,7 @@ except for one option being easier to write than the other.
     in which case you probably don't need to read this page),
     except for knowing that slicing is not magic.
 
-    Note that the [Trim filter](http://www.vapoursynth.com/doc/functions/video/trim.html), unlike slicing, is inclusive.
+    Note that the [Trim filter](https://www.vapoursynth.com/doc/functions/video/trim.html), unlike slicing, is inclusive.
 
     ```py3
     clip_cut = clip.std.Trim(first=10)    # Cut off 10 frames at the start
@@ -63,18 +63,18 @@ Clips can be joined by simply using the `+` operator in Python:
 clip_joined = clip1 + clip2 + clip3
 ```
 If you need to join many clips together, or have a list of clips,
-it may be simpler to use [`core.std.Splice`](http://www.vapoursynth.com/doc/functions/video/splice.html):
+it may be simpler to use [`core.std.Splice`](https://www.vapoursynth.com/doc/functions/video/splice.html):
 ```py3
 clip_joined = core.std.Splice([clip1, clip2, clip3])
 ```
 
 ### How do I stack two clips on top of one another?
-This can be done with [`core.std.StackVertical`](http://www.vapoursynth.com/doc/functions/video/stackvertical_stackhorizontal.html).
+This can be done with [`core.std.StackVertical`](https://www.vapoursynth.com/doc/functions/video/stackvertical_stackhorizontal.html).
 But chances are that you are asking this because you want to compare the clips with one another.
 Unless you want to check if the clips are synced, chances are you want to use [multiple output nodes](#how-do-i-compare-multiple-clips) to compare them instead.
 
 ### How do I interleave two clips?
-This can be done with [`core.std.Interleave`](http://www.vapoursynth.com/doc/functions/video/interleave.html).
+This can be done with [`core.std.Interleave`](https://www.vapoursynth.com/doc/functions/video/interleave.html).
 But chances are that you are asking this because you want to compare the clips with one another.
 Unless you want to check if the clips are synced, chances are you want to use [multiple output nodes](#how-do-i-compare-multiple-clips) to compare them instead.
 
@@ -238,7 +238,7 @@ In particular your clip will display differently in vs-preview, even though the 
     ```
 
 ### How do I convert a clip's color matrix/color range/etc?
-Tag your clip as the source matrix/range/etc and use the [`core.resize`](http://www.vapoursynth.com/doc/functions/video/resize.html)
+Tag your clip as the source matrix/range/etc and use the [`core.resize`](https://www.vapoursynth.com/doc/functions/video/resize.html)
 function to convert it to the target matrix/range/etc.
 
 Converting color matrix/range/etc will change the pixel values as well as the metadata,
@@ -277,8 +277,8 @@ and then eventually downscale back to YUV420 again (using, say, Hermite, i.e. `B
     Color range needs special treatment here, as shown in the above snippet.
     The meaning of the values `0` and `1` is flipped between the `_ColorRange` frame property and
     the `core.resize` function.
-    In the frame property, `0` means full and `1` means limited ([docs](http://www.vapoursynth.com/doc/apireference.html#reserved-frame-properties)),
-    but in `core.resize` it's the other way around ([docs](http://www.vapoursynth.com/doc/functions/video/resize.html)).
+    In the frame property, `0` means full and `1` means limited ([docs](https://www.vapoursynth.com/doc/apireference.html#reserved-frame-properties)),
+    but in `core.resize` it's the other way around ([docs](https://www.vapoursynth.com/doc/functions/video/resize.html)).
 
 Alternatively, you can use [fmtconv](https://amusementclub.github.io/fmtconv/doc/fmtconv.html).
 
@@ -353,7 +353,7 @@ and then use `replace_ranges` (explained above).
     ```
 
 ### How do I decide at runtime whether to apply a filter or not?
-Unless you want to write your own plugin, the way to do this is with [`FrameEval`](http://www.vapoursynth.com/doc/functions/video/frameeval.html):
+Unless you want to write your own plugin, the way to do this is with [`FrameEval`](https://www.vapoursynth.com/doc/functions/video/frameeval.html):
 
 For example, to blur all frames whose average luma is larger than 0.5 (assume the clip is a float clip):
 ```py3
@@ -417,7 +417,7 @@ Modifying frame contents in Python is slow and not the way VapourSynth is intend
 You should instead see if there is a plugin that applies the filter you want to apply,
 or write such a plugin if there isn't.
 If you want to apply some custom formula to a frame's pixels,
-you can use the [`core.std.Expr`](http://www.vapoursynth.com/doc/functions/video/expr.html)
+you can use the [`core.std.Expr`](https://www.vapoursynth.com/doc/functions/video/expr.html)
 or the more powerful third-party [`core.akarin.Expr`](https://github.com/Jaded-Encoding-Thaumaturgy/akarin-vapoursynth-plugin?tab=readme-ov-file#expr) functions.
 
 That said, accessing frame data from Python *can* be useful when you're trying out some new filter idea

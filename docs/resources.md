@@ -43,8 +43,8 @@ Whatever you're trying to learn (this is not even specific to encoding), it cann
 - For specific examples, read the articles on [BT.709](https://en.wikipedia.org/wiki/Rec._709) or [BT.601](https://en.wikipedia.org/wiki/Rec._601), or the actual standards ([BT.709](https://www.itu.int/rec/R-REC-BT.709-6-201506-I/en), [BT.601](https://www.itu.int/rec/R-REC-BT.601-7-201103-I/en))
 - [Doom9 summary thread about colorspaces](https://forum.doom9.org/showthread.php?t=133982)
 - [Poynton's Gamma and Colour FAQs](https://poynton.ca/notes/colour_and_gamma/)
-- [The color-related articles on ImageWorsener's page](http://entropymine.com/imageworsener/)
-- [List of primaries/transfer functions/matrices used in VapourSynth](http://vapoursynth.com/doc/functions/video/resize.html) The tables there being taken from the HEVC specification (Appendix E)
+- [The color-related articles on ImageWorsener's page](https://entropymine.com/imageworsener/)
+- [List of primaries/transfer functions/matrices used in VapourSynth](https://vapoursynth.com/doc/functions/video/resize.html) The tables there being taken from the HEVC specification (Appendix E)
 - [fmtconv docs](https://amusementclub.github.io/fmtconv/doc/fmtconv.html#description) also have a large list of color spaces and their relationships
 - [The QuickTime Gamma Bug](https://vitrolite.wordpress.com/2010/12/31/quicktime_gamma_bug/)
 
@@ -106,10 +106,10 @@ Now, after writing all of this, I should point out that this is not a perfect di
 
 With this in mind, here are a couple of general resources on VapourSynth:
 
-- [Full VapourSynth Docs](http://vapoursynth.com/doc/introduction.html)
-- [List of Reserved FrameProps](http://vapoursynth.com/doc/apireference.html#reserved-frame-properties)
-- [VapourSynth Standard Functions](http://vapoursynth.com/doc/functions.html)
-- [Resize Docs](http://vapoursynth.com/doc/functions/video/resize.html) Also contains tables explaining the various matrix/primaries/transfer values
+- [Full VapourSynth Docs](https://vapoursynth.com/doc/introduction.html)
+- [List of Reserved FrameProps](https://vapoursynth.com/doc/apireference.html#reserved-frame-properties)
+- [VapourSynth Standard Functions](https://vapoursynth.com/doc/functions.html)
+- [Resize Docs](https://vapoursynth.com/doc/functions/video/resize.html) Also contains tables explaining the various matrix/primaries/transfer values
 - Learn some basic Python. Use any resource you want, like [this one](https://www.learnpython.org/). You *need* to know basic Python if you want to write VapourSynth scripts, and people will not be very patient with you if half of your questions on VapourSynth just come from a lack of Python knowledge.
 
 As for the various filter plugins and wrappers, there's too many of those to list here so just check their documentation.
@@ -138,8 +138,8 @@ Finally, if your source doesn't *have* any significant artifacts, that doesn't m
 - [Avisynth docs on resampling](http://avisynth.nl/index.php/Resampling)
 - [Imagemagick docs on resampling](https://imagemagick.org/Usage/filter/)
 - [guide.encode.moe's page on resampling](https://guide.encode.moe/encoding/resampling.html)
-- [Docs for VapourSynth's Resize](http://vapoursynth.com/doc/functions/video/resize.html) This explains the meaning of parameters like `src_width` and `src_top`.
-- The resampling-related articles on [ImageWorsener's page](http://entropymine.com/imageworsener/) and [ResampleScope's page](http://entropymine.com/resamplescope/)
+- [Docs for VapourSynth's Resize](https://vapoursynth.com/doc/functions/video/resize.html) This explains the meaning of parameters like `src_width` and `src_top`.
+- The resampling-related articles on [ImageWorsener's page](https://entropymine.com/imageworsener/) and [ResampleScope's page](https://entropymine.com/resamplescope/)
 - [Thingo I made with diagrams for all of this](https://files.catbox.moe/46dq7b.pdf)
 
 It is extremely important to realize that upsampling and downsampling are two *fundamentally* different operations. A kernel that's good for upsampling does not need to be good for downsampling and vice-versa.
@@ -161,7 +161,7 @@ Note that *aliasing* is often conflated with *blocking*, but technically those a
 
 Here's some more resources on upsampling in particular
 
-- For more mathematical background, read the [paper by Mitchell-Netravali](https://www.cs.utexas.edu/~fussell/courses/cs384g-fall2013/lectures/mitchell/Mitchell.pdf) (and if you want to dive even deeper, read some of the papers that references, like [[KEY81]](http://ncorr.com/download/publications/keysbicubic.pdf) and [[PAR83]](https://www.sciencedirect.com/science/article/abs/pii/0734189X83900269))
+- For more mathematical background, read the [paper by Mitchell-Netravali](https://www.cs.utexas.edu/~fussell/courses/cs384g-fall2013/lectures/mitchell/Mitchell.pdf) (and if you want to dive even deeper, read some of the papers that references, like [[KEY81]](https://ncorr.com/download/publications/keysbicubic.pdf) and [[PAR83]](https://www.sciencedirect.com/science/article/abs/pii/0734189X83900269))
 - [Desmos graph](https://www.desmos.com/calculator/ogo8cchpwi) visualizing the upsampling process
 - [Plots of some common resampling kernels](https://amusementclub.github.io/ResampleHQ/kernels.html) Note that the Blurring/Sharpness/Ringing graphs on the bottom aren't really reliable.
 
@@ -213,7 +213,7 @@ Do not descale subsampled chroma. This should be clear from the previous points 
 IVTC is *completely* different from deinterlacing. NEVER try to "IVTC" by calling QTGMC or anything like that. Also, never use AnimeIVTC.
 
 - Understanding 3:2 Pulldown: [Wikipedia Page](https://en.wikipedia.org/wiki/Three-two_pull_down), [Wobbly Guide's Page on Telecining](https://wobbly.encode.moe/gettingstarted/primer.html)
-- [fieldbased.media](http://fieldbased.media/)
+- [fieldbased.media](https://fieldbased.media/)
 - The basic concept of IVTC:
 
     Conceptually, IVTC is split into two steps, called fieldmatching and decimation. (Sometimes, it also needs additional post-processing steps like interpolating orphans, freezeframing, fixing fades, etc.)
@@ -224,7 +224,7 @@ IVTC is *completely* different from deinterlacing. NEVER try to "IVTC" by callin
 
 - Understanding fieldmatching: Read the [Background and Overview](http://avisynth.nl/index.php/TIVTC/TFM#Background_and_overview:) section of the TIVTC docs
 - There exist automated methods for IVTC (TIVTC, VIVTC, but note that TDecimate for VapourSynth is broken), but if you want good results you'll *need* to manually IVTC with a tool like [Wobbly](https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly).
-- [Wobbly Guide](http://wobbly.encode.moe/)
+- [Wobbly Guide](https://wobbly.encode.moe/)
 - [ivtc.org (archived)](https://web.archive.org/web/20220912021955/http://ivtc.vapoursynth.com/)
 - [The Yatta Manifesto](https://web.archive.org/web/20160610134353/warpsharp.info/yatta.txt)
 
