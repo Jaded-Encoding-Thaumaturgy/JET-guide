@@ -204,7 +204,7 @@ resc = desc.descale.Bicubic(clip.width, clip.height, b=0, c=1, border_handling=1
 ```
 Fortunately, this is supported by vs-kernels.
 ```py
-from vskernels import BicubicSharp
+from vskernels import BicubicSharp, BorderHandling
 
 kernel = BicubicSharp()
 desc = kernel.descale(clip, 1280, 720, border_handling=BorderHandling.ZERO)
