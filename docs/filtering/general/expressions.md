@@ -249,7 +249,7 @@ regardless of how many input clips are provided.
 In standard Vapoursynth expressions,
 each `VideoNode`
 is represented by a single character.
-This starts from $x$ and goes through the alphabet up to $u$.
+This starts from $x$ and goes through the alphabet up to $w$.
 
 ```mermaid
 %%{
@@ -294,9 +294,9 @@ graph TD
     C4["a"]:::char
     C5["b"]:::char
     C6["c"]:::char
-    C24["w"]:::char
+    C24["u"]:::char
     C25["v"]:::char
-    C26["u"]:::char
+    C26["w"]:::char
 
     N1 --> C1
     N2 --> C2
@@ -550,8 +550,8 @@ just like the `std.MakeDiff/MergeDiff` functions.
     This will check if a pixel in `src1`
     is the same as the pixel in `src2`.
     If it is,
-    the clip's value will be set to 255,
-    otherwise 0,
+    the clip's value will be set to 0,
+    otherwise 255,
     and it will apply this
     to all planes.
 
