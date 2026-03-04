@@ -167,7 +167,7 @@ Here's some more resources on upsampling in particular
 
 ### Downsampling
 
-Downsampling is an entirely different process from upsampling. Applying the process used for upsampling to downsampling will result in massive aliasing no matter what reconstruction kernel is used. Thus, instead of asking how to best reconstruct a continuous function out of the samples like with upsampling, the main question when downsampling is how to prevent aliasing. This is done by applying a lowpass filter to reduce the high frequences that would cause aliasing. This is also indirectly covered in the Mitchell-Netravali paper.
+Downsampling is an entirely different process from upsampling. Applying the process used for upsampling to downsampling will result in massive aliasing no matter what reconstruction kernel is used. Thus, instead of asking how to best reconstruct a continuous function out of the samples like with upsampling, the main question when downsampling is how to prevent aliasing. This is done by applying a lowpass filter to reduce the high frequencies that would cause aliasing. This is also indirectly covered in the Mitchell-Netravali paper.
 
 With this in mind, good downsampling kernels are kernels that result in good lowpass filters like Gaussian kernels, or faster approximations to them like Hermite. In situations where you're worried about Moiré patterns, Mitchell is also a good candidate. But as a rule of thumb, kernels with strong negative lobes will not make good downsampling kernels, even if they're fantastic upsampling kernels.
 
