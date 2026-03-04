@@ -452,7 +452,7 @@ def modify(n: int, f: list[vs.VideoFrame]) -> vs.VideoFrame:
 
 # Set up a blank clip with your desired output width/height/format
 # (which can differ from your input clip's format)
-blank = clip.std.BlankClip(your_target_height, your_target_width, format=vs.GRAYS)
+blank = clip.std.BlankClip(your_target_width, your_target_height, format=vs.GRAYS)
 result = core.std.ModifyFrame(blank, [blank, clip], modify)
 ```
 
