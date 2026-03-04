@@ -1961,8 +1961,8 @@ In the future, when this guide website grows and more topics get their own pages
 <li>For specific examples, read the articles on <a href="https://en.wikipedia.org/wiki/Rec._709">BT.709</a> or <a href="https://en.wikipedia.org/wiki/Rec._601">BT.601</a>, or the actual standards (<a href="https://www.itu.int/rec/R-REC-BT.709-6-201506-I/en">BT.709</a>, <a href="https://www.itu.int/rec/R-REC-BT.601-7-201103-I/en">BT.601</a>)</li>
 <li><a href="https://forum.doom9.org/showthread.php?t=133982">Doom9 summary thread about colorspaces</a></li>
 <li><a href="https://poynton.ca/notes/colour_and_gamma/">Poynton's Gamma and Colour FAQs</a></li>
-<li><a href="http://entropymine.com/imageworsener/">The color-related articles on ImageWorsener's page</a></li>
-<li><a href="http://vapoursynth.com/doc/functions/video/resize.html">List of primaries/transfer functions/matrices used in VapourSynth</a> The tables there being taken from the HEVC specification (Appendix E)</li>
+<li><a href="https://entropymine.com/imageworsener/">The color-related articles on ImageWorsener's page</a></li>
+<li><a href="https://vapoursynth.com/doc/functions/video/resize.html">List of primaries/transfer functions/matrices used in VapourSynth</a> The tables there being taken from the HEVC specification (Appendix E)</li>
 <li><a href="https://amusementclub.github.io/fmtconv/doc/fmtconv.html#description">fmtconv docs</a> also have a large list of color spaces and their relationships</li>
 <li><a href="https://vitrolite.wordpress.com/2010/12/31/quicktime_gamma_bug/">The QuickTime Gamma Bug</a></li>
 </ul>
@@ -2015,10 +2015,10 @@ But then, if you're wondering what the <code>matrix</code> argument for <code>vs
 <p>Now, after writing all of this, I should point out that this is not a perfect distinction, since for example it is also possible to implement filters directly in Python with certain more advanced techniques. Still, the point of explaining the VapourSynth ecosystem this way is not to give a perfect and complete description of it, but to help beginners understand how the various components interact and where various errors come from.</p>
 <p>With this in mind, here are a couple of general resources on VapourSynth:</p>
 <ul>
-<li><a href="http://vapoursynth.com/doc/introduction.html">Full VapourSynth Docs</a></li>
-<li><a href="http://vapoursynth.com/doc/apireference.html#reserved-frame-properties">List of Reserved FrameProps</a></li>
-<li><a href="http://vapoursynth.com/doc/functions.html">VapourSynth Standard Functions</a></li>
-<li><a href="http://vapoursynth.com/doc/functions/video/resize.html">Resize Docs</a> Also contains tables explaining the various matrix/primaries/transfer values</li>
+<li><a href="https://vapoursynth.com/doc/introduction.html">Full VapourSynth Docs</a></li>
+<li><a href="https://vapoursynth.com/doc/apireference.html#reserved-frame-properties">List of Reserved FrameProps</a></li>
+<li><a href="https://vapoursynth.com/doc/functions.html">VapourSynth Standard Functions</a></li>
+<li><a href="https://vapoursynth.com/doc/functions/video/resize.html">Resize Docs</a> Also contains tables explaining the various matrix/primaries/transfer values</li>
 <li>Learn some basic Python. Use any resource you want, like <a href="https://www.learnpython.org/">this one</a>. You <em>need</em> to know basic Python if you want to write VapourSynth scripts, and people will not be very patient with you if half of your questions on VapourSynth just come from a lack of Python knowledge.</li>
 </ul>
 <p>As for the various filter plugins and wrappers, there's too many of those to list here so just check their documentation.</p>
@@ -2039,8 +2039,8 @@ But then, if you're wondering what the <code>matrix</code> argument for <code>vs
 <li><a href="http://avisynth.nl/index.php/Resampling">Avisynth docs on resampling</a></li>
 <li><a href="https://imagemagick.org/Usage/filter/">Imagemagick docs on resampling</a></li>
 <li><a href="https://guide.encode.moe/encoding/resampling.html">guide.encode.moe's page on resampling</a></li>
-<li><a href="http://vapoursynth.com/doc/functions/video/resize.html">Docs for VapourSynth's Resize</a> This explains the meaning of parameters like <code>src_width</code> and <code>src_top</code>.</li>
-<li>The resampling-related articles on <a href="http://entropymine.com/imageworsener/">ImageWorsener's page</a> and <a href="http://entropymine.com/resamplescope/">ResampleScope's page</a></li>
+<li><a href="https://vapoursynth.com/doc/functions/video/resize.html">Docs for VapourSynth's Resize</a> This explains the meaning of parameters like <code>src_width</code> and <code>src_top</code>.</li>
+<li>The resampling-related articles on <a href="https://entropymine.com/imageworsener/">ImageWorsener's page</a> and <a href="https://entropymine.com/resamplescope/">ResampleScope's page</a></li>
 <li><a href="https://files.catbox.moe/46dq7b.pdf">Thingo I made with diagrams for all of this</a></li>
 </ul>
 <p>It is extremely important to realize that upsampling and downsampling are two <em>fundamentally</em> different operations. A kernel that's good for upsampling does not need to be good for downsampling and vice-versa.</p>
@@ -2055,12 +2055,12 @@ But then, if you're wondering what the <code>matrix</code> argument for <code>vs
 <p>Note that <em>aliasing</em> is often conflated with <em>blocking</em>, but technically those are two different notions: Aliasing is about low frequencies incorrectly being reconstructed to high-frequencies, while blocking (more formally referred to as anisotropy) is specifically an effect of tensor resampling (and can thus only occur in 2D or higher dimensions) and is caused by the (2D) resampling kernel not being radially symmetric. Blocking can be partially alleviated by using a polar (or EWA) kernel, while aliasing cannot.</p>
 <p>Here's some more resources on upsampling in particular</p>
 <ul>
-<li>For more mathematical background, read the <a href="https://www.cs.utexas.edu/~fussell/courses/cs384g-fall2013/lectures/mitchell/Mitchell.pdf">paper by Mitchell-Netravali</a> (and if you want to dive even deeper, read some of the papers that references, like <a href="http://ncorr.com/download/publications/keysbicubic.pdf">[KEY81]</a> and <a href="https://www.sciencedirect.com/science/article/abs/pii/0734189X83900269">[PAR83]</a>)</li>
+<li>For more mathematical background, read the <a href="https://www.cs.utexas.edu/~fussell/courses/cs384g-fall2013/lectures/mitchell/Mitchell.pdf">paper by Mitchell-Netravali</a> (and if you want to dive even deeper, read some of the papers that references, like <a href="https://ncorr.com/download/publications/keysbicubic.pdf">[KEY81]</a> and <a href="https://www.sciencedirect.com/science/article/abs/pii/0734189X83900269">[PAR83]</a>)</li>
 <li><a href="https://www.desmos.com/calculator/ogo8cchpwi">Desmos graph</a> visualizing the upsampling process</li>
 <li><a href="https://amusementclub.github.io/ResampleHQ/kernels.html">Plots of some common resampling kernels</a> Note that the Blurring/Sharpness/Ringing graphs on the bottom aren't really reliable.</li>
 </ul>
 <h3 id="downsampling">Downsampling</h3>
-<p>Downsampling is an entirely different process from upsampling. Applying the process used for upsampling to downsampling will result in massive aliasing no matter what reconstruction kernel is used. Thus, instead of asking how to best reconstruct a continuous function out of the samples like with upsampling, the main question when downsampling is how to prevent aliasing. This is done by applying a lowpass filter to reduce the high frequences that would cause aliasing. This is also indirectly covered in the Mitchell-Netravali paper.</p>
+<p>Downsampling is an entirely different process from upsampling. Applying the process used for upsampling to downsampling will result in massive aliasing no matter what reconstruction kernel is used. Thus, instead of asking how to best reconstruct a continuous function out of the samples like with upsampling, the main question when downsampling is how to prevent aliasing. This is done by applying a lowpass filter to reduce the high frequencies that would cause aliasing. This is also indirectly covered in the Mitchell-Netravali paper.</p>
 <p>With this in mind, good downsampling kernels are kernels that result in good lowpass filters like Gaussian kernels, or faster approximations to them like Hermite. In situations where you're worried about Moiré patterns, Mitchell is also a good candidate. But as a rule of thumb, kernels with strong negative lobes will not make good downsampling kernels, even if they're fantastic upsampling kernels.</p>
 <h2 id="descaling">Descaling</h2>
 <p>The goal of a descale is to mathematically invert an upscale. <em>Never</em> descale a video unless you're absolutely sure that it was upscaled with those exact parameters, and that no additional post-processing was done afterwards.</p>
@@ -2093,7 +2093,7 @@ But then, if you're wondering what the <code>matrix</code> argument for <code>vs
 <p>IVTC is <em>completely</em> different from deinterlacing. NEVER try to "IVTC" by calling QTGMC or anything like that. Also, never use AnimeIVTC.</p>
 <ul>
 <li>Understanding 3:2 Pulldown: <a href="https://en.wikipedia.org/wiki/Three-two_pull_down">Wikipedia Page</a>, <a href="https://wobbly.encode.moe/gettingstarted/primer.html">Wobbly Guide's Page on Telecining</a></li>
-<li><a href="http://fieldbased.media/">fieldbased.media</a></li>
+<li><a href="https://fieldbased.media/">fieldbased.media</a></li>
 <li>
 <p>The basic concept of IVTC:</p>
 <p>Conceptually, IVTC is split into two steps, called fieldmatching and decimation. (Sometimes, it also needs additional post-processing steps like interpolating orphans, freezeframing, fixing fades, etc.)
@@ -2105,7 +2105,7 @@ The decimation step then drops those duplicate frames to obtain a 24p clip.</p>
 <p>Understanding fieldmatching: Read the <a href="http://avisynth.nl/index.php/TIVTC/TFM#Background_and_overview:">Background and Overview</a> section of the TIVTC docs</p>
 </li>
 <li>There exist automated methods for IVTC (TIVTC, VIVTC, but note that TDecimate for VapourSynth is broken), but if you want good results you'll <em>need</em> to manually IVTC with a tool like <a href="https://github.com/Jaded-Encoding-Thaumaturgy/Wobbly">Wobbly</a>.</li>
-<li><a href="http://wobbly.encode.moe/">Wobbly Guide</a></li>
+<li><a href="https://wobbly.encode.moe/">Wobbly Guide</a></li>
 <li><a href="https://web.archive.org/web/20220912021955/http://ivtc.vapoursynth.com/">ivtc.org (archived)</a></li>
 <li><a href="https://web.archive.org/web/20160610134353/warpsharp.info/yatta.txt">The Yatta Manifesto</a></li>
 </ul>

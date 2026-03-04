@@ -1931,8 +1931,8 @@
 It's mostly about how to shuffle clips around and how to convert between formats,
 not about actual filtering.</p>
 <p>Many of the things here can also be found on their respective documentation pages
-(e.g. VapourSynth's <a href="http://www.vapoursynth.com/doc/pythonreference.html">Python Reference</a>
-and <a href="http://www.vapoursynth.com/doc/functions.html">Function Reference</a>), so go there
+(e.g. VapourSynth's <a href="https://www.vapoursynth.com/doc/pythonreference.html">Python Reference</a>
+and <a href="https://www.vapoursynth.com/doc/functions.html">Function Reference</a>), so go there
 if you need more details on any function.
 The point of this page is to make the barrier to entry lower.</p>
 <p>Some of the entries here list more than one way to achieve a certain goal.
@@ -1968,7 +1968,7 @@ There's no real use for this
 (unless you're doing fancy things like passing around filter functions as objects,
 in which case you probably don't need to read this page),
 except for knowing that slicing is not magic.</p>
-<p>Note that the <a href="http://www.vapoursynth.com/doc/functions/video/trim.html">Trim filter</a>, unlike slicing, is inclusive.</p>
+<p>Note that the <a href="https://www.vapoursynth.com/doc/functions/video/trim.html">Trim filter</a>, unlike slicing, is inclusive.</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-2">2</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-3">3</a></span>
@@ -1991,15 +1991,15 @@ except for knowing that slicing is not magic.</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span style="color: #E06C75">clip_joined</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">clip1</span> <span style="color: #56B6C2">+</span> <span style="color: #E06C75">clip2</span> <span style="color: #56B6C2">+</span> <span style="color: #E06C75">clip3</span>
 </code></pre></div></td></tr></table></div>
 If you need to join many clips together, or have a list of clips,
-it may be simpler to use <a href="http://www.vapoursynth.com/doc/functions/video/splice.html"><code>core.std.Splice</code></a>:
+it may be simpler to use <a href="https://www.vapoursynth.com/doc/functions/video/splice.html"><code>core.std.Splice</code></a>:
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span style="color: #E06C75">clip_joined</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Splice</span><span style="color: #ABB2BF">([</span><span style="color: #E06C75">clip1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip2</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">clip3</span><span style="color: #ABB2BF">])</span>
 </code></pre></div></td></tr></table></div></p>
 <h3 id="how-do-i-stack-two-clips-on-top-of-one-another">How do I stack two clips on top of one another?</h3>
-<p>This can be done with <a href="http://www.vapoursynth.com/doc/functions/video/stackvertical_stackhorizontal.html"><code>core.std.StackVertical</code></a>.
+<p>This can be done with <a href="https://www.vapoursynth.com/doc/functions/video/stackvertical_stackhorizontal.html"><code>core.std.StackVertical</code></a>.
 But chances are that you are asking this because you want to compare the clips with one another.
 Unless you want to check if the clips are synced, chances are you want to use <a href="#how-do-i-compare-multiple-clips">multiple output nodes</a> to compare them instead.</p>
 <h3 id="how-do-i-interleave-two-clips">How do I interleave two clips?</h3>
-<p>This can be done with <a href="http://www.vapoursynth.com/doc/functions/video/interleave.html"><code>core.std.Interleave</code></a>.
+<p>This can be done with <a href="https://www.vapoursynth.com/doc/functions/video/interleave.html"><code>core.std.Interleave</code></a>.
 But chances are that you are asking this because you want to compare the clips with one another.
 Unless you want to check if the clips are synced, chances are you want to use <a href="#how-do-i-compare-multiple-clips">multiple output nodes</a> to compare them instead.</p>
 <h3 id="how-do-i-compare-multiple-clips">How do I compare multiple clips?</h3>
@@ -2219,7 +2219,7 @@ In particular your clip will display differently in vs-preview, even though the 
 </div>
 </div>
 <h3 id="how-do-i-convert-a-clips-color-matrixcolor-rangeetc">How do I convert a clip's color matrix/color range/etc?</h3>
-<p>Tag your clip as the source matrix/range/etc and use the <a href="http://www.vapoursynth.com/doc/functions/video/resize.html"><code>core.resize</code></a>
+<p>Tag your clip as the source matrix/range/etc and use the <a href="https://www.vapoursynth.com/doc/functions/video/resize.html"><code>core.resize</code></a>
 function to convert it to the target matrix/range/etc.</p>
 <p>Converting color matrix/range/etc will change the pixel values as well as the metadata,
 so the resulting clip will look the same in a previewer (except for subtle differences due to dithering, etc)
@@ -2262,8 +2262,8 @@ Hence you should instead be overwriting the frame properties, as done in the sni
 <p>Color range needs special treatment here, as shown in the above snippet.
 The meaning of the values <code>0</code> and <code>1</code> is flipped between the <code>_ColorRange</code> frame property and
 the <code>core.resize</code> function.
-In the frame property, <code>0</code> means full and <code>1</code> means limited (<a href="http://www.vapoursynth.com/doc/apireference.html#reserved-frame-properties">docs</a>),
-but in <code>core.resize</code> it's the other way around (<a href="http://www.vapoursynth.com/doc/functions/video/resize.html">docs</a>).</p>
+In the frame property, <code>0</code> means full and <code>1</code> means limited (<a href="https://www.vapoursynth.com/doc/apireference.html#reserved-frame-properties">docs</a>),
+but in <code>core.resize</code> it's the other way around (<a href="https://www.vapoursynth.com/doc/functions/video/resize.html">docs</a>).</p>
 </div>
 <p>Alternatively, you can use <a href="https://amusementclub.github.io/fmtconv/doc/fmtconv.html">fmtconv</a>.</p>
 <h3 id="how-do-i-apply-a-filter-to-only-some-frames-in-the-clip">How do I apply a filter to only some frames in the clip?</h3>
@@ -2348,7 +2348,7 @@ and then use <code>replace_ranges</code> (explained above).</p>
 </div>
 </div>
 <h3 id="how-do-i-decide-at-runtime-whether-to-apply-a-filter-or-not">How do I decide at runtime whether to apply a filter or not?</h3>
-<p>Unless you want to write your own plugin, the way to do this is with <a href="http://www.vapoursynth.com/doc/functions/video/frameeval.html"><code>FrameEval</code></a>:</p>
+<p>Unless you want to write your own plugin, the way to do this is with <a href="https://www.vapoursynth.com/doc/functions/video/frameeval.html"><code>FrameEval</code></a>:</p>
 <p>For example, to blur all frames whose average luma is larger than 0.5 (assume the clip is a float clip):
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-25-1"> 1</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-25-2"> 2</a></span>
@@ -2426,7 +2426,7 @@ Modifying frame contents in Python is slow and not the way VapourSynth is intend
 You should instead see if there is a plugin that applies the filter you want to apply,
 or write such a plugin if there isn't.
 If you want to apply some custom formula to a frame's pixels,
-you can use the <a href="http://www.vapoursynth.com/doc/functions/video/expr.html"><code>core.std.Expr</code></a>
+you can use the <a href="https://www.vapoursynth.com/doc/functions/video/expr.html"><code>core.std.Expr</code></a>
 or the more powerful third-party <a href="https://github.com/Jaded-Encoding-Thaumaturgy/akarin-vapoursynth-plugin?tab=readme-ov-file#expr"><code>core.akarin.Expr</code></a> functions.</p>
 <p>That said, accessing frame data from Python <em>can</em> be useful when you're trying out some new filter idea
 and want to prototype using tools like numpy.</p>
