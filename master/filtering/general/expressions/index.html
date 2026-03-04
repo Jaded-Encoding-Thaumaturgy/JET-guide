@@ -1166,7 +1166,7 @@ regardless of how many input clips are provided.</p>
 <p>In standard Vapoursynth expressions,
 each <code>VideoNode</code>
 is represented by a single character.
-This starts from <span class="arithmatex">\(x\)</span> and goes through the alphabet up to <span class="arithmatex">\(u\)</span>.</p>
+This starts from <span class="arithmatex">\(x\)</span> and goes through the alphabet up to <span class="arithmatex">\(w\)</span>.</p>
 <pre class="mermaid"><code>%%{
   init: {
     'theme': 'base',
@@ -1209,9 +1209,9 @@ graph TD
     C4["a"]:::char
     C5["b"]:::char
     C6["c"]:::char
-    C24["w"]:::char
+    C24["u"]:::char
     C25["v"]:::char
-    C26["u"]:::char
+    C26["w"]:::char
 
     N1 --&gt; C1
     N2 --&gt; C2
@@ -1739,8 +1739,8 @@ just like the <code>std.MakeDiff/MergeDiff</code> functions.</p>
 <p>This will check if a pixel in <code>src1</code>
 is the same as the pixel in <code>src2</code>.
 If it is,
-the clip's value will be set to 255,
-otherwise 0,
+the clip's value will be set to 0,
+otherwise 255,
 and it will apply this
 to all planes.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">NCOP1v3</label><label for="__tabbed_1_2">NCOP1v4</label><label for="__tabbed_1_3">Difference</label><label for="__tabbed_1_4">Luma of the difference</label></div>
