@@ -38,7 +38,7 @@ Here's a simple `comp.py` script example that does nothing more than loading the
 ```py
 from vstools import vs, core, depth, set_output, PropEnum, Matrix, Transfer, Primaries, ColorRange, FieldBased
 
-from vssource import BestSource
+from vssource import FFMS2
 from vskernels import Point, EwaLanczosSharp
 from vsdeinterlace import vfm, vdecimate
 
@@ -49,23 +49,18 @@ from awsmfunc.types.placebo import PlaceboTonemapOpts
 
 # File paths: On Windows, in the File Explorer, hold shift and right-click on your file,
 # select copy as path, and paste it here
-clip1 = BestSource.source(r"C:\Paste\File\Path\Here.mkv", 0)
-clip2 = BestSource.source(r"C:\Paste\File\Path\Here.mkv", 0)
-clip3 = BestSource.source(r"C:\Paste\File\Path\Here.mkv", 0)
-
-# Source: Name of the source
-source1 = "First source name"
-source2 = "Second source name"
-source3 = "Third source name"
+clip1 = FFMS2.source(r"C:\Paste\File\Path\Here.mkv", 0)
+clip2 = FFMS2.source(r"C:\Paste\File\Path\Here.mkv", 0)
+clip3 = FFMS2.source(r"C:\Paste\File\Path\Here.mkv", 0)
 
 # <Additional comp settings>
 # Place any additional settings you want to use in your comp here
 # <End of additional comp settings>
 
 # Output: Comment/uncomment as needed depending on how many clips you're comparing
-set_output(clip1, source1)
-set_output(clip2, source2)
-set_output(clip3, source3)
+set_output(clip1, "First source name")
+set_output(clip2, "Second source name")
+set_output(clip3, "Third source name")
 ```
 
 ### Common issues
@@ -145,9 +140,9 @@ Converts clips to 16-bit depth with 4:4:4 chroma subsampling. *Required for filt
 - `EwaLanczosSharp` with antiring is used here as it matches mpv's `high-quality` profile.
 
 ```py
-clip1 = EwaLanczosSharp().scale(clip1, format=vs.YUV444P16, antiring=0.6)
-clip2 = EwaLanczosSharp().scale(clip2, format=vs.YUV444P16, antiring=0.6)
-clip3 = EwaLanczosSharp().scale(clip3, format=vs.YUV444P16, antiring=0.6)
+clip1 = EwaLanczosSharp().scale(depth(clip1, 16), format=vs.YUV444P16, antiring=0.6)
+clip2 = EwaLanczosSharp().scale(depth(clip2, 16), format=vs.YUV444P16, antiring=0.6)
+clip3 = EwaLanczosSharp().scale(depth(clip3, 16), format=vs.YUV444P16, antiring=0.6)
 ```
 
 #### Cropping
