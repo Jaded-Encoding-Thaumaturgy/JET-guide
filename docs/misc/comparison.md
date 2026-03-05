@@ -259,6 +259,22 @@ clip2 = core.std.Levels(clip2, gamma=0.88, planes=0)
 clip3 = core.std.Levels(clip3, gamma=0.88, planes=0)
 ```
 
+### Pixel format
+
+The following steps require the input to be RGBS format for the best results, so add an additional conversion here if you're applying them.
+
+```py
+# If the clips are not subsampled (skip unnecessary processing):
+clip1 = Point().resample(clip1, format=vs.RGBS)
+clip2 = Point().resample(clip2, format=vs.RGBS)
+clip3 = Point().resample(clip3, format=vs.RGBS)
+
+# If the clips are still subsampled:
+clip1 = EwaLanczosSharp().scale(clip1, format=vs.RGBS, antiring=0.6)
+clip2 = EwaLanczosSharp().scale(clip2, format=vs.RGBS, antiring=0.6)
+clip3 = EwaLanczosSharp().scale(clip3, format=vs.RGBS, antiring=0.6)
+```
+
 ### Debanding
 
 Applies a debanding filter to the selected clip(s). *Otherwise competitive sources with obvious banding should be debanded to see how they'd fare with mpv's built-in deband filter. The debanded clip should never replace the original. Instead, it should be added as an additional node.*
@@ -279,9 +295,9 @@ Upscales the video. *This should be used to match sources that have differing re
   It is the default upscaler when using the `high-quality` profile on mpv:
 
 ```py
-clip1 = EwaLanczosSharp().scale(clip1, 3840, 2160, format=vs.RGBS, sigmoid=True, antiring=0.6)
-clip2 = EwaLanczosSharp().scale(clip2, 3840, 2160, format=vs.RGBS, sigmoid=True, antiring=0.6)
-clip3 = EwaLanczosSharp().scale(clip3, 3840, 2160, format=vs.RGBS, sigmoid=True, antiring=0.6)
+clip1 = EwaLanczosSharp().scale(clip1, 3840, 2160, sigmoid=True, antiring=0.6)
+clip2 = EwaLanczosSharp().scale(clip2, 3840, 2160, sigmoid=True, antiring=0.6)
+clip3 = EwaLanczosSharp().scale(clip3, 3840, 2160, sigmoid=True, antiring=0.6)
 ```
 
 ### Running
