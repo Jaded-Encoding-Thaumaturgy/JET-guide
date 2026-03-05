@@ -212,9 +212,9 @@ clip2 = core.placebo.Tonemap(clip2, **clip2args.vsplacebo_dict())
 clip3 = core.placebo.Tonemap(clip3, **clip3args.vsplacebo_dict())
 
 ## Retag video to 709 after tonemapping [required]
-clip1 = PropEnum.ensure_presences(clip1, [Matrix.BT709, Transfer.BT709, Primaries.BT709])
-clip2 = PropEnum.ensure_presences(clip2, [Matrix.BT709, Transfer.BT709, Primaries.BT709])
-clip3 = PropEnum.ensure_presences(clip3, [Matrix.BT709, Transfer.BT709, Primaries.BT709])
+clip1 = PropEnum.ensure_presences(clip1, (Matrix.BT709, Transfer.BT709, Primaries.BT709))
+clip2 = PropEnum.ensure_presences(clip2, (Matrix.BT709, Transfer.BT709, Primaries.BT709))
+clip3 = PropEnum.ensure_presences(clip3, (Matrix.BT709, Transfer.BT709, Primaries.BT709))
 ```
 
 !!! note
@@ -233,6 +233,7 @@ clip1 = ColorRange.LIMITED.apply(clip1)
 ```
 
 ### Depth
+
 Converts clips to 32-bit depth. *Required for gamma adjustment and final output scaling.*
 
 ```py
@@ -251,6 +252,18 @@ Adjusts the gamma level of the video. *This should only be used to fix the Quick
 clip1 = core.std.Levels(clip1, gamma=0.88, planes=0)
 clip2 = core.std.Levels(clip2, gamma=0.88, planes=0)
 clip3 = core.std.Levels(clip3, gamma=0.88, planes=0)
+```
+
+### Debanding
+
+Applies a debanding filter to the selected clip(s). *Otherwise competitive sources with obvious banding should be debanded to see how they'd fare with mpv's built-in deband filter. The debanded clip should never replace the original. Instead, it should be added as an additional node.*
+
+```py
+# mpv -> vsplacebo thresholds should be divided by 16.384.
+# mpv -> vsplacebo grain strength should be divided by 8.192.
+# https://github.com/mpv-player/mpv/blob/3b55bc9795a4ab6cf04d1611f4839330cf5c1990/video/out/vo_gpu_next.c#L2561-L2562
+
+clip4 = core.placebo.Deband(clip1, planes=1|2|4, threshold=48 / 16.384, grain=32 / 8.192)
 ```
 
 #### Scaling
