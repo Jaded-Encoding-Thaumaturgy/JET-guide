@@ -17,7 +17,8 @@ VSPreview is a previewer application for scripts created in VapourSynth. It feat
 
     In order to create comparisons with VSPreview, you will need to install some necessary dependencies.
 
-    - A suitable source filter ([`BestSource`](https://github.com/vapoursynth/bestsource), [`LSMASHSource`](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works), or [`FFMS2`](https://github.com/FFMS/ffms2).)
+    - A suitable source filter ([`BestSource`](https://github.com/vapoursynth/bestsource), [`LSMASHSource`](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works), or [`FFMS2`](https://github.com/FFMS/ffms2)).
+    - [`vivtc`](https://github.com/vapoursynth/vivtc)
     - [`vs-placebo`](https://github.com/sgt0/vs-placebo)
     - [`libdovi`](https://github.com/quietvoid/dovi_tool)
     - [`awsmfunc`](https://github.com/OpusGang/awsmfunc)
@@ -79,9 +80,6 @@ Quick inverse telecine filter for converting telecined clips to progressive.
 clip1 = vdecimate(vfm(clip1))
 ```
 
-!!! note
-    You need [`vivtc`](https://github.com/vapoursynth/vivtc) installed for the above snippet to work.
-
 #### FieldBased
 
 Force the FieldBased flag to be progressive. This should be done to ensure the content is processed correctly.
@@ -142,7 +140,9 @@ clip4 = PropEnum.ensure_presences(clip4, (Matrix.BT2020_NCL, Transfer.ST2084, Pr
 
 #### Subsampling
 
-Converts clips to 16-bit depth with 4:4:4 chroma subsampling. *Required for filters such as cropping (with odd numbers) or tonemapping.*
+Converts clips to 16-bit depth with 4:4:4 chroma subsampling. *Required for filters such as cropping (with odd numbers), tonemapping, debanding (if matching mpv is desired) and furthur gamma-corrected scaling.*
+
+- `EwaLanczosSharp` with antiring is used here as it matches mpv's `high-quality` profile.
 
 ```py
 clip1 = EwaLanczosSharp().scale(clip1, format=vs.YUV444P16, antiring=0.6)
@@ -172,9 +172,6 @@ Converts the colorspace of the source (i.e. HDR/DV -> SDR).
 
 - For converting HDR -> SDR, set `source_colorspace=ColorSpace.HDR10`
 - For converting DV -> SDR, set `source_colorspace=ColorSpace.DOVI`
-
-!!! note
-    If you want to tonemap, you will need to convert the clip to YUV444P16 (see [above](#subsampling)).
 
 ```py
 # Specify the arguments based on your sources:
@@ -264,15 +261,9 @@ clip3 = core.std.Levels(clip3, gamma=0.88, planes=0)
 The following steps require the input to be RGBS format for the best results, so add an additional conversion here if you're applying them.
 
 ```py
-# If the clips are not subsampled (skip unnecessary processing):
 clip1 = Point().resample(clip1, format=vs.RGBS)
 clip2 = Point().resample(clip2, format=vs.RGBS)
 clip3 = Point().resample(clip3, format=vs.RGBS)
-
-# If the clips are still subsampled:
-clip1 = EwaLanczosSharp().scale(clip1, format=vs.RGBS, antiring=0.6)
-clip2 = EwaLanczosSharp().scale(clip2, format=vs.RGBS, antiring=0.6)
-clip3 = EwaLanczosSharp().scale(clip3, format=vs.RGBS, antiring=0.6)
 ```
 
 ### Debanding
@@ -291,8 +282,7 @@ clip4 = core.placebo.Deband(clip1, planes=1|2|4, threshold=48 / 16.384, grain=32
 
 Upscales the video. *This should be used to match sources that have differing resolutions.*
 
-- For upscaling (e.g. 720p -> 1080p), use `EwaLanczosSharp`.
-  It is the default upscaler when using the `high-quality` profile on mpv:
+- `EwaLanczosSharp` with antiring is used here as it matches mpv's `high-quality` profile.
 
 ```py
 clip1 = EwaLanczosSharp().scale(clip1, 3840, 2160, sigmoid=True, antiring=0.6)
