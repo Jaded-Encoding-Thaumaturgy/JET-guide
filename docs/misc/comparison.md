@@ -17,13 +17,12 @@ VSPreview is a previewer application for scripts created in VapourSynth. It feat
 
     In order to create comparisons with VSPreview, you will need to install some necessary dependencies.
 
-    - A source filter ([`LSMASHSource`](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works), [`BestSource`](https://github.com/vapoursynth/bestsource), etc.)
+    - A suitable source filter ([`BestSource`](https://github.com/vapoursynth/bestsource), [`LSMASHSource`](https://github.com/HomeOfAviSynthPlusEvolution/L-SMASH-Works), or [`FFMS2`](https://github.com/FFMS/ffms2).)
     - [`vs-placebo`](https://github.com/sgt0/vs-placebo)
     - [`libdovi`](https://github.com/quietvoid/dovi_tool)
     - [`awsmfunc`](https://github.com/OpusGang/awsmfunc)
 
     See [setup](../basics/installation.md) if you need guidance on installing any dependencies.
-    ```
 
 ## Usage
 
