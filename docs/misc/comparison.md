@@ -37,7 +37,7 @@ Here's a simple `comp.py` script example that does nothing more than loading the
 
 ```py
 from vssource import BestSource
-from vstools import vs, core, set_output
+from vstools import vs, core, depth, set_output, PropEnum, Matrix, Transfer, Primaries, ColorRange, FieldBased
 
 # File paths: On Windows, in the File Explorer, hold shift and right-click on your file,
 # select copy as path, and paste it here
@@ -82,8 +82,6 @@ clip1 = vdecimate(vfm(clip1))
 Force the FieldBased flag to be progressive. This should be done to ensure the content is processed correctly.
 
 ```py
-from vstools import FieldBased
-
 clip1 = FieldBased.PROGRESSIVE.apply(clip1)
 clip2 = FieldBased.PROGRESSIVE.apply(clip2)
 clip3 = FieldBased.PROGRESSIVE.apply(clip3)
@@ -122,8 +120,6 @@ clip3 = core.std.AssumeFPS(clip3, fpsnum=24000, fpsden=1000)
 Set the correct frame properties for your sources. This is most commonly used on sources you're upscaling or 4K SDR content. *This should be used on sources with incorrect/missing metadata or colors that are off, particularly reds and greens.*
 
 ```py
-from vstools import PropEnum, Matrix, Transfer, Primaries, ColorRange
-
 # Example metadata adjustments:
 
 # SDR: BD/WEB (720p - 4K)
@@ -182,11 +178,10 @@ from awsmfunc.types.placebo import PlaceboColorSpace as ColorSpace
 from awsmfunc.types.placebo import PlaceboTonemapFunction as Tonemap
 from awsmfunc.types.placebo import PlaceboGamutMapping as Gamut
 from awsmfunc.types.placebo import PlaceboTonemapOpts
-from vstools import Matrix, Primaries, PropEnum, Transfer, core
 
-# Specify the arguments based on your sources;
-clip1args = PlaceboTonemapOpts(
-    source_colorspace=ColorSpace.DOVI,
+# Specify the arguments based on your sources:
+clip1args = clip2args = PlaceboTonemapOpts(
+    source_colorspace=ColorSpace.HDR10,
     target_colorspace=ColorSpace.SDR,
     tone_map_function=Tonemap.Spline,
     gamut_mapping=Gamut.Perceptual,
@@ -195,8 +190,8 @@ clip1args = PlaceboTonemapOpts(
     contrast_recovery=0.3,
     dst_max=100,
 )
-clip2args = clip3args = PlaceboTonemapOpts(
-    source_colorspace=ColorSpace.HDR10,
+clip3args = PlaceboTonemapOpts(
+    source_colorspace=ColorSpace.DOVI,
     target_colorspace=ColorSpace.SDR,
     tone_map_function=Tonemap.Spline,
     gamut_mapping=Gamut.Perceptual,
@@ -220,14 +215,30 @@ clip3 = PropEnum.ensure_presences(clip3, (Matrix.BT709, Transfer.BT709, Primarie
 !!! note
     Refer to the [libplacebo](https://libplacebo.org/options/) and [vs-placebo](https://github.com/sgt0/vs-placebo?tab=readme-ov-file#tonemap) docs to gain a better understanding of what each parameter does.
 
+### "Fake HDR" / "SDR-in-HDR" sources
+
+Sometimes the source will be SDR in an HDR container, often seen with anime on Netflix. In these cases you can clip the source to get an exact match to SDR, unlike with traditional tonemapping.
+
+```py
+from vskernels import Point
+
+## Clip HDR source to SDR
+clip1 = Point().resample(clip1, matrix=Matrix.BT709, transfer=Transfer.BT709, primaries=Primaries.BT709)
+
+## Clip DV source to SDR
+clip3args = PlaceboTonemapOpts(source_colorspace=ColorSpace.DOVI, target_colorspace=ColorSpace.HDR10, use_dovi=True)
+
+clip3 = core.placebo.Tonemap(clip3, **clip2args.vsplacebo_dict())
+clip3 = PropEnum.ensure_presences(clip3, (Matrix.BT2020_NCL, Transfer.ST2084, Primaries.BT2020))
+
+clip3 = Point().resample(clip3, matrix=Matrix.BT709, transfer=Transfer.BT709, primaries=Primaries.BT709)
+```
 
 #### Double-Range Compression (DRC)
 
 Fixes washed out colors on sources that have been converted to limited range twice.
 
 ```py
-from vstools import ColorRange, depth
-
 clip1 = depth(clip1, range_in=ColorRange.LIMITED, range_out=ColorRange.FULL)
 clip1 = ColorRange.LIMITED.apply(clip1)
 ```
@@ -237,8 +248,6 @@ clip1 = ColorRange.LIMITED.apply(clip1)
 Converts clips to 32-bit depth. *Required for gamma adjustment and final output scaling.*
 
 ```py
-from vstools import depth
-
 clip1 = depth(clip1, 32)
 clip2 = depth(clip2, 32)
 clip3 = depth(clip3, 32)
