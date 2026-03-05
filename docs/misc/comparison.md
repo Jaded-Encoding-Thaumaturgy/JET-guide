@@ -36,8 +36,16 @@ Create a file called `comp.py` and open it in your favorite text editor.
 Here's a simple `comp.py` script example that does nothing more than loading the videos and previewing them.
 
 ```py
-from vssource import BestSource
 from vstools import vs, core, depth, set_output, PropEnum, Matrix, Transfer, Primaries, ColorRange, FieldBased
+
+from vssource import BestSource
+from vskernels import Point, EwaLanczosSharp
+from vsdeinterlace import vfm, vdecimate
+
+from awsmfunc.types.placebo import PlaceboColorSpace as ColorSpace
+from awsmfunc.types.placebo import PlaceboTonemapFunction as Tonemap
+from awsmfunc.types.placebo import PlaceboGamutMapping as Gamut
+from awsmfunc.types.placebo import PlaceboTonemapOpts
 
 # File paths: On Windows, in the File Explorer, hold shift and right-click on your file,
 # select copy as path, and paste it here
@@ -69,8 +77,6 @@ Most of the time, the basic script will not be enough. Different sources may nee
 Quick inverse telecine filter for converting telecined clips to progressive.
 
 ```py
-from vsdeinterlace import vfm, vdecimate
-
 clip1 = vdecimate(vfm(clip1))
 ```
 
@@ -140,8 +146,6 @@ clip4 = PropEnum.ensure_presences(clip4, (Matrix.BT2020_NCL, Transfer.ST2084, Pr
 Converts clips to 16-bit depth with 4:4:4 chroma subsampling. *Required for filters such as cropping (with odd numbers) or tonemapping.*
 
 ```py
-from vskernels import EwaLanczosSharp
-
 clip1 = EwaLanczosSharp().scale(clip1, format=vs.YUV444P16, antiring=0.6)
 clip2 = EwaLanczosSharp().scale(clip2, format=vs.YUV444P16, antiring=0.6)
 clip3 = EwaLanczosSharp().scale(clip3, format=vs.YUV444P16, antiring=0.6)
@@ -174,11 +178,6 @@ Converts the colorspace of the source (i.e. HDR/DV -> SDR).
     If you want to tonemap, you will need to convert the clip to YUV444P16 (see [above](#subsampling)).
 
 ```py
-from awsmfunc.types.placebo import PlaceboColorSpace as ColorSpace
-from awsmfunc.types.placebo import PlaceboTonemapFunction as Tonemap
-from awsmfunc.types.placebo import PlaceboGamutMapping as Gamut
-from awsmfunc.types.placebo import PlaceboTonemapOpts
-
 # Specify the arguments based on your sources:
 clip1args = clip2args = PlaceboTonemapOpts(
     source_colorspace=ColorSpace.HDR10,
@@ -220,8 +219,6 @@ clip3 = PropEnum.ensure_presences(clip3, (Matrix.BT709, Transfer.BT709, Primarie
 Sometimes the source will be SDR in an HDR container, often seen with anime on Netflix. In these cases you can clip the source to get an exact match to SDR, unlike with traditional tonemapping.
 
 ```py
-from vskernels import Point
-
 ## Clip HDR source to SDR
 clip1 = Point().resample(clip1, matrix=Matrix.BT709, transfer=Transfer.BT709, primaries=Primaries.BT709)
 
@@ -283,8 +280,6 @@ Upscales the video. *This should be used to match sources that have differing re
   It is the default upscaler when using the `high-quality` profile on mpv:
 
 ```py
-from vskernels import EwaLanczosSharp
-
 clip1 = EwaLanczosSharp().scale(clip1, 3840, 2160, format=vs.RGBS, sigmoid=True, antiring=0.6)
 clip2 = EwaLanczosSharp().scale(clip2, 3840, 2160, format=vs.RGBS, sigmoid=True, antiring=0.6)
 clip3 = EwaLanczosSharp().scale(clip3, 3840, 2160, format=vs.RGBS, sigmoid=True, antiring=0.6)
