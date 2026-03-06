@@ -92,9 +92,8 @@ Removes the first *n* frames from the source. For example, `[24:]` will skip the
 To get the frame difference, find a unique frame (e.g. scene changes) in the correct and incorrect source. Note the frame numbers each one begin at, then set the difference of the two for the incorrect source.
 
 ```py
-clip1 = clip1[0:]
 clip2 = clip2[24:]
-clip3 = clip3[0:]
+clip3 = clip3[12:]
 ```
 
 !!! note
@@ -161,6 +160,15 @@ clip3 = core.std.Crop(clip3, left=0, right=0, top=21, bottom=21)
 !!! note
     Make sure to check for variable aspect ratios throughout the file and only crop the smallest border.
 
+#### Double-Range Compression (DRC)
+
+Fixes washed out colors on sources that have been converted to limited range twice.
+
+```py
+clip1 = depth(clip1, range_in=ColorRange.LIMITED, range_out=ColorRange.FULL)
+clip1 = ColorRange.LIMITED.apply(clip1)
+```
+
 #### Tonemapping
 
 Converts the colorspace of the source (i.e. HDR/DV -> SDR).
@@ -196,7 +204,7 @@ clip1 = core.placebo.Tonemap(clip1, **clip1args.vsplacebo_dict())
 clip2 = core.placebo.Tonemap(clip2, **clip2args.vsplacebo_dict())
 clip3 = core.placebo.Tonemap(clip3, **clip3args.vsplacebo_dict())
 
-## Retag video to 709 after tonemapping [required]
+## Retag video to 709 after tonemapping
 clip1 = PropEnum.ensure_presences(clip1, (Matrix.BT709, Transfer.BT709, Primaries.BT709))
 clip2 = PropEnum.ensure_presences(clip2, (Matrix.BT709, Transfer.BT709, Primaries.BT709))
 clip3 = PropEnum.ensure_presences(clip3, (Matrix.BT709, Transfer.BT709, Primaries.BT709))
@@ -220,15 +228,6 @@ clip3 = core.placebo.Tonemap(clip3, **clip2args.vsplacebo_dict())
 clip3 = PropEnum.ensure_presences(clip3, (Matrix.BT2020_NCL, Transfer.ST2084, Primaries.BT2020))
 
 clip3 = Point().resample(clip3, matrix=Matrix.BT709, transfer=Transfer.BT709, primaries=Primaries.BT709)
-```
-
-#### Double-Range Compression (DRC)
-
-Fixes washed out colors on sources that have been converted to limited range twice.
-
-```py
-clip1 = depth(clip1, range_in=ColorRange.LIMITED, range_out=ColorRange.FULL)
-clip1 = ColorRange.LIMITED.apply(clip1)
 ```
 
 ### Depth
