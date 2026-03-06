@@ -1676,10 +1676,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tips" class="md-nav__link">
+  <a href="#first-time-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tips
+        First-time configuration
       
     </span>
   </a>
@@ -1698,10 +1698,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#process" class="md-nav__link">
+  <a href="#tips" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Process
+        Tips
       
     </span>
   </a>
@@ -1709,10 +1709,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#slowpoke-pics" class="md-nav__link">
+  <a href="#process" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Slowpoke Pics
+        Process
       
     </span>
   </a>
@@ -2050,10 +2050,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tips" class="md-nav__link">
+  <a href="#first-time-configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tips
+        First-time configuration
       
     </span>
   </a>
@@ -2072,10 +2072,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#process" class="md-nav__link">
+  <a href="#tips" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Process
+        Tips
       
     </span>
   </a>
@@ -2083,10 +2083,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#slowpoke-pics" class="md-nav__link">
+  <a href="#process" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Slowpoke Pics
+        Process
       
     </span>
   </a>
@@ -2221,14 +2221,10 @@
 </code></pre></div></td></tr></table></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For more advanced trimming such as chaining, splicing, and looping, see <a href="https://www.vapoursynth.com/doc/pythonreference.html#slicing-and-other-syntactic-sugar">Vapoursynth's docs</a>.</p>
+<p>For more advanced trimming such as chaining, splicing, and looping, see <a href="../../basics/how-do-i/">How do I?</a> or <a href="https://www.vapoursynth.com/doc/pythonreference.html#slicing-and-other-syntactic-sugar">Vapoursynth's docs</a>.</p>
 </div>
 <h4 id="frame-rate">Frame Rate</h4>
 <p>Sets the source frame rate (fps) based on fractional input (<code>fpsnum</code>/<code>fpsden</code>). For example, <code>fpsnum=24000</code> and <code>fpsden=1001</code> forces the clip frame rate to 23.976 fps. <em>This should be used on sources that have different frame rates that don't automatically stay in sync.</em></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If a clip stays in sync without changing during scrubbing, you should note that the specific source has dropped or duplicate frames.</p>
-</div>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-1">1</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-2">2</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span style="color: #E06C75">clip1</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">AssumeFPS</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip1</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">fpsnum</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">24000</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">fpsden</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">1001</span><span style="color: #ABB2BF">)</span>
@@ -2437,17 +2433,29 @@
 <a id="__codelineno-15-2" name="__codelineno-15-2"></a><span style="color: #E06C75">clip2</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">EwaLanczosSharp</span><span style="color: #ABB2BF">()</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">scale</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip2</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">3840</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">2160</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">sigmoid</span><span style="color: #56B6C2">=</span><span style="color: #E5C07B">True</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">antiring</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">0.6</span><span style="color: #ABB2BF">)</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3"></a><span style="color: #E06C75">clip3</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">EwaLanczosSharp</span><span style="color: #ABB2BF">()</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">scale</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip3</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">3840</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">2160</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">sigmoid</span><span style="color: #56B6C2">=</span><span style="color: #E5C07B">True</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">antiring</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">0.6</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you're working with anamorphic sources (DVD), apply any aspect ratio correction needed during this resize.
+See <a href="../../sources/dvd/remuxing/#correcting-the-aspect-ratio">Correcting the Aspect Ratio</a>.</p>
+</div>
 <h3 id="running">Running</h3>
 <p>To run your comparison script, launch a terminal window in your working directory and run the following:</p>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span style="color: #E06C75">vspreview</span> <span style="color: #E06C75">comp</span><span style="color: #ABB2BF">.</span><span style="color: #E06C75">py</span>
 </code></pre></div></td></tr></table></div>
-<h3 id="tips">Tips</h3>
-<ul>
-<li>Label your sources clearly.</li>
-<li>Try to capture a large variety of scenes (e.g. low/high detail, bright/dark, low/high motion).</li>
-<li>Try to capture frames of the same type.</li>
-<li>Try to capture <code>P</code> or <code>B</code> type frames when possible. Although it's not always guaranteed that your source will have all the picture types (e.g. Crunchyroll WEB-DLs don't have <code>B</code> frames).</li>
+<h3 id="first-time-configuration">First-time configuration</h3>
+<ol>
+<li>Drag the Plugins menu from the right-side of the VSPreview window and open the SlowPics Comps tab. Alternatively, you can access the Plugins menu using Ctrl+P.</li>
+<li>Under Settings, set the following:<ul>
+<li>Set Collection Name Template to <code>{tmdb_title} ({tmdb_year}) - S01E01 - {video_nodes}</code>.</li>
+<li>Set Compression Type to Slow.</li>
+<li>Enter your slow.pics username and password (optional).</li>
+<li>Tick the Public Flag.</li>
 </ul>
+</li>
+<li>Click the Settings button on the bottom tab. Under Main, change Save Plugins Bar Position to Global.</li>
+<li>Click the Playback button on the bottom tab. Set the bottom-left value to an odd number (e.g 109).</li>
+</ol>
+<p>Once complete, close and relaunch VSPreview to apply these changes.</p>
 <h3 id="basic-keybinds">Basic Keybinds</h3>
 <table>
 <thead>
@@ -2479,16 +2487,20 @@
 </tr>
 </tbody>
 </table>
+<h3 id="tips">Tips</h3>
+<ul>
+<li>Label your sources clearly.</li>
+<li>Try to capture a large variety of scenes (e.g. low/high detail, bright/dark, low/high motion).</li>
+<li>Try to capture frames of the same picture type.</li>
+<li>Try to capture <code>P</code> or <code>B</code> type frames when possible. Although it's not always guaranteed that your source will have all the picture types (e.g. Crunchyroll doesn't have <code>B</code> frames).</li>
+<li>Ensure each source of identical type is beside each other in node order (e.g. BDs should be node 0, 1, WEB node 2, 3, encodes being node 4, 5, and so on).</li>
+<li>Include as many different source types as possible. This means including all available BD regions, WEB sources, DVD sources (if the source material is SD), all relevant encodes, and so on.</li>
+</ul>
 <h3 id="process">Process</h3>
-<p>VSPreview offers three methods for creating comparisons:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Automatic</label><label for="__tabbed_2_2">Semi-automatic</label><label for="__tabbed_2_3">Manual</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Automatic comparisons are created completely without any additional user input. VSPreview will automatically select, capture, and upload frames for you. <em>This is the fastest method for creating comparisons.</em></p>
+<p>VSPreview offers the ability to create automated, semi-automated and even manual comparisons:</p>
 <ol>
 <li>
-<p>In VSPreview, click the <em>Plugins</em> button in the bottom right corner and
-   then click the <em>SlowPics Comps</em> tab</p>
+<p>In VSPreview, click the <em>Plugins</em> button in the bottom right corner and then click the <em>SlowPics Comps</em> tab.</p>
 </li>
 <li>
 <p>Fill out these fields:</p>
@@ -2501,16 +2513,8 @@
 </thead>
 <tbody>
 <tr>
-<td>Collection name</td>
-<td>The title of your comparison/show</td>
-</tr>
-<tr>
 <td>Random</td>
-<td>Number of frames to randomly capture. <em>This should be set to a value higher or equal to 40 frames</em></td>
-</tr>
-<tr>
-<td>Picture types</td>
-<td>The picture type</td>
+<td>Number of frames to randomly capture. <em>This should be set to a value higher or equal to 50 frames</em></td>
 </tr>
 <tr>
 <td>TMDB ID</td>
@@ -2520,15 +2524,11 @@
 </table>
 </li>
 <li>
-<p>Hit the <em>Start Upload</em> button to begin creating your comparison</p>
-</li>
-</ol>
-</div>
-<div class="tabbed-block">
+<p>Manual adjustments (optional):</p>
 <p>Semi-automatic comparisons are created with minor user input. VSPreview will automatically capture and upload frame manually marked by the user. <em>This is the recommended method for creating comparisons.</em></p>
 <ol>
 <li>
-<p>Locate the frame(s) you want to compare</p>
+<p>Locate the frame(s) you want to compare.</p>
 <ul>
 <li>Use <code>Left arrow</code> to go the previous frame and <code>Right arrow</code> to go to the next frame.</li>
 <li>Use <code>Shift + Left arrow</code> and <code>Shift + Right arrow</code> to navigate <code>N</code> number of frames on either side.</li>
@@ -2538,76 +2538,10 @@
 <p>Once you land on a frame you like, mark it with <code>Ctrl</code> + <code>Space</code>.</p>
 </li>
 </ol>
-<hr>
-<ol>
-<li>
-<p>In VSPreview, click the <em>Plugins</em> button in the bottom right corner and
-   then click the <em>SlowPics Comps</em> tab</p>
 </li>
 <li>
-<p>Fill out these fields:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Collection name</td>
-<td>The title of your comparison/show</td>
-</tr>
-<tr>
-<td>TMDB ID</td>
-<td>The <a href="https://www.themoviedb.org">TMDB ID</a> for the show</td>
-</tr>
-</tbody>
-</table>
+<p>Hit the <em>Start Upload</em> button to begin creating your comparison.</p>
 </li>
-<li>
-<p>Hit the <em>Start Upload</em> button to begin creating your comparison</p>
-</li>
-</ol>
-</div>
-<div class="tabbed-block">
-<p>Manual comparisons are created completely by the user. VSPreview displays and handles frame capture, while the main actions are performed by the user through the previewer.</p>
-<ol>
-<li>
-<p>Locate the frame(s) you want to compare</p>
-<ul>
-<li>Use <code>Left arrow</code> to go the previous frame and <code>Right arrow</code> to go to the next frame.</li>
-<li>Use <code>Shift + Left arrow</code> and <code>Shift + Right arrow</code> to navigate <code>N</code> number of frames on either side.</li>
-</ul>
-</li>
-<li>
-<p>Once you land on a frame you like, take its screenshot with <code>Shift</code> + <code>S</code>.</p>
-</li>
-<li>
-<p>Switch to the other sources and take screenshots of their current frame</p>
-<ul>
-<li>Press the number keys to change sources (e.g. <code>1</code> for <code>clip1</code>, <code>2</code> for <code>clip2</code>)</li>
-</ul>
-</li>
-<li>
-<p>Repeat process for the next frames in your comparison</p>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you want to use automatic Slowpoke Pics sorting, make sure your file naming scheme is set to <code>{frame}_{index}_{Name}</code>.
-By default, all frames are stored within your working directory unless manually changed to a different destination.</p>
-</div>
-</div>
-</div>
-</div>
-<h3 id="slowpoke-pics">Slowpoke Pics</h3>
-<p>If you plan on uploading to <a href="https://slow.pics">Slowpoke Pics</a> (slow.pics) under
-your account, you will need to provide VSPreview with your account credentials.</p>
-<ol>
-<li>In VSPreview, go to <strong>Plugins</strong> -&gt; <strong>SlowPics Comps</strong> -&gt; <strong>Settings</strong></li>
-<li>Fill out the <em>Username</em> and <em>Password</em> fields</li>
-<li>Click <em>Login</em></li>
 </ol>
 
 
