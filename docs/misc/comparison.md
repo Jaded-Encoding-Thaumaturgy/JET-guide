@@ -97,14 +97,11 @@ clip3 = clip3[12:]
 ```
 
 !!! note
-    For more advanced trimming such as chaining, splicing, and looping, see [Vapoursynth's docs](https://www.vapoursynth.com/doc/pythonreference.html#slicing-and-other-syntactic-sugar).
+    For more advanced trimming such as chaining, splicing, and looping, see [How do I?](../basics/how-do-i.md) or [Vapoursynth's docs](https://www.vapoursynth.com/doc/pythonreference.html#slicing-and-other-syntactic-sugar).
 
 #### Frame Rate
 
 Sets the source frame rate (fps) based on fractional input (`fpsnum`/`fpsden`). For example, `fpsnum=24000` and `fpsden=1001` forces the clip frame rate to 23.976 fps. *This should be used on sources that have different frame rates that don't automatically stay in sync.*
-
-!!! note
-    If a clip stays in sync without changing during scrubbing, you should note that the specific source has dropped or duplicate frames.
 
 ```py
 clip1 = core.std.AssumeFPS(clip1, fpsnum=24000, fpsden=1001)
@@ -284,6 +281,10 @@ clip2 = EwaLanczosSharp().scale(clip2, 3840, 2160, sigmoid=True, antiring=0.6)
 clip3 = EwaLanczosSharp().scale(clip3, 3840, 2160, sigmoid=True, antiring=0.6)
 ```
 
+!!! note
+    If you're working with anamorphic sources (DVD), apply any aspect ratio correction needed during this resize.
+    See [Correcting the Aspect Ratio](../sources/dvd/remuxing.md#correcting-the-aspect-ratio).
+
 ### Running
 
 To run your comparison script, launch a terminal window in your working directory and run the following:
@@ -292,12 +293,18 @@ To run your comparison script, launch a terminal window in your working director
 vspreview comp.py
 ```
 
-### Tips
+### First-time configuration
 
-- Label your sources clearly.
-- Try to capture a large variety of scenes (e.g. low/high detail, bright/dark, low/high motion).
-- Try to capture frames of the same type.
-- Try to capture `P` or `B` type frames when possible. Although it's not always guaranteed that your source will have all the picture types (e.g. Crunchyroll WEB-DLs don't have `B` frames).
+1. Drag the Plugins menu from the right-side of the VSPreview window and open the SlowPics Comps tab. Alternatively, you can access the Plugins menu using Ctrl+P.
+2. Under Settings, set the following:
+    - Set Collection Name Template to `{tmdb_title} ({tmdb_year}) - S01E01 - {video_nodes}`.
+    - Set Compression Type to Slow.
+    - Enter your slow.pics username and password (optional).
+    - Tick the Public Flag.
+3. Click the Settings button on the bottom tab. Under Main, change Save Plugins Bar Position to Global.
+4. Click the Playback button on the bottom tab. Set the bottom-left value to an odd number (e.g 109).
+
+Once complete, close and relaunch VSPreview to apply these changes.
 
 ### Basic Keybinds
 
@@ -309,76 +316,36 @@ Number keys        | Switches to source *n* (e.g. `2` switches to `clip2`)
 `Shift` + `S`      | Take and save screenshot of the current frame
 `Ctrl` + `Space`   | Mark current frame number for [semi-automatic] comparisons
 
+### Tips
+
+- Label your sources clearly.
+- Try to capture a large variety of scenes (e.g. low/high detail, bright/dark, low/high motion).
+- Try to capture frames of the same picture type.
+- Try to capture `P` or `B` type frames when possible. Although it's not always guaranteed that your source will have all the picture types (e.g. Crunchyroll doesn't have `B` frames).
+- Ensure each source of identical type is beside each other in node order (e.g. BDs should be node 0, 1, WEB node 2, 3, encodes being node 4, 5, and so on).
+- Include as many different source types as possible. This means including all available BD regions, WEB sources, DVD sources (if the source material is SD), all relevant encodes, and so on.
+
 ### Process
 
-VSPreview offers three methods for creating comparisons:
+VSPreview offers the ability to create automated, semi-automated and even manual comparisons:
 
-=== "Automatic"
+1. In VSPreview, click the *Plugins* button in the bottom right corner and then click the *SlowPics Comps* tab.
 
-    Automatic comparisons are created completely without any additional user input. VSPreview will automatically select, capture, and upload frames for you. *This is the fastest method for creating comparisons.*
+2. Fill out these fields:
 
-    1. In VSPreview, click the *Plugins* button in the bottom right corner and
-       then click the *SlowPics Comps* tab
+    Key              | Description
+    -----------------|-----------------------------------------------------------------------------------------------------
+    Random           | Number of frames to randomly capture. *This should be set to a value higher or equal to 50 frames*
+    TMDB ID          | The [TMDB ID](https://www.themoviedb.org) for the show
 
-    2. Fill out these fields:
-
-        Key              | Description
-        -----------------|-----------------------------------------------------------------------------------------------------
-        Collection name  | The title of your comparison/show
-        Random           | Number of frames to randomly capture. *This should be set to a value higher or equal to 40 frames*
-        Picture types    | The picture type
-        TMDB ID          | The [TMDB ID](https://www.themoviedb.org) for the show
-
-    3. Hit the *Start Upload* button to begin creating your comparison
-
-=== "Semi-automatic"
+3. Manual adjustments (optional):
 
     Semi-automatic comparisons are created with minor user input. VSPreview will automatically capture and upload frame manually marked by the user. *This is the recommended method for creating comparisons.*
 
-    1. Locate the frame(s) you want to compare
+    1. Locate the frame(s) you want to compare.
         - Use `Left arrow` to go the previous frame and `Right arrow` to go to the next frame.
         - Use `Shift + Left arrow` and `Shift + Right arrow` to navigate `N` number of frames on either side.
 
     2. Once you land on a frame you like, mark it with `Ctrl` + `Space`.
 
-    <hr>
-
-    3. In VSPreview, click the *Plugins* button in the bottom right corner and
-       then click the *SlowPics Comps* tab
-
-    4. Fill out these fields:
-
-        Key              | Description
-        -----------------|-----------------------------------------------------------------------------------------------------
-        Collection name  | The title of your comparison/show
-        TMDB ID          | The [TMDB ID](https://www.themoviedb.org) for the show
-
-    5. Hit the *Start Upload* button to begin creating your comparison
-
-=== "Manual"
-
-    Manual comparisons are created completely by the user. VSPreview displays and handles frame capture, while the main actions are performed by the user through the previewer.
-
-    1. Locate the frame(s) you want to compare
-        - Use `Left arrow` to go the previous frame and `Right arrow` to go to the next frame.
-        - Use `Shift + Left arrow` and `Shift + Right arrow` to navigate `N` number of frames on either side.
-
-    2. Once you land on a frame you like, take its screenshot with `Shift` + `S`.
-
-    3. Switch to the other sources and take screenshots of their current frame
-        - Press the number keys to change sources (e.g. `1` for `clip1`, `2` for `clip2`)
-
-    4. Repeat process for the next frames in your comparison
-
-    !!! note
-        If you want to use automatic Slowpoke Pics sorting, make sure your file naming scheme is set to `{frame}_{index}_{Name}`.
-        By default, all frames are stored within your working directory unless manually changed to a different destination.
-
-### Slowpoke Pics
-
-If you plan on uploading to [Slowpoke Pics](https://slow.pics) (slow.pics) under
-your account, you will need to provide VSPreview with your account credentials.
-
-1. In VSPreview, go to **Plugins** -> **SlowPics Comps** -> **Settings**
-2. Fill out the *Username* and *Password* fields
-3. Click *Login*
+4. Hit the *Start Upload* button to begin creating your comparison.
