@@ -2,6 +2,10 @@ name: Prune all and only deploy master
 on:
   workflow_dispatch:
 
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
+
 permissions:
   contents: write
 

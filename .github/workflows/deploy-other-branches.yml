@@ -6,6 +6,10 @@ on:
       - main
       - gh-pages
 
+concurrency:
+  group: gh-pages
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
