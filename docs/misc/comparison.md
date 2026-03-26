@@ -221,7 +221,7 @@ clip1 = Point().resample(clip1, matrix=Matrix.BT709, transfer=Transfer.BT709, pr
 ## Clip DV source to SDR
 clip3args = PlaceboTonemapOpts(source_colorspace=ColorSpace.DOVI, target_colorspace=ColorSpace.HDR10, use_dovi=True)
 
-clip3 = core.placebo.Tonemap(clip3, **clip2args.vsplacebo_dict())
+clip3 = core.placebo.Tonemap(clip3, **clip3args.vsplacebo_dict())
 clip3 = PropEnum.ensure_presences(clip3, (Matrix.BT2020_NCL, Transfer.ST2084, Primaries.BT2020))
 
 clip3 = Point().resample(clip3, matrix=Matrix.BT709, transfer=Transfer.BT709, primaries=Primaries.BT709)
