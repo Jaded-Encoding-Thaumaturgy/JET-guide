@@ -131,7 +131,7 @@ clip4 = PropEnum.ensure_presences(clip4, (Matrix.BT2020_NCL, Transfer.ST2084, Pr
 
 #### Subsampling
 
-Converts clips to 16-bit depth with 4:4:4 chroma subsampling. *Required for filters such as cropping (with odd numbers), tonemapping, debanding (if matching mpv is desired) and furthur gamma-corrected scaling.*
+Converts clips to 16-bit depth with 4:4:4 chroma subsampling. *Required for filters such as cropping (with odd numbers), tonemapping, debanding (if matching mpv is desired) and further gamma-corrected scaling.*
 
 - `EwaLanczosSharp` with antiring is used here as it matches mpv's `high-quality` profile.
 
