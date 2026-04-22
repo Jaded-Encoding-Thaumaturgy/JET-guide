@@ -275,6 +275,10 @@ Upscales the video. *This should be used to match sources that have differing re
 
 - `EwaLanczosSharp` with antiring is used here as it matches mpv's `high-quality` profile.
 
+!!! note
+    libplacebo (and subsequently, mpv) disables both sigmoid & linear scaling with HDR sources.
+    If you wish to match this behavior, you should omit enabling these when scaling HDR clips.
+
 ```py
 clip1 = EwaLanczosSharp().scale(clip1, 3840, 2160, sigmoid=True, antiring=0.6)
 clip2 = EwaLanczosSharp().scale(clip2, 3840, 2160, sigmoid=True, antiring=0.6)
