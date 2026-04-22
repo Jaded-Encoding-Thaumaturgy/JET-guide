@@ -2427,6 +2427,11 @@
 <ul>
 <li><code>EwaLanczosSharp</code> with antiring is used here as it matches mpv's <code>high-quality</code> profile.</li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>libplacebo (and subsequently, mpv) disables both sigmoid &amp; linear scaling with HDR sources.
+If you wish to match this behavior, you should omit enabling these when scaling HDR clips.</p>
+</div>
 <div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-1">1</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-2">2</a></span>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span style="color: #E06C75">clip1</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">EwaLanczosSharp</span><span style="color: #ABB2BF">()</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">scale</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip1</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">3840</span><span style="color: #ABB2BF">,</span> <span style="color: #D19A66">2160</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">sigmoid</span><span style="color: #56B6C2">=</span><span style="color: #E5C07B">True</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">antiring</span><span style="color: #56B6C2">=</span><span style="color: #D19A66">0.6</span><span style="color: #ABB2BF">)</span>
