@@ -1,0 +1,99 @@
+[project]
+site_name = "JET Encoding Guide"
+site_description = "Various guides on encoding by JET"
+site_author = "Jaded Encoding Thaumaturgy"
+site_url = "https://jaded-encoding-thaumaturgy.github.io/JET-guide/"
+repo_url = "https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide"
+
+nav = [
+  { "Home" = "index.md" },
+  { "Basics" = [
+    { "Installation" = "basics/installation.md" },
+    { "Python Primer" = "basics/python-primer.md" },
+    { "Getting Started" = "basics/getting-started.md" },
+    { "Common Errors" = "basics/common-errors.md" },
+    { "How do I...?" = "basics/how-do-i.md" },
+  ] },
+  { "Source Preparation" = [
+    { "DVDs" = [
+      { "Remuxing" = "sources/dvd/remuxing.md" },
+      { "Wobbly" = [
+        { "Getting Started" = "sources/dvd/wobbly/setup.md" },
+      ] },
+    ] },
+  ] },
+  { "Filtering" = [
+    { "Recognizing Artifacts" = "filtering/recognizing-artifacts.md" },
+    { "General Techniques" = [
+      { "Order of Operations" = "filtering/general/order.md" },
+      { "Expressions" = "filtering/general/expressions.md" },
+    ] },
+    { "Common Filtering" = [
+      { "Descaling" = [
+        { "Theory" = "filtering/common/descaling/theory.md" },
+        { "Known Resolutions" = "filtering/common/descaling/known-resolutions.md" },
+      ] },
+    ] },
+    { "Situational Filtering" = [
+      { "Dehardsubbing" = "filtering/situational/dehardsubbing.md" },
+      { "Field-Based Video" = "filtering/situational/fieldbased.md" },
+    ] },
+  ] },
+  { "Encoding" = [
+    { "x264" = "encoding/x264.md" },
+    { "x265" = "encoding/x265.md" },
+    { "SVT-AV1" = "encoding/svtav1.md" },
+  ] },
+  { "Misc" = [
+    { "Comparison" = "misc/comparison.md" },
+  ] },
+  { "Additional Resources" = "resources.md" },
+]
+
+extra_javascript = [
+  "javascripts/katex.js",
+  "https://unpkg.com/katex@0/dist/katex.min.js",
+  "https://unpkg.com/katex@0/dist/contrib/auto-render.min.js",
+]
+
+extra_css = [
+  "https://unpkg.com/katex@0/dist/katex.min.css",
+  "stylesheets/fields.css",
+]
+
+[project.theme]
+variant = "classic"
+language = "en"
+features = [
+  "content.code.copy",
+  "content.code.select",
+  "navigation.expand",
+]
+
+[project.theme.palette]
+scheme = "slate"
+primary = "purple"
+accent = "indigo"
+
+[project.extra.version]
+provider = "mike"
+
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.footnotes]
+[project.markdown_extensions.tables]
+[project.markdown_extensions.pymdownx.details]
+[project.markdown_extensions.pymdownx.tabbed]
+alternate_style = true
+[project.markdown_extensions.pymdownx.highlight]
+pygments_style = "one-dark"
+noclasses = true
+linenums = true
+anchor_linenums = true
+[project.markdown_extensions.pymdownx.inlinehilite]
+[project.markdown_extensions.pymdownx.snippets]
+[project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+[project.markdown_extensions.pymdownx.arithmatex]
+generic = true
