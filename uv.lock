@@ -49,7 +49,7 @@ dev = [
 requires-dist = [{ name = "zensical", specifier = "==0.0.47" }]
 
 [package.metadata.requires-dev]
-dev = [{ name = "mike", git = "https://github.com/squidfunk/mike.git?rev=2.2.0%2Bzensical-0.1.0" }]
+dev = [{ name = "mike", git = "https://github.com/squidfunk/mike.git?rev=2d4ad799442f4592db8ad53b179bfb33db8c69ac" }]
 
 [[package]]
 name = "jinja2"
@@ -149,7 +149,7 @@ wheels = [
 [[package]]
 name = "mike"
 version = "2.2.0+zensical.0.1.0"
-source = { git = "https://github.com/squidfunk/mike.git?rev=2.2.0%2Bzensical-0.1.0#0f62791256ebeba60d20d2f1d8fe6ec3b7d1e2b3" }
+source = { git = "https://github.com/squidfunk/mike.git?rev=2d4ad799442f4592db8ad53b179bfb33db8c69ac#2d4ad799442f4592db8ad53b179bfb33db8c69ac" }
 dependencies = [
     { name = "jinja2" },
     { name = "pyparsing" },
