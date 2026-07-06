@@ -24,5 +24,10 @@ jobs:
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
       - name: Install dependencies
         run: uv sync
+      - name: Sanitize branch name
+        id: sanitize
+        run: |
+          branch="${{ github.event.ref }}"
+          echo "branch=${branch//\//-}" >> "$GITHUB_OUTPUT"
       - name: Delete version for branch
-        run: uv run mike delete -p ${{ github.event.ref }}
+        run: uv run mike delete -p ${{ steps.sanitize.outputs.branch }}
