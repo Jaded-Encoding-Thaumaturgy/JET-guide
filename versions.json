@@ -1,10 +1,5 @@
 [
   {
-    "version": "renovate-python-3.x",
-    "title": "renovate-python-3.x",
-    "aliases": []
-  },
-  {
     "version": "master",
     "title": "master",
     "aliases": []
