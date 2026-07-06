@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="zensical-0.0.47">
     
     
       
@@ -33,10 +33,15 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/classic/main.6cf5c66f.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/classic/palette.7dc9a0ad.min.css">
       
       
 
@@ -50,7 +55,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -59,7 +64,7 @@
     
       <link rel="stylesheet" href="../../stylesheets/fields.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -70,6 +75,8 @@
   
     
     
+      
+    
     
     
     
@@ -78,7 +85,7 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
     <div data-md-component="skip">
       
         
@@ -108,7 +115,7 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
     </label>
@@ -130,63 +137,48 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
           
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
         </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
 </div>
       
     
-    
-      <div class="md-header__source">
+    <div class="md-header__source">
+      
         <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
   </div>
 </a>
-      </div>
-    
+      
+    </div>
   </nav>
   
 </header>
@@ -225,7 +217,7 @@
       <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-Guide" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -249,8 +241,7 @@
   <span class="md-ellipsis">
     
   
-    Home
-  
+  Home
 
     
   </span>
@@ -289,8 +280,7 @@
   <span class="md-ellipsis">
     
   
-    Basics
-  
+  Basics
 
     
   </span>
@@ -305,8 +295,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Basics
-  
+  Basics
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -325,8 +314,7 @@
   <span class="md-ellipsis">
     
   
-    Installation
-  
+  Installation
 
     
   </span>
@@ -353,8 +341,7 @@
   <span class="md-ellipsis">
     
   
-    Python Primer
-  
+  Python Primer
 
     
   </span>
@@ -381,8 +368,7 @@
   <span class="md-ellipsis">
     
   
-    Getting Started
-  
+  Getting Started
 
     
   </span>
@@ -405,7 +391,9 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+        <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -418,8 +406,7 @@
   <span class="md-ellipsis">
     
   
-    Common Errors
-  
+  Common Errors
 
     
   </span>
@@ -429,15 +416,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    Common Errors
-  
+  Common Errors
 
     
   </span>
@@ -448,7 +434,8 @@
       
         
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -457,16 +444,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#generic-errors" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Generic Errors
-      
+      </span>
     </span>
   </a>
   
@@ -475,9 +462,9 @@
         <li class="md-nav__item">
   <a href="#filter-specific-errors" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Filter-specific Errors
-      
+      </span>
     </span>
   </a>
   
@@ -486,9 +473,9 @@
         <li class="md-nav__item">
   <a href="#jet-specific-errors" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         JET-specific Errors
-      
+      </span>
     </span>
   </a>
   
@@ -517,8 +504,7 @@
   <span class="md-ellipsis">
     
   
-    How do I...?
-  
+  How do I...?
 
     
   </span>
@@ -565,8 +551,7 @@
   <span class="md-ellipsis">
     
   
-    Source Preparation
-  
+  Source Preparation
 
     
   </span>
@@ -581,8 +566,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Source Preparation
-  
+  Source Preparation
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -614,8 +598,7 @@
   <span class="md-ellipsis">
     
   
-    DVDs
-  
+  DVDs
 
     
   </span>
@@ -630,8 +613,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    DVDs
-  
+  DVDs
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -650,8 +632,7 @@
   <span class="md-ellipsis">
     
   
-    Remuxing
-  
+  Remuxing
 
     
   </span>
@@ -691,8 +672,7 @@
   <span class="md-ellipsis">
     
   
-    Wobbly
-  
+  Wobbly
 
     
   </span>
@@ -707,8 +687,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Wobbly
-  
+  Wobbly
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -727,8 +706,7 @@
   <span class="md-ellipsis">
     
   
-    Getting Started
-  
+  Getting Started
 
     
   </span>
@@ -791,8 +769,7 @@
   <span class="md-ellipsis">
     
   
-    Filtering
-  
+  Filtering
 
     
   </span>
@@ -807,8 +784,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Filtering
-  
+  Filtering
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -827,8 +803,7 @@
   <span class="md-ellipsis">
     
   
-    Recognizing Artifacts
-  
+  Recognizing Artifacts
 
     
   </span>
@@ -868,8 +843,7 @@
   <span class="md-ellipsis">
     
   
-    General Techniques
-  
+  General Techniques
 
     
   </span>
@@ -884,8 +858,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    General Techniques
-  
+  General Techniques
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -904,8 +877,7 @@
   <span class="md-ellipsis">
     
   
-    Order of Operations
-  
+  Order of Operations
 
     
   </span>
@@ -932,8 +904,7 @@
   <span class="md-ellipsis">
     
   
-    Expressions
-  
+  Expressions
 
     
   </span>
@@ -981,8 +952,7 @@
   <span class="md-ellipsis">
     
   
-    Common Filtering
-  
+  Common Filtering
 
     
   </span>
@@ -997,8 +967,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Common Filtering
-  
+  Common Filtering
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1030,8 +999,7 @@
   <span class="md-ellipsis">
     
   
-    Descaling
-  
+  Descaling
 
     
   </span>
@@ -1046,8 +1014,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Descaling
-  
+  Descaling
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1066,8 +1033,7 @@
   <span class="md-ellipsis">
     
   
-    Theory
-  
+  Theory
 
     
   </span>
@@ -1094,8 +1060,7 @@
   <span class="md-ellipsis">
     
   
-    Known Resolutions
-  
+  Known Resolutions
 
     
   </span>
@@ -1151,8 +1116,7 @@
   <span class="md-ellipsis">
     
   
-    Situational Filtering
-  
+  Situational Filtering
 
     
   </span>
@@ -1167,8 +1131,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Situational Filtering
-  
+  Situational Filtering
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1187,8 +1150,7 @@
   <span class="md-ellipsis">
     
   
-    Dehardsubbing
-  
+  Dehardsubbing
 
     
   </span>
@@ -1215,8 +1177,7 @@
   <span class="md-ellipsis">
     
   
-    Field-Based Video
-  
+  Field-Based Video
 
     
   </span>
@@ -1271,8 +1232,7 @@
   <span class="md-ellipsis">
     
   
-    Encoding
-  
+  Encoding
 
     
   </span>
@@ -1287,8 +1247,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Encoding
-  
+  Encoding
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1307,8 +1266,7 @@
   <span class="md-ellipsis">
     
   
-    x264
-  
+  x264
 
     
   </span>
@@ -1335,8 +1293,7 @@
   <span class="md-ellipsis">
     
   
-    x265
-  
+  x265
 
     
   </span>
@@ -1363,8 +1320,7 @@
   <span class="md-ellipsis">
     
   
-    SVT-AV1
-  
+  SVT-AV1
 
     
   </span>
@@ -1411,8 +1367,7 @@
   <span class="md-ellipsis">
     
   
-    Misc
-  
+  Misc
 
     
   </span>
@@ -1427,8 +1382,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    Misc
-  
+  Misc
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -1447,8 +1401,7 @@
   <span class="md-ellipsis">
     
   
-    Comparison
-  
+  Comparison
 
     
   </span>
@@ -1482,8 +1435,7 @@
   <span class="md-ellipsis">
     
   
-    Additional Resources
-  
+  Additional Resources
 
     
   </span>
@@ -1505,10 +1457,12 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
                   <div class="md-sidebar__inner">
                     
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
   
   
   
@@ -1517,16 +1471,16 @@
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
-      Table of contents
+      On this page
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
   <a href="#generic-errors" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Generic Errors
-      
+      </span>
     </span>
   </a>
   
@@ -1535,9 +1489,9 @@
         <li class="md-nav__item">
   <a href="#filter-specific-errors" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         Filter-specific Errors
-      
+      </span>
     </span>
   </a>
   
@@ -1546,9 +1500,9 @@
         <li class="md-nav__item">
   <a href="#jet-specific-errors" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         JET-specific Errors
-      
+      </span>
     </span>
   </a>
   
@@ -1568,8 +1522,6 @@
               <article class="md-content__inner md-typeset">
                 
                   
-
-
   
   
 
@@ -1670,7 +1622,7 @@ JET errors are commonly formatted like this:</p>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>   NotFoundEnumValueError: (Matrix().from_param) The given value for &quot;&lt;enum &#39;Matrix&#39;&gt;&quot; argument must be a valid Matrix, not &quot;-1&quot;!
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a>   Valid values are: [RGB (0), BT709 (1), UNSPECIFIED (2), FCC (4), BT470_BG (5), ST170_M (6), ST240_M (7), YCGCO (8), BT2020_NCL (9), BT2020_CL (10), CHROMATICITY_DERIVED_NC (12), CHROMATICITY_DERIVED_CL (13), ICTCP (14)]. (-1)
 </code></pre></div></td></tr></table></div>
-<p><img alt="The above error as shown in a terminal" src="../img/jet-error.png" /></p>
+<p><img alt="The above error as shown in a terminal" src=".././img/jet-error.png" /></p>
 </div>
 <table>
 <thead>
@@ -1686,6 +1638,8 @@ JET errors are commonly formatted like this:</p>
 </tr>
 </tbody>
 </table>
+
+
 
 
 
@@ -1716,8 +1670,8 @@ JET errors are commonly formatted like this:</p>
   
   
     Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
     </a>
   
 </div>
@@ -1735,10 +1689,10 @@ JET errors are commonly formatted like this:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.select", "navigation.expand"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["content.code.copy","content.code.select","navigation.expand"],"search":"../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.0df4f2d0.min.js"></script>
       
         <script src="../../javascripts/katex.js"></script>
       
