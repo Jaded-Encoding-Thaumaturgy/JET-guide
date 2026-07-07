@@ -1,10 +1,5 @@
 [
   {
-    "version": "renovate-astral-sh-setup-uv-8.x",
-    "title": "renovate-astral-sh-setup-uv-8.x",
-    "aliases": []
-  },
-  {
     "version": "master",
     "title": "master",
     "aliases": []
