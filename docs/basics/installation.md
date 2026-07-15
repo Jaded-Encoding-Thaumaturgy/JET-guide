@@ -5,33 +5,34 @@ as well as how to properly set up your code editor and previewer.
 If you know what you're doing, you can skip or modify any of the steps listed here,
 but if you run into issues this should be a fairly foolproof way to get things working again.
 
-<!-- If you're using Linux, it's very strongly recommended to use Arch Linux or a derivative, -->
-<!-- as that is the only distribution that provides sufficiently many of the required programs -->
-<!-- and plugins as packages or via the AUR. -->
-<!-- On other distributions you risk a great amount of pain compiling a ton of programs and plugins manually. -->
-<!-- The rest of this page will assume that Linux users use Arch Linux. -->
+Since VapourSynth R74, everything is installed through `pip` (or `uv`),
+including VapourSynth itself and most plugins.
+No separate installers or plugin managers are needed anymore.
 
 ## Getting a Clean Slate
 
-If you're on Linux, you can probably skip this step.
+If you never used VapourSynth before R74, or you're on Linux, you can probably skip this step.
 
-If you have VapourSynth or any version of Python installed, uninstall them.
+If you previously installed VapourSynth using the Windows installer (R73 or earlier),
+uninstall it before proceeding.
+Since R74, plugins are stored inside the VapourSynth Python package,
+and **no plugins will be loaded from the previous locations**,
+so leftovers from an old installation will only cause confusion.
 Also delete any leftover directories like
 
 - `%APPDATA%/VapourSynth`
-- `%APPDATA%/Python`
 - `%LOCALAPPDATA%/Programs/VapourSynth`
-- `%LOCALAPPDATA%/Programs/Python`
 
 on Windows.
 
-## Installing Python and VapourSynth
+## Installing Python
+
+VapourSynth requires Python 3.12 or later.
+Since R74, a single VapourSynth wheel works on all supported Python versions,
+so you can simply install the latest stable Python release.
 
 === "Windows"
-    Check the [VapourSynth documentation](https://www.vapoursynth.com/doc/installation.html)
-    to find out the latest Python version currently supported by VapourSynth,
-    and install it from the [Python website](https://www.python.org/downloads/).
-    At the time of writing, that's Python 3.12.
+    Install Python from the [Python website](https://www.python.org/downloads/).
 
     !!! warning
         Make sure to install Python to PATH!
@@ -40,106 +41,186 @@ on Windows.
         During installation, this will be
         the "Add Python to environment variables" option.
 
-    Then, download the latest [GitHub release](https://github.com/vapoursynth/vapoursynth/releases)
-    of VapourSynth and install it.
-
-    Unless you want to risk running into issues, install the installer versions (not the portable ones)
-    and select "Install for this user only" when asked.
-
 === "Linux"
-    !!! warning "This section is incomplete!"
+    Install Python 3.12 or later using your package manager.
+    It's recommended to create a virtual environment to install VapourSynth
+    and the JET packages into, since most distributions do not allow
+    installing packages with `pip` system-wide:
 
-        This section is a stub.
-        You can help us
-        by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
+    ```sh
+    python -m venv ~/.venvs/vapoursynth
+    source ~/.venvs/vapoursynth/bin/activate
+    ```
 
-    Install Python and VapourSynth using your package manager.
-    Also install `vsgenstubs`. <!-- (`vapoursynth-tools-genstubs-git` on the AUR) -->
+    You'll need to activate this virtual environment (the second command)
+    in every new terminal session in which you want to use VapourSynth.
 
-## Installing VapourSynth Plugins
+## Installing VapourSynth
 
-VapourSynth itself only provides a frame server,
-i.e. the ability to load plugins and use them to process audio and video.
-The meat of the VapourSynth ecosystem lies in these plugins,
-which need to be installed separately.
+Since R74, VapourSynth is installed with pip on all platforms.
+Open a terminal and run:
 
-If you ever want to run a VapourSynth script or call some function and get an error message like
+```
+pip install vapoursynth
+vapoursynth config
+```
 
-`No attribute with the name bs exists. Did you mistype a plugin namespace or forget to install a plugin?`,
+The second command downloads and sets up the VapourSynth core library.
+On Windows, update the Visual Studio Redistributable if the command tells you to.
 
-this means that you need to install the mentioned plugin, in this case `bs` (which is short for bestsource).
+Optionally, you can also run:
 
-=== "Windows"
-    On Windows, plugins are installed using VSRepo.
-    Open a terminal and run `vsrepo.py available` to list all installable plugins.
-    To install a plugin (e.g. `bs`), run `vsrepo.py install bs`.
-    You can install multiple plugins at once to save time, e.g. `vsrepo.py install bs lsmas`.
+- `vapoursynth register-install` to set the `VSSCRIPT_PATH` environment variable,
+  which allows other applications (e.g. media players and encoding GUIs) to find VapourSynth.
+- (Windows only) `vapoursynth register-legacy-install` to write installation information
+  to the registry, so that applications not yet aware of the R74+ install method still work.
 
-    !!! bug "Note"
-        VSRepo can be finnicky depending on your configuration and file associations.
-        (TODO figure out some foolproof method to call it or fix it upstream)
-        If you run into issues running vsrepo, try using a different terminal (cmd or PowerShell)
-        or calling it as `vsrepo` or `python -m vsrepo` rather than `vsrepo.py`.
-        If all else fails, you can manually navigate to the folder VSRepo is in
-        (usually `%localappdata%/Programs/VapourSynth/vsrepo`), open a terminal there,
-        and run `python vsrepo.py` with your arguments.
-        Alternatively, you can also try [VSRepoGUI](https://github.com/theChaosCoder/VSRepoGUI).
+To verify that everything works, open a Python prompt (run `python`) and type:
 
-=== "Linux"
-    !!! warning "This section is incomplete!"
+```py
+from vapoursynth import core
+print(str(core))
+```
 
-        This section is a stub.
-        You can help us
-        by [expanding it](https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing).
-
-    <!-- Install plugins using your package manager, e.g. `vapoursynth-plugin-bestssource` on Arch Linux. -->
-    <!-- A few plugins are available in the official repositories, but for most of them you'll need to use the AUR. -->
-
-    <!-- After you've installed a plugin, run `vsgenstubs4` to generate function stubs for the installed plugins, -->
-    <!-- which will help your language server. -->
-
-To start out, install the following plugins:
-
-- `bs` and `lsmas`, to load audio and video
-- `akarin`, `vszip` and `fmtc` which may be needed by vs-preview.
+You should see the VapourSynth version printed, e.g. `VapourSynth Video Processing Library ... Core R77`.
 
 ## Installing the JET Packages
 
-The JET python packages build on top of the existing plugin ecosystem to provide
+The JET Python packages build on top of the existing plugin ecosystem to provide
 
 - More convenient and Pythonic wrapper functions around various plugins
 - More complex filtering functions which combine functions of various plugins
   to achieve various filtering goals
-- vs-preview, a previewer for VapourSynth with plugin support and many useful features for encoders.
 
-To install it, open a terminal and run:
+Since vs-jetpack v2, the VapourSynth plugins that these functions rely on
+are themselves distributed as Python packages
+and can be installed automatically alongside `vsjetpack` using *extras*.
+The simplest option is the `full` extra, which pulls in all CPU-based plugins:
 
-`pip install vsjetpack vspreview`
-
-To update your JET packages, you can run `pip install --upgrade vsjetpack vspreview`.
-
-??? info "Migrating from `vsjet`"
-
-    If you previously used `vsjet` to install and update JET packages,
-    you can use the following commands to migrate:
+=== "Windows"
     ```
-    pip uninstall stgpytools vstools vspyplugin vskernels vsexprtools vsrgtools vsmasktools vsaa vsscale vsdenoise vsdehalo vsdeband vsdeinterlace vssource vspreview vsjet -y
-    pip install vsjetpack vspreview
+    pip install vsjetpack[full]
     ```
 
-Linux users may need to create a virtualenv to install the packages or try their luck with `pipx`.
-<!-- On Arch Linux, you can use the [`vapoursynth-plugin-vsjetpack`](https://aur.archlinux.org/packages/vapoursynth-plugin-vsjetpack) and [`vapoursynth-preview`](https://aur.archlinux.org/packages/vapoursynth-preview) AUR packages. -->
+    If you have an NVIDIA GPU, you can additionally install the GPU-accelerated plugins:
+
+    ```
+    pip install vsjetpack[full,nvidia] `
+        --extra-index-url https://pypi.nvidia.com/ `
+        --extra-index-url https://jaded-encoding-thaumaturgy.github.io/vs-wheels/simple
+    ```
+
+=== "Linux / macOS"
+    Some plugins distribute their wheels through VSWheels of PyPI,
+    so you need to add it with `--extra-index-url`:
+
+    ```sh
+    pip install vsjetpack[full] \
+        --extra-index-url https://jaded-encoding-thaumaturgy.github.io/vs-wheels/simple
+    ```
+
+    If you have an NVIDIA GPU, you can additionally install the GPU-accelerated plugins:
+
+    ```sh
+    pip install vsjetpack[full,nvidia] \
+        --extra-index-url https://pypi.nvidia.com/ \
+        --extra-index-url https://jaded-encoding-thaumaturgy.github.io/vs-wheels/simple
+    ```
+
+If you don't want all plugins, there are more granular extras
+like `source`, `denoise` or `deinterlace`,
+as well as `amd`, `cl` and `vulkan` extras for non-NVIDIA GPUs.
+See the [vs-jetpack documentation](https://jaded-encoding-thaumaturgy.github.io/vs-jetpack/#installation)
+for the full breakdown and the platforms each extra supports.
+
+To update your JET packages later, run the same command with `--upgrade` added.
+
+??? info "Using uv instead of pip"
+    If you manage your projects with [uv](https://docs.astral.sh/uv/),
+    you can add `vsjetpack` to your `pyproject.toml` instead:
+
+    ```sh
+    uv add vsjetpack[full,nvidia]==2.0.0 \
+        --index https://jaded-encoding-thaumaturgy.github.io/vs-wheels/simple \
+        --index https://pypi.nvidia.com/ \
+        --index-strategy unsafe-best-match
+    ```
+
+    You may want to add the following setting to your `pyproject.toml` for later use:
+
+    ```toml
+    [tool.uv]
+    index-strategy = "unsafe-best-match"
+    ```
+
+    If you don't want to use `unsafe-best-match` as the index strategy,
+    you'll have to explicitly pin packages to indices via `tool.uv.sources`,
+    like [vs-jetpack's own pyproject.toml](https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack/blob/main/pyproject.toml) does.
+    See [this discussion](https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack/discussions/336)
+    for details.
+
+## Installing Additional VapourSynth Plugins
+
+The `vsjetpack` extras cover everything the JET packages themselves need,
+but you may occasionally want a plugin that isn't included.
+If you ever run a VapourSynth script and get an error message like
+
+`No attribute with the name foo exists. Did you mistype a plugin namespace or forget to install a plugin?`,
+
+this means that you need to install the mentioned plugin.
+
+Many plugins are now published on PyPI (or [VSWheels](https://github.com/Jaded-Encoding-Thaumaturgy/vs-wheels))
+and can be installed with pip, e.g. `pip install vapoursynth-fmtconv`.
+For plugins without a Python package, you can still use VSRepo,
+which is now installed separately: `pip install vsrepo`, then `vsrepo install <plugin>`.
+As a last resort, you can place plugin binaries manually into the plugin directory,
+whose location you can find by running `vapoursynth.get_plugin_dir()` in Python.
+
+## Installing VSView
+
+[VSView](https://jaded-encoding-thaumaturgy.github.io/vs-view/) is the JET previewer for VapourSynth:
+it lets you open scripts, videos or images in one interface,
+making it easy to preview, inspect and compare sources.
+It is the modern replacement for the older vs-preview.
+
+Install it together with the recommended plugins:
+
+```
+pip install vsview[recommended]
+```
+
+You can also use `vsview[full]` to install all plugins,
+or plain `vsview` for a minimal installation.
+
+To launch it, just run `vsview`,
+or open files directly:
+
+```
+vsview myscript.vpy video.mkv
+```
 
 ## Installing your Code Editor
 
-You're now ready to use JET packages with VapourSynth.
+You're now ready to use the JET packages with VapourSynth.
 However, it's strongly recommended to also install a code editor or IDE,
 in order to benefit from a Python language server to see available plugins, functions, documentation, etc.
 The simplest choice is VS Code:
 
 - Install VS Code from [its download page](https://code.visualstudio.com/download)
-- Follow the [vs-preview documentation](https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview/blob/master/docs/installation/install_vscode.rst)
-  to configure VS Code to work with VapourSynth and vs-preview.
+- Install the Python extension from the Extensions panel
+- If you installed VapourSynth into a virtual environment,
+  select it as your Python interpreter
+  (Ctrl+Shift+P, "Python: Select Interpreter")
+- Associate `.vpy` files with Python by adding the following to your `settings.json`:
+
+  ```json
+  "files.associations": {
+      "*.vpy": "python"
+  }
+  ```
+
+You can then open your scripts in VSView from VS Code's integrated terminal
+by running `vsview yourscript.vpy`.
 
 ## Opening your First File
 
@@ -164,42 +245,36 @@ Where, obviously, you should replace the path with the path to your own video fi
     For any kind of more serious work, `bs.VideoSource` is recommended,
     since only that filter can fully guarantee accurate seeking.
 
-Then, open this file in vs-preview.
-If you've correctly set up VS Code, you should be able to just press F5.
-Otherwise, you can also open a terminal in your script's directory and run `vspreview myscript.vpy`.
+Then, open this file in VSView by opening a terminal in your script's directory and running:
 
-You should see vs-preview open and display your video.
+```
+vsview myscript.vpy
+```
+
+You should see VSView open and display your video.
 
 ## A few further First Steps
 
 With this, you've learned how to install everything you need.
-The following will explain a few basic first steps if this is your first time using VapourSynth or vs-preview.
+The following will explain a few basic first steps if this is your first time using VapourSynth or VSView.
 
-### Getting Comfortable with vs-preview
+### Getting Comfortable with VSView
 
-If you've followed the instructions above, you should now have vs-preview opened and should be able to preview your video file.
+If you've followed the instructions above, you should now have VSView opened and should be able to preview your video file.
 Here are a few things you can try out:
 
 -   Press Space to play or pause
 -   Click around in the timeline bar below the video display to step around the video
 -   Ctrl+Scroll to zoom and Click+Drag to pan around the displayed image
--   Click the "Pipette" button at the bottom and look at the values at the bottom changing while you move your mouse around the image.
--   Click the "Benchmark" button at the bottom and click "Run" to find out how fast your VapourSynth script runs.
-    At the moment, your script just loads a video, so it should be fairly fast,
-    but in the future your scripts might contain more complex filtering, and knowing how fast or slow your filtering is will be more important.
--   Click the "Comp" button at the bottom and click "Start Upload".
-    Once the upload is done, find the box containing a `slow.pics` link and press the button next to it to copy that link to your clipboard.
-    Open that link in your browser: You'll get a `slow.pics` comparison of random frames in your video.
-    If your script has multiple outputs, the comparison will show all output nodes.
--   Move your mouse to the very right of vs-preview's window and drag the bar there to the left.
-    This opens the plugins panel, which contains one tab for each vs-preview plugin.
-    First, open the "Frame Props" tab and have a look at the values there.
+-   Look at the sidebar on the left: each open workspace (script, video, or image) is represented by an icon.
+    Right-click an icon to access workspace-specific actions such as reloading the script.
+-   Explore the tool docks and panels via the "View" menu,
+    which provide features like frame props inspection and comparisons.
+-   Move your mouse to the very right of the window and drag the bar there to the left.
+    This opens the plugins panel, which contains one tab for each VSView plugin.
 
-    Then, open the "Split Planes" tab.
-    This shows the individual planes of your video.
-    For your average video clip, this will consist of one luma plane and two chroma planes with half the width and height.
-    You can press Ctrl+A to unlock the split planes view,
-    which will allow you to freely zoom and pan around in the view like you would on the normal video.
+For a full tour of the interface, see the
+[VSView usage documentation](https://jaded-encoding-thaumaturgy.github.io/vs-view/usage/overview/).
 
 ### A Second Output Node
 
@@ -219,20 +294,15 @@ blurred = core.std.BoxBlur(clip)
 blurred.set_output(1)
 ```
 
-Then press Ctrl+R to reload vs-preview.
+Then press Ctrl+R to reload VSView.
 
-!!! warning "Note"
-    Reloading vs-preview in-place with Ctrl+R uses dark magic and can occasionally break with certain complex scripts.
-    If you run into issues with reloading, the foolproof way is always to close and reopen vs-preview.
-
-If you open the drop-down at the bottom left of vs-preview,
-you should now see two output nodes you can switch between.
+You should now see two output nodes you can switch between.
 The first is your video, the second is a slightly blurred version of your video.
 You can also press the 1 and 2 keys to switch between them (which is the recommended method since it's much faster).
 
 ### Going JET
 
-The above example code only used standard VapourSynth functions; except for vs-preview we didn't use any JET packages.
+The above example code only used standard VapourSynth functions; except for VSView we didn't use any JET packages.
 But even in such a simple script, JET packages can save you a bit of work.
 Let's see how this script could be modified:
 
@@ -257,9 +327,8 @@ Let's go over the differences:
    When you want to add another node at the start, you'd need to update the numbers of all following output nodes, which can be annoying.
    The `set_output` function in vs-tools automatically numbers nodes based on the order they're output in.
 3. Nodes are automatically named.
-   If you open the above script in vs-preview, you'll see that the dropdown in the bottom left now contains the names `clip` and `blurred`
+   If you open the above script in VSView, you'll see that the output nodes are now named `clip` and `blurred`
    instead of `Video Node 1` and `Video Node 2`, matching how the clips were called in our script.
-   If you were to upload a comparison to slow.pics, the images in the comparison would also be labeled like this.
 
 We can also name nodes manually by passing another argument to `set_output`:
 
@@ -285,7 +354,7 @@ Whether you want to do this or not is a matter of taste.
 The advantage of writing `core.std.BoxBlur` explicitly is that
 you see exactly what plugin is called and don't need to worry about understanding the Python wrapper.
 On the other hand, a wrapper like `box_blur` may have more features
-(e.g. here `box_blur` allows specifying a different radius for every plane, which `core.std.BoxBlur` doesn't allow out-of-the-box`)
+(e.g. here `box_blur` allows specifying a different radius for every plane, which `core.std.BoxBlur` doesn't allow out-of-the-box)
 and be easier to use.
 
 ### Using a Better Source Filter
@@ -310,7 +379,7 @@ You can call it using
 clip = core.bs.VideoSource("C:/Path/to/my/file.mkv", showprogress=True)
 ```
 
-Don't be surprised if vs-preview takes a long time to open now.
+Don't be surprised if VSView takes a long time to open now.
 This is necessary in order for BestSource to be accurate.
 The second time you open the same video, it will be much faster.
 
