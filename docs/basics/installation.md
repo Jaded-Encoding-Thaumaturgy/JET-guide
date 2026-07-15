@@ -140,7 +140,7 @@ To update your JET packages later, run the same command with `--upgrade` added.
     you can add `vsjetpack` to your `pyproject.toml` instead:
 
     ```sh
-    uv add vsjetpack[full,nvidia]==2.0.0 \
+    uv add vsjetpack[full,nvidia] \
         --index https://jaded-encoding-thaumaturgy.github.io/vs-wheels/simple \
         --index https://pypi.nvidia.com/ \
         --index-strategy unsafe-best-match
