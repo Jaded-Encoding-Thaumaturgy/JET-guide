@@ -5,7 +5,7 @@ as well as how to properly set up your code editor and previewer.
 If you know what you're doing, you can skip or modify any of the steps listed here,
 but if you run into issues this should be a fairly foolproof way to get things working again.
 
-Since VapourSynth R74, everything is installed through `pip` (or `uv`),
+As of VapourSynth R74, everything is installed through `pip` (or `uv`),
 including VapourSynth itself and most plugins.
 No separate installers or plugin managers are needed anymore.
 
@@ -15,7 +15,7 @@ If you never used VapourSynth before R74, or you're on Linux, you can probably s
 
 If you previously installed VapourSynth using the Windows installer (R73 or earlier),
 uninstall it before proceeding.
-Since R74, plugins are stored inside the VapourSynth Python package,
+As of R74, plugins are stored inside the VapourSynth Python package,
 and **no plugins will be loaded from the previous locations**,
 so leftovers from an old installation will only cause confusion.
 Also delete any leftover directories like
@@ -28,7 +28,7 @@ on Windows.
 ## Installing Python
 
 VapourSynth requires Python 3.12 or later.
-Since R74, a single VapourSynth wheel works on all supported Python versions,
+As of R74, a single VapourSynth wheel works on all supported Python versions,
 so you can simply install the latest stable Python release.
 
 === "Windows"
@@ -57,7 +57,7 @@ so you can simply install the latest stable Python release.
 
 ## Installing VapourSynth
 
-Since R74, VapourSynth is installed with pip on all platforms.
+As of R74, VapourSynth is installed with pip on all platforms.
 Open a terminal and run:
 
 ```
@@ -92,7 +92,7 @@ The JET Python packages build on top of the existing plugin ecosystem to provide
 - More complex filtering functions which combine functions of various plugins
   to achieve various filtering goals
 
-Since vs-jetpack v2, the VapourSynth plugins that these functions rely on
+As of vs-jetpack v2, the VapourSynth plugins that these functions rely on
 are themselves distributed as Python packages
 and can be installed automatically alongside `vsjetpack` using *extras*.
 The simplest option is the `full` extra, which pulls in all CPU-based plugins:
