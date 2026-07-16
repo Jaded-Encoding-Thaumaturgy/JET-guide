@@ -307,7 +307,8 @@ But even in such a simple script, JET packages can save you a bit of work.
 Let's see how this script could be modified:
 
 ```py
-from vstools import core, set_output
+from vstools import core
+from vsview import set_output
 
 clip = core.lsmas.LWLibavSource("C:/Path/to/my/file.mkv")
 blurred = core.std.BoxBlur(clip)
@@ -320,12 +321,12 @@ Let's go over the differences:
 
 1. The top lines are different.
    While standard VapourSynth scripts start with the incantations `import vapoursynth as vs` and `core = vs.core`,
-   the JET way is `from vstools import core, set_output` (possibly followed by further imports).
-   This is not a big difference, but it does cut down the boilerplate to one line.
+   the JET way is `from vstools import core` and `from vsview import set_output` (possibly followed by further imports).
+   This is not a big difference, but it does cut down the boilerplate.
 2. We no longer need to give numbers to `set_output`.
    When using `clip.set_output`, you need to give `set_output` a number to specify what output node the given clip should be.
    When you want to add another node at the start, you'd need to update the numbers of all following output nodes, which can be annoying.
-   The `set_output` function in vs-tools automatically numbers nodes based on the order they're output in.
+   The `set_output` function in VSView automatically numbers nodes based on the order they're output in.
 3. Nodes are automatically named.
    If you open the above script in VSView, you'll see that the output nodes are now named `clip` and `blurred`
    instead of `Video Node 1` and `Video Node 2`, matching how the clips were called in our script.
@@ -340,8 +341,9 @@ set_output(blurred, "Blurred")
 If you wanted to, you could also replace the `BoxBlur` call with a JET wrapper:
 
 ```py
-from vstools import core, set_output
+from vstools import core
 from vsrgtools import box_blur
+from vsview import set_output
 
 clip = core.lsmas.LWLibavSource("C:/Path/to/my/file.mkv")
 blurred = box_blur(clip)

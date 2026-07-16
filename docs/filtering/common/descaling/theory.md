@@ -158,8 +158,9 @@ Of course, this is just one possible method and you can just as well use any oth
 The important part is that you're able to see the descale, the same-kernel rescale, and the difference clip.
 
 ```py
-from vstools import get_y, depth, set_output
+from vstools import get_y, depth
 from vskernels import Bilinear, Catrom, BicubicSharp, Lanczos   # import more here if you need
+from vsview import set_output
 
 # Load your clip here
 
