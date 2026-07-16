@@ -379,10 +379,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-python-and-vapoursynth" class="md-nav__link">
+  <a href="#installing-python" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Installing Python and VapourSynth
+        Installing Python
       </span>
     </span>
   </a>
@@ -390,10 +390,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-vapoursynth-plugins" class="md-nav__link">
+  <a href="#installing-vapoursynth" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Installing VapourSynth Plugins
+        Installing VapourSynth
       </span>
     </span>
   </a>
@@ -405,6 +405,28 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         Installing the JET Packages
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-additional-vapoursynth-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installing Additional VapourSynth Plugins
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-vsview" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installing VSView
       </span>
     </span>
   </a>
@@ -446,10 +468,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#getting-comfortable-with-vs-preview" class="md-nav__link">
+  <a href="#getting-comfortable-with-vsview" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Getting Comfortable with vs-preview
+        Getting Comfortable with VSView
       </span>
     </span>
   </a>
@@ -1581,10 +1603,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-python-and-vapoursynth" class="md-nav__link">
+  <a href="#installing-python" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Installing Python and VapourSynth
+        Installing Python
       </span>
     </span>
   </a>
@@ -1592,10 +1614,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-vapoursynth-plugins" class="md-nav__link">
+  <a href="#installing-vapoursynth" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Installing VapourSynth Plugins
+        Installing VapourSynth
       </span>
     </span>
   </a>
@@ -1607,6 +1629,28 @@
     <span class="md-ellipsis">
       <span class="md-typeset">
         Installing the JET Packages
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-additional-vapoursynth-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installing Additional VapourSynth Plugins
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-vsview" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installing VSView
       </span>
     </span>
   </a>
@@ -1648,10 +1692,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#getting-comfortable-with-vs-preview" class="md-nav__link">
+  <a href="#getting-comfortable-with-vsview" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Getting Comfortable with vs-preview
+        Getting Comfortable with VSView
       </span>
     </span>
   </a>
@@ -1719,31 +1763,30 @@
 as well as how to properly set up your code editor and previewer.
 If you know what you're doing, you can skip or modify any of the steps listed here,
 but if you run into issues this should be a fairly foolproof way to get things working again.</p>
-<!-- If you're using Linux, it's very strongly recommended to use Arch Linux or a derivative, -->
-<!-- as that is the only distribution that provides sufficiently many of the required programs -->
-<!-- and plugins as packages or via the AUR. -->
-<!-- On other distributions you risk a great amount of pain compiling a ton of programs and plugins manually. -->
-<!-- The rest of this page will assume that Linux users use Arch Linux. -->
-
+<p>As of VapourSynth R74, everything is installed through <code>pip</code> (or <code>uv</code>),
+including VapourSynth itself and most plugins.
+No separate installers or plugin managers are needed anymore.</p>
 <h2 id="getting-a-clean-slate">Getting a Clean Slate</h2>
-<p>If you're on Linux, you can probably skip this step.</p>
-<p>If you have VapourSynth or any version of Python installed, uninstall them.
+<p>If you never used VapourSynth before R74, or you're on Linux, you can probably skip this step.</p>
+<p>If you previously installed VapourSynth using the Windows installer (R73 or earlier),
+uninstall it before proceeding.
+As of R74, plugins are stored inside the VapourSynth Python package,
+and <strong>no plugins will be loaded from the previous locations</strong>,
+so leftovers from an old installation will only cause confusion.
 Also delete any leftover directories like</p>
 <ul>
 <li><code>%APPDATA%/VapourSynth</code></li>
-<li><code>%APPDATA%/Python</code></li>
 <li><code>%LOCALAPPDATA%/Programs/VapourSynth</code></li>
-<li><code>%LOCALAPPDATA%/Programs/Python</code></li>
 </ul>
 <p>on Windows.</p>
-<h2 id="installing-python-and-vapoursynth">Installing Python and VapourSynth</h2>
+<h2 id="installing-python">Installing Python</h2>
+<p>VapourSynth requires Python 3.12 or later.
+As of R74, a single VapourSynth wheel works on all supported Python versions,
+so you can simply install the latest stable Python release.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Windows</label><label for="__tabbed_1_2">Linux</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Check the <a href="https://www.vapoursynth.com/doc/installation.html">VapourSynth documentation</a>
-to find out the latest Python version currently supported by VapourSynth,
-and install it from the <a href="https://www.python.org/downloads/">Python website</a>.
-At the time of writing, that's Python 3.12.</p>
+<p>Install Python from the <a href="https://www.python.org/downloads/">Python website</a>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Make sure to install Python to PATH!
@@ -1752,118 +1795,176 @@ but will make your life a lot easier.
 During installation, this will be
 the "Add Python to environment variables" option.</p>
 </div>
-<p>Then, download the latest <a href="https://github.com/vapoursynth/vapoursynth/releases">GitHub release</a>
-of VapourSynth and install it.</p>
-<p>Unless you want to risk running into issues, install the installer versions (not the portable ones)
-and select "Install for this user only" when asked.</p>
 </div>
 <div class="tabbed-block">
-<div class="admonition warning">
-<p class="admonition-title">This section is incomplete!</p>
-<p>This section is a stub.
-You can help us
-by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
-</div>
-<p>Install Python and VapourSynth using your package manager.
-Also install <code>vsgenstubs</code>. <!-- (<code>vapoursynth-tools-genstubs-git</code> on the AUR) --></p>
-</div>
-</div>
-</div>
-<h2 id="installing-vapoursynth-plugins">Installing VapourSynth Plugins</h2>
-<p>VapourSynth itself only provides a frame server,
-i.e. the ability to load plugins and use them to process audio and video.
-The meat of the VapourSynth ecosystem lies in these plugins,
-which need to be installed separately.</p>
-<p>If you ever want to run a VapourSynth script or call some function and get an error message like</p>
-<p><code>No attribute with the name bs exists. Did you mistype a plugin namespace or forget to install a plugin?</code>,</p>
-<p>this means that you need to install the mentioned plugin, in this case <code>bs</code> (which is short for bestsource).</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label><label for="__tabbed_2_2">Linux</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>On Windows, plugins are installed using VSRepo.
-Open a terminal and run <code>vsrepo.py available</code> to list all installable plugins.
-To install a plugin (e.g. <code>bs</code>), run <code>vsrepo.py install bs</code>.
-You can install multiple plugins at once to save time, e.g. <code>vsrepo.py install bs lsmas</code>.</p>
-<div class="admonition bug">
-<p class="admonition-title">Note</p>
-<p>VSRepo can be finnicky depending on your configuration and file associations.
-(TODO figure out some foolproof method to call it or fix it upstream)
-If you run into issues running vsrepo, try using a different terminal (cmd or PowerShell)
-or calling it as <code>vsrepo</code> or <code>python -m vsrepo</code> rather than <code>vsrepo.py</code>.
-If all else fails, you can manually navigate to the folder VSRepo is in
-(usually <code>%localappdata%/Programs/VapourSynth/vsrepo</code>), open a terminal there,
-and run <code>python vsrepo.py</code> with your arguments.
-Alternatively, you can also try <a href="https://github.com/theChaosCoder/VSRepoGUI">VSRepoGUI</a>.</p>
-</div>
-</div>
-<div class="tabbed-block">
-<div class="admonition warning">
-<p class="admonition-title">This section is incomplete!</p>
-<p>This section is a stub.
-You can help us
-by <a href="https://github.com/Jaded-Encoding-Thaumaturgy/JET-guide?tab=readme-ov-file#contributing">expanding it</a>.</p>
-</div>
-<p><!-- Install plugins using your package manager, e.g. <code>vapoursynth-plugin-bestssource</code> on Arch Linux. -->
-<!-- A few plugins are available in the official repositories, but for most of them you'll need to use the AUR. --></p>
-<p><!-- After you've installed a plugin, run <code>vsgenstubs4</code> to generate function stubs for the installed plugins, -->
-<!-- which will help your language server. --></p>
+<p>Install Python 3.12 or later using your package manager.
+It's recommended to create a virtual environment to install VapourSynth
+and the JET packages into, since most distributions do not allow
+installing packages with <code>pip</code> system-wide:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>python<span style="color: #ABB2BF"> </span>-m<span style="color: #ABB2BF"> </span>venv<span style="color: #ABB2BF"> </span>~/.venvs/vapoursynth
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span style="color: #E5C07B">source</span><span style="color: #ABB2BF"> </span>~/.venvs/vapoursynth/bin/activate
+</code></pre></div></td></tr></table></div>
+<p>You'll need to activate this virtual environment (the second command)
+in every new terminal session in which you want to use VapourSynth.</p>
 </div>
 </div>
 </div>
-<p>To start out, install the following plugins:</p>
+<h2 id="installing-vapoursynth">Installing VapourSynth</h2>
+<p>As of R74, VapourSynth is installed with pip on all platforms.
+Open a terminal and run:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>pip install vapoursynth
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>vapoursynth config
+</code></pre></div></td></tr></table></div>
+<p>The second command downloads and sets up the VapourSynth core library.
+On Windows, update the Visual Studio Redistributable if the command tells you to.</p>
+<p>Optionally, you can also run:</p>
 <ul>
-<li><code>bs</code> and <code>lsmas</code>, to load audio and video</li>
-<li><code>akarin</code>, <code>vszip</code> and <code>fmtc</code> which may be needed by vs-preview.</li>
+<li><code>vapoursynth register-install</code> to set the <code>VSSCRIPT_PATH</code> environment variable,
+  which allows other applications (e.g. media players and encoding GUIs) to find VapourSynth.</li>
+<li>(Windows only) <code>vapoursynth register-legacy-install</code> to write installation information
+  to the registry, so that applications not yet aware of the R74+ install method still work.</li>
 </ul>
+<p>To verify that everything works, open a Python prompt (run <code>python</code>) and type:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vapoursynth</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">core</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span style="color: #E5C07B">print</span><span style="color: #ABB2BF">(</span><span style="color: #E5C07B">str</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">core</span><span style="color: #ABB2BF">))</span>
+</code></pre></div></td></tr></table></div>
+<p>You should see the VapourSynth version printed, e.g. <code>VapourSynth Video Processing Library ... Core R77</code>.</p>
 <h2 id="installing-the-jet-packages">Installing the JET Packages</h2>
-<p>The JET python packages build on top of the existing plugin ecosystem to provide</p>
+<p>The JET Python packages build on top of the existing plugin ecosystem to provide</p>
 <ul>
 <li>More convenient and Pythonic wrapper functions around various plugins</li>
 <li>More complex filtering functions which combine functions of various plugins
   to achieve various filtering goals</li>
-<li>vs-preview, a previewer for VapourSynth with plugin support and many useful features for encoders.</li>
 </ul>
-<p>To install it, open a terminal and run:</p>
-<p><code>pip install vsjetpack vspreview</code></p>
-<p>To update your JET packages, you can run <code>pip install --upgrade vsjetpack vspreview</code>.</p>
+<p>As of vs-jetpack v2, the VapourSynth plugins that these functions rely on
+are themselves distributed as Python packages
+and can be installed automatically alongside <code>vsjetpack</code> using <em>extras</em>.
+The simplest option is the <code>full</code> extra, which pulls in all CPU-based plugins:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Windows</label><label for="__tabbed_2_2">Linux / macOS</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>pip install vsjetpack[full]
+</code></pre></div></td></tr></table></div>
+<p>If you have an NVIDIA GPU, you can additionally install the GPU-accelerated plugins:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>pip install vsjetpack[full,nvidia] `
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>    --extra-index-url https://pypi.nvidia.com/ `
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>    --extra-index-url https://jaded-encoding-thaumaturgy.github.io/vs-wheels/simple
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<p>Some plugins distribute their wheels through VSWheels of PyPI,
+so you need to add it with <code>--extra-index-url</code>:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>pip<span style="color: #ABB2BF"> </span>install<span style="color: #ABB2BF"> </span>vsjetpack<span style="color: #56B6C2">[</span>full<span style="color: #56B6C2">]</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">\</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span style="color: #ABB2BF">    </span>--extra-index-url<span style="color: #ABB2BF"> </span>https://jaded-encoding-thaumaturgy.github.io/vs-wheels/simple
+</code></pre></div></td></tr></table></div>
+<p>If you have an NVIDIA GPU, you can additionally install the GPU-accelerated plugins:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>pip<span style="color: #ABB2BF"> </span>install<span style="color: #ABB2BF"> </span>vsjetpack<span style="color: #56B6C2">[</span>full,nvidia<span style="color: #56B6C2">]</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">\</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span style="color: #ABB2BF">    </span>--extra-index-url<span style="color: #ABB2BF"> </span>https://pypi.nvidia.com/<span style="color: #ABB2BF"> </span><span style="color: #98C379">\</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span style="color: #ABB2BF">    </span>--extra-index-url<span style="color: #ABB2BF"> </span>https://jaded-encoding-thaumaturgy.github.io/vs-wheels/simple
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>If you don't want all plugins, there are more granular extras
+like <code>source</code>, <code>denoise</code> or <code>deinterlace</code>,
+as well as <code>amd</code>, <code>cl</code> and <code>vulkan</code> extras for non-NVIDIA GPUs.
+See the <a href="https://jaded-encoding-thaumaturgy.github.io/vs-jetpack/#installation">vs-jetpack documentation</a>
+for the full breakdown and the platforms each extra supports.</p>
+<p>To update your JET packages later, run the same command with <code>--upgrade</code> added.</p>
 <details class="info">
-<summary>Migrating from <code>vsjet</code></summary>
-<p>If you previously used <code>vsjet</code> to install and update JET packages,
-you can use the following commands to migrate:
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-1">1</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>pip uninstall stgpytools vstools vspyplugin vskernels vsexprtools vsrgtools vsmasktools vsaa vsscale vsdenoise vsdehalo vsdeband vsdeinterlace vssource vspreview vsjet -y
-<a id="__codelineno-0-2" name="__codelineno-0-2"></a>pip install vsjetpack vspreview
-</code></pre></div></td></tr></table></div></p>
+<summary>Using uv instead of pip</summary>
+<p>If you manage your projects with <a href="https://docs.astral.sh/uv/">uv</a>,
+you can add <code>vsjetpack</code> to your <code>pyproject.toml</code> instead:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>uv<span style="color: #ABB2BF"> </span>add<span style="color: #ABB2BF"> </span>vsjetpack<span style="color: #56B6C2">[</span>full,nvidia<span style="color: #56B6C2">]</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">\</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span style="color: #ABB2BF">    </span>--index<span style="color: #ABB2BF"> </span>https://jaded-encoding-thaumaturgy.github.io/vs-wheels/simple<span style="color: #ABB2BF"> </span><span style="color: #98C379">\</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span style="color: #ABB2BF">    </span>--index<span style="color: #ABB2BF"> </span>https://pypi.nvidia.com/<span style="color: #ABB2BF"> </span><span style="color: #98C379">\</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span style="color: #ABB2BF">    </span>--index-strategy<span style="color: #ABB2BF"> </span>unsafe-best-match
+</code></pre></div></td></tr></table></div>
+<p>You may want to add the following setting to your <code>pyproject.toml</code> for later use:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-8-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-8-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span style="color: #C678DD">[tool.uv]</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span style="color: #E06C75">index-strategy</span><span style="color: #ABB2BF"> </span><span style="color: #56B6C2">=</span><span style="color: #ABB2BF"> </span><span style="color: #98C379">&quot;unsafe-best-match&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>If you don't want to use <code>unsafe-best-match</code> as the index strategy,
+you'll have to explicitly pin packages to indices via <code>tool.uv.sources</code>,
+like <a href="https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack/blob/main/pyproject.toml">vs-jetpack's own pyproject.toml</a> does.
+See <a href="https://github.com/Jaded-Encoding-Thaumaturgy/vs-jetpack/discussions/336">this discussion</a>
+for details.</p>
 </details>
-<p>Linux users may need to create a virtualenv to install the packages or try their luck with <code>pipx</code>.</p>
-<!-- On Arch Linux, you can use the [`vapoursynth-plugin-vsjetpack`](https://aur.archlinux.org/packages/vapoursynth-plugin-vsjetpack) and [`vapoursynth-preview`](https://aur.archlinux.org/packages/vapoursynth-preview) AUR packages. -->
-
+<h2 id="installing-additional-vapoursynth-plugins">Installing Additional VapourSynth Plugins</h2>
+<p>The <code>vsjetpack</code> extras cover everything the JET packages themselves need,
+but you may occasionally want a plugin that isn't included.
+If you ever run a VapourSynth script and get an error message like</p>
+<p><code>No attribute with the name foo exists. Did you mistype a plugin namespace or forget to install a plugin?</code>,</p>
+<p>this means that you need to install the mentioned plugin.</p>
+<p>Many plugins are now published on PyPI (or <a href="https://github.com/Jaded-Encoding-Thaumaturgy/vs-wheels">VSWheels</a>)
+and can be installed with pip, e.g. <code>pip install vapoursynth-fmtconv</code>.
+For plugins without a Python package, you can still use VSRepo,
+which is now installed separately: <code>pip install vsrepo</code>, then <code>vsrepo install &lt;plugin&gt;</code>.
+As a last resort, you can place plugin binaries manually into the plugin directory,
+whose location you can find by running <code>vapoursynth.get_plugin_dir()</code> in Python.</p>
+<h2 id="installing-vsview">Installing VSView</h2>
+<p><a href="https://jaded-encoding-thaumaturgy.github.io/vs-view/">VSView</a> is the JET previewer for VapourSynth:
+it lets you open scripts, videos or images in one interface,
+making it easy to preview, inspect and compare sources.
+It is the modern replacement for the older vs-preview.</p>
+<p>Install it together with the recommended plugins:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>pip install vsview[recommended]
+</code></pre></div></td></tr></table></div>
+<p>You can also use <code>vsview[full]</code> to install all plugins,
+or plain <code>vsview</code> for a minimal installation.</p>
+<p>To launch it, just run <code>vsview</code>,
+or open files directly:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>vsview myscript.vpy video.mkv
+</code></pre></div></td></tr></table></div>
 <h2 id="installing-your-code-editor">Installing your Code Editor</h2>
-<p>You're now ready to use JET packages with VapourSynth.
+<p>You're now ready to use the JET packages with VapourSynth.
 However, it's strongly recommended to also install a code editor or IDE,
 in order to benefit from a Python language server to see available plugins, functions, documentation, etc.
 The simplest choice is VS Code:</p>
 <ul>
 <li>Install VS Code from <a href="https://code.visualstudio.com/download">its download page</a></li>
-<li>Follow the <a href="https://github.com/Jaded-Encoding-Thaumaturgy/vs-preview/blob/master/docs/installation/install_vscode.rst">vs-preview documentation</a>
-  to configure VS Code to work with VapourSynth and vs-preview.</li>
+<li>Install the Python extension from the Extensions panel</li>
+<li>If you installed VapourSynth into a virtual environment,
+  select it as your Python interpreter
+  (Ctrl+Shift+P, "Python: Select Interpreter")</li>
+<li>Associate <code>.vpy</code> files with Python by adding the following to your <code>settings.json</code>:</li>
 </ul>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-11-3">3</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span style="color: #E06C75">&quot;files.associations&quot;</span><span style="color: #ABB2BF">: {</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span style="color: #ABB2BF">    </span><span style="color: #E06C75">&quot;*.vpy&quot;</span><span style="color: #ABB2BF">: </span><span style="color: #98C379">&quot;python&quot;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span style="color: #ABB2BF">}</span>
+</code></pre></div></td></tr></table></div>
+<p>You can then open your scripts in VSView from VS Code's integrated terminal
+by running <code>vsview yourscript.vpy</code>.</p>
 <h2 id="opening-your-first-file">Opening your First File</h2>
 <p>With everything set up, it's time to open your first video in VapourSynth.
 Start by finding your favorite video file, and copy its path (e.g. <code>C:/Path/to/my/file.mkv</code>).
 Then, make a file called <code>myscript.vpy</code>, and open it (for example in VS Code).
 Write the following into it:</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-1">1</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-2">2</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-3">3</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-4">4</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-5">5</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vapoursynth</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">as</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vs</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span style="color: #E06C75">core</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">core</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">)</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-12-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-12-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-12-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-12-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-12-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-12-6">6</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vapoursynth</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">as</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vs</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span style="color: #E06C75">core</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">core</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Where, obviously, you should replace the path with the path to your own video file.</p>
 <div class="admonition note">
@@ -1872,89 +1973,73 @@ Write the following into it:</p>
 For any kind of more serious work, <code>bs.VideoSource</code> is recommended,
 since only that filter can fully guarantee accurate seeking.</p>
 </div>
-<p>Then, open this file in vs-preview.
-If you've correctly set up VS Code, you should be able to just press F5.
-Otherwise, you can also open a terminal in your script's directory and run <code>vspreview myscript.vpy</code>.</p>
-<p>You should see vs-preview open and display your video.</p>
+<p>Then, open this file in VSView by opening a terminal in your script's directory and running:</p>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>vsview myscript.vpy
+</code></pre></div></td></tr></table></div>
+<p>You should see VSView open and display your video.</p>
 <h2 id="a-few-further-first-steps">A few further First Steps</h2>
 <p>With this, you've learned how to install everything you need.
-The following will explain a few basic first steps if this is your first time using VapourSynth or vs-preview.</p>
-<h3 id="getting-comfortable-with-vs-preview">Getting Comfortable with vs-preview</h3>
-<p>If you've followed the instructions above, you should now have vs-preview opened and should be able to preview your video file.
+The following will explain a few basic first steps if this is your first time using VapourSynth or VSView.</p>
+<h3 id="getting-comfortable-with-vsview">Getting Comfortable with VSView</h3>
+<p>If you've followed the instructions above, you should now have VSView opened and should be able to preview your video file.
 Here are a few things you can try out:</p>
 <ul>
 <li>Press Space to play or pause</li>
 <li>Click around in the timeline bar below the video display to step around the video</li>
 <li>Ctrl+Scroll to zoom and Click+Drag to pan around the displayed image</li>
-<li>Click the "Pipette" button at the bottom and look at the values at the bottom changing while you move your mouse around the image.</li>
-<li>Click the "Benchmark" button at the bottom and click "Run" to find out how fast your VapourSynth script runs.
-    At the moment, your script just loads a video, so it should be fairly fast,
-    but in the future your scripts might contain more complex filtering, and knowing how fast or slow your filtering is will be more important.</li>
-<li>Click the "Comp" button at the bottom and click "Start Upload".
-    Once the upload is done, find the box containing a <code>slow.pics</code> link and press the button next to it to copy that link to your clipboard.
-    Open that link in your browser: You'll get a <code>slow.pics</code> comparison of random frames in your video.
-    If your script has multiple outputs, the comparison will show all output nodes.</li>
-<li>
-<p>Move your mouse to the very right of vs-preview's window and drag the bar there to the left.
-    This opens the plugins panel, which contains one tab for each vs-preview plugin.
-    First, open the "Frame Props" tab and have a look at the values there.</p>
-<p>Then, open the "Split Planes" tab.
-This shows the individual planes of your video.
-For your average video clip, this will consist of one luma plane and two chroma planes with half the width and height.
-You can press Ctrl+A to unlock the split planes view,
-which will allow you to freely zoom and pan around in the view like you would on the normal video.</p>
-</li>
+<li>Look at the sidebar on the left: each open workspace (script, video, or image) is represented by an icon.
+    Right-click an icon to access workspace-specific actions such as reloading the script.</li>
+<li>Explore the tool docks and panels via the "View" menu,
+    which provide features like frame props inspection and comparisons.</li>
+<li>Move your mouse to the very right of the window and drag the bar there to the left.
+    This opens the plugins panel, which contains one tab for each VSView plugin.</li>
 </ul>
+<p>For a full tour of the interface, see the
+<a href="https://jaded-encoding-thaumaturgy.github.io/vs-view/usage/overview/">VSView usage documentation</a>.</p>
 <h3 id="a-second-output-node">A Second Output Node</h3>
 <p>Now, let's do some actual filtering.
 Add two lines to the bottom of your VapourSynth script, so that it looks as follows:</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-1"> 1</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-2"> 2</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-3"> 3</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-4"> 4</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-5"> 5</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-6"> 6</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-7"> 7</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-8"> 8</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-9"> 9</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vapoursynth</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">as</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vs</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span style="color: #E06C75">core</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">core</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7"></a>
-<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">BoxBlur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span style="color: #E06C75">blurred</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">)</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-1"> 1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-2"> 2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-3"> 3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-4"> 4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-5"> 5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-6"> 6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-7"> 7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-8"> 8</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-9"> 9</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-10">10</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vapoursynth</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">as</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vs</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a><span style="color: #E06C75">core</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">core</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">BoxBlur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a><span style="color: #E06C75">blurred</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">1</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Then press Ctrl+R to reload vs-preview.</p>
-<div class="admonition warning">
-<p class="admonition-title">Note</p>
-<p>Reloading vs-preview in-place with Ctrl+R uses dark magic and can occasionally break with certain complex scripts.
-If you run into issues with reloading, the foolproof way is always to close and reopen vs-preview.</p>
-</div>
-<p>If you open the drop-down at the bottom left of vs-preview,
-you should now see two output nodes you can switch between.
+<p>Then press Ctrl+R to reload VSView.</p>
+<p>You should now see two output nodes you can switch between.
 The first is your video, the second is a slightly blurred version of your video.
 You can also press the 1 and 2 keys to switch between them (which is the recommended method since it's much faster).</p>
 <h3 id="going-jet">Going JET</h3>
-<p>The above example code only used standard VapourSynth functions; except for vs-preview we didn't use any JET packages.
+<p>The above example code only used standard VapourSynth functions; except for VSView we didn't use any JET packages.
 But even in such a simple script, JET packages can save you a bit of work.
 Let's see how this script could be modified:</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-1">1</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-2">2</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-3">3</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-4">4</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-5">5</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-6">6</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-3-7">7</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">core</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">set_output</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">BoxBlur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blurred</span><span style="color: #ABB2BF">)</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-6">6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-7">7</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">core</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">set_output</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">BoxBlur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blurred</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Let's go over the differences:</p>
 <ol>
@@ -1967,41 +2052,40 @@ Let's see how this script could be modified:</p>
    When you want to add another node at the start, you'd need to update the numbers of all following output nodes, which can be annoying.
    The <code>set_output</code> function in vs-tools automatically numbers nodes based on the order they're output in.</li>
 <li>Nodes are automatically named.
-   If you open the above script in vs-preview, you'll see that the dropdown in the bottom left now contains the names <code>clip</code> and <code>blurred</code>
-   instead of <code>Video Node 1</code> and <code>Video Node 2</code>, matching how the clips were called in our script.
-   If you were to upload a comparison to slow.pics, the images in the comparison would also be labeled like this.</li>
+   If you open the above script in VSView, you'll see that the output nodes are now named <code>clip</code> and <code>blurred</code>
+   instead of <code>Video Node 1</code> and <code>Video Node 2</code>, matching how the clips were called in our script.</li>
 </ol>
 <p>We can also name nodes manually by passing another argument to <code>set_output</code>:</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-1">1</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Source&quot;</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blurred</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Blurred&quot;</span><span style="color: #ABB2BF">)</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-16-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-16-2">2</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Source&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blurred</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Blurred&quot;</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
 <p>If you wanted to, you could also replace the <code>BoxBlur</code> call with a JET wrapper:</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-1">1</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-2">2</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-3">3</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-4">4</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-5">5</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-6">6</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-7">7</a></span>
-<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-5-8">8</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">core</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">set_output</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vsrgtools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">box_blur</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">box_blur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Source&quot;</span><span style="color: #ABB2BF">)</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blurred</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Blurred&quot;</span><span style="color: #ABB2BF">)</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-17-1">1</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-17-2">2</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-17-3">3</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-17-4">4</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-17-5">5</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-17-6">6</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-17-7">7</a></span>
+<span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-17-8">8</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">core</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">set_output</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vsrgtools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">box_blur</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">box_blur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Source&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">blurred</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Blurred&quot;</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Whether you want to do this or not is a matter of taste.
 The advantage of writing <code>core.std.BoxBlur</code> explicitly is that
 you see exactly what plugin is called and don't need to worry about understanding the Python wrapper.
 On the other hand, a wrapper like <code>box_blur</code> may have more features
-(e.g. here <code>box_blur</code> allows specifying a different radius for every plane, which <code>core.std.BoxBlur</code> doesn't allow out-of-the-box`)
+(e.g. here <code>box_blur</code> allows specifying a different radius for every plane, which <code>core.std.BoxBlur</code> doesn't allow out-of-the-box)
 and be easier to use.</p>
 <h3 id="using-a-better-source-filter">Using a Better Source Filter</h3>
 <p>Finally, I need to talk about the line</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
 <p>This is the line that loads your video using the <code>lsmas</code> plugin.
 The <code>LWLibavSource</code> video source is very reliable for most videos you'll encounter,
@@ -2012,9 +2096,9 @@ To avoid this, the source filter BestSource is recommended.
 In exchange for needing a long time to process when opening a video for the first time,
 this filter ensures perfect seeking accuracy in audio and video.
 You can call it using</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">bs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VideoSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">showprogress</span><span style="color: #56B6C2">=</span><span style="color: #E5C07B">True</span><span style="color: #ABB2BF">)</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">bs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">VideoSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">,</span> <span style="color: #E06C75">showprogress</span><span style="color: #56B6C2">=</span><span style="color: #E5C07B">True</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Don't be surprised if vs-preview takes a long time to open now.
+<p>Don't be surprised if VSView takes a long time to open now.
 This is necessary in order for BestSource to be accurate.
 The second time you open the same video, it will be much faster.</p>
 <p>LWLibavSource is still fine when you want to quickly look through some video,
