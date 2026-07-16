@@ -170,6 +170,6 @@ core.set_affinity(threads=range(0, 32, 2), max_cache=22000)
 Vanilla VS only allows you to set a number of threads via `core.num_threads`.<br>The vs-tools wrapper also sets the affinity.<br>
 This example uses every other thread in the range of 0 - 31. Read more about ranges [here](https://docs.python.org/3/library/stdtypes.html#range).
 
-[^1]: vsrepo install bs
-[^2]: vsrepo install lsmas
-[^3]: vsrepo install ffms2
+[^1]: pip install vapoursynth-bestsource
+[^2]: pip install vapoursynth-lsmas
+[^3]: pip install vapoursynth-ffms2
