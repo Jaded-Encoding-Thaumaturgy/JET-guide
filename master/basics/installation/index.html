@@ -1909,11 +1909,13 @@ If you ever run a VapourSynth script and get an error message like</p>
 <p><code>No attribute with the name foo exists. Did you mistype a plugin namespace or forget to install a plugin?</code>,</p>
 <p>this means that you need to install the mentioned plugin.</p>
 <p>Many plugins are now published on PyPI (or <a href="https://github.com/Jaded-Encoding-Thaumaturgy/vs-wheels">VSWheels</a>)
-and can be installed with pip, e.g. <code>pip install vapoursynth-fmtconv</code>.
-For plugins without a Python package, you can still use VSRepo,
-which is now installed separately: <code>pip install vsrepo</code>, then <code>vsrepo install &lt;plugin&gt;</code>.
-As a last resort, you can place plugin binaries manually into the plugin directory,
-whose location you can find by running <code>vapoursynth.get_plugin_dir()</code> in Python.</p>
+and can be installed with pip, e.g. <code>pip install vapoursynth-bestsource</code>.</p>
+<p>For plugins without a Python package, you can still use VSRepo,
+which is now installed separately: <code>pip install vsrepo</code>, then <code>vsrepo install &lt;plugin&gt;</code>.</p>
+<p>If you need to use a manually downloaded native plugin, keep its native file in a
+location of your choice and load it explicitly with <code>core.std.LoadPlugin()</code>.
+Alternatively, you can also set the <code>VAPOURSYNTH_EXTRA_PLUGIN_PATH</code> environment variable
+to an additional plugin directory.</p>
 <h2 id="installing-vsview">Installing VSView</h2>
 <p><a href="https://jaded-encoding-thaumaturgy.github.io/vs-view/">VSView</a> is the JET previewer for VapourSynth:
 it lets you open scripts, videos or images in one interface,
