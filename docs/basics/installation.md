@@ -170,7 +170,7 @@ If you ever run a VapourSynth script and get an error message like
 this means that you need to install the mentioned plugin.
 
 Many plugins are now published on PyPI (or [VSWheels](https://github.com/Jaded-Encoding-Thaumaturgy/vs-wheels))
-and can be installed with pip, e.g. `pip install vapoursynth-fmtconv`.
+and can be installed with pip, e.g. `pip install vapoursynth-bestsource`.
 For plugins without a Python package, you can still use VSRepo,
 which is now installed separately: `pip install vsrepo`, then `vsrepo install <plugin>`.
 As a last resort, you can place plugin binaries manually into the plugin directory,
