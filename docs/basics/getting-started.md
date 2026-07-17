@@ -107,22 +107,19 @@ Most videos you download and the majority of BDs are untagged so this is often a
 
 ## Output the clips
 
-Technically all you need is `clip.set_output(0)` but vstools/vspreview provide a helper function with more features.
+Technically all you need is `clip.set_output(0)` but VSView provides a helper function with more features.
 
 ```py
-from vspreview import set_output
+from vsview import set_output
 
-# Naming the nodes in vspreview
-set_output(clip, "Name shown in vspreview")
-
-# Making a clip ineligible for comparisons in vspreview
-set_output(clip, disable_comp=True)
+# Naming the nodes in VSView
+set_output(clip, "Name shown in VSView")
 ```
 
-If you want to only output clips when previewing and do other stuff, like [encoding with vs-muxtools](https://muxtools.vodes.pw/guide/encode-video/), you can use the vspreview helper function like this
+If you want to only output clips when previewing and do other stuff, like [encoding with vs-muxtools](https://muxtools.vodes.pw/guide/encode-video/), you can use the VSView helper function like this
 
 ```py
-from vspreview import is_preview, set_output
+from vsview import is_preview, set_output
 
 if is_preview():
     set_output(src, "JPBD")

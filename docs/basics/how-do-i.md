@@ -85,7 +85,7 @@ and use the number keys to switch between outputs.
 
 === "vs-tools"
     ```py3
-    from vstools import set_output
+    from vsview import set_output
 
     set_output(clip1)
     set_output(clip2)
@@ -99,7 +99,7 @@ and use the number keys to switch between outputs.
 
 ### How do I name my outputs?
 ```py3
-from vstools import set_output
+from vsview import set_output
 
 set_output(clip1, "My first clip")
 set_output(clip2, "My second clip")
@@ -108,37 +108,32 @@ set_output(clip2, "My second clip")
 Note that the names will only show up in vs-preview and not in other previewers.
 
 ### How do I preview a VFR clip with the correct frame rate(s)?
-Pass a timecodes file to `set_output`:
 
+Pass a `Timecodes` object (which you could generate at runtime, or modify):
 ```py3
-from vstools import set_output
+from vstools import Timecodes
+from vsview import set_output
 
-set_output(clip, timecodes="timecodes.txt")
-```
-
-You can also pass a `Timecodes` object (which you could generate at runtime, or modify):
-```py3
-from vstools import set_output, Timecodes
-
-timecodes = Timecodes.from_file("timecodes.txt")
-set_output(clip, timecodes=timecodes)
+timecodes = Timecodes.from_file("timecodes.txt", clip)
+set_output(clip, framedurs=timecodes)
 ```
 
 You can generate a `Timecodes` object from a clip's per-frame `_DurationNum` and `_DurationDen` properties,
 but note that this is very slow since it needs to go through the entire clip.
 One useful method is to generate them once and then save them to a file.
 ```py3
-import os.path
-from vstools import set_output, Timecodes
+from pathlib import Path
+from vstools import Timecodes
+from vsview import set_output
 
 TIMECODES_NAME = "timecodes.txt"
 
-if not os.path.isfile(TIMECODES_NAME):
+if not Path(TIMECODES_NAME).is_file():
     timecodes = Timecodes.from_clip(clip)
     timecodes.to_file(TIMECODES_NAME)
 
-timecodes = Timecodes.from_file(TIMECODES_NAME)
-set_output(clip, timecodes=timecodes)
+timecodes = Timecodes.from_file(TIMECODES_NAME, clip)
+set_output(clip, framedurs=timecodes)
 ```
 Remember to regenerate your timecodes file whenever the clip's frames or frame rate change.
 With the above code, this can be done by just deleting the timecodes file.

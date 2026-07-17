@@ -36,7 +36,8 @@ Create a file called `comp.py` and open it in your favorite text editor.
 Here's a simple `comp.py` script example that does nothing more than loading the videos and previewing them.
 
 ```py
-from vstools import vs, core, depth, set_output, PropEnum, Matrix, Transfer, Primaries, ColorRange, FieldBased
+from vstools import vs, core, depth, PropEnum, Matrix, Transfer, Primaries, ColorRange, FieldBased
+from vspreview import set_output
 
 from vssource import FFMS2
 from vskernels import Point, EwaLanczosSharp
