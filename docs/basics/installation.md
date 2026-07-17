@@ -171,10 +171,14 @@ this means that you need to install the mentioned plugin.
 
 Many plugins are now published on PyPI (or [VSWheels](https://github.com/Jaded-Encoding-Thaumaturgy/vs-wheels))
 and can be installed with pip, e.g. `pip install vapoursynth-bestsource`.
+
 For plugins without a Python package, you can still use VSRepo,
 which is now installed separately: `pip install vsrepo`, then `vsrepo install <plugin>`.
-As a last resort, you can place plugin binaries manually into the plugin directory,
-whose location you can find by running `vapoursynth.get_plugin_dir()` in Python.
+
+If you need to use a manually downloaded native plugin, keep its native file in a
+location of your choice and load it explicitly with `core.std.LoadPlugin()`.
+Alternatively, you can also set the `VAPOURSYNTH_EXTRA_PLUGIN_PATH` environment variable
+to an additional plugin directory.
 
 ## Installing VSView
 
