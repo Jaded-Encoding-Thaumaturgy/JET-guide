@@ -1,10 +1,5 @@
 [
   {
-    "version": "renovate-actions-checkout-digest",
-    "title": "renovate-actions-checkout-digest",
-    "aliases": []
-  },
-  {
     "version": "master",
     "title": "master",
     "aliases": []
