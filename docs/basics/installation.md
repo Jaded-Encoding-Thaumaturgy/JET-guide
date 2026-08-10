@@ -237,7 +237,7 @@ Write the following into it:
 import vapoursynth as vs
 core = vs.core
 
-clip = core.lsmas.LWLibavSource("C:/Path/to/my/file.mkv")
+clip = core.ffms2.Source("C:/Path/to/my/file.mkv")
 
 clip.set_output(0)
 ```
@@ -245,7 +245,7 @@ clip.set_output(0)
 Where, obviously, you should replace the path with the path to your own video file.
 
 !!! note "Note"
-    This example uses the `lsmas.LWLibavSource` source filter because of its faster indexing.
+    This example uses the `ffms2.Source` source filter because of its faster indexing.
     For any kind of more serious work, `bs.VideoSource` is recommended,
     since only that filter can fully guarantee accurate seeking.
 
@@ -289,7 +289,7 @@ Add two lines to the bottom of your VapourSynth script, so that it looks as foll
 import vapoursynth as vs
 core = vs.core
 
-clip = core.lsmas.LWLibavSource("C:/Path/to/my/file.mkv")
+clip = core.ffms2.Source("C:/Path/to/my/file.mkv")
 
 clip.set_output(0)
 
@@ -314,7 +314,7 @@ Let's see how this script could be modified:
 from vstools import core
 from vsview import set_output
 
-clip = core.lsmas.LWLibavSource("C:/Path/to/my/file.mkv")
+clip = core.ffms2.Source("C:/Path/to/my/file.mkv")
 blurred = core.std.BoxBlur(clip)
 
 set_output(clip)
@@ -349,7 +349,7 @@ from vstools import core
 from vsrgtools import box_blur
 from vsview import set_output
 
-clip = core.lsmas.LWLibavSource("C:/Path/to/my/file.mkv")
+clip = core.ffms2.Source("C:/Path/to/my/file.mkv")
 blurred = box_blur(clip)
 
 set_output(clip, "Source")
@@ -368,11 +368,11 @@ and be easier to use.
 Finally, I need to talk about the line
 
 ```py
-clip = core.lsmas.LWLibavSource("C:/Path/to/my/file.mkv")
+clip = core.ffms2.Source("C:/Path/to/my/file.mkv")
 ```
 
-This is the line that loads your video using the `lsmas` plugin.
-The `LWLibavSource` video source is very reliable for most videos you'll encounter,
+This is the line that loads your video using the `ffms2` plugin.
+The `ffms2.Source` video source is very reliable for most videos you'll encounter,
 but it's not infallible.
 When jumping around the video, it's possible for such source filters to sometimes return the wrong frame,
 which can render your encodes unusable.
