@@ -37,6 +37,7 @@ nav = [
     { "Situational Filtering" = [
       { "Dehardsubbing" = "filtering/situational/dehardsubbing.md" },
       { "Field-Based Video" = "filtering/situational/fieldbased.md" },
+      { "QTGMC" = "filtering/situational/qtgmc.md" },
     ] },
   ] },
   { "Encoding" = [
