@@ -5,6 +5,11 @@
     "aliases": []
   },
   {
+    "version": "renovate-astral-sh-setup-uv-10.x",
+    "title": "renovate-astral-sh-setup-uv-10.x",
+    "aliases": []
+  },
+  {
     "version": "master",
     "title": "master",
     "aliases": []
