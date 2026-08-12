@@ -99,7 +99,7 @@ deinterlaced = qtgmc.deinterlace(clip)
 deinterlaced = QTempGaussMC().prefilter(tr=3).analyze(blksize=32, preset=MVToolsPreset.HQ_SAD | dict(chroma=False)).basic(tr=3, bobber=EEDI3(alpha=0.25, beta=0.3)).source_match(mode=QTempGaussMC.SourceMatchMode.BASIC).deinterlace(clip)
 ```
 
-The docstrings of these stage configuration methods contain explanations of all the possible parameters.
+The [docstrings](https://jaded-encoding-thaumaturgy.github.io/vs-jetpack/api/vsdeinterlace/qtgmc/#vsdeinterlace.qtgmc.QTempGaussMC) of each of these stage configuration methods contain detailed explanations of all the possible parameters. If you are migrating from AviSynth or havsfunc's QTGMC, you can refer to [this mapping](https://gist.github.com/Ichunjo/76c96f1130c9e9f972de956f40571e54) for how parameter names in these QTGMC implementations map to vs-jetpack's parameter names.
 
 The second way to pass settings is to pass all of them when constructing the `QTempGaussMC` method by prefixing each stage's parameter with the stage's name:
 
