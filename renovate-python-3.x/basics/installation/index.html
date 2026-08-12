@@ -1306,6 +1306,33 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../filtering/situational/qtgmc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  QTGMC
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1964,14 +1991,14 @@ Write the following into it:</p>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-12-6">6</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vapoursynth</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">as</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vs</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2"></a><span style="color: #E06C75">core</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">core</span>
 <a id="__codelineno-12-3" name="__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">ffms2</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Source</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5"></a>
 <a id="__codelineno-12-6" name="__codelineno-12-6"></a><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Where, obviously, you should replace the path with the path to your own video file.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This example uses the <code>lsmas.LWLibavSource</code> source filter because of its faster indexing.
+<p>This example uses the <code>ffms2.Source</code> source filter because of its faster indexing.
 For any kind of more serious work, <code>bs.VideoSource</code> is recommended,
 since only that filter can fully guarantee accurate seeking.</p>
 </div>
@@ -2013,7 +2040,7 @@ Add two lines to the bottom of your VapourSynth script, so that it looks as foll
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-14-10">10</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span style="color: #C678DD">import</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vapoursynth</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">as</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vs</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2"></a><span style="color: #E06C75">core</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">vs</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">core</span>
 <a id="__codelineno-14-3" name="__codelineno-14-3"></a>
-<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">ffms2</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Source</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
 <a id="__codelineno-14-5" name="__codelineno-14-5"></a>
 <a id="__codelineno-14-6" name="__codelineno-14-6"></a><span style="color: #E06C75">clip</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #D19A66">0</span><span style="color: #ABB2BF">)</span>
 <a id="__codelineno-14-7" name="__codelineno-14-7"></a>
@@ -2039,7 +2066,7 @@ Let's see how this script could be modified:</p>
 <span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-15-8">8</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vstools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">core</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vsview</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">set_output</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">ffms2</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Source</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
 <a id="__codelineno-15-5" name="__codelineno-15-5"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">std</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">BoxBlur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6"></a>
 <a id="__codelineno-15-7" name="__codelineno-15-7"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
@@ -2077,7 +2104,7 @@ Let's see how this script could be modified:</p>
 <a id="__codelineno-17-2" name="__codelineno-17-2"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vsrgtools</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">box_blur</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3"></a><span style="color: #C678DD">from</span><span style="color: #ABB2BF"> </span><span style="color: #E06C75">vsview</span><span style="color: #ABB2BF"> </span><span style="color: #C678DD">import</span> <span style="color: #E06C75">set_output</span>
 <a id="__codelineno-17-4" name="__codelineno-17-4"></a>
-<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">ffms2</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Source</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
 <a id="__codelineno-17-6" name="__codelineno-17-6"></a><span style="color: #E06C75">blurred</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">box_blur</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">)</span>
 <a id="__codelineno-17-7" name="__codelineno-17-7"></a>
 <a id="__codelineno-17-8" name="__codelineno-17-8"></a><span style="color: #E06C75">set_output</span><span style="color: #ABB2BF">(</span><span style="color: #E06C75">clip</span><span style="color: #ABB2BF">,</span> <span style="color: #98C379">&quot;Source&quot;</span><span style="color: #ABB2BF">)</span>
@@ -2091,10 +2118,10 @@ On the other hand, a wrapper like <code>box_blur</code> may have more features
 and be easier to use.</p>
 <h3 id="using-a-better-source-filter">Using a Better Source Filter</h3>
 <p>Finally, I need to talk about the line</p>
-<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">lsmas</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">LWLibavSource</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
+<div class="highlight" style="background: #282C34"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span style="color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px;"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre style="line-height: 125%;"><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span style="color: #E06C75">clip</span> <span style="color: #56B6C2">=</span> <span style="color: #E06C75">core</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">ffms2</span><span style="color: #56B6C2">.</span><span style="color: #E06C75">Source</span><span style="color: #ABB2BF">(</span><span style="color: #98C379">&quot;C:/Path/to/my/file.mkv&quot;</span><span style="color: #ABB2BF">)</span>
 </code></pre></div></td></tr></table></div>
-<p>This is the line that loads your video using the <code>lsmas</code> plugin.
-The <code>LWLibavSource</code> video source is very reliable for most videos you'll encounter,
+<p>This is the line that loads your video using the <code>ffms2</code> plugin.
+The <code>ffms2.Source</code> video source is very reliable for most videos you'll encounter,
 but it's not infallible.
 When jumping around the video, it's possible for such source filters to sometimes return the wrong frame,
 which can render your encodes unusable.
