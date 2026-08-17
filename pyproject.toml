@@ -5,7 +5,7 @@ description = "JET Encoding Guide"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "zensical==0.0.54",
+    "zensical==0.0.55",
 ]
 
 [dependency-groups]
