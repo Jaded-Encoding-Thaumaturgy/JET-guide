@@ -21,6 +21,15 @@ wheels = [
 ]
 
 [[package]]
+name = "inversion"
+version = "1.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/cd/b5/e2d34bdeb088e3d28f5466c7c687126bba8337dcc0997c6c0ae40d4c4add/inversion-1.0.1.tar.gz", hash = "sha256:39b0d99da7924bcb21fc3e96ef2ac85dc83346461f74dd6a758ecaff3c75bb8e", size = 27028, upload-time = "2026-10-15T16:02:08.716Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/16/78/d1caf51e136f98eef9f45fd417a21f2389bf8042e8d8f3f1ed7832a500ca/inversion-1.0.1-py3-none-any.whl", hash = "sha256:a8b7b7bb1bef85318179421ef11e5222bd492f477373f0dcb80f323f8b0595d2", size = 19846, upload-time = "2026-10-15T16:02:07.701Z" },
+]
+
+[[package]]
 name = "jet-guide"
 version = "0.0.0"
 source = { virtual = "." }
@@ -53,11 +62,11 @@ wheels = [
 
 [[package]]
 name = "markdown"
-version = "3.11"
+version = "3.11.2"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/f8/4f/700155c8c20d9e655dd0732b5fc3c7614f291b9148da271d7388e50bf774/markdown-3.11.tar.gz", hash = "sha256:180224db6aed87ba9ce1f2781ebcd5826253de8ff637112090e24b84502bbf9f", size = 485623, upload-time = "2026-09-25T13:46:23.473Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f4/32/0b4d0297064244f04af4331b65de16237cc3cce07474171ee14222a28981/markdown-3.11.2.tar.gz", hash = "sha256:87bf5d90f2d2882e2c02fcda182c2800456b985bff38913867c49706481514b0", size = 491445, upload-time = "2026-10-19T19:41:42.687Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ec/1e/32971905a7ab47f8b66866ed949fa48b104ba1c4a6fa57794c4f2c4b2cb8/markdown-3.11-py3-none-any.whl", hash = "sha256:cd6c89e7eb308c8b332ed673215a52d208a43f8bacc030b1419376129408719e", size = 111296, upload-time = "2026-09-25T13:46:22.163Z" },
+    { url = "https://files.pythonhosted.org/packages/fe/66/bcab3b677b71ad286b4e607e3427499537c76e13ad2e22584ba7a7d9882c/markdown-3.11.2-py3-none-any.whl", hash = "sha256:f80390747a2a0ff2ba54da074ce4f862f72a6685f608cd2637b646a6d83993f5", size = 114266, upload-time = "2026-10-19T19:41:41.244Z" },
 ]
 
 [[package]]
@@ -219,15 +228,15 @@ wheels = [
 
 [[package]]
 name = "pymdown-extensions"
-version = "12.2"
+version = "12.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "markdown" },
     { name = "pyyaml" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/9a/0a/d8c8535346f63ff85c8743383438a74b5c0e3394d90e898b2cd1a2fac705/pymdown_extensions-12.2.tar.gz", hash = "sha256:02da896c362b548d85123e7a377a40024ea6ea938b4e45ca064e408afd994b64", size = 870226, upload-time = "2026-10-10T13:01:20.494Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/f3/fe/ac50ee24a80a1b344e643f6fb626063cc7041b978cd1dd9a7f9963ae1cd1/pymdown_extensions-12.3.tar.gz", hash = "sha256:a7f2a4e0bc60c6e6babfa7922cfb3b01cd640eb00fb208f3c582e12bae00ea67", size = 870532, upload-time = "2026-10-14T22:40:43.252Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/79/a5/30b1a3d82219cbe5e6661cd7053791dc3a3743547ebf31f3366429d84516/pymdown_extensions-12.2-py3-none-any.whl", hash = "sha256:caea66e916b4cfe987b5dabb0a78558e3506988f6353812b0b0288be8f976c16", size = 277518, upload-time = "2026-10-10T13:01:18.601Z" },
+    { url = "https://files.pythonhosted.org/packages/8a/d0/758afe732c2da502c051b4d03ff88daa3c0fc1a1e671e6c5a6318177bab4/pymdown_extensions-12.3-py3-none-any.whl", hash = "sha256:345493a8e3497e24382902903a1c43a28e34a52f2b7571a1c9641429b820ca74", size = 277597, upload-time = "2026-10-14T22:40:41.543Z" },
 ]
 
 [[package]]
@@ -368,11 +377,14 @@ wheels = [
 
 [[package]]
 name = "verspec"
-version = "0.1.0"
+version = "0.2.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/e7/44/8126f9f0c44319b2efc65feaad589cadef4d77ece200ae3c9133d58464d0/verspec-0.1.0.tar.gz", hash = "sha256:c4504ca697b2056cdb4bfa7121461f5a0e81809255b41c03dda4ba823637c01e", size = 27123, upload-time = "2020-11-30T02:24:09.646Z" }
+dependencies = [
+    { name = "inversion" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/7f/e3/cf3dcb426ca8dcc1421478e75582e1fea1d37e11522e31670c4e1b26701e/verspec-0.2.1.tar.gz", hash = "sha256:2046ea165be01b3ff4a8c2319d0ced57b1d7673fb05b38a75367531acde3b534", size = 1893, upload-time = "2026-10-15T15:33:24.979Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a4/ce/3b6fee91c85626eaf769d617f1be9d2e15c1cca027bbdeb2e0d751469355/verspec-0.1.0-py3-none-any.whl", hash = "sha256:741877d5633cc9464c45a469ae2a31e801e6dbbaa85b9675d481cda100f11c31", size = 19640, upload-time = "2020-11-30T02:24:08.387Z" },
+    { url = "https://files.pythonhosted.org/packages/e6/9d/b0f5248cdaae8c34a779db8cb282b6ebab760cfa349f05f5d0bb2530e508/verspec-0.2.1-py3-none-any.whl", hash = "sha256:bc192db9f51ba0c14cd3874167656f84aca1736bef002385299dab675b07377d", size = 2632, upload-time = "2026-10-15T15:33:24.111Z" },
 ]
 
 [[package]]
