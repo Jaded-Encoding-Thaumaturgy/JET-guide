@@ -10,6 +10,11 @@
     "aliases": []
   },
   {
+    "version": "renovate-lock-file-maintenance",
+    "title": "renovate-lock-file-maintenance",
+    "aliases": []
+  },
+  {
     "version": "renovate-astral-sh-setup-uv-10.x",
     "title": "renovate-astral-sh-setup-uv-10.x",
     "aliases": []
