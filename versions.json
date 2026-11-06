@@ -5,11 +5,6 @@
     "aliases": []
   },
   {
-    "version": "renovate-python-3.x",
-    "title": "renovate-python-3.x",
-    "aliases": []
-  },
-  {
     "version": "renovate-lock-file-maintenance",
     "title": "renovate-lock-file-maintenance",
     "aliases": []
