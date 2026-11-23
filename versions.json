@@ -1,5 +1,10 @@
 [
   {
+    "version": "renovate-lock-file-maintenance",
+    "title": "renovate-lock-file-maintenance",
+    "aliases": []
+  },
+  {
     "version": "master",
     "title": "master",
     "aliases": []
