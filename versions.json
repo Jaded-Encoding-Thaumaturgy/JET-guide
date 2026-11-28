@@ -1,5 +1,10 @@
 [
   {
+    "version": "renovate-zensical-0.x",
+    "title": "renovate-zensical-0.x",
+    "aliases": []
+  },
+  {
     "version": "master",
     "title": "master",
     "aliases": []
